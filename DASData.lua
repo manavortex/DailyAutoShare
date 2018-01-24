@@ -118,7 +118,7 @@ function DAS.GetBingoStringFromQuestName(questName)
 		if tonumber(index) == tonumber(bingoIndex) then ret = bingoString end
 	end
 	
-	
+	ret = DAS.bingoClean[ret] or ret
 	if ret ~= "" then 
 		if not(string.find(ret, "%+")) then ret = "+" .. ret end
 		if (string.find(ret, "%+%+"))  then ret.gsub("%+%+", "%+") end
