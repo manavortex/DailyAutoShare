@@ -4,12 +4,12 @@ local function GenerateTooltipText(control)
 	
 	local key = control:GetName()
 	
-	if 	DAS.IsMatch(key, "Invite")		then return GetString((DAS.GetAutoInvite() and DAS_SI_INVITE_TRUE) or DAS_SI_INVITE_FALSE)
-	elseif DAS.IsMatch(key, "Accept")	then return GetString((DAS.GetAutoAcceptShared() and DAS_SI_ACCEPT_TRUE) or DAS_SI_ACCEPT_FALSE)
-	elseif DAS.IsMatch(key, "Share") 	then return GetString((DAS.GetAutoShare() and DAS_SI_SHARE_TRUE) or DAS_SI_SHARE_FALSE)	
-	elseif DAS.IsMatch(key, "Spam") 	then return GetString(DAS_SI_SPAM)
-	elseif DAS.IsMatch(key, "Donate") 	then return GetString(DAS_SI_DONATE) 	
-	elseif DAS.IsMatch(key, "Refresh") 	then return GetString(DAS_SI_REFRESH)  
+	if 	    string.match(key, "Invite")	then return GetString((DAS.GetAutoInvite() and DAS_SI_INVITE_TRUE) or DAS_SI_INVITE_FALSE)
+	elseif string.match(key, "Accept")	then return GetString((DAS.GetAutoAcceptShared() and DAS_SI_ACCEPT_TRUE) or DAS_SI_ACCEPT_FALSE)
+	elseif string.match(key, "Share") 	then return GetString((DAS.GetAutoShare() and DAS_SI_SHARE_TRUE) or DAS_SI_SHARE_FALSE)	
+	elseif string.match(key, "Spam") 	then return GetString(DAS_SI_SPAM)
+	elseif string.match(key, "Donate") 	then return GetString(DAS_SI_DONATE) 	
+	elseif string.match(key, "Refresh") then return GetString(DAS_SI_REFRESH)  
 	end	
 	
 end 

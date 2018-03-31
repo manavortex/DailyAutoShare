@@ -1,3 +1,7 @@
+DAS.shareables 	    = DAS.shareables    or {}
+DAS.bingo 		    = DAS.bingo 	    or {}
+
+
 local zoneId	= 849
 
 local tbl = {}
@@ -49,23 +53,20 @@ table.insert(tbl2, "tribe")
 table.insert(tbl, GetString(DAS_M_DELVE_SYNDI))
 table.insert(tbl2, "syndicate")
 
-
-
 table.insert(tbl, GetString(DAS_M_BOSS_WUYWU))
-table.insert(tbl2, "wuyu")
+table.insert(tbl2, {"wuyu", "wyu", "wuyuvus"})
 table.insert(tbl, GetString(DAS_M_BOSS_SWARM))
-table.insert(tbl2, "swarm")
+table.insert(tbl2, {"queen", "swarm", "kwama"})
 table.insert(tbl, GetString(DAS_M_BOSS_NILTH))
-table.insert(tbl2, "nilthog")
+table.insert(tbl2, {"nil", "nilthog", "oxen"})
 table.insert(tbl, GetString(DAS_M_BOSS_SALOT))
-table.insert(tbl2, "salo")
+table.insert(tbl2, {"salo", "salothan"})
 table.insert(tbl, GetString(DAS_M_BOSS_SIREN))
-table.insert(tbl2, "siren")
+table.insert(tbl2, {"siren", "song", "songbird"})
 table.insert(tbl, GetString(DAS_M_BOSS_APPRE))
-table.insert(tbl2, "dubdil")
+table.insert(tbl2, {"dubdil", "dub"})
 
-DAS.shareables[zoneId] = tbl
-
+DAS.shareables[zoneId]      = tbl
 DAS.QuestLists = DAS.QuestLists or {}
 DAS.QuestLists[zoneId] = {
 	["relic"] = {
@@ -125,31 +126,5 @@ DAS.shareables[925] = {
 	[1] = DAS.shareables[zoneId][19],
 }
 
-DAS.bingo[zoneId] = {}
-
-
-for key, value in pairs(tbl2) do
-	DAS.bingo[zoneId][value] = key
-end
-
-local function addEntryForSameIndex(tbl, questName, additionalValue)
-	for key, value in pairs(tbl) do
-		if key == questName then 
-			tbl[additionalValue] = value
-		end
-	end
-end
-
-addEntryForSameIndex(DAS.bingo[zoneId], "wuyu", "wyu")
-addEntryForSameIndex(DAS.bingo[zoneId], "wuyu", "wuyuvus")
-addEntryForSameIndex(DAS.bingo[zoneId], "queen", "swarm")
-addEntryForSameIndex(DAS.bingo[zoneId], "nilthog", "nil")
-addEntryForSameIndex(DAS.bingo[zoneId], "nilthog", "oxen")
-addEntryForSameIndex(DAS.bingo[zoneId], "salo", "salothan")
-addEntryForSameIndex(DAS.bingo[zoneId], "siren", "songbird")
-addEntryForSameIndex(DAS.bingo[zoneId], "siren", "song")
-addEntryForSameIndex(DAS.bingo[zoneId], "ash", "eater")
-addEntryForSameIndex(DAS.bingo[zoneId], "dubdil", "dub")
-
-
+DAS.makeBingoTable(zoneId, tbl2) 
 	

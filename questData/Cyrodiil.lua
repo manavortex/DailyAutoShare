@@ -1,9 +1,8 @@
 local zoneId	= 181
 
-DAS.shareables[zoneId] = {
-	
+DAS.shareables[zoneId] = {	
 }
 
-DAS.bingo[zoneId] = { 
+local tbl2 = {}
 
-}
+DAS.makeBingoTable(zoneId, tbl2)

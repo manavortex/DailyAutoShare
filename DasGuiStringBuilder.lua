@@ -3,6 +3,8 @@ local DAS = DailyAutoShare
 DAS.QuestIndexTable = {}
 DAS.QuestNameTable = {}
 
+local p = DAS.DebugOut
+
 function DAS.GetLogIndex(questName)
 	return DAS.QuestNameTable[questName] or 0
 end
@@ -40,9 +42,11 @@ local function getEnglishQuestNames(activeQuestNames)
 	if DAS.locale == "en" then return activeQuestNames end
 	local ret = {}
 	for index, questName in pairs(activeQuestNames) do
-		for key, value in pairs(DAS_STRINGS_LOCALE[DAS.locale]) do 
-			if DAS.IsMatch(questName, value) then
-				table.insert(ret, DAS_STRINGS_LOCALE.en[key])
+		if nil ~= DAS_STRINGS_LOCALE and nil ~= DAS.locale and nil ~= DAS_STRINGS_LOCALE.en then
+			for key, value in pairs(DAS_STRINGS_LOCALE[DAS.locale]) do 
+				if DAS.IsMatch(questName, value) then
+					table.insert(ret, DAS_STRINGS_LOCALE.en[key])
+				end
 			end
 		end
 	end
@@ -50,39 +54,40 @@ local function getEnglishQuestNames(activeQuestNames)
 	return ret
 end
 
-local function GenerateBingoString(activeQuestNames, verbose)
-
-	activeQuestNames = getEnglishQuestNames(activeQuestNames)
-	local function generateQuestSpam(questNames)
-		local ret = ""
-		for _, questName in ipairs(questNames) do 
-			bingoString = (verbose and questName) or DAS.GetBingoStringFromQuestName(questName) 
-			ret = ret .. ((("" == bingoString) and "") or bingoString .. " ")
-		end
-		return ret
-	end	
-	local function askForQuest(questNames)
-		local ret = ""
-		for _, questName in ipairs(questNames) do 
+local function askForQuest(questNames)
+    local ret = ""
+    for _, questName in ipairs(questNames) do 
       if "" ~= questName then 
         ret = ret .. questName .. ", "
       end			
 		end
     if ret == "" then return ret end
-		return ret:sub(1, -3)
-	end
+    return ret:sub(1, -3)
+end
+local function generateQuestSpam(questNames)
+    local ret = ""
+    for _, questName in ipairs(questNames) do 
+        bingoString = DAS.GetBingoStringFromQuestName(questName) 
+        ret = ret .. ((("" == bingoString) and "") or bingoString .. " ")
+    end
+    return ret
+end	
 
+local function GenerateBingoString(activeQuestNames, verbose)
+
+	activeQuestNames = getEnglishQuestNames(activeQuestNames)
+	
 	local bingoCodes = {}
 	local ret = ""
 	if DAS.GetAutoInvite() then
-		ret = "I can give a DailyAutoShare for "		
+		ret = "I can give a DailyAutoShare for "
 		
 		for _, questName in ipairs(activeQuestNames) do 
 			if DAS.IsQuestActive(questName) then
 				ret = ret .. questName .. ", "
 				table.insert(bingoCodes, DAS.GetBingoStringFromQuestName(questName))
 			end
-		end		
+		end
 		if #bingoCodes > 0 then
 			local eitherOf = (#bingoCodes > 1 and "either of ") or ""
 			ret = ret .. "type " .. tostring(eitherOf)
@@ -93,29 +98,28 @@ local function GenerateBingoString(activeQuestNames, verbose)
 		else
 			ret = ret .. "can share"
 		end
-	else
-		if NonContiguousCount(DAS.GetShareableLog()) == 0 and #activeQuestNames == 0 then
-			if not verbose then return "+any" end
-			return GetString(DAS_SI_VERBOSE_ANY)
-		end
-		if verbose then ret =  "Looking for the following quest shares: " else ret = "" end
-		local questList = (#activeQuestNames > 0 and activeQuestNames) or DAS.GetOpenQuestNames()
-		
-		return ret .. (( verbose and askForQuest(questList)) or generateQuestSpam(questList))
-		
-	end
+        
+        return ret 
+    end
 	
-	return ret
+    if NonContiguousCount(DAS.GetShareableLog()) == 0 and #activeQuestNames == 0 then
+        if not verbose then return "+any" end
+        return GetString(DAS_SI_VERBOSE_ANY)
+    end
+    if verbose then ret =  "Looking for " else ret = "" end
+    local questList = (#activeQuestNames > 0 and activeQuestNames) or DAS.GetOpenQuestNames()
+    
+    return ret .. ((verbose and askForQuest(questList)) or "") .. generateQuestSpam(questList)
 
 end
+DAS.GenerateBingoString = GenerateBingoString
 
 local function SpamChat(verbose, questName)
-
 	if CHAT_SYSTEM.textEntry.editControl:HasFocus() then
 		CHAT_SYSTEM.textEntry.editControl:Clear()
 	end
 	local activeQuestNames = {}
-	if nil == questName then 		
+	if nil == questName then	
 		activeQuestNames = DAS.GetActiveQuestNames()
 	else
 		table.insert(activeQuestNames, questName)
@@ -123,17 +127,15 @@ local function SpamChat(verbose, questName)
 	if #activeQuestNames == 0 then 
 		DAS.SetAutoInvite(false)
 	end
-	StartChatInput(GenerateBingoString(activeQuestNames, verbose), CHAT_CHANNEL_ZONE)
+	StartChatInput(DAS.GenerateBingoString(activeQuestNames, verbose), CHAT_CHANNEL_ZONE)
 
 end
-function DAS.SpamChat(verbose, questName)
-	return SpamChat(verbose, questName)
-end
+DAS.SpamChat = SpamChat
 
 function DAS.SpamForSingle(questName, bingoString)
 	if nil == questName and nil == bingoString then return end
-	-- bingoString = bingoString 	or GetBingoStringFromQuestName(questName)
-	-- questName	= questName		or DAS.GetQuestNameFromBingoString(bingoString)
+	questName	= questName		or DAS.GetQuestNameFromBingoString(bingoString)
+	bingoString = bingoString 	or GetBingoStringFromQuestName(questName)
 	
 	local lftext = bingoString
 	
@@ -148,7 +150,7 @@ function DAS.SettingsButton(control, mouseButton)
 	elseif 	name == "Invite" 	then DAS.SetAutoInvite(not DAS.GetAutoInvite()) 
 	elseif 	name == "Share" 	then 
 		if mouseButton == 2 then
-			DAS.TryShareActiveDaily('player')
+			DAS.TryShareActiveDaily()
 		else
 			DAS.SetAutoShare(not DAS.GetAutoShare()) 
 		end

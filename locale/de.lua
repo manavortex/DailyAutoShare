@@ -1,3 +1,5 @@
+DAS_STRINGS_LOCALE = DAS_STRINGS_LOCALE or {}
+
 local strings  = {
 	
 	
@@ -152,7 +154,7 @@ local strings  = {
 	
 	
 }
-
+DAS_STRINGS_LOCALE.de = strings
 
 for stringId, stringValue in pairs(strings) do
 	ZO_CreateStringId(stringId, stringValue)

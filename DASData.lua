@@ -1,6 +1,7 @@
 local DAS = DailyAutoShare
 local locale
 
+local p = DAS.debug
 
 DAS.subzones = { 
 	-- Morrowind
@@ -33,7 +34,7 @@ function DAS.IsFestivalZone()
 end
 
 function DAS.GetZoneId()
-	return (GetZoneId(GetUnitZoneIndex('player')))		
+	return GetZoneId(GetUnitZoneIndex('player'))	
 end
 function PrintZoneId()
 	d(GetZoneId(GetUnitZoneIndex('player')))		
@@ -45,36 +46,17 @@ function DAS.GetTranslationString(key, bool)
 	return DAS_STRINGS[key]	
 end
 
-function DAS.GetZoneQuests()
-	local zoneId = DAS.GetZoneId()
+function DAS.GetZoneQuests(zoneId)
+	zoneId = zoneId or DAS.GetZoneId()
 	if nil ~= DAS.subzones[zoneId] then zoneId = DAS.subzones[zoneId] end
 	if nil ~= DAS.festivals[zoneId] then zoneId = DAS.festivals[zoneId] end
-	return DAS.shareables[zoneId] or {}
-
-	
-end
-
-
-
-function DAS.GetBingoValues(bingoIndex)
-
-	if (nil == bingoIndex) then return {} end
-	
-	local ret = {}
-	local bingoArray = DAS.bingo[DAS.GetZoneId()]
-	
-	for key, index in pairs(bingoArray) do
-		if index == bingoIndex then
-			table.insert(ret, key) 
-		end
-	end
-
-	return ret	
+	return DAS.shareables[zoneId] or {}	
 end
  
 function DAS.GetBingoIndexFromMessage(messageText)	
 	local bingoArray = DAS.bingo[DAS.GetZoneId()]
 	if nil == bingoArray then return end 
+        
 	for bingo, questindex in pairs(bingoArray) do
 		if messageText:match(bingo) then 
 			return questindex 
@@ -98,27 +80,28 @@ end
 
 function DAS.GetBingoIndexFromQuestName(questName)
 	for questIndex, checkQuestName in pairs(DAS.GetZoneQuests()) do
-		if DAS.IsMatch(questName, checkQuestName) then
+		if questName == checkQuestName then
 			return questIndex  
 		end
 	end	
 	return 99
 end
 
+
 function DAS.GetBingoStringFromQuestName(questName)
-	
-	local ret, index = "", DAS.GetBingoIndexFromQuestName(questName)
-	-- local zoneName = DAS.GetZoneId()
+
+    local index = DAS.GetBingoIndexFromQuestName(questName)
+    local ret = ""
 	local zoneId = DAS.GetZoneId()
+	if index == 99 then return ret end
+	
 	local bingoArray = DAS.bingo[zoneId] or {}
-	
-	if index == 99 then return "" end
-	
-	for bingoString, bingoIndex in pairs(bingoArray) do
-		if tonumber(index) == tonumber(bingoIndex) then ret = bingoString end
-	end
-	
-	ret = DAS.bingoClean[ret] or ret
+    for bingoString, bingoIndex in pairs(bingoArray) do
+        if bingoIndex == index then ret = bingoString end
+    end
+    
+    ret = DAS.bingoFallback[zoneId][ret] or ret
+   
 	if ret ~= "" then 
 		if not(string.find(ret, "%+")) then ret = "+" .. ret end
 		if (string.find(ret, "%+%+"))  then ret.gsub("%+%+", "%+") end
@@ -161,7 +144,9 @@ function DAS.GetOpenQuestNames()
 	end
 	return ret
 end
-function DAS.GetActiveQuestIndices()
+function DAS.GetActiveQuestIndices(zoneId)
+    zoneId = zoneId or DAS.GetZoneId()
+    local zoneQuests = DAS.GetZoneQuests(zoneId)
 	local ret = {}
 	local questLabel
 	for i=1, #DAS.labels do

@@ -1,4 +1,7 @@
-local DAS = DailyAutoShare
+DAS.shareables 	    = DAS.shareables    or {}
+DAS.bingo 		    = DAS.bingo 	    or {}
+
+
 local zoneId	= 980
 local zoneId2	= 981
 local zoneId3	= 983
@@ -109,3 +112,4 @@ DAS.shareables[zoneId2] = DAS.shareables[zoneId]
 DAS.shareables[zoneId3] = DAS.shareables[zoneId]
 DAS.bingo[zoneId2] = DAS.bingo[zoneId]
 DAS.bingo[zoneId3] = DAS.bingo[zoneId]
+

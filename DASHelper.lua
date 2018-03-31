@@ -61,11 +61,10 @@ function DAS.TryDisableAutoShare(fromName, messageText)
 end
 
 local sharingCooldown = false
-function DAS.TryShareActiveDaily(unitTag)
-
+function DAS.TryShareActiveDaily(unitZone)
 	if not DAS.GetAutoShare() then return end
-	if not DAS.GetActiveIn() then return end
-	for _, questIndex in ipairs(DAS.GetActiveQuestIndices()) do
+	if not DAS.GetActiveIn(unitZone) then return end
+	for _, questIndex in ipairs(DAS.GetActiveQuestIndices(unitZone)) do
 		if IsValidQuestIndex(questIndex) then ShareQuest(questIndex) end
 	end
  end
@@ -81,29 +80,19 @@ local function EscapeString(text)
 	text = text:gsub("%%", "%%%%")
 	-- escape dashes
 	text = text:gsub("-", "")
-	return text
+	return text or ""
  end
 
 function DAS.IsMatch(param1, param2)
-
-	local ret = false
+	
 	string1 = EscapeString(tostring(param1):lower())
 	string2 = EscapeString(tostring(param2):lower())
 
-	if	((string1 ~= "") and (string2 ~= "")) then
-
-		if string.match(string1, string2) then
-			ret =  ret or true
-			if ret then return ret end
-		end
-		if string.match(string2, string1) then
-			ret =  ret or true
-			if ret then return ret end
-		end
-
-	end
-	return  ret or (string1 == string2)
-
+	if #string1 == 0 or #string2 == 0 then return false end
+	
+	return string.match(string1, string2) or string.match(string2, string2) or string1 == string2
+	
+	
  end
 
 function DAS.FindInList(array, item)
@@ -124,8 +113,7 @@ function DAS.TryTriggerAutoAcceptInvite()
 end
 
 
-function DAS.HandleGroupMessage(fromDisplayName, messageText)
-	
+function DAS.HandleGroupMessage(fromDisplayName, messageText)	
 	if DAS.IsMatch(messageText, "stop") then
 		DAS.TryDisableAutoShare(fromDisplayName, messageText)
 	end
@@ -156,8 +144,8 @@ end
 
 function DAS.OpenDailyPresent()
 
-	local numCompleted = NonContiguousCount(DAS.GetShareableLog())
-	local numOpen = NonContiguousCount(DAS.GetZoneQuests())
+	local numCompleted 	= NonContiguousCount(DAS.GetShareableLog())
+	local numOpen 		= NonContiguousCount(DAS.GetZoneQuests())
 
 	if  (numCompleted < numOpen) then return true end
 
@@ -166,5 +154,10 @@ function DAS.OpenDailyPresent()
 	end
 
 	return false
+end
+
+
+function DAS.HasActiveDaily()
+	return #DAS.GetActiveQuestNames() > 0
 end
 

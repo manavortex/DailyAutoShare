@@ -15,7 +15,13 @@ function DAS.CreateMenu(savedVars, defaults)
 	LAM:RegisterAddonPanel("DailyAutoShare_OptionsPanel", panelData)
 
 	local optionsData = { -- optionsData
-
+		{ -- Use global configuration?
+			type = "checkbox",
+			name = "Turn on debugging?",			
+			getFunc = function() return DAS.GetDebugMode() end,
+			setFunc = function(value) DAS.SetDebugMode(value) end
+		},	
+	
 		{ -- header: Use global variables?
 			type = "header",
 			name = "Use global variables?"
@@ -343,6 +349,13 @@ function DAS.CreateMenu(savedVars, defaults)
 			name = "invite from zone chat",
 			getFunc = function() return DAS.GetAutoInvite() end,
 			setFunc = function(value) DAS.SetAutoInvite(value) end
+		},
+		{ --auto-invite
+			type = "checkbox",
+			tooltip = "Stop inviting when you leave a group?",
+			name = "stop inviting when the group disbands",
+			getFunc = function() return DAS.GetStopInviteOnDegroup() end,
+			setFunc = function(value) DAS.SetStopInviteOnDegroup(value) end
 		},
 
 		{ --auto-leave

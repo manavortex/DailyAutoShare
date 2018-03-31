@@ -9,6 +9,8 @@ function DAS.SetUseGlobalSettings(value)
 	DAS.settings.useGlobalSettings = value
 end
 
+
+
 -- called internally a lot
 local function GetSettings()
 	if DAS.GetUseGlobalSettings() then
@@ -31,19 +33,18 @@ end
 
 
 function DAS.GetSpeakStupid()
-	return DAS.settings.speakStupid
+	return GetSettings().speakStupid
 end
 function DAS.SetSpeakStupid(value)
-	DAS.settings.speakStupid = value
+	GetSettings().speakStupid = value
 end
 
-function DAS.GetCurrentlyWithQuest()
-	return DAS.settings.currentlyWithQuest
+function DAS.GetDebugMode()
+	return GetSettings().debugging
 end
-function DAS.SetCurrentlyWithQuest(value)
-	DAS.settings.currentlyWithQuest = value
+function DAS.SetDebugMode(value)
+	GetSettings().debugging = value
 end
-
 
 -- called from settings: GUI
 function DAS.GetShutUp()
@@ -78,13 +79,6 @@ function DAS.SetHidden(hidden)
 	end
 	
 	if not hidden then DAS.RefreshControl() end
-end
-
-function DAS.GetMuteGreetings()
-	return GetSettings().muteGreetings
-end
-function DAS.SetMuteGreetings(value)
-	GetSettings().muteGreetings = value
 end
 
 function DAS.GetTooltipRight()
@@ -133,8 +127,14 @@ function DAS.SetAutoAcceptShared(value)
 	DAS.SetButtonStates()
 end
 
+function DAS.GetStopInviteOnDegroup()
+	return GetSettings().keepInviteUpOnDegroup
+end
+function DAS.SetStopInviteOnDegroup(value)
+	GetSettings().keepInviteUpOnDegroup = value
+end
 function DAS.GetAutoAcceptInviteInterval()
-	return GetSettings().autoAcceptInviteInterval
+	return GetSettings().autoAcceptInviteInterval or 0
 end
 function DAS.SetAutoAcceptInviteInterval(value)
 	GetSettings().autoAcceptInviteInterval = value
@@ -192,52 +192,52 @@ function DAS.SetAutoShare(value)
 end
 
 function DAS.GetAutoLeave()
-	return DAS.settings.autoLeave
+	return GetSettings().autoLeave
 end
 function DAS.SetAutoLeave(value)
-	DAS.settings.autoLeave = value
+	GetSettings().autoLeave = value
 end
 
 function DAS.GetUpsideDown()
-	return DAS.settings.upsideDown
+	return GetSettings().upsideDown
 end
 function DAS.SetUpsideDown(value)
-	DAS.settings.upsideDown = value
+	GetSettings().upsideDown = value
 	DAS.AnchorList()
 end
 
 function DAS.GetAutoHide()
-	return DAS.settings.autoHide
+	return GetSettings().autoHide
 end
 function DAS.SetAutoHide(value)
-	DAS.settings.autoHide = value
+	GetSettings().autoHide = value
 	DAS.RefreshGui()
 end
 
 function DAS.GetAutoMinimize()
-	return DAS.settings.autoMinimize
+	return GetSettings().autoMinimize
 end
 function DAS.SetAutoMinimize(value)
-	DAS.settings.autoMinimize = value
+	GetSettings().autoMinimize = value
 	DAS.RefreshGui()
 end
 
 function DAS.GetHiddenInInactiveZones()
-	return DAS.settings.inactiveZones.hide
+	return GetSettings().inactiveZones.hide
 end
 
 function DAS.SetHiddenInInactiveZones(value)
-	DAS.settings.inactiveZones.hide = value
+	GetSettings().inactiveZones.hide = value
 	DasControl:SetHidden(value and DAS.GetActiveIn())	
 end
 
 
 function DAS.GetFontSize()
-	return DAS.settings.fontScale or 1.0
+	return GetSettings().fontScale or 1.0
 end
 
 function DAS.SetFontSize(value)
-	DAS.settings.fontScale = value
+	GetSettings().fontScale = value
 	DAS.RefreshControl()
 end
 -- called from gui
@@ -259,24 +259,24 @@ function DAS.SetY(controlname, value)
 end
 
 function DAS.GetGuildInviteNumber()
-	return (tonumber(DAS.settings.guildInviteNumber) or 0)
+	return (tonumber(GetSettings().guildInviteNumber) or 0)
 end
 function DAS.SetGuildInviteNumber(value)
-	DAS.settings.guildInviteNumber = value
+	GetSettings().guildInviteNumber = value
 end
 
 function DAS.GetListenInGuilds()
-	return DAS.settings.listenInGuilds
+	return GetSettings().listenInGuilds
 end
 function DAS.SetListenInGuilds(value)
-	DAS.settings.listenInGuilds = value
+	GetSettings().listenInGuilds = value
 end
 
 function DAS.GetGuildInviteText()
-	return DAS.settings.guildInviteText
+	return GetSettings().guildInviteText
 end
 function DAS.SetGuildInviteText(value)
-	DAS.settings.guildInviteText = value
+	GetSettings().guildInviteText = value
 end
 
 function DAS.SaveControlLocation(control)
@@ -295,17 +295,17 @@ function DAS.LoadControlLocation(control)
 end
 
 function DAS.GetHideCompleted()
-	return DAS.settings.hideCompleted
+	return GetSettings().hideCompleted
 end
 function DAS.SetHideCompleted(value)
-	DAS.settings.hideCompleted = value
+	GetSettings().hideCompleted = value
 end
 
 function DAS.GetUserMinimised()
-	return DAS.settings.userMinimised
+	return GetSettings().userMinimised
 end
 function DAS.SetUserMinimised(value)
-	DAS.settings.userMinimised = value
+	GetSettings().userMinimised = value
 end
 
 
@@ -322,12 +322,12 @@ local function assertSettingArray(settings, dateNumber, characterName)
 end
 
 function DAS.GetSetting(settingsArray, arrayKey)
-	if not DAS.settings[settingsArray] then return false end
-	return DAS.settings[settingsArray][arrayKey]
+	if not GetSettings()[settingsArray] then return false end
+	return GetSettings()[settingsArray][arrayKey]
 end
 function DAS.SetSetting(settingsArray, arrayKey, arrayValue)
-	DAS.settings[settingsArray] = DAS.settings[settingsArray] or {}
-	DAS.settings[settingsArray][arrayKey] = arrayValue
+	GetSettings()[settingsArray] = DAS.settings[settingsArray] or {}
+	GetSettings()[settingsArray][arrayKey] = arrayValue
 end
 
 

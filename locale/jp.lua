@@ -1,3 +1,5 @@
+DAS_STRINGS_LOCALE = DAS_STRINGS_LOCALE or {}
+
 local strings  = {
 	-- UI stuffs
 	DAS_SI_INVITE_TRUE 		= "Invite is now on",
@@ -142,6 +144,7 @@ local strings  = {
 	DAS_CRAG_DUNGEON 	 = "Uncaged",
 
 }
+DAS_STRINGS_LOCALE.jp = strings
 
 for stringId, stringValue in pairs(strings) do
 	ZO_CreateStringId(stringId, stringValue)

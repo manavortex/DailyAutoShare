@@ -1,5 +1,6 @@
-DAS.shareables 	= DAS.shareables or {}
-DAS.bingo 		= DAS.bingo 	 or {}
+DAS.shareables 	    = DAS.shareables    or {}
+DAS.bingo 		    = DAS.bingo 	    or {}
+
 
 local zoneId	= 823
 
@@ -19,8 +20,4 @@ table.insert(tbl2, "arena")
 table.insert(tbl2, "good")
 table.insert(tbl2, "evil")
 
-DAS.bingo[zoneId] = {}
-
-for key, value in pairs(tbl2) do
-	DAS.bingo[zoneId][key] = value
-end
+DAS.makeBingoTable(zoneId, tbl2) 

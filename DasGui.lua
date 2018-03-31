@@ -23,6 +23,10 @@ end
 DAS.cacheVisibilityStatus = cacheVisibilityStatus
 
 function DAS.RefreshControl()
+	if not DAS.HasActiveDaily() then 
+		DAS.SetAutoInvite(false)
+	end
+
 	cacheVisibilityStatus(true)
 	DasHandle:SetHidden(  stateIsHidden)
 	DasControl:SetHidden( stateIsHidden)

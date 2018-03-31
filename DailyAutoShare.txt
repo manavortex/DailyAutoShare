@@ -1,7 +1,7 @@
 ## Title: DailyAutoShare
 ## Author: manavortex
-## Version: 2.85
-## APIVersion: 100020 100021
+## Version: 2.92
+## APIVersion: 100022
 ## SavedVariables: DAS_Settings DAS_Globals
 ## OptionalDependsOn: LibStub LibAddonMenu-2.0 LibMediaProvider-1.0
 
@@ -34,6 +34,7 @@ locale/$(language).lua
 
 startup.lua
 
+questData/BingoClean.lua        
 questData/Festival.lua        
 questData/Wrothgar.lua        
 questData/Morrowind.lua         

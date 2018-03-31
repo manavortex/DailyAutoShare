@@ -1,5 +1,5 @@
 DailyAutoShare = DailyAutoShare or {}
-
+DAS_STRINGS_LOCALE = DAS_STRINGS_LOCALE or {}
 local strings  = {
 	-- UI stuffs
 	DAS_SI_INVITE_TRUE 		= "Invite is now on",
@@ -102,15 +102,12 @@ local strings  = {
 	DAS_W_WEREWOLVES	 = "The Skin Trade", 
 	DAS_W_THAT_OTHER	 = "Fire in the Hold", 	
 	
-	
-	
+    
 	-- gold coast
 	DAS_DB_MINO			 = "Looming Shadows",
-	DAS_DB_ARENA 		 = "The Roar of the Crowd",
-	DAS_DB_GOOD 		 = "Common Good",
-	DAS_DB_EVIL 		 = "Buried Evil",
-	
-	
+	DAS_DB_ARENA 		 = "The Roar of the Crowds",
+	DAS_DB_GOOD 		 = "The Common Good",
+	DAS_DB_EVIL 		 = "Buried Evil",	
 	
 	-- new life
 	DAS_NL_STORMHAVEN	 = "Castle Charm Challenge",
@@ -145,6 +142,7 @@ local strings  = {
 
 }
 DailyAutoShare.EnglishQuestNames = strings
+DAS_STRINGS_LOCALE.en = strings
 
 for stringId, stringValue in pairs(strings) do
 	ZO_CreateStringId(stringId, stringValue)

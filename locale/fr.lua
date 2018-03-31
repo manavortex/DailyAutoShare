@@ -1,4 +1,6 @@
-﻿local strings  = {
+﻿DAS_STRINGS_LOCALE = DAS_STRINGS_LOCALE or {}
+
+local strings  = {
 	
 	DAS_SI_INVITE_TRUE 		= "Invite auto activé",
 	DAS_SI_INVITE_FALSE 	= "Invite auto désactivé",
@@ -140,6 +142,7 @@
 	
 	
 }
+DAS_STRINGS_LOCALE.fr = strings
 
 for stringId, stringValue in pairs(strings) do
 	ZO_CreateStringId(stringId, stringValue)
