@@ -246,6 +246,10 @@ local function OnChatMessage(eventCode, channelType, fromName, messageText, _, f
 end
 
 function DAS.SetChatListenerStatus(status)
+
+    DAS.channelTypes[CHAT_CHANNEL_SAY ]     = status
+    DAS.channelTypes[CHAT_CHANNEL_YELL]     = status
+    DAS.channelTypes[CHAT_CHANNEL_ZONE]     = status
 	if status then
 		em:RegisterForEvent("DailyAutoShare", EVENT_CHAT_MESSAGE_CHANNEL,  OnChatMessage)
 	else

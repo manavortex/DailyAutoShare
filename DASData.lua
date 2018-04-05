@@ -99,8 +99,8 @@ function DAS.GetBingoStringFromQuestName(questName)
     for bingoString, bingoIndex in pairs(bingoArray) do
         if bingoIndex == index then ret = bingoString end
     end
-    
-    ret = DAS.bingoFallback[zoneId][ret] or ret
+    local bingoFallback = DAS.bingoFallback[zoneId] or {}
+    ret = bingoFallback[ret] or ret
    
 	if ret ~= "" then 
 		if not(string.find(ret, "%+")) then ret = "+" .. ret end

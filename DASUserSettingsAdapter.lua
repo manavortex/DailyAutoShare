@@ -146,9 +146,6 @@ end
 function DAS.SetAutoInvite(value)
 	GetSettings().autoInvite = value
     DAS.autoInviting = value
-    DailyAutoShare.channelTypes[CHAT_CHANNEL_SAY ]     = value
-    DailyAutoShare.channelTypes[CHAT_CHANNEL_YELL]     = value
-    DailyAutoShare.channelTypes[CHAT_CHANNEL_ZONE]     = value
 	DAS.SetButtonStates()
 	DAS.SetChatListenerStatus(value)
 end

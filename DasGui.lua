@@ -175,7 +175,8 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
 			local hideLabel = hidden or (hideCompleted and status == DAS_STATUS_COMPLETE) or shouldHideLabel(questName, questList, zoneId)
 			-- d(zo_strformat("DAS: <<1>> shoud be hidden <<2>>", questName, tostring(hideLabel)))
 			if hideLabel then
-				label:SetHidden(true)				
+				label:SetHidden(true)
+				label:SetText("")
 			else
 				label:SetHidden(false)				
 				visibleButtonIndex 			= visibleButtonIndex +1
