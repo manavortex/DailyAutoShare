@@ -232,11 +232,11 @@ local function OnChatMessage(eventCode, channelType, fromName, messageText, _, f
 		return onGroupMessage(messageText)
 	end
     
-    local bingoCode = string.match(messageText, "%+%s+?(%S+)")
+    if (not DAS.autoInviting) or cachedDisplayName == fromDisplayName then return end
+    
+    local bingoCode = string.match(messageText, "%+%s?(%S+)")
     if not bingoCode then return end
-    
-    if not DAS.autoInviting then return end
-    
+        
 	if not GetBingoMatch(bingoCode:lower()) then return end
 
 	-- try invite if we are group lead
@@ -253,17 +253,17 @@ function DAS.SetChatListenerStatus(status)
 	end	
 end
 
-EVENT_MANAGER:RegisterForEvent("DASPlayerMessage", EVENT_CHAT_MESSAGE_CHANNEL, 
-	function(eventCode, channelType, fromName, messageText, _, fromDisplayName)
-        if fromDisplayName == cachedDisplayName then return end
-        if not channelType == CHAT_CHANNEL_ZONE then return end
-        local bingoCode = string.match(messageText, "%+(%S+)")
-        if not bingoCode then return end
-        if IsUnitGrouped('player') and DAS.GetAutoLeave() then GroupLeave()	end
-        DAS.TryTriggerAutoAcceptInvite()
-	end
-)
-EVENT_MANAGER:AddFilterForEvent("DASPlayerMessage", EVENT_CHAT_MESSAGE_CHANNEL, REGISTER_FILTER_UNIT_TAG, "player")
+-- EVENT_MANAGER:RegisterForEvent("DASPlayerMessage", EVENT_CHAT_MESSAGE_CHANNEL, 
+	-- function(eventCode, channelType, fromName, messageText, _, fromDisplayName)
+        -- if fromDisplayName == cachedDisplayName then return end
+        -- if not channelType == CHAT_CHANNEL_ZONE then return end
+        -- local bingoCode = string.match(messageText, "%+(%S+)")
+        -- if not bingoCode then return end
+        -- if IsUnitGrouped('player') and DAS.GetAutoLeave() then GroupLeave()	end
+        -- DAS.TryTriggerAutoAcceptInvite()
+	-- end
+-- )
+-- EVENT_MANAGER:AddFilterForEvent("DASPlayerMessage", EVENT_CHAT_MESSAGE_CHANNEL, REGISTER_FILTER_UNIT_TAG, "player")
 
 DAS.bingoFallback = {}
 function DAS.makeBingoTable(zoneId, tbl) 
