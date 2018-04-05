@@ -133,6 +133,10 @@ function DAS.GetActiveQuestNames()
 	return ret
 end
 
+function DAS.GetActiveZoneQuestNames()
+
+end
+
 function DAS.GetOpenQuestNames()
 	local ret = {}
 	local questLabel

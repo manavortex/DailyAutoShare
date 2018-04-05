@@ -170,7 +170,7 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
 	for index, questName in pairs(DAS.GetZoneQuests()) do
 		label = DAS.labels[buttonIndex] -- despite the name these are actually buttons
 		
-		if nil ~= label then			
+		if nil ~= label then	
 			local status 	= DAS.GetQuestStatus(questName, questList, zoneId)
 			local hideLabel = hidden or (hideCompleted and status == DAS_STATUS_COMPLETE) or shouldHideLabel(questName, questList, zoneId)
 			-- d(zo_strformat("DAS: <<1>> shoud be hidden <<2>>", questName, tostring(hideLabel)))
@@ -206,6 +206,7 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
 	for buttonIndex=#DAS.GetZoneQuests()+1, #DAS.labels do
 		if DAS.labels[buttonIndex] then
 			DAS.labels[buttonIndex]:SetHidden(true)
+            DAS.labels[buttonIndex]:SetText("")
 		end	
 	end
 	

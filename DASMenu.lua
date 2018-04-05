@@ -299,7 +299,7 @@ function DAS.CreateMenu(savedVars, defaults)
 				},
 				{ -- checkbox: Lock UI window
 					type = "editbox",
-					tooltip = "Invite on what..? Leave blank to disable invite",
+					tooltip = "Invite on what..? Leave blank to disable invite. \nNeeds to be like 'word', will invite on '+word'",
 					name = "invite string",
 					getFunc = function() return DAS.GetGuildInviteText() end,
 					setFunc = function(value) DAS.SetGuildInviteText(value) end

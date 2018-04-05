@@ -145,6 +145,10 @@ function DAS.GetAutoInvite()
 end
 function DAS.SetAutoInvite(value)
 	GetSettings().autoInvite = value
+    DAS.autoInviting = value
+    DailyAutoShare.channelTypes[CHAT_CHANNEL_SAY ]     = value
+    DailyAutoShare.channelTypes[CHAT_CHANNEL_YELL]     = value
+    DailyAutoShare.channelTypes[CHAT_CHANNEL_ZONE]     = value
 	DAS.SetButtonStates()
 	DAS.SetChatListenerStatus(value)
 end
@@ -263,6 +267,7 @@ function DAS.GetGuildInviteNumber()
 end
 function DAS.SetGuildInviteNumber(value)
 	GetSettings().guildInviteNumber = value
+    DAS.channelTypes[value+11]      = true
 end
 
 function DAS.GetListenInGuilds()
@@ -270,6 +275,11 @@ function DAS.GetListenInGuilds()
 end
 function DAS.SetListenInGuilds(value)
 	GetSettings().listenInGuilds = value
+    DAS.channelTypes[CHAT_CHANNEL_GUILD_1]     = value
+    DAS.channelTypes[CHAT_CHANNEL_GUILD_2]     = value
+    DAS.channelTypes[CHAT_CHANNEL_GUILD_3]     = value
+    DAS.channelTypes[CHAT_CHANNEL_GUILD_4]     = value
+    DAS.channelTypes[CHAT_CHANNEL_GUILD_5]     = value
 end
 
 function DAS.GetGuildInviteText()
@@ -277,6 +287,7 @@ function DAS.GetGuildInviteText()
 end
 function DAS.SetGuildInviteText(value)
 	GetSettings().guildInviteText = value
+    DAS.guildInviteText = value
 end
 
 function DAS.SaveControlLocation(control)
