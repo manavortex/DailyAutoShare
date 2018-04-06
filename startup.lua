@@ -224,15 +224,34 @@ end
 
 local channelTypes = DAS.channelTypes
 local function OnChatMessage(eventCode, channelType, fromName, messageText, _, fromDisplayName)
-	
-    if not channelTypes[channelType] then return end
-    
-    -- react to the group asking for shares
+	    
+        -- react to the group asking for shares
 	if (channelType == CHAT_CHANNEL_PARTY) then
 		return onGroupMessage(messageText)
-	end
+	end        
     
-    if (not DAS.autoInviting) or cachedDisplayName == fromDisplayName then return end
+    if not messageText:find("%+") then return end
+    
+    local bingoCode = string.match(messageText, "%+%s?(%S+)")
+    if not bingoCode then return end
+    
+    -- we're not listening in the chat channel.
+    if not channelTypes[channelType] then
+        -- it's not the zone chat
+        if not channelType == CHAT_CHANNEL_ZONE then return end
+        -- it'snot a player message
+        if not cachedDisplayName:find(fromDisplayName) then return end
+        if IsUnitGrouped('player') then 
+            if DAS.GetGroupLeaveOnNewSearch() then
+                GroupLeave()
+                return
+            end
+        else
+            DAS.TryTriggerAutoAcceptInvite()
+        end
+    end
+    
+    if not DAS.autoInviting then return end
     
     local bingoCode = string.match(messageText, "%+%s?(%S+)")
     if not bingoCode then return end
