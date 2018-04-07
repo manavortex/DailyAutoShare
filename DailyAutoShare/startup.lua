@@ -3,7 +3,7 @@ DAS                         = DailyAutoShare
 local DailyAutoShare        = DailyAutoShare
 
 DAS.name                    = "Daily Autoshare"
-DAS.version                 = "2.96"
+DAS.version                 = "2.96a"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -209,9 +209,10 @@ local function OnChatMessage(eventCode, channelType, fromName, messageText, _, f
        if IsUnitGrouped('player') then 
             if DAS.GetGroupLeaveOnNewSearch() then return GroupLeave() end
         else
-            DAS.TryTriggerAutoAcceptInvite()
+            return DAS.TryTriggerAutoAcceptInvite()
         end
-    else if isPlayerMessage then return 
+    elseif isPlayerMessage then 
+        return 
     end
    
     if not DAS.autoInviting then return end

@@ -12,6 +12,8 @@ DAS.subzones = {
 	[986]			= 980,		-- Shadow Cleft
 	[993]			= 980,		-- Planisphere
     
+	[689]			= 684,		-- Nikolovara's Kennel
+	[690]			= 684,		-- 
 	[691]			= 684,		-- 
 	[692]			= 684,		-- 
 	[693]			= 684,		-- Argent Mine
