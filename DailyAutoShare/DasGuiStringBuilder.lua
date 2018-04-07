@@ -96,6 +96,7 @@ local function GenerateBingoString(activeQuestNames, verbose)
     if NonContiguousCount(DAS.GetShareableLog()) == 0 and #activeQuestNames == 0 then
         return (verbose and GetString(DAS_SI_VERBOSE_ANY)) or "+any"
     end
+    activeQuestNames = DAS.GetOpenQuestNames()
     return ret .. ((verbose and "Looking for " .. askForQuest(activeQuestNames)) or "") .. generateQuestSpam(activeQuestNames)
 
 end
@@ -107,10 +108,7 @@ local function SpamChat(verbose, questName)
 	end
 	local activeQuestNames = {}
 	if nil == questName then	
-		activeQuestNames = DAS.GetActiveQuestNames()
-        if {} == activeQuestNames then 
-            activeQuestNames = DAS.GetOpenQuestNames()
-        end
+		activeQuestNames = DAS.GetActiveQuestNames()       
 	else
 		table.insert(activeQuestNames, questName)
 	end
