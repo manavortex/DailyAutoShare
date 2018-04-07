@@ -180,8 +180,7 @@ local function OnQuestShared(eventCode, questId)
     end
 end
 
-local function onGroupMessage(messageText)
-    
+local function onGroupMessage(messageText)    
     if 	string.find(messageText, "share") or
         string.find(messageText, "quest") then            
         DAS.TryShareActiveDaily()
@@ -195,22 +194,24 @@ local function OnChatMessage(eventCode, channelType, fromName, messageText, _, f
 	    
         -- react to the group asking for shares
 	if (channelType == CHAT_CHANNEL_PARTY) then
-		return pcall(onGroupMessage(messageText))
+		return pcall(onGroupMessage, messageText)
 	end
     
-    local status, result = pcall(messageText:find("%+"))
-    if status or not result then return end
+    local status, result = pcall(string.find, messageText, "%+")
+    if not result then return end
     
     local bingoCode = string.match(messageText, "%+%s?(%S+)")
     if not bingoCode then return end
     
+    local isPlayerMessage = cachedDisplayName:find(fromDisplayName)
     -- we're not listening in the chat channel.
-    if not channelTypes[channelType] and cachedDisplayName:find(fromDisplayName) then 
+    if not channelTypes[channelType] and isPlayerMessage then 
        if IsUnitGrouped('player') then 
             if DAS.GetGroupLeaveOnNewSearch() then return GroupLeave() end
         else
             DAS.TryTriggerAutoAcceptInvite()
         end
+    else if isPlayerMessage then return 
     end
    
     if not DAS.autoInviting then return end
@@ -265,6 +266,7 @@ local function OnPlayerActivated(eventCode)
 	local active 		= DAS.GetActiveIn()	
 	DAS.SetHidden(not active)
     DAS.autoInviting    = DAS.GetAutoInvite()
+    DAS.SetChatListenerStatus(DAS.autoInviting)
 	DAS.RefreshControl(true)
     DAS.guildInviteText = DAS.GetGuildInviteText()
 end
@@ -365,7 +367,7 @@ function DailyAutoShare_Initialize(eventCode, addonName)
 	
 	DailyAutoShare.CreateMenu(DailyAutoShare.settings, defaults)
 	DAS.CreateGui()
-
+    OnPlayerActivated()
 	EVENT_MANAGER:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
 
 end

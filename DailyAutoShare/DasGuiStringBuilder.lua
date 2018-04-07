@@ -22,8 +22,8 @@ function refreshQuestLogs(forceOverride)
 	DAS.QuestIndexTable		= {}
 	DAS.QuestNameTable		= {}
 	
-	for i=1, GetNumJournalQuests() do
-		if IsValidQuestIndex(i) then	
+	for i=1, 25 do
+		if IsValidQuestIndex(i) then
 			journalQuestName, _, _, _, _, _, tracked = GetJournalQuestInfo(i)								
 			journalQuestName = zo_strformat(journalQuestName)
 			DAS.QuestIndexTable[i] = journalQuestName
