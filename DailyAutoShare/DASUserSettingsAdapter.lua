@@ -9,8 +9,6 @@ function DAS.SetUseGlobalSettings(value)
 	DAS.settings.useGlobalSettings = value
 end
 
-
-
 -- called internally a lot
 local function GetSettings()
 	if DAS.GetUseGlobalSettings() then
@@ -19,6 +17,7 @@ local function GetSettings()
 		return DAS.settings
 	end
 end
+DAS.GetSettings = GetSettings
 
 local function CanInvite(unitTag, unitName)
 	if (nil == unitTag) and (nil == unitName) then
@@ -141,9 +140,12 @@ function DAS.SetAutoAcceptInviteInterval(value)
 end
 
 function DAS.GetAutoInvite()
-	return (GetSettings().autoInvite and CanInvite(nil, nil))
+	return GetSettings().autoInvite
 end
 function DAS.SetAutoInvite(value)
+    if value then
+        value = IsUnitSoloOrGroupLeader('player')
+    end
 	GetSettings().autoInvite = value
     DAS.autoInviting = value
 	DAS.SetButtonStates()

@@ -142,3 +142,40 @@ DAS.shareables[zoneId3] = DAS.shareables[zoneId]
 DAS.bingo[zoneId2] = DAS.bingo[zoneId]
 DAS.bingo[zoneId3] = DAS.bingo[zoneId]
 
+
+DAS.questStartStrings[zoneId] = {
+    [GetString(DAS_CLOCK_BOSS_START)] = true,
+    [GetString(DAS_CLOCK_CAVE_START)] = true,
+}
+DAS.questStartStrings[zoneId2] = DAS.questStartStrings[zoneId]
+DAS.questStartStrings[zoneId3] = DAS.questStartStrings[zoneId]
+
+DAS.questTurninStrings[zoneId] = {
+
+    [GetString(DAS_CLOCK_CRAFT_CLOTH_TURNIN )] = true,
+    [GetString(DAS_CLOCK_CRAFT_WATER_TURNIN )] = true,
+    [GetString(DAS_CLOCK_CRAFT_RUNE_TURNIN	 )] = true,
+    [GetString(DAS_CLOCK_CRAFT_SMITH_TURNIN )] = true,
+    [GetString(DAS_CLOCK_CRAFT_ALCH_TURNIN	 )] = true,
+    [GetString(DAS_CLOCK_CRAFT_WOOD_TURNIN	 )] = true,
+
+    [GetString(DAS_CLOCK_DELVE_FILT_TURNIN)] = true,
+    [GetString(DAS_CLOCK_DELVE_FANS_TURNIN)] = true,
+    [GetString(DAS_CLOCK_DELVE_COMM_TURNIN)] = true,
+    [GetString(DAS_CLOCK_DELVE_MALF_TURNIN)] = true,
+    [GetString(DAS_CLOCK_DELVE_MISP_TURNIN)] = true,
+    [GetString(DAS_CLOCK_DELVE_AGAI_TURNIN)] = true,
+
+    [GetString(DAS_CLOCK_CROW_GLIT_TURNIN)] = true,
+    [GetString(DAS_CLOCK_CROW_TRIB_TURNIN)] = true,
+    [GetString(DAS_CLOCK_CROW_NIBB_TURNIN)] = true,
+    [GetString(DAS_CLOCK_CROW_MORS_TURNIN)] = true,
+    [GetString(DAS_CLOCK_CROW_RESP_TURNIN)] = true,
+    [GetString(DAS_CLOCK_CROW_LEIS_TURNIN)] = true,
+
+    [GetString(DAS_CLOCK_IMP_TURNIN)] = true,
+    [GetString(DAS_CLOCK_FOE_TURNIN)] = true,
+
+}
+DAS.questTurninStrings[zoneId2] = DAS.questTurninStrings[zoneId]
+DAS.questTurninStrings[zoneId3] = DAS.questTurninStrings[zoneId]

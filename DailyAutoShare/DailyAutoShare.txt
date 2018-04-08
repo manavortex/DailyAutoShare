@@ -1,6 +1,6 @@
 ## Title: DailyAutoShare
 ## Author: manavortex
-## Version: 2.96b
+## Version: 3.0
 ## APIVersion: 100022
 ## SavedVariables: DAS_Settings DAS_Globals
 ## OptionalDependsOn: LibStub LibAddonMenu-2.0 LibMediaProvider-1.0
@@ -47,9 +47,11 @@ questData/ClockworkCity.lua
 DASData.lua
 DASHelper.lua
 DASUserSettingsAdapter.lua
+DasChatMessage.lua
 
 DASContextMenu.lua
 DasGui.lua
+DasQuestAccept.lua
 DasGuiStringBuilder.lua
 DasTooltip.lua
 DASMenu.lua

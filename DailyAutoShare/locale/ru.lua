@@ -28,6 +28,15 @@ local strings  = {
 	-- Clockwork City
 	DAS_CLOCK_IMP			 = "Пробуждение Несовершенства", 
 	DAS_CLOCK_FOE			 = "Враг в прекрасном оперении", 
+
+    -- Clockwork City
+	DAS_CLOCK_BOSS_START	 = "I'll take on a contract.",
+	DAS_CLOCK_CRAFT_START    = "Got any work?",
+	DAS_CLOCK_CAVE_START     = "What's the job?",
+	DAS_CLOCK_CROW_START     = "How can I help?",
+
+	DAS_CLOCK_IMP_TURNIN     = "IMPLEMENT_ME", 
+	DAS_CLOCK_FOE_TURNIN	 = "IMPLEMENT_ME", 	
 	
 	DAS_CLOCK_CRAFT_CLOTH	 = "Свободные нити", 
 	DAS_CLOCK_CRAFT_WATER	 = "Липкое решение", 
@@ -76,6 +85,14 @@ local strings  = {
 	DAS_M_DELVE_TRIBA =  "Проблемы племени",	
 	DAS_M_DELVE_SYNDI =  "Беспокойный синдикат",
 
+    -- Cave dailies (Hall of Justice) turn-in
+	DAS_M_DELVE_DAEDR_TURNIN =  "I was able to stop the Daedra summoning rituals.",
+	DAS_M_DELVE_KWAMA_TURNIN =  "I planted the misleading notes.", 				
+	DAS_M_DELVE_MISIN_TURNIN =  "IMPLEMENT_ME",
+	DAS_M_DELVE_TAXES_TURNIN =  "IMPLEMENT_ME",
+	DAS_M_DELVE_TRIBA_TURNIN =  "I have the items you asked for.",	
+	DAS_M_DELVE_SYNDI_TURNIN =  "IMPLEMENT_ME",
+
 	-- World boss dailies (Hall of Justice)
 	DAS_M_BOSS_WUYWU =  "Затаившийся алчущий",
 	DAS_M_BOSS_SWARM =  "Отбраковка колонии",
@@ -94,6 +111,23 @@ local strings  = {
     DAS_W_OGRE            = "Спасение во имя знаний",
 
 	
+    DAS_W_POA_TURNIN        = "IMPLEMENT_ME",    
+    DAS_W_EDU_TURNIN        = "IMPLEMENT_ME",
+    DAS_W_NYZ_TURNIN        = "IMPLEMENT_ME",
+    DAS_W_CORI_TURNIN       = "IMPLEMENT_ME",
+    DAS_W_DOLMEN_TURNIN     = "IMPLEMENT_ME",
+    DAS_W_OGRE_TURNIN       = "IMPLEMENT_ME",
+    
+    DAS_W_HARPIES_TURNIN    = "IMPLEMENT_ME",
+    DAS_W_SPIRITS_TURNIN    = "IMPLEMENT_ME",
+    DAS_W_DURZOGS_TURNIN    = "IMPLEMENT_ME",
+    DAS_W_DWEMER_TURNIN     = "IMPLEMENT_ME",
+    DAS_W_WEREWOLVES_TURNIN = "IMPLEMENT_ME",
+    DAS_W_THAT_OTHER_TURNIN = "IMPLEMENT_ME",    
+    
+    DAS_W_BOSS_START        = "I'm here to work. What do you have for me?",
+    DAS_W_DELVE_START       = "What do you have for me?",
+    
 	-- wrothgar single
 	DAS_W_HARPIES 		 = "Завтрак чудака", 
 	DAS_W_SPIRITS 		 = "Свободные духи", 
@@ -109,8 +143,13 @@ local strings  = {
 	DAS_DB_ARENA 		 = "Рев толпы",
 	DAS_DB_GOOD 		 = "Всеобщее благо",
 	DAS_DB_EVIL 		 = "Захороненное зло",
-	
-	
+
+	DAS_DB_QUEST_START      = "",			
+	DAS_DB_ARENA_TURNIN     = "",
+	DAS_DB_MINO_TURNIN      = "",
+	DAS_DB_GOOD_TURNIN      = "",
+	DAS_DB_EVIL_TURNIN      = "",
+
 	
 	-- new life
 	DAS_NL_STORMHAVEN	 = "Замковое состязание очарования",

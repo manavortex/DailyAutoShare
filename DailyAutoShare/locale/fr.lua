@@ -29,12 +29,30 @@ local strings  = {
 	DAS_CLOCK_IMP			= "Attirer l'Imparfait", 
 	DAS_CLOCK_FOE			= "Un si beau plumage", 
 	
+	DAS_CLOCK_IMP_TURNIN     = "IMPLEMENT_ME", 
+	DAS_CLOCK_FOE_TURNIN	 = "IMPLEMENT_ME", 		
+
+    -- Clockwork City
+	DAS_CLOCK_BOSS_START	 = "I'll take on a contract.",
+	DAS_CLOCK_CRAFT_START    = "Got any work?",
+	DAS_CLOCK_CAVE_START     = "What's the job?",
+	DAS_CLOCK_CROW_START     = "How can I help?",
+
+
 	DAS_CLOCK_CRAFT_CLOTH	= "Détails à régler", 
 	DAS_CLOCK_CRAFT_WATER	= "La poisse", 
 	DAS_CLOCK_CRAFT_RUNE	= "Accumulation enchantée", 
 	DAS_CLOCK_CRAFT_SMITH	= "Chaque jour sur le métier", 
 	DAS_CLOCK_CRAFT_ALCH	= "Pilule amère", 
 	DAS_CLOCK_CRAFT_WOOD	= "Ce qui alimente nos feux", 	
+	
+
+	DAS_CLOCK_CRAFT_CLOTH_TURNIN = "IMPLEMENT_ME", 
+	DAS_CLOCK_CRAFT_WATER_TURNIN = "IMPLEMENT_ME", 
+	DAS_CLOCK_CRAFT_RUNE_TURNIN	 = "IMPLEMENT_ME", 
+	DAS_CLOCK_CRAFT_SMITH_TURNIN = "IMPLEMENT_ME", 
+	DAS_CLOCK_CRAFT_ALCH_TURNIN	 = "IMPLEMENT_ME", 
+	DAS_CLOCK_CRAFT_WOOD_TURNIN	 = "IMPLEMENT_ME", 
 	
 	DAS_CLOCK_DELVE_FILT	= "Changer les filtres", 
 	DAS_CLOCK_DELVE_FANS	= "Graisser les ventilateurs", 
@@ -43,11 +61,26 @@ local strings  = {
 	DAS_CLOCK_DELVE_MISP	= "Une ombre égarée", 
 	DAS_CLOCK_DELVE_AGAI	= "Retour dans les ombres vertes", 
 	
+	DAS_CLOCK_DELVE_FILT_TURNIN	 = "IMPLEMENT_ME", 
+	DAS_CLOCK_DELVE_FANS_TURNIN	 = "IMPLEMENT_ME", 
+	DAS_CLOCK_DELVE_COMM_TURNIN	 = "IMPLEMENT_ME", 
+	DAS_CLOCK_DELVE_MALF_TURNIN	 = "IMPLEMENT_ME", 
+	DAS_CLOCK_DELVE_MISP_TURNIN	 = "IMPLEMENT_ME", 
+	DAS_CLOCK_DELVE_AGAI_TURNIN	 = "IMPLEMENT_ME", 
+	
 	DAS_CLOCK_CROW_GLIT		= "Lueur et Chatoiement", 
 	DAS_CLOCK_CROW_TRIB		= "Une affaire de tributs", 
 	DAS_CLOCK_CROW_NIBB		= "Petites bouchées", 
 	DAS_CLOCK_CROW_MORS		= "Morceaux de choix", 
 	DAS_CLOCK_CROW_RESP		= "Une histoire de respect", 
+	DAS_CLOCK_CROW_LEIS		 = "A Matter of Leisure", 
+	
+	DAS_CLOCK_CROW_GLIT_TURNIN = "IMPLEMENT_ME", 
+	DAS_CLOCK_CROW_TRIB_TURNIN = "IMPLEMENT_ME", 
+	DAS_CLOCK_CROW_NIBB_TURNIN = "IMPLEMENT_ME", 
+	DAS_CLOCK_CROW_MORS_TURNIN = "IMPLEMENT_ME", 
+	DAS_CLOCK_CROW_RESP_TURNIN = "IMPLEMENT_ME", 
+	DAS_CLOCK_CROW_LEIS_TURNIN = "IMPLEMENT_ME", 
 	
 
 	-- Morrowind dailies
@@ -75,6 +108,22 @@ local strings  = {
 	DAS_M_DELVE_TRIBA 		= "Tribus troublées",	
 	DAS_M_DELVE_SYNDI 		= "Mouvement syndical",		
 	
+    -- Cave dailies (Hall of Justice) turn-in
+	DAS_M_DELVE_DAEDR_TURNIN =  "IMPLEMENT_ME",
+	DAS_M_DELVE_KWAMA_TURNIN =  "IMPLEMENT_ME", 				
+	DAS_M_DELVE_MISIN_TURNIN =  "IMPLEMENT_ME",
+	DAS_M_DELVE_TAXES_TURNIN =  "IMPLEMENT_ME",
+	DAS_M_DELVE_TRIBA_TURNIN =  "IMPLEMENT_ME",	
+	DAS_M_DELVE_SYNDI_TURNIN =  "IMPLEMENT_ME",
+
+    -- Cave dailies (Hall of Justice) turn-in
+	DAS_M_DELVE_DAEDR_TURNIN =  "I was able to stop the Daedra summoning rituals.",
+	DAS_M_DELVE_KWAMA_TURNIN =  "I planted the misleading notes.", 				
+	DAS_M_DELVE_MISIN_TURNIN =  "IMPLEMENT_ME",
+	DAS_M_DELVE_TAXES_TURNIN =  "IMPLEMENT_ME",
+	DAS_M_DELVE_TRIBA_TURNIN =  "I have the items you asked for.",	
+	DAS_M_DELVE_SYNDI_TURNIN =  "IMPLEMENT_ME",
+
 	-- World boss dailies (Hall of Justice)								
 	DAS_M_BOSS_WUYWU 		= "Une faim dévorante", 	
 	DAS_M_BOSS_SWARM 		= "Réduire le troupeau", 
@@ -82,10 +131,20 @@ local strings  = {
 	DAS_M_BOSS_SALOT 		= "Malédiction de Salothan", 	
 	DAS_M_BOSS_SIREN 		= "Chant de la sirène", 					
 	DAS_M_BOSS_APPRE 		= "L'Apprenti anxieux", 	
+    
+	DAS_M_BOSS_WUYWU_TURNIN =  "I dealt with the Hunger.",
+    DAS_M_BOSS_SWARM_TURNIN =  "IMPLEMENT_ME",    
+    DAS_M_BOSS_NILTH_TURNIN =  "I took care of the nix-ox and have the mushroom samples.",
+    DAS_M_BOSS_SALOT_TURNIN =  "No, I'm here to tell you that the Salothan ghosts have been laid to rest.",
+    DAS_M_BOSS_SIREN_TURNIN =  "I defeated the Nereid and recovered these goods.",
+    DAS_M_BOSS_APPRE_TURNIN =  "IMPLEMENT_ME",
 
-
-
-
+	DAS_M_BOSS_WUYWU_TURNIN =  "IMPLEMENT_ME",
+    DAS_M_BOSS_SWARM_TURNIN =  "IMPLEMENT_ME",    
+    DAS_M_BOSS_NILTH_TURNIN =  "IMPLEMENT_ME",
+    DAS_M_BOSS_SALOT_TURNIN =  "IMPLEMENT_ME",
+    DAS_M_BOSS_SIREN_TURNIN =  "IMPLEMENT_ME",
+    DAS_M_BOSS_APPRE_TURNIN =  "IMPLEMENT_ME",
 
 	-- wrothgar dailies
     DAS_W_POACHERS      	= "Nourrir les foules", 
@@ -95,7 +154,24 @@ local strings  = {
     DAS_W_DOLMEN       		= "Hérésie par l'ignorance",
     DAS_W_OGRE           	= "Sauvetage académique", 
 
-		
+	
+    DAS_W_POA_TURNIN        = "IMPLEMENT_ME",    
+    DAS_W_EDU_TURNIN        = "IMPLEMENT_ME",
+    DAS_W_NYZ_TURNIN        = "IMPLEMENT_ME",
+    DAS_W_CORI_TURNIN       = "IMPLEMENT_ME",
+    DAS_W_DOLMEN_TURNIN     = "IMPLEMENT_ME",
+    DAS_W_OGRE_TURNIN       = "IMPLEMENT_ME",
+    
+    DAS_W_HARPIES_TURNIN    = "IMPLEMENT_ME",
+    DAS_W_SPIRITS_TURNIN    = "IMPLEMENT_ME",
+    DAS_W_DURZOGS_TURNIN    = "IMPLEMENT_ME",
+    DAS_W_DWEMER_TURNIN     = "IMPLEMENT_ME",
+    DAS_W_WEREWOLVES_TURNIN = "IMPLEMENT_ME",
+    DAS_W_THAT_OTHER_TURNIN = "IMPLEMENT_ME",    
+    
+    DAS_W_BOSS_START        = "I'm here to work. What do you have for me?",
+    DAS_W_DELVE_START       = "What do you have for me?",
+    
 	-- wrothgar single
 	DAS_W_HARPIES 			= "Petit-déjeuner de l'étrange", 
 	DAS_W_SPIRITS 			= "Esprits libres", 
@@ -104,12 +180,18 @@ local strings  = {
 	DAS_W_WEREWOLVES		= "Commerce de peaux", 
 	DAS_W_THAT_OTHER		= "Incendie au fort", 
 	
-	
 	-- gold coast
 	DAS_DB_MINO				= "Ombres menaçantes",
 	DAS_DB_ARENA 			= "Le hurlement des foules",
 	DAS_DB_EVIL 			= "Mal enfoui",
-	
+	DAS_DB_GOOD 			= "Le bien commun",
+			
+	DAS_DB_QUEST_START      = "",		
+	DAS_DB_ARENA_TURNIN     = "",
+	DAS_DB_MINO_TURNIN      = "",
+	DAS_DB_GOOD_TURNIN      = "",
+	DAS_DB_EVIL_TURNIN      = "",
+
 	-- new life
 	DAS_NL_STORMHAVEN		= "Castle Charm Challenge",
 	DAS_NL_STONEFALLS		= "Lava Foot Stomp",

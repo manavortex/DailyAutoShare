@@ -1,5 +1,7 @@
-DAS.shareables 	    = DAS.shareables    or {}
-DAS.bingo 		    = DAS.bingo 	    or {}
+DAS.shareables 	        = DAS.shareables    or {}
+DAS.bingo 		        = DAS.bingo 	    or {}
+DAS.questTurninStrings  = DAS.questTurninStrings    or {}
+DAS.questStartStrings   = DAS.questStartStrings     or {}
 
 
 local zoneId	= 849
@@ -52,9 +54,9 @@ table.insert(tbl, GetString(DAS_M_DELVE_SYNDI))
 table.insert(tbl2, "syndicate")
 
 table.insert(tbl, GetString(DAS_M_BOSS_WUYWU))
-table.insert(tbl2, {[1] = "wuyu", [2] = "wyu", [3] = "wuyuvus"})
+table.insert(tbl2, {[1] = "wuyu", [2] = "wyu", [3] = "wuyuvus", [4] = "wuju"})
 table.insert(tbl, GetString(DAS_M_BOSS_SWARM))
-table.insert(tbl2, {[1] ="queen", [2] = "swarm", [3] = "kwama"})
+table.insert(tbl2, {[1] ="queen", [2] = "swarm"})
 table.insert(tbl, GetString(DAS_M_BOSS_NILTH))
 table.insert(tbl2, {[1] ="nil", [2] = "nilthog", [3] = "oxen"})
 table.insert(tbl, GetString(DAS_M_BOSS_SALOT))
@@ -126,3 +128,35 @@ DAS.shareables[925] = {
 
 DAS.makeBingoTable(zoneId, tbl2) 
 	
+
+DAS.questStartStrings[zoneId] = {
+    [GetString(DAS_M_BOSS_START)] = true,
+    [GetString(DAS_M_DELVE_START)] = true,
+    [GetString(DAS_M_HUNT_START)] = true,
+    [GetString(DAS_M_RELIC_START)] = true,
+}
+
+DAS.questTurninStrings[zoneId] = {
+
+    [GetString(DAS_M_BOSS_TURNIN)] = true,
+    [GetString(DAS_M_HUNT_TURNIN)] = true,
+    [GetString(DAS_M_RELIC_TURNIN)] = true,
+
+    [GetString(DAS_M_DELVE_DAEDR_TURNIN)] = true,
+    [GetString(DAS_M_DELVE_KWAMA_TURNIN)] = true,
+    [GetString(DAS_M_DELVE_MISIN_TURNIN)] = true,
+    [GetString(DAS_M_DELVE_TAXES_TURNIN)] = true,
+    [GetString(DAS_M_DELVE_TRIBA_TURNIN)] = true,
+    [GetString(DAS_M_DELVE_SYNDI_TURNIN)] = true,
+
+    [GetString(DAS_M_BOSS_WUYWU_TURNIN)] = true,
+    [GetString(DAS_M_BOSS_SWARM_TURNIN)] = true,
+    [GetString(DAS_M_BOSS_NILTH_TURNIN)] = true,
+    [GetString(DAS_M_BOSS_SALOT_TURNIN)] = true,
+    [GetString(DAS_M_BOSS_SIREN_TURNIN)] = true,
+    [GetString(DAS_M_BOSS_APPRE_TURNIN)] = true,
+
+
+
+}
+

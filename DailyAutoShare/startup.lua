@@ -3,7 +3,7 @@ DAS                         = DailyAutoShare
 local DailyAutoShare        = DailyAutoShare
 
 DAS.name                    = "Daily Autoshare"
-DAS.version                 = "2.96b"
+DAS.version                 = "3.0"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -11,6 +11,9 @@ DAS.globalSettings          = {}
 DAS.shareables   	        = {}
 DAS.bingo 			        = {}
 DAS.subzones 		        = {}
+
+DAS.questTurninStrings      = {}
+DAS.questStartStrings       = {}
 
 DAS.channelTypes 	        = {
     [CHAT_CHANNEL_PARTY]    = true, 
@@ -84,6 +87,7 @@ local defaults = {
 	autoTrack 					= false,
 	autoAcceptInvite 			= false,
 	autoAcceptInviteInterval 	= 5,
+	autoAcceptQuest		        = true,
 	autoAcceptShared 			= true,
 	autoDeclineShared 			= false,
 	autoAcceptAllDailies 		= false,
@@ -107,12 +111,10 @@ local defaults = {
 
 }
 
-local cachedDisplayName = GetUnitDisplayName('player')
 local characterName     = zo_strformat(GetUnitName('player'))
 
 local allDailyQuestIds = DAS_QUEST_IDS
 
-local lastUnitName = nil
 local em = EVENT_MANAGER
 
 local function debugOut(p1, p2, p3, p4, p5, p6, p7, p8)
@@ -180,65 +182,9 @@ local function OnQuestShared(eventCode, questId)
     end
 end
 
-local function onGroupMessage(messageText)    
-    if 	string.find(messageText, "share") or
-        string.find(messageText, "quest") then            
-        DAS.TryShareActiveDaily()
-    elseif string.find(messageText, "stop sharing") then          
-        DAS.SetAutoShare(false)
-    end
-end
-
-local channelTypes = DAS.channelTypes
 local function OnChatMessage(eventCode, channelType, fromName, messageText, _, fromDisplayName)
-	    
-        -- react to the group asking for shares
-	if (channelType == CHAT_CHANNEL_PARTY) then
-		return pcall(onGroupMessage, messageText)
-	end
-    
-    local status, result = pcall(string.find, messageText, "%+")
-    if not result then return end
-    
-    local bingoCode = string.match(messageText, "%+%s?(%S+)")
-    if not bingoCode then return end
-    
-    local isPlayerMessage = cachedDisplayName:find(fromDisplayName)
-    -- we're not listening in the chat channel.
-    if not channelTypes[channelType] and isPlayerMessage then 
-       if IsUnitGrouped('player') then 
-            if DAS.GetGroupLeaveOnNewSearch() then return GroupLeave() end
-        else
-            return DAS.TryTriggerAutoAcceptInvite()
-        end
-    elseif isPlayerMessage then 
-        return 
-    end
-   
-    if not DAS.autoInviting then return end
-    
-    local bingoCode = string.match(messageText, "%+%s?(%S+)")
-    if not bingoCode then return end
-    if not string.find(DAS.fullBingoString, bingoCode:lower()) then return end 
-    
-	-- try invite if we are group lead
-	if IsUnitSoloOrGroupLeader('player') then 
-        GroupInviteByName(fromDisplayName)
-    end
+    return DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fromDisplayName)
 end
-
-function DAS.SetChatListenerStatus(status)
-
-    DAS.channelTypes[CHAT_CHANNEL_SAY ]     = status
-    DAS.channelTypes[CHAT_CHANNEL_YELL]     = status
-    DAS.channelTypes[CHAT_CHANNEL_ZONE]     = status
-	if status then
-		em:RegisterForEvent("DailyAutoShare", EVENT_CHAT_MESSAGE_CHANNEL,  OnChatMessage)
-	else
-		em:UnregisterForEvent("DailyAutoShare", EVENT_CHAT_MESSAGE_CHANNEL, OnChatMessage)
-	end	
-end
-
 
 DAS.bingoFallback = {}
 function DAS.makeBingoTable(zoneId, tbl) 
@@ -263,6 +209,20 @@ function DAS.getBingoTable(zoneId)
     return DAS.bingo[zoneId] or {} 
 end
 
+
+function DAS.SetChatListenerStatus(status)
+
+    DAS.channelTypes[CHAT_CHANNEL_SAY ]     = status
+    DAS.channelTypes[CHAT_CHANNEL_YELL]     = status
+    DAS.channelTypes[CHAT_CHANNEL_ZONE]     = status
+	if status then
+		em:RegisterForEvent("DailyAutoShare", EVENT_CHAT_MESSAGE_CHANNEL, OnChatMessage)
+	else
+		em:UnregisterForEvent("DailyAutoShare", EVENT_CHAT_MESSAGE_CHANNEL, OnChatMessage)
+	end	
+end
+
+
 local function OnPlayerActivated(eventCode)
 	local active 		= DAS.GetActiveIn()	
 	DAS.SetHidden(not active)
@@ -270,6 +230,7 @@ local function OnPlayerActivated(eventCode)
     DAS.SetChatListenerStatus(DAS.autoInviting)
 	DAS.RefreshControl(true)
     DAS.guildInviteText = DAS.GetGuildInviteText()
+    DAS.cacheChatterData()
 end
 
 -- local function OnGroupMemberAdded(eventCode, memberName)
@@ -297,7 +258,6 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
 	if not DAS.HasActiveDaily() then 
 		DAS.SetAutoInvite(false)
 	end
-	
 	DAS.RefreshControl(true)
 end
 
@@ -344,7 +304,7 @@ local function RegisterEventHooks()
 	
 	
 	em:RegisterForEvent(ADDON_NAME, EVENT_GROUP_INVITE_RECEIVED,	OnGroupInvite)
-	-- em:RegisterForEvent(ADDON_NAME, EVENT_GROUP_MEMBER_JOINED,		OnGroupMemberAdded)
+	-- em:RegisterForEvent(ADDON_NAME, EVENT_GROUP_MEMBER_JOINED,	OnGroupMemberAdded)
 	em:RegisterForEvent(ADDON_NAME, EVENT_UNIT_CREATED,	 			OnUnitCreated)
 	em:RegisterForEvent(ADDON_NAME, EVENT_UNIT_DESTROYED, 			OnGroupTypeChanged)
 

@@ -24,7 +24,6 @@ DAS.cacheVisibilityStatus = cacheVisibilityStatus
 
 function DAS.RefreshControl(refreshQuestCache)
              
-    DAS.RefreshFullBingoString()
     
 	if not DAS.HasActiveDaily() then 
 		DAS.SetAutoInvite(false)
@@ -213,7 +212,8 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
             DAS.labels[buttonIndex]:SetText("")
 		end	
 	end
-	
+    
+	DAS.RefreshFullBingoString()    
 	DAS.SetLabelFontSize()
 end
 
