@@ -44,6 +44,8 @@ local function HandleChatterBegin(eventCode, optionCount)
     end
     if optionCount == 0 then return end
     local npcName = GetUnitName(unitInteract)
+    if not questStarter[npcName] and not questFinisher[npcName] then return end
+    
     for i = 1, optionCount do
 	    
         -- Get details of option
