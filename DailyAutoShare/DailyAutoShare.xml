@@ -29,7 +29,6 @@
 								mouseOver="/esoui/art/miscellaneous/locked_over.dds"
 							/>
 						</Button>
-						
 						<Button name="DasButtonHide" > 
 							<Dimensions x="15" y="15" />
 							<Anchor point="LEFT" relativeTo="DasButtonLock" relativePoint="RIGHT" offsetX="10"  offsetY="2"/>
@@ -49,6 +48,19 @@
 							<OnMouseUp>DailyAutoShare.MinMaxButton()</OnMouseUp>							
 						</Button>
 						
+						<Button name="DasButtonRefresh"> 
+                            <Anchor point="RIGHT" relativeTo="DasHandle" relativePoint="RIGHT" offsetX="-40"/>
+                            <Dimensions x="28" y="28" />	
+                            <Textures 
+                                normal		="/esoui/art/help/help_tabicon_feedback_up.dds"
+                                pressed		="/esoui/art/help/help_tabicon_feedback_down.dds "
+                                mouseOver	="/esoui/art/help/help_tabicon_feedback_over.dds"
+                            />
+                            <OnMouseEnter>		DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
+                            <OnMouseExit> 		DailyAutoShare.HideTooltip(self)			</OnMouseExit>	
+                             <OnMouseUp>		DailyAutoShare.RefreshLabels(true, true)	</OnMouseUp>
+                        </Button>
+                        
 						<Label name="$(parent)_Label" font="ZoFontWinH2" color="ffffff" text="DailyAutoShare" 
 							verticalAlignment="CENTER" horizontalAlignment="LEFT" alpha="0.85">
 							<Dimensions x="350" y="50" />
@@ -146,18 +158,7 @@
 									<OnMouseUp> DailyAutoShare.Donate(self, button) </OnMouseUp>
 								</Button>	
 								
-								<Button name="DasButtonRefresh"> 
-									<Anchor point="RIGHT" relativeTo="DasButtonDonate" relativePoint="LEFT" />
-									<Dimensions x="28" y="28" />	
-									<Textures 
-										normal		="/esoui/art/help/help_tabicon_feedback_up.dds"
-										pressed		="/esoui/art/help/help_tabicon_feedback_down.dds "
-										mouseOver	="/esoui/art/help/help_tabicon_feedback_over.dds"
-									/>
-									<OnMouseEnter>		DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
-									<OnMouseExit> 		DailyAutoShare.HideTooltip(self)			</OnMouseExit>	
-									 <OnMouseUp>		DailyAutoShare.RefreshLabels(true, true)	</OnMouseUp>
-								</Button>
+								
 								
 							</Controls>
 						</Control>					

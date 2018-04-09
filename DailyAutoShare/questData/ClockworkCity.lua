@@ -9,6 +9,8 @@ local zoneId3	= 983
 local halls_of_regulation_id = 985
 local shadow_cleft_id 		 = 986
 local planisphere_id 		 = 993
+local wellspring_id 		 = 992
+
 local bingo
 
 -- =============================================================================================== --
@@ -63,8 +65,13 @@ DAS.shareables[shadow_cleft_id] = tbl3
 
 -- Planisphere
 local tbl4 = {}
-table.insert(tbl3, GetString(DAS_CLOCK_CRAFT_CLOTH))
+table.insert(tbl4, GetString(DAS_CLOCK_CRAFT_CLOTH))
 DAS.shareables[planisphere_id] = tbl4
+
+-- Everwound Wellspring
+local tbl5 = {}
+table.insert(tbl5, GetString(DAS_CLOCK_CRAFT_ALCH))
+DAS.shareables[wellspring_id] = tbl5
 
 DAS.QuestLists[zoneId] = {
 	["boss"] = {
@@ -134,6 +141,10 @@ bingo = {}
 table.insert(bingo, "shadow")
 table.insert(bingo, "comm")
 DAS.makeBingoTable(shadow_cleft_id, bingo)
+
+bingo = {}
+table.insert(bingo, "pill")
+DAS.makeBingoTable(wellspring_id, bingo)
 
 
 

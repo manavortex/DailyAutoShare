@@ -29,8 +29,7 @@ local strings  = {
 	DAS_CLOCK_IMP			 = "Inciting the Imperfect", 
 	DAS_CLOCK_FOE			 = "A Fine-Feathered Foe", 		
 	
-	DAS_CLOCK_IMP_TURNIN     = "IMPLEMENT_ME", 
-	DAS_CLOCK_FOE_TURNIN	 = "IMPLEMENT_ME", 		
+	DAS_CLOCK_IMP_TURNIN     = "I've completed the contract.", 
 	
     -- Clockwork City
 	DAS_CLOCK_BOSS_START	 = "I'll take on a contract.",
@@ -45,12 +44,12 @@ local strings  = {
 	DAS_CLOCK_CRAFT_ALCH	 = "A Bitter Pill", 
 	DAS_CLOCK_CRAFT_WOOD	 = "Fuel for our Fires", 
 
-	DAS_CLOCK_CRAFT_CLOTH_TURNIN = "IMPLEMENT_ME", 
-	DAS_CLOCK_CRAFT_WATER_TURNIN = "IMPLEMENT_ME", 
-	DAS_CLOCK_CRAFT_RUNE_TURNIN	 = "IMPLEMENT_ME", 
-	DAS_CLOCK_CRAFT_SMITH_TURNIN = "IMPLEMENT_ME", 
-	DAS_CLOCK_CRAFT_ALCH_TURNIN	 = "IMPLEMENT_ME", 
-	DAS_CLOCK_CRAFT_WOOD_TURNIN	 = "IMPLEMENT_ME", 
+	DAS_CLOCK_CRAFT_CLOTH_TURNIN = "I have the metallic fibers.", -- guessed
+	DAS_CLOCK_CRAFT_WATER_TURNIN = "I have the  fabricated husk.", -- guessed 
+	DAS_CLOCK_CRAFT_RUNE_TURNIN	 = "I have the runestones.", -- guessed
+	DAS_CLOCK_CRAFT_SMITH_TURNIN = "I have the flash stone.", -- guessed
+	DAS_CLOCK_CRAFT_ALCH_TURNIN	 = "I have the herbalist's satchels.", 
+	DAS_CLOCK_CRAFT_WOOD_TURNIN	 = "I have the synthetic oils.",
 	
 
 	DAS_CLOCK_DELVE_FILT	 = "Changing the Filters", 
@@ -60,11 +59,11 @@ local strings  = {
 	DAS_CLOCK_DELVE_MISP	 = "A Shadow Misplaced", 
 	DAS_CLOCK_DELVE_AGAI	 = "Again Into the Shadows", 
 	
-	DAS_CLOCK_DELVE_FILT_TURNIN	 = "IMPLEMENT_ME", 
-	DAS_CLOCK_DELVE_FANS_TURNIN	 = "IMPLEMENT_ME", 
-	DAS_CLOCK_DELVE_COMM_TURNIN	 = "IMPLEMENT_ME", 
+	DAS_CLOCK_DELVE_FILT_TURNIN	 = "I was able to change the filters.",  -- guessed
+	DAS_CLOCK_DELVE_FANS_TURNIN	 = "I was able to oil the fans.", -- guessed
+	DAS_CLOCK_DELVE_COMM_TURNIN	 = "I was able to replace the commutators.", 
 	DAS_CLOCK_DELVE_MALF_TURNIN	 = "IMPLEMENT_ME", 
-	DAS_CLOCK_DELVE_MISP_TURNIN	 = "IMPLEMENT_ME", 
+	DAS_CLOCK_DELVE_MISP_TURNIN	 = "And here are Oscard's research notes.", 
 	DAS_CLOCK_DELVE_AGAI_TURNIN	 = "IMPLEMENT_ME", 
 	
 	DAS_CLOCK_CROW_GLIT		 = "Glitter and Gleam", 

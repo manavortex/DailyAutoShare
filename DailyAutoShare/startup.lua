@@ -37,12 +37,7 @@ local fullBingoString       = DAS.fullBingoString
 
 local defaults = {
 
-	["tracked"] = {
-		[684] = true,
-		[823] = true,
-		[849] = true,	-- Vvardenfell
-		[181] = false,
-	},
+	
 
 	["singleDailies"]               = {},
 	["shareableDailies"]            = {},
@@ -96,8 +91,7 @@ local defaults = {
 			["invisible"] = false,
 			["active"] = true,
 		},
-	},
-	
+	},	
 	debugOutput		   			= false,
 	currentlyWithQuest 			= false,
 	currentQuestIndex 			= nil,
@@ -126,8 +120,48 @@ local defaults = {
 	guildInviteNumber 			= 1,
 	guildInviteText,
 	listenInGuilds,
-
+    ["tracked"] = {
+		[684] = true,
+		[823] = true,
+		[849] = true,	-- Vvardenfell
+		[181] = false,
+	},
 }
+
+local function pointerUpSubzones()
+    -- Clockwork City
+    defaults[981]                       = defaults[980]
+    defaults[981]                       = defaults[980]
+    defaults[982]                       = defaults[980]
+    defaults.tracked[982]               = defaults.tracked[980]
+    defaults.tracked[983]               = defaults.tracked[980]
+    defaults.tracked[983]               = defaults.tracked[980]
+
+    -- Morrowind
+    defaults[921]                       = defaults[849]
+    defaults[922]                       = defaults[849]
+    defaults[923]                       = defaults[849]
+    defaults[924]                       = defaults[849]
+    defaults.tracked[921]               = defaults.tracked[849]
+    defaults.tracked[922]               = defaults.tracked[849]
+    defaults.tracked[923]               = defaults.tracked[849]
+    defaults.tracked[924]               = defaults.tracked[849]
+
+    -- Wrothgar
+    defaults[689]                       = defaults[684]
+    defaults[690]                       = defaults[684]
+    defaults[691]                       = defaults[684]
+    defaults[692]                       = defaults[684]
+    defaults[693]                       = defaults[684]
+    defaults[694]                       = defaults[684]
+    defaults.tracked[689]               = defaults.tracked[684]
+    defaults.tracked[690]               = defaults.tracked[684]
+    defaults.tracked[691]               = defaults.tracked[684]
+    defaults.tracked[692]               = defaults.tracked[684]
+    defaults.tracked[693]               = defaults.tracked[684]
+    defaults.tracked[694]               = defaults.tracked[684]
+end
+pointerUpSubzones()
 
 local characterName     = zo_strformat(GetUnitName('player'))
 
