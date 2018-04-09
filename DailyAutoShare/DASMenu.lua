@@ -1,4 +1,5 @@
 local DAS = DailyAutoShare
+local questShareDefault = "I can give a DailyAutoShare for <<1>>, type <<3>> for an instant invite"
 
 function DAS.CreateMenu(savedVars, defaults)
 
@@ -54,7 +55,7 @@ function DAS.CreateMenu(savedVars, defaults)
 			getFunc = function() return not DAS.GetSpeakStupid() end,
 			setFunc = function(value) DAS.SetSpeakStupid(not value) end
 		},
-
+    
 
 		{ -- header: activate add-on in...
 			type    = "submenu",
@@ -285,7 +286,22 @@ function DAS.CreateMenu(savedVars, defaults)
 			type        = "submenu",
 			name        = "Look and feel and behavior",
 			controls    = {			
-				
+				{   -- editbox: Quest share text
+                    type    = "editbox", 
+                    name    = "Quest share text",
+                    tooltip = ("Text to generate when you spam quest shares.\n" 
+                                .. "<<1>> will be replaced with the quest names, <<2>> with the bingo codes.\n"
+                                .. "Omit either to remove parameter. Include neither and sound like a fool."),
+                    getFunc = function() return DAS.GetSettings().questShareString end,
+                    setFunc = function(value) DAS.GetSettings().questShareString = value end,
+                },                	
+				{   -- editbox: Quest share text
+                    type    = "button", 
+                    name    = "Reset",
+                    tooltip = "Reset quest share text to default value",
+                    getFunc = function() return questShareDefault end,
+                    setFunc = function(value) DAS.GetSettings().questShareString = questShareDefault end,
+                },                
 				{ -- checkbox: Lock UI window
 					type    = "checkbox",
 					name    = "Lock UI window",

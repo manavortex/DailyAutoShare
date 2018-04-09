@@ -1,7 +1,7 @@
 DAS.shareables 	        = DAS.shareables            or {}
 DAS.bingo 		        = DAS.bingo 	            or {}
-DAS.questTurninStrings  = DAS.questTurninStrings    or {}
-DAS.questStartStrings   = DAS.questStartStrings     or {}
+DAS.questFinisher  = DAS.questFinisher    or {}
+DAS.questStarter   = DAS.questStarter     or {}
 
 local zoneId	= 684
 
@@ -39,25 +39,25 @@ table.insert(tbl2, {[1] = "bandit", [2] = "fire"})
 
 DAS.makeBingoTable(zoneId, tbl2) 
 
-DAS.questStartStrings[zoneId] = {
-    [GetString(DAS_W_BOSS_START)] = true,
-    [GetString(DAS_W_DELVE_START)] = true,
+DAS.questStarter[zoneId] = {
+    [DAS_QUEST_W_GURUZUG] = true,
+    [DAS_QUEST_W_ARZORAG] = true,
 }
 
-DAS.questTurninStrings[zoneId] = {
+DAS.questFinisher[zoneId] = {
 
-    [GetString(DAS_W_POA_TURNIN)] = true,
-    [GetString(DAS_W_EDU_TURNIN)] = true,
-    [GetString(DAS_W_NYZ_TURNIN)] = true,
-    [GetString(DAS_W_CORI_TURNIN)] = true,
-    [GetString(DAS_W_DOLMEN_TURNIN)] = true,
-    [GetString(DAS_W_OGRE_TURNIN)] = true,
-
-    [GetString(DAS_W_HARPIES_TURNIN)] = true,
-    [GetString(DAS_W_SPIRITS_TURNIN)] = true,
-    [GetString(DAS_W_DURZOGS_TURNIN)] = true,
-    [GetString(DAS_W_DWEMER_TURNIN)] = true,
-    [GetString(DAS_W_WEREWOLVES_TURNIN)] = true,
-    [GetString(DAS_W_THAT_OTHER_TURNIN)] = true,
+    [GetString(DAS_QUEST_W_OUFA      )] = true,
+    [GetString(DAS_QUEST_W_USHANG    )] = true,
+    
+    [GetString(DAS_QUEST_W_NEDNOR    )] = true,
+    [GetString(DAS_QUEST_W_THAZEK    )] = true,
+    [GetString(DAS_QUEST_W_ARUSHNA   )] = true,
+    [GetString(DAS_QUEST_W_LILYAMEH  )] = true,
+    [GetString(DAS_QUEST_W_BAGRUBESH )] = true,
+    [GetString(DAS_QUEST_W_CIRANTILLE)] = true,
+    [GetString(DAS_QUEST_W_BIRKHU    )] = true,
+    [GetString(DAS_QUEST_W_MENNINIA  )] = true,
+    [GetString(DAS_QUEST_W_SONOLIA   )] = true,
+    -- [GetString(DAS_QUEST_W_RAYNOR    )] = true,
 
 }

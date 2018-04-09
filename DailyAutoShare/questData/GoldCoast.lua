@@ -23,15 +23,15 @@ table.insert(tbl2, {[1] = "evil", [2] = "buried"})
 DAS.makeBingoTable(zoneId, tbl2) 
 
 
-DAS.questStartStrings[zoneId] = {
-    [GetString(DAS_DB_QUEST_START)] = true,
+DAS.questStarter[zoneId] = {
+    [GetString(DAS_QUEST_DB_BOUNTY)]    = true,
 }
 
-DAS.questTurninStrings[zoneId] = {
+DAS.questFinisher[zoneId] = {
 
-    [GetString(DAS_DB_ARENA_TURNIN)] = true,
-    [GetString(DAS_DB_MINO_TURNIN)] = true,
-    [GetString(DAS_DB_GOOD_TURNIN)] = true,
-    [GetString(DAS_DB_EVIL_TURNIN)] = true,
+    [GetString(DAS_QUEST_DB_ARVINA)]    = true,
+    [GetString(DAS_QUEST_DB_LARONEN)]   = true,
+    [GetString(DAS_QUEST_DB_FINIA)]     = true,
+    [GetString(DAS_QUEST_DB_CODUS)]     = true,
 
 }

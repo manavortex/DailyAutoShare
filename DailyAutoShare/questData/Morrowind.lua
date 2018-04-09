@@ -1,7 +1,7 @@
 DAS.shareables 	        = DAS.shareables    or {}
 DAS.bingo 		        = DAS.bingo 	    or {}
-DAS.questTurninStrings  = DAS.questTurninStrings    or {}
-DAS.questStartStrings   = DAS.questStartStrings     or {}
+DAS.questFinisher  = DAS.questFinisher    or {}
+DAS.questStarter   = DAS.questStarter     or {}
 
 
 local zoneId	= 849
@@ -129,34 +129,31 @@ DAS.shareables[925] = {
 DAS.makeBingoTable(zoneId, tbl2) 
 	
 
-DAS.questStartStrings[zoneId] = {
-    [GetString(DAS_M_BOSS_START)] = true,
-    [GetString(DAS_M_DELVE_START)] = true,
-    [GetString(DAS_M_HUNT_START)] = true,
-    [GetString(DAS_M_RELIC_START)] = true,
+DAS.questStarter[zoneId] = {
+    [GetString(DAS_QUEST_M_BELERU)]     = true,  -- Hall of Justice
+    [GetString(DAS_QUEST_M_TRAYLAN)]    = true,  -- Hall of Justice
+    [GetString(DAS_QUEST_M_ASHLANDER)]  = true,  -- Ashlander Hunt
+    [GetString(DAS_QUEST_M_NUMANI)]     = true,  -- Ashlander Relics
 }
 
-DAS.questTurninStrings[zoneId] = {
-
-    [GetString(DAS_M_BOSS_TURNIN)] = true,
-    [GetString(DAS_M_HUNT_TURNIN)] = true,
-    [GetString(DAS_M_RELIC_TURNIN)] = true,
-
-    [GetString(DAS_M_DELVE_DAEDR_TURNIN)] = true,
-    [GetString(DAS_M_DELVE_KWAMA_TURNIN)] = true,
-    [GetString(DAS_M_DELVE_MISIN_TURNIN)] = true,
-    [GetString(DAS_M_DELVE_TAXES_TURNIN)] = true,
-    [GetString(DAS_M_DELVE_TRIBA_TURNIN)] = true,
-    [GetString(DAS_M_DELVE_SYNDI_TURNIN)] = true,
-
-    [GetString(DAS_M_BOSS_WUYWU_TURNIN)] = true,
-    [GetString(DAS_M_BOSS_SWARM_TURNIN)] = true,
-    [GetString(DAS_M_BOSS_NILTH_TURNIN)] = true,
-    [GetString(DAS_M_BOSS_SALOT_TURNIN)] = true,
-    [GetString(DAS_M_BOSS_SIREN_TURNIN)] = true,
-    [GetString(DAS_M_BOSS_APPRE_TURNIN)] = true,
-
-
-
+DAS.questFinisher[zoneId] = {
+    [GetString(DAS_QUEST_M_ASHLANDER)]  = true, 
+    [GetString(DAS_QUEST_M_NUMANI)]     = true, 
+    
+    [GetString(DAS_QUEST_M_NARA)]       = true, 
+    [GetString(DAS_QUEST_M_TRAYLAN )]   = true, 
+    [GetString(DAS_QUEST_M_BELERU  )]   = true, 
+    [GetString(DAS_QUEST_M_NUMANI  )]   = true, 
+    [GetString(DAS_QUEST_M_NARA    )]   = true, 
+    [GetString(DAS_QUEST_M_TIRVINA )]   = true, 
+    [GetString(DAS_QUEST_M_DINOR   )]   = true, 
+    [GetString(DAS_QUEST_M_BRAVOSI )]   = true, 
+    [GetString(DAS_QUEST_M_IVULEN  )]   = true, 
+    [GetString(DAS_QUEST_M_SAVILE  )]   = true, 
+    [GetString(DAS_QUEST_M_KYLIA   )]   = true, 
+    [GetString(DAS_QUEST_M_EVOS    )]   = true, 
+    [GetString(DAS_QUEST_M_ALVES   )]   = true, 
+    [GetString(DAS_QUEST_M_DREDASE )]   = true, 
+    [GetString(DAS_QUEST_M_VORAR   )]   = true, 
 }
 

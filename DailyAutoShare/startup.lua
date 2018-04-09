@@ -12,8 +12,8 @@ DAS.shareables   	        = {}
 DAS.bingo 			        = {}
 DAS.subzones 		        = {}
 
-DAS.questTurninStrings      = {}
-DAS.questStartStrings       = {}
+DAS.questFinisher      = {}
+DAS.questStarter       = {}
 
 DAS.channelTypes 	        = {
     [CHAT_CHANNEL_PARTY]    = true, 
@@ -91,7 +91,8 @@ local defaults = {
 			["invisible"] = false,
 			["active"] = true,
 		},
-	},	
+	},
+    questShareString            = "I can give a DailyAutoShare for <<1>>, type <<2>> for an instant invite",
 	debugOutput		   			= false,
 	currentlyWithQuest 			= false,
 	currentQuestIndex 			= nil,

@@ -27,15 +27,8 @@ local strings  = {
 		
 	-- Clockwork City
 	DAS_CLOCK_IMP			 = "Inciting the Imperfect", 
-	DAS_CLOCK_FOE			 = "A Fine-Feathered Foe", 		
-	
-	DAS_CLOCK_IMP_TURNIN     = "I've completed the contract.", 
-	
-    -- Clockwork City
-	DAS_CLOCK_BOSS_START	 = "I'll take on a contract.",
-	DAS_CLOCK_CRAFT_START    = "Got any work?",
-	DAS_CLOCK_CAVE_START     = "What's the job?",
-	DAS_CLOCK_CROW_START     = "How can I help?",
+	DAS_CLOCK_FOE			 = "A Fine-Feathered Foe", 	
+		
 	
 	DAS_CLOCK_CRAFT_CLOTH	 = "Loose Strands", 
 	DAS_CLOCK_CRAFT_WATER	 = "A Sticky Solution", 
@@ -44,27 +37,12 @@ local strings  = {
 	DAS_CLOCK_CRAFT_ALCH	 = "A Bitter Pill", 
 	DAS_CLOCK_CRAFT_WOOD	 = "Fuel for our Fires", 
 
-	DAS_CLOCK_CRAFT_CLOTH_TURNIN = "I have the metallic fibers.", -- guessed
-	DAS_CLOCK_CRAFT_WATER_TURNIN = "I have the  fabricated husk.", -- guessed 
-	DAS_CLOCK_CRAFT_RUNE_TURNIN	 = "I have the runestones.", -- guessed
-	DAS_CLOCK_CRAFT_SMITH_TURNIN = "I have the flash stone.", -- guessed
-	DAS_CLOCK_CRAFT_ALCH_TURNIN	 = "I have the herbalist's satchels.", 
-	DAS_CLOCK_CRAFT_WOOD_TURNIN	 = "I have the synthetic oils.",
-	
-
 	DAS_CLOCK_DELVE_FILT	 = "Changing the Filters", 
 	DAS_CLOCK_DELVE_FANS	 = "Oiling the Fans", 
 	DAS_CLOCK_DELVE_COMM	 = "Replacing the Commutators", 
 	DAS_CLOCK_DELVE_MALF	 = "A Shadow Malfunction", 
 	DAS_CLOCK_DELVE_MISP	 = "A Shadow Misplaced", 
-	DAS_CLOCK_DELVE_AGAI	 = "Again Into the Shadows", 
-	
-	DAS_CLOCK_DELVE_FILT_TURNIN	 = "I was able to change the filters.",  -- guessed
-	DAS_CLOCK_DELVE_FANS_TURNIN	 = "I was able to oil the fans.", -- guessed
-	DAS_CLOCK_DELVE_COMM_TURNIN	 = "I was able to replace the commutators.", 
-	DAS_CLOCK_DELVE_MALF_TURNIN	 = "IMPLEMENT_ME", 
-	DAS_CLOCK_DELVE_MISP_TURNIN	 = "And here are Oscard's research notes.", 
-	DAS_CLOCK_DELVE_AGAI_TURNIN	 = "IMPLEMENT_ME", 
+	DAS_CLOCK_DELVE_AGAI	 = "Again Into the Shadows", 	
 	
 	DAS_CLOCK_CROW_GLIT		 = "Glitter and Gleam", 
 	DAS_CLOCK_CROW_TRIB		 = "A Matter of Tributes", 
@@ -73,55 +51,31 @@ local strings  = {
 	DAS_CLOCK_CROW_RESP		 = "A Matter of Respect", 
 	DAS_CLOCK_CROW_LEIS		 = "A Matter of Leisure", 
 	
-	DAS_CLOCK_CROW_GLIT_TURNIN = "IMPLEMENT_ME", 
-	DAS_CLOCK_CROW_TRIB_TURNIN = "IMPLEMENT_ME", 
-	DAS_CLOCK_CROW_NIBB_TURNIN = "Here are the items you requested.", 
-	DAS_CLOCK_CROW_MORS_TURNIN = "IMPLEMENT_ME", 
-	DAS_CLOCK_CROW_RESP_TURNIN = "IMPLEMENT_ME", 
-	DAS_CLOCK_CROW_LEIS_TURNIN = "IMPLEMENT_ME", 
-	
 	-- Morrowind dailies
-	DAS_M_REL_ASHAL =  "Relics of Ashalmawia", 
-	DAS_M_REL_ASSAR =  "Relics of Assarnatamat", 
-	DAS_M_REL_ASHUR =  "Relics of Ashurnabitashpi", 
-	DAS_M_REL_DUSHA =  "Relics of Dushariran", 
-	DAS_M_REL_EBERN =  "Relics of Ebernanit", 	 
-	DAS_M_REL_MAELK =  "Relics of Maelkashishi", 	
-	DAS_M_REL_YASAM =  "Relics of Yasammidan",
+	DAS_M_REL_ASHAL          =  "Relics of Ashalmawia", 
+	DAS_M_REL_ASSAR          =  "Relics of Assarnatamat", 
+	DAS_M_REL_ASHUR          =  "Relics of Ashurnabitashpi", 
+	DAS_M_REL_DUSHA          =  "Relics of Dushariran", 
+	DAS_M_REL_EBERN          =  "Relics of Ebernanit", 	 
+	DAS_M_REL_MAELK          =  "Relics of Maelkashishi", 	
+	DAS_M_REL_YASAM          =  "Relics of Yasammidan",
 	
-	DAS_M_HUNT_EATER =  "Ash-Eater Hunt", 
-	DAS_M_HUNT_ZEXXI =  "Great Zexxin Hunt", 
-	DAS_M_HUNT_RAZOR =  "King Razor-Tusk Hunt",
-	DAS_M_HUNT_JAGGE =  "Mother Jagged-Claw Hunt", 
-	DAS_M_HUNT_STOMP =  "Old Stomper Hunt", 
-	DAS_M_HUNT_TARRA =  "Tarra-Suj Hunt", 
-	DAS_M_HUNT_SVEET =  "Writhing Sveeth Hunt",
-
-    DAS_M_BOSS_START = "Is there a job available?",
-    DAS_M_DELVE_START = "I'd like to help with any work you have available.",
-    DAS_M_HUNT_START = "I'm interested in a hunt.",
-    DAS_M_RELIC_START = "What kind of help do you need?",
-
-    DAS_M_BOSS_TURNIN = "I've done what you requested.",
-    DAS_M_DELVE_TURNIN = "I'd like to help with any work you have available.",
-    DAS_M_HUNT_TURNIN = "Here's a trophy from my kill.",
-    DAS_M_RELIC_TURNIN = "Here are the relics I recovered.",
+	DAS_M_HUNT_EATER         =  "Ash-Eater Hunt", 
+	DAS_M_HUNT_ZEXXI         =  "Great Zexxin Hunt", 
+	DAS_M_HUNT_RAZOR         =  "King Razor-Tusk Hunt",
+	DAS_M_HUNT_JAGGE         =  "Mother Jagged-Claw Hunt", 
+	DAS_M_HUNT_STOMP         =  "Old Stomper Hunt", 
+	DAS_M_HUNT_TARRA         =  "Tarra-Suj Hunt", 
+	DAS_M_HUNT_SVEET         =  "Writhing Sveeth Hunt",
 
 	-- World boss dailies (Hall of Justice)
-	DAS_M_BOSS_WUYWU =  "A Creeping Hunger",
-	DAS_M_BOSS_SWARM =  "Culling the Swarm",
-	DAS_M_BOSS_NILTH =  "Oxen Free",
-	DAS_M_BOSS_SALOT =  "Salothan's Curse",
-	DAS_M_BOSS_SIREN =  "Siren's Song",
-	DAS_M_BOSS_APPRE =  "The Anxious Apprentice",
+	DAS_M_BOSS_WUYWU         =  "A Creeping Hunger",
+	DAS_M_BOSS_SWARM         =  "Culling the Swarm",
+	DAS_M_BOSS_NILTH         =  "Oxen Free",
+	DAS_M_BOSS_SALOT         =  "Salothan's Curse",
+	DAS_M_BOSS_SIREN         =  "Siren's Song",
+	DAS_M_BOSS_APPRE         =  "The Anxious Apprentice",
     
-	DAS_M_BOSS_WUYWU_TURNIN =  "I dealt with the Hunger.",
-    DAS_M_BOSS_SWARM_TURNIN =  "IMPLEMENT_ME",    
-    DAS_M_BOSS_NILTH_TURNIN =  "I took care of the nix-ox and have the mushroom samples.",
-    DAS_M_BOSS_SALOT_TURNIN =  "No, I'm here to tell you that the Salothan ghosts have been laid to rest.",
-    DAS_M_BOSS_SIREN_TURNIN =  "I defeated the Nereid and recovered these goods.",
-    DAS_M_BOSS_APPRE_TURNIN =  "IMPLEMENT_ME",
-
 	-- Cave dailies (Hall of Justice)
 	DAS_M_DELVE_DAEDR        =  "Daedric Disruptions",
 	DAS_M_DELVE_KWAMA        =  "Kwama Conundrum", 				
@@ -130,16 +84,6 @@ local strings  = {
 	DAS_M_DELVE_TRIBA        =  "Tribal Troubles",	
 	DAS_M_DELVE_SYNDI        =  "Unsettled Syndicate",
 
-    -- Cave dailies (Hall of Justice) turn-in
-	DAS_M_DELVE_DAEDR_TURNIN =  "I was able to stop the Daedra summoning rituals.",
-	DAS_M_DELVE_KWAMA_TURNIN =  "I planted the misleading notes.", 				
-	DAS_M_DELVE_MISIN_TURNIN =  "IMPLEMENT_ME",
-	DAS_M_DELVE_TAXES_TURNIN =  "IMPLEMENT_ME",
-	DAS_M_DELVE_TRIBA_TURNIN =  "I have the items you asked for.",	
-	DAS_M_DELVE_SYNDI_TURNIN =  "IMPLEMENT_ME",
-
-
-
 	-- wrothgar dailies
     DAS_W_POACHERS          = "Meat for the Masses",
     DAS_W_EDU               = "Reeking of Foul Play",
@@ -147,24 +91,7 @@ local strings  = {
     DAS_W_CORI              = "Nature's Bounty",
     DAS_W_DOLMEN            = "Heresy of Ignorance",
     DAS_W_OGRE              = "Scholarly Salvage",
-    
-    DAS_W_POA_TURNIN        = "I retrieved the meat and got rid of the poachers.",    
-    DAS_W_EDU_TURNIN        = "The Riekr chieftain is dead, and I've rescued a few of your lost travelers.",
-    DAS_W_NYZ_TURNIN        = "Yes, I defeated Nyzchaleft.",
-    DAS_W_CORI_TURNIN       = "The corruption is cleansed and Corintthac is dead.",
-    DAS_W_DOLMEN_TURNIN     = "Yes, I disrupted the obelisks and destroyed Zandadunoz the Reborn.",
-    DAS_W_OGRE_TURNIN       = "Here's your book. And Mad Urkazbur is dead.",
-    
-    DAS_W_HARPIES_TURNIN    = "I've got your eggs right here. The hagraven is dead as well.",
-    DAS_W_SPIRITS_TURNIN    = "The spirits are free and Gorlar the Dark has been defeated.",
-    DAS_W_DURZOGS_TURNIN    = "Here are some more pelts, and I killed the pack leader.",
-    DAS_W_DWEMER_TURNIN     = "IMPLEMENT_ME",
-    DAS_W_WEREWOLVES_TURNIN = "IMPLEMENT_ME",
-    DAS_W_THAT_OTHER_TURNIN = "IMPLEMENT_ME",    
-    
-    DAS_W_BOSS_START        = "I'm here to work. What do you have for me?",
-    DAS_W_DELVE_START       = "What do you have for me?",
-    
+        
 	-- wrothgar single
 	DAS_W_HARPIES 		    = "Breakfast of the Bizarre", 
 	DAS_W_SPIRITS 		    = "Free Spirits", 
@@ -179,13 +106,7 @@ local strings  = {
 	DAS_DB_ARENA 		    = "The Roar of the Crowds",
 	DAS_DB_GOOD 		    = "The Common Good",
 	DAS_DB_EVIL 		    = "Buried Evil",	
-					
-	DAS_DB_QUEST_START      = "<Read the bounty board.>",
-	DAS_DB_ARENA_TURNIN     = "I'm here to claim my reward.",
-	DAS_DB_MINO_TURNIN      = "The site has been cleared and I recovered your relics.",
-	DAS_DB_GOOD_TURNIN      = "I destroyed Exulus and retrieved the pauldrons of your fallen comrades.",
-	DAS_DB_EVIL_TURNIN      = "",
-	
+    
 	-- new life
 	DAS_NL_STORMHAVEN	    = "Castle Charm Challenge",
 	DAS_NL_STONEFALLS	    = "Lava Foot Stomp",
@@ -215,6 +136,66 @@ local strings  = {
 	DAS_CRAG_KIDNAP 	    = "Taken Alive",
 	DAS_CRAG_HITMAN 	    = "The Truer Fangs",
 	DAS_CRAG_DUNGEON 	    = "Uncaged",
+    
+    
+    DAS_QUEST_M_ASHLANDER   = "Huntmaster Sorim-Nakar",    
+    
+    DAS_QUEST_CC_ROBOT      = "Clockwork Facilitator",      
+    DAS_QUEST_CC_CROW       = "Bursar of Tributes",
+    DAS_QUEST_CC_NOVICE     = "Novice Holli",
+    DAS_QUEST_CC_THISTLE    = "Leaps-Over-Thistle",
+    DAS_QUEST_CC_DARO       = "Adjunct Daro",
+    DAS_QUEST_CC_TILELLE    = "Intiate Tilelle",
+
+    DAS_QUEST_W_OUFA        = "Sergeant Oufa",
+    DAS_QUEST_W_USHANG      = "Ushang the Untamed",
+
+    DAS_QUEST_W_BIRKHU      = "Birkhu the Bold",
+
+    DAS_QUEST_DB_ARVINA     = "Cleric Arvina", 
+    
+    DAS_QUEST_DB_BOUNTY     = "Bounty Board",  
+    
+    
+    -- don't need translation for anyone but the russians - I think
+        
+    DAS_QUEST_DB_LARONEN    = "Laronen",
+    DAS_QUEST_DB_FINIA      = "Finia Sele",
+    DAS_QUEST_DB_CODUS      = "Codus ap Dugal",
+    
+    DAS_QUEST_W_NEDNOR      = "Nednor", 
+    DAS_QUEST_W_THAZEK      = "Thazeg", 
+    DAS_QUEST_W_ARUSHNA     = "Arushna",
+    DAS_QUEST_W_LILYAMEH    = "Lilyameh",
+    DAS_QUEST_W_BAGRUBESH   = "Bagrugbesh",
+    DAS_QUEST_W_CIRANTILLE  = "Cirantille",
+    DAS_QUEST_W_MENNINIA    = "Menninia",
+    DAS_QUEST_W_SONOLIA     = "Sonolia Muspidius",
+    DAS_QUEST_W_RAYNOR      = "Raynor Vanos", -- maybe not include Raynor?
+    
+    DAS_QUEST_M_TRAYLAN     = "Traylan Omoril",
+    DAS_QUEST_M_BELERU      = "Beleru Omoril",
+    DAS_QUEST_M_NUMANI      = "Numani-Rasi",
+    DAS_QUEST_M_NARA        = "Nara Varam",
+    DAS_QUEST_M_TIRVINA     = "Tirvina Avani",
+    DAS_QUEST_M_DINOR       = "Dinor Salvi",
+    DAS_QUEST_M_BRAVOSI     = "Bravosi Felder",
+    DAS_QUEST_M_IVULEN      = "Ivulen Andromo",
+    DAS_QUEST_M_SAVILE      = "Savile Alam",
+    DAS_QUEST_M_KYLIA       = "Kylia Thando",
+    DAS_QUEST_M_EVOS        = "Evos Hledas",
+    DAS_QUEST_M_ALVES       = "Alves Droth",
+    DAS_QUEST_M_DREDASE     = "Dredase-Hlarar",
+    DAS_QUEST_M_VORAR       = "Vorar Vendu",
+    
+    DAS_QUEST_CC_ORC        = "Razgurug",
+    DAS_QUEST_CC_COOK       = "Aveberl Tremouille",
+    DAS_QUEST_CC_MINDORA    = "Mindora",
+    DAS_QUEST_CC_NJORD      = "Njordemar",
+    DAS_QUEST_CC_IGMUND     = "Igmund",
+    
+    DAS_QUEST_W_GURUZUG     = "Guruzug",
+    DAS_QUEST_W_ARZORAG     = "Arzorag",
 
 }
 DailyAutoShare.EnglishQuestNames = strings

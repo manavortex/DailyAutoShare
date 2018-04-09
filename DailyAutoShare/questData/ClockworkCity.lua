@@ -156,41 +156,29 @@ DAS.bingo[zoneId3] = DAS.bingo[zoneId]
 DAS.QuestLists[zoneId2] = DAS.QuestLists[zoneId]
 DAS.QuestLists[zoneId3] = DAS.QuestLists[zoneId]
 
-DAS.questStartStrings[zoneId] = {
-    [GetString(DAS_CLOCK_BOSS_START)] = true,
-    [GetString(DAS_CLOCK_CAVE_START)] = true,
-    [GetString(DAS_CLOCK_CROW_START)] = true,
-    [GetString(DAS_CLOCK_CRAFT_START)] = true,
+DAS.questStarter[zoneId] = {
+    [GetString(DAS_QUEST_CC_ROBOT)] = true,
+    [GetString(DAS_QUEST_CC_NOVICE)] = true,
+    [GetString(DAS_QUEST_CC_ORC)] = true,
+    [GetString(DAS_QUEST_CC_CROW)] = true,
 }
-DAS.questStartStrings[zoneId2] = DAS.questStartStrings[zoneId]
-DAS.questStartStrings[zoneId3] = DAS.questStartStrings[zoneId]
 
-DAS.questTurninStrings[zoneId] = {
+DAS.questStarter[zoneId2] = DAS.questStarter[zoneId]
+DAS.questStarter[zoneId3] = DAS.questStarter[zoneId]
 
-    [GetString(DAS_CLOCK_CRAFT_CLOTH_TURNIN )] = true,
-    [GetString(DAS_CLOCK_CRAFT_WATER_TURNIN )] = true,
-    [GetString(DAS_CLOCK_CRAFT_RUNE_TURNIN	 )] = true,
-    [GetString(DAS_CLOCK_CRAFT_SMITH_TURNIN )] = true,
-    [GetString(DAS_CLOCK_CRAFT_ALCH_TURNIN	 )] = true,
-    [GetString(DAS_CLOCK_CRAFT_WOOD_TURNIN	 )] = true,
+DAS.questFinisher[zoneId] = {
+    [GetString(DAS_QUEST_CC_ROBOT)] = true,
+    [GetString(DAS_QUEST_CC_CROW)] = true,
 
-    [GetString(DAS_CLOCK_DELVE_FILT_TURNIN)] = true,
-    [GetString(DAS_CLOCK_DELVE_FANS_TURNIN)] = true,
-    [GetString(DAS_CLOCK_DELVE_COMM_TURNIN)] = true,
-    [GetString(DAS_CLOCK_DELVE_MALF_TURNIN)] = true,
-    [GetString(DAS_CLOCK_DELVE_MISP_TURNIN)] = true,
-    [GetString(DAS_CLOCK_DELVE_AGAI_TURNIN)] = true,
-
-    [GetString(DAS_CLOCK_CROW_GLIT_TURNIN)] = true,
-    [GetString(DAS_CLOCK_CROW_TRIB_TURNIN)] = true,
-    [GetString(DAS_CLOCK_CROW_NIBB_TURNIN)] = true,
-    [GetString(DAS_CLOCK_CROW_MORS_TURNIN)] = true,
-    [GetString(DAS_CLOCK_CROW_RESP_TURNIN)] = true,
-    [GetString(DAS_CLOCK_CROW_LEIS_TURNIN)] = true,
-
-    [GetString(DAS_CLOCK_IMP_TURNIN)] = true,
-    [GetString(DAS_CLOCK_FOE_TURNIN)] = true,
+    [GetString(DAS_QUEST_CC_THISTLE )] = true,
+    [GetString(DAS_QUEST_CC_COOK    )] = true,
+    [GetString(DAS_QUEST_CC_MINDORA  )] = true,
+    [GetString(DAS_QUEST_CC_NJORD   )] = true,
+    [GetString(DAS_QUEST_CC_IGMUND   )] = true,
+    [GetString(DAS_QUEST_CC_DARO   )] = true,
+    [GetString(DAS_QUEST_CC_TILELLE  )] = true,
+    
 
 }
-DAS.questTurninStrings[zoneId2] = DAS.questTurninStrings[zoneId]
-DAS.questTurninStrings[zoneId3] = DAS.questTurninStrings[zoneId]
+DAS.questFinisher[zoneId2] = DAS.questFinisher[zoneId]
+DAS.questFinisher[zoneId3] = DAS.questFinisher[zoneId]

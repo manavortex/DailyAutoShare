@@ -29,15 +29,6 @@ local strings  = {
 	DAS_CLOCK_IMP			 = "Пробуждение Несовершенства", 
 	DAS_CLOCK_FOE			 = "Враг в прекрасном оперении", 
 
-    -- Clockwork City
-	DAS_CLOCK_BOSS_START	 = "I'll take on a contract.",
-	DAS_CLOCK_CRAFT_START    = "Got any work?",
-	DAS_CLOCK_CAVE_START     = "What's the job?",
-	DAS_CLOCK_CROW_START     = "How can I help?",
-
-	DAS_CLOCK_IMP_TURNIN     = "IMPLEMENT_ME", 
-	DAS_CLOCK_FOE_TURNIN	 = "IMPLEMENT_ME", 	
-	
 	DAS_CLOCK_CRAFT_CLOTH	 = "Свободные нити", 
 	DAS_CLOCK_CRAFT_WATER	 = "Липкое решение", 
 	DAS_CLOCK_CRAFT_RUNE	 = "Сбор зачарований", 
@@ -85,13 +76,6 @@ local strings  = {
 	DAS_M_DELVE_TRIBA =  "Проблемы племени",	
 	DAS_M_DELVE_SYNDI =  "Беспокойный синдикат",
 
-    -- Cave dailies (Hall of Justice) turn-in
-	DAS_M_DELVE_DAEDR_TURNIN =  "I was able to stop the Daedra summoning rituals.",
-	DAS_M_DELVE_KWAMA_TURNIN =  "I planted the misleading notes.", 				
-	DAS_M_DELVE_MISIN_TURNIN =  "IMPLEMENT_ME",
-	DAS_M_DELVE_TAXES_TURNIN =  "IMPLEMENT_ME",
-	DAS_M_DELVE_TRIBA_TURNIN =  "I have the items you asked for.",	
-	DAS_M_DELVE_SYNDI_TURNIN =  "IMPLEMENT_ME",
 
 	-- World boss dailies (Hall of Justice)
 	DAS_M_BOSS_WUYWU =  "Затаившийся алчущий",
@@ -109,24 +93,6 @@ local strings  = {
     DAS_W_CORI            = "Щедрость природы",
     DAS_W_DOLMEN          = "Ересь невежества",
     DAS_W_OGRE            = "Спасение во имя знаний",
-
-	
-    DAS_W_POA_TURNIN        = "IMPLEMENT_ME",    
-    DAS_W_EDU_TURNIN        = "IMPLEMENT_ME",
-    DAS_W_NYZ_TURNIN        = "IMPLEMENT_ME",
-    DAS_W_CORI_TURNIN       = "IMPLEMENT_ME",
-    DAS_W_DOLMEN_TURNIN     = "IMPLEMENT_ME",
-    DAS_W_OGRE_TURNIN       = "IMPLEMENT_ME",
-    
-    DAS_W_HARPIES_TURNIN    = "IMPLEMENT_ME",
-    DAS_W_SPIRITS_TURNIN    = "IMPLEMENT_ME",
-    DAS_W_DURZOGS_TURNIN    = "IMPLEMENT_ME",
-    DAS_W_DWEMER_TURNIN     = "IMPLEMENT_ME",
-    DAS_W_WEREWOLVES_TURNIN = "IMPLEMENT_ME",
-    DAS_W_THAT_OTHER_TURNIN = "IMPLEMENT_ME",    
-    
-    DAS_W_BOSS_START        = "I'm here to work. What do you have for me?",
-    DAS_W_DELVE_START       = "What do you have for me?",
     
 	-- wrothgar single
 	DAS_W_HARPIES 		 = "Завтрак чудака", 
@@ -143,13 +109,6 @@ local strings  = {
 	DAS_DB_ARENA 		 = "Рев толпы",
 	DAS_DB_GOOD 		 = "Всеобщее благо",
 	DAS_DB_EVIL 		 = "Захороненное зло",
-
-	DAS_DB_QUEST_START      = "",			
-	DAS_DB_ARENA_TURNIN     = "",
-	DAS_DB_MINO_TURNIN      = "",
-	DAS_DB_GOOD_TURNIN      = "",
-	DAS_DB_EVIL_TURNIN      = "",
-
 	
 	-- new life
 	DAS_NL_STORMHAVEN	 = "Замковое состязание очарования",
@@ -161,8 +120,7 @@ local strings  = {
 	DAS_NL_BETNIKH		 = "Удар Каменного зуба",
 	DAS_NL_AURIDON		 = "Развлечение с комками грязи",
 	DAS_NL_EASTMARCH	 = "Ныряние снежного медведя",
-	
-	
+    
 	-- craglorn
 	-- lower
 	DAS_CRAG_SARA 		 = "Критическая масса",
@@ -181,6 +139,74 @@ local strings  = {
 	DAS_CRAG_KIDNAP 	 = "Живые пленники",
 	DAS_CRAG_HITMAN 	 = "Настоящие клыки",
 	DAS_CRAG_DUNGEON 	 = "Освобожденные",	
+    
+    
+    
+    -- Questgiver names --
+    
+    
+    
+    DAS_QUEST_M_ASHLANDER   = "Huntmaster Sorim-Nakar",    
+    
+    DAS_QUEST_CC_ROBOT      = "Clockwork Facilitator",      
+    DAS_QUEST_CC_CROW       = "Bursar of Tributes",
+    DAS_QUEST_CC_NOVICE     = "Novice Holli",
+    DAS_QUEST_CC_THISTLE    = "Leaps-Over-Thistle",
+    DAS_QUEST_CC_DARO       = "Adjunct Daro",
+    DAS_QUEST_CC_TILELLE    = "Intiate Tilelle",
+
+    DAS_QUEST_W_OUFA        = "Sergeant Oufa",
+    DAS_QUEST_W_USHANG      = "Ushang the Untamed",
+
+    DAS_QUEST_W_BIRKHU      = "Birkhu the Bold",
+
+    DAS_QUEST_DB_ARVINA     = "Cleric Arvina", 
+    
+    DAS_QUEST_DB_BOUNTY     = "Bounty Board",  
+    
+    
+    -- don't need translation for anyone but the russians - I think
+        
+    DAS_QUEST_DB_LARONEN    = "Laronen",
+    DAS_QUEST_DB_FINIA      = "Finia Sele",
+    DAS_QUEST_DB_CODUS      = "Codus ap Dugal",
+    
+    DAS_QUEST_W_NEDNOR      = "Nednor", 
+    DAS_QUEST_W_THAZEK      = "Thazeg", 
+    DAS_QUEST_W_ARUSHNA     = "Arushna",
+    DAS_QUEST_W_LILYAMEH    = "Lilyameh",
+    DAS_QUEST_W_BAGRUBESH   = "Bagrugbesh",
+    DAS_QUEST_W_CIRANTILLE  = "Cirantille",
+    DAS_QUEST_W_MENNINIA    = "Menninia",
+    DAS_QUEST_W_SONOLIA     = "Sonolia Muspidius",
+    DAS_QUEST_W_RAYNOR      = "Raynor Vanos", -- maybe not include Raynor?
+    
+    DAS_QUEST_M_TRAYLAN     = "Traylan Omoril",
+    DAS_QUEST_M_BELERU      = "Beleru Omoril",
+    DAS_QUEST_M_NUMANI      = "Numani-Rasi",
+    DAS_QUEST_M_NARA        = "Nara Varam",
+    DAS_QUEST_M_TIRVINA     = "Tirvina Avani",
+    DAS_QUEST_M_DINOR       = "Dinor Salvi",
+    DAS_QUEST_M_BRAVOSI     = "Bravosi Felder",
+    DAS_QUEST_M_IVULEN      = "Ivulen Andromo",
+    DAS_QUEST_M_SAVILE      = "Savile Alam",
+    DAS_QUEST_M_KYLIA       = "Kylia Thando",
+    DAS_QUEST_M_EVOS        = "Evos Hledas",
+    DAS_QUEST_M_ALVES       = "Alves Droth",
+    DAS_QUEST_M_DREDASE     = "Dredase-Hlarar",
+    DAS_QUEST_M_VORAR       = "Vorar Vendu",
+    
+    DAS_QUEST_CC_ORC        = "Razgurug",
+    DAS_QUEST_CC_COOK       = "Aveberl Tremouille",
+    DAS_QUEST_CC_MINDORA    = "Mindora",
+    DAS_QUEST_CC_NJORD      = "Njordemar",
+    DAS_QUEST_CC_IGMUND     = "Igmund",
+    
+    DAS_QUEST_W_GURUZUG     = "Guruzug",
+    DAS_QUEST_W_ARZORAG     = "Arzorag",
+    
+    
+    
 }
 
 DAS_STRINGS_LOCALE.ru = strings
