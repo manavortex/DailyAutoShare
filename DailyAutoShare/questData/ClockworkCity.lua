@@ -142,10 +142,14 @@ DAS.shareables[zoneId3] = DAS.shareables[zoneId]
 DAS.bingo[zoneId2] = DAS.bingo[zoneId]
 DAS.bingo[zoneId3] = DAS.bingo[zoneId]
 
+DAS.QuestLists[zoneId2] = DAS.QuestLists[zoneId]
+DAS.QuestLists[zoneId3] = DAS.QuestLists[zoneId]
 
 DAS.questStartStrings[zoneId] = {
     [GetString(DAS_CLOCK_BOSS_START)] = true,
     [GetString(DAS_CLOCK_CAVE_START)] = true,
+    [GetString(DAS_CLOCK_CROW_START)] = true,
+    [GetString(DAS_CLOCK_CRAFT_START)] = true,
 }
 DAS.questStartStrings[zoneId2] = DAS.questStartStrings[zoneId]
 DAS.questStartStrings[zoneId3] = DAS.questStartStrings[zoneId]

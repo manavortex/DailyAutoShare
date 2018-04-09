@@ -141,7 +141,10 @@ local function shouldHideLabel(questName, questList, zoneId)
 	zoneId = zoneId or DAS.GetZoneId()
 	
 	for questListName, questListData in pairs(questList) do 
-		if questListData[questName] then 			
+		if questListData[questName] then 
+            -- d(questName)
+            -- d("active: " .. tostring(DAS.GetQuestListItem(zoneId, questListName, "active")))
+            -- d("hidden: " .. tostring(DAS.GetQuestListItem(zoneId, questListName, "invisible")))
 			return  ( 
 				(not DAS.GetQuestListItem(zoneId, questListName, "active")) or
 				DAS.GetQuestListItem(zoneId, questListName, "invisible"))	

@@ -61,17 +61,6 @@ function DAS.CreateMenu(savedVars, defaults)
 			name    = "Activate auto quest stuff in...",
 			controls = {
                 
-				{ -- checkbox: Clockwork City?
-					type    = "checkbox",
-					tooltip = "Clockwork City?",
-					name    = "Activate in Clockwork City?",
-					getFunc = function() return DAS.GetActiveIn(980) end,
-					setFunc = function(value) 
-						DAS.SetActiveIn(980, value) 
-						DAS.SetActiveIn(981, value) 
-						DAS.SetActiveIn(983, value) 
-					end
-				},
 				{
 					type    = "submenu",
 					name    = "Clockwork City", 
@@ -102,7 +91,7 @@ function DAS.CreateMenu(savedVars, defaults)
 							type    = "checkbox",
 							name    = "Hide",
 							tooltip = "Don't show world boss dailies on UI list \nKeeps sharing on group invite",
-							getFunc = function() return DAS.GetQuestListItem(980, "boss", "invisible")end,
+							getFunc = function() return DAS.GetQuestListItem(980, "boss", "invisible") end,
 							setFunc = function(value) DAS.SetQuestListItem(980, "boss", "invisible", value) end
 						},
 						{ -- header: CC Slagtown gathering dailies

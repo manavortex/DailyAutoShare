@@ -395,8 +395,8 @@ function DAS.GetQuestStatus(questName, questList, zoneId)
 end
 
 function DAS.GetQuestListItem(zoneId, listName, listKey)
-	if nil == zoneId or nil == listName or nil == listKey then return end
-	if nil == DAS.settings[zoneId] or nil == DAS.settings[zoneId][listName] then return end
+	if nil == zoneId or nil == listName or nil == listKey then return false end
+	if nil == DAS.settings[zoneId] or nil == DAS.settings[zoneId][listName] then return false end
 	return DAS.settings[zoneId][listName][listKey]
 end
 

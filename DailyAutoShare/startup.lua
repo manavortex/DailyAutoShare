@@ -79,6 +79,24 @@ local defaults = {
 			["active"] = true,
 		},
 	},
+	[980] = {
+		["crow"] = {
+			["invisible"] = false,
+			["active"] = true,
+		},
+		["craft"] = {
+			["invisible"] = false,
+			["active"] = true,
+		},
+		["delve"] = {
+			["invisible"] = false,
+			["active"] = true,
+		},
+		["boss"] = {
+			["invisible"] = false,
+			["active"] = true,
+		},
+	},
 	
 	debugOutput		   			= false,
 	currentlyWithQuest 			= false,
