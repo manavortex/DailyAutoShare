@@ -143,10 +143,14 @@ local function pointerUpSubzones()
     defaults[922]                       = defaults[849]
     defaults[923]                       = defaults[849]
     defaults[924]                       = defaults[849]
+    defaults[925]                       = defaults[849]
+    defaults[961]                       = defaults[849]
     defaults.tracked[921]               = defaults.tracked[849]
     defaults.tracked[922]               = defaults.tracked[849]
     defaults.tracked[923]               = defaults.tracked[849]
     defaults.tracked[924]               = defaults.tracked[849]
+    defaults.tracked[925]               = defaults.tracked[849]
+    defaults.tracked[961]               = defaults.tracked[849]
 
     -- Wrothgar
     defaults[689]                       = defaults[684]

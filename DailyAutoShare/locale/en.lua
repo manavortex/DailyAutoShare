@@ -187,6 +187,7 @@ local strings  = {
     DAS_QUEST_M_ALVES       = "Alves Droth",
     DAS_QUEST_M_DREDASE     = "Dredase-Hlarar",
     DAS_QUEST_M_VORAR       = "Vorar Vendu",
+    DAS_QUEST_M_VALGA       = "Valga Celatus",
     
     DAS_QUEST_CC_ORC        = "Razgurug",
     DAS_QUEST_CC_COOK       = "Aveberl Tremouille",

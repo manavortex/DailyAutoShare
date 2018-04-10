@@ -40,8 +40,8 @@ table.insert(tbl2, {[1] = "bandit", [2] = "fire"})
 DAS.makeBingoTable(zoneId, tbl2) 
 
 DAS.questStarter[zoneId] = {
-    [DAS_QUEST_W_GURUZUG] = true,
-    [DAS_QUEST_W_ARZORAG] = true,
+    [GetString(DAS_QUEST_W_GURUZUG)] = true,
+    [GetString(DAS_QUEST_W_ARZORAG)] = true,
 }
 
 DAS.questFinisher[zoneId] = {

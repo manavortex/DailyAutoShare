@@ -125,6 +125,10 @@ DAS.shareables[924] = {
 DAS.shareables[925] = {
 	[1] = DAS.shareables[zoneId][19],
 }
+-- Ashalmawia
+DAS.shareables[961] = {
+	[1] = DAS.shareables[zoneId][1],
+}
 
 DAS.makeBingoTable(zoneId, tbl2) 
 	
@@ -155,5 +159,6 @@ DAS.questFinisher[zoneId] = {
     [GetString(DAS_QUEST_M_ALVES   )]   = true, 
     [GetString(DAS_QUEST_M_DREDASE )]   = true, 
     [GetString(DAS_QUEST_M_VORAR   )]   = true, 
+    [GetString(DAS_QUEST_M_VALGA   )]   = true, 
 }
 
