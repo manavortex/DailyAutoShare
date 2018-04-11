@@ -308,14 +308,21 @@ local function OnQuestToolUpdate()
 	DAS.RefreshControl(true)
 end
 
-local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, zoneIndex, poiIndex, questID)	
-	if not DAS.GetActiveIn() then return end
+local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, zoneIndex, poiIndex, questId)	
 	
+    -- is it a daily quest, and are we logging?
+    if not (allDailyQuestIds[questId] and DAS.GetActiveIn()) then return end	
+    
 	DAS.LogQuest(questName, isCompleted)
-	if not DAS.HasActiveDaily() then 
-		DAS.SetAutoInvite(false)
-	end
-	DAS.RefreshControl(true)
+    
+    -- set auto invite off until the questlog has refreshed
+	local autoInvite = DAS.GetAutoInvite()
+    DAS.SetAutoInvite(false)
+    
+    zo_callLater(function()
+        DAS.SetAutoInvite(autoInvite)	
+        DAS.RefreshControl(true)
+    end, 500)
 end
 
 local function deleteYesterdaysLog()
@@ -369,6 +376,22 @@ local function RegisterEventHooks()
 	-- DailyAutoShare.SaveControlLocation(self)
 end
 
+local function handleLog()
+    local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08
+    local currentDate = tonumber(GetDate())
+    local lastDate
+    for dateString, dateLog in pairs(DAS.globalSettings.completionLog) do
+        if dateString < currentDate -5 then 
+            DAS.globalSettings.completionLog[dateString] = nil 
+        else
+            lastDate = dateString
+        end
+    end
+    if not afterEight then 
+        DAS.settings.completionLog[currentDate] = dateString
+    end
+end
+
 --==============================
 --===== Rise, my minion!  ======
 --==============================
@@ -376,16 +399,17 @@ end
 function DailyAutoShare_Initialize(eventCode, addonName)
 
 	if addonName ~="DailyAutoShare" then return end
-
+    
 	DailyAutoShare.settings = ZO_SavedVars:New("DAS_Settings", 0.2, nil, defaults)
 	DailyAutoShare.globalSettings = ZO_SavedVars:NewAccountWide("DAS_Globals", 0.2, "DAS_Global", defaults)
 
 	RegisterEventHooks()
-	-- deleteYesterdaysLog()
 	
 	DailyAutoShare.CreateMenu(DailyAutoShare.settings, defaults)
 	DAS.CreateGui()
+    
     OnPlayerActivated()
+    handleLog()
 	EVENT_MANAGER:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
 
 end

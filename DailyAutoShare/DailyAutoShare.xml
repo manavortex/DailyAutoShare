@@ -1,7 +1,7 @@
 <GuiXml>
 	<Controls>		
 	
- 		<TopLevelControl name="DasControl" movable="true" mouseEnabled="true">
+ 		<TopLevelControl name="DasControl" movable="true" mouseEnabled="false">
 			<Dimensions x="330" minY="45" y="45" />
 			<Anchor point="TOPLEFT" relativeTo="GuiRoot" relativePoint="TOPLEFT" />
 			<OnMoveStop>DailyAutoShare.SaveControlLocation(self)</OnMoveStop>

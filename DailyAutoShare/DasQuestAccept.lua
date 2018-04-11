@@ -26,6 +26,7 @@ local function HandleEventQuestOffered(eventCode)
     AcceptOfferedQuest()
 end
 
+
 -- Handles the dialogue where we actually complete the quest
 local function HandleQuestCompleteDialog(eventCode, journalIndex)
 	if not GetJournalQuestIsComplete(journalIndex) then return end

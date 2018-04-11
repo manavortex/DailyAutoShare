@@ -9,9 +9,17 @@ local cachedDisplayName         = GetUnitDisplayName(unittagplayer)
 local share                     = "share"
 local stopsharing               = "stop sharing"
 
+local groupDelay                = 100
+local zoneDelay                 = 100
+
 local function HandleGroupMessage()
     
-    if #partyQueue == 0 then return end
+    if #partyQueue == 0 then
+        groupDelay = 100
+        return 
+    end
+    groupDelay = groupDelay * 1.5
+    
     local _, messageText = pcall(table.remove, partyQueue, #partyQueue)
     if not messageText then return end
     local _, found 
@@ -20,6 +28,7 @@ local function HandleGroupMessage()
      _, found = pcall(string.find, messageText, stopsharing)
     if found then return DAS.SetAutoShare(false) end
     
+    zo_callLater(HandleGroupMessage, groupDelay)
 end
 
 local channelTypes = DAS.channelTypes
@@ -27,21 +36,34 @@ local function HandleChatMessage()
     
     if not DAS.autoInviting then return end
     
-    if #messageQueue == 0 then return end
-   
+    if #messageQueue == 0 then 
+        zoneDelay = 100
+        return
+    end
+    
+    zoneDelay = zoneDelay * 1.5
+    
     local _, tbl = pcall(table.remove, messageQueue, #messageQueue)
-    if not tbl then return end
+    if not tbl then     
+        zo_callLater(HandleChatMessage, zoneDelay)
+        return 
+    end
     local messageText, fromDisplayName = tbl[1], tbl[2]
     
     local _, bingoCode = pcall(string.match, messageText, "%+%s?(%S+)")
-    if not DAS.fullBingoString or not bingoCode then return end
+    if not DAS.fullBingoString or not bingoCode then 
+        zo_callLater(HandleChatMessage, zoneDelay)
+        return 
+    end
     
     -- d(zo_strformat("[HandleChatMessage] <<1>>: <<2>>", fromDisplayName, bingoCode))   
    
     local _, found = pcall(string.find, DAS.fullBingoString, bingoCode)
-    if not found then return end 
+    if found then 
+        GroupInviteByName(fromDisplayName)    
+    end 
     
-    GroupInviteByName(fromDisplayName)
+    
 end
 
 function DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fromDisplayName)
@@ -50,7 +72,7 @@ function DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fro
     -- react to the group asking for shares
     if (channelType == CHAT_CHANNEL_PARTY) then
         table.insert(partyQueue, messageText)
-        return task2:Call(HandleGroupMessage)
+        return zo_callLater(HandleGroupMessage, groupDelay)
     elseif channelType == CHAT_CHANNEL_ZONE then
         local isPlayerName = fromDisplayName:find(cachedDisplayName)
         if isPlayerName and channelTypes[channelType] then return end
@@ -75,5 +97,6 @@ function DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fro
     if not DAS.autoInviting or #DAS.fullBingoString == 0 then return end 
     
     table.insert(messageQueue, {[1] = zo_strformat(messageText), [2] = fromDisplayName})
-    task:Call(HandleChatMessage)
+    
+    zo_callLater(HandleChatMessage, zoneDelay)
 end

@@ -69,7 +69,6 @@ function DAS.TryTriggerAutoAcceptInvite()
 	end
 end
 
-
 function DAS.HandleGroupMessage(fromDisplayName, messageText)	
 	if DAS.IsMatch(messageText, "stop") then
 		DAS.TryDisableAutoShare(fromDisplayName, messageText)
@@ -112,7 +111,6 @@ function DAS.OpenDailyPresent()
 
 	return false
 end
-
 
 function DAS.HasActiveDaily()
 	return #DAS.GetActiveQuestNames() > 0

@@ -144,7 +144,7 @@ function DAS.GetAutoInvite()
 end
 function DAS.SetAutoInvite(value)
     if value then
-        value = IsUnitSoloOrGroupLeader('player')
+        value = IsUnitSoloOrGroupLeader('player') and DAS.HasActiveDaily()
     end
 	GetSettings().autoInvite = value
     DAS.autoInviting = value
@@ -296,7 +296,9 @@ function DAS.SaveControlLocation(control)
 	DAS.SetX(controlName, control:GetLeft())
 	DAS.SetY(controlName, control:GetTop())
 end
+
 function DAS.LoadControlLocation(control)
+
 	local controlName = control:GetName()
 	local x = DAS.GetX(controlName) or 0
 	local y = DAS.GetY(controlName) or 0
@@ -324,7 +326,7 @@ end
 local function assertSettingArray(settings, dateNumber, characterName)
 
 	local dateNumber = tonumber(GetDate()) -- 20160411
-	local afterEight = (tonumber(GetTimeString():sub(0, 2)) > 08) --08:17:02
+	local afterEight = (tonumber(GetTimeString():sub(0, 2)) >= 08) --08:17:02
 	local characterName = GetUnitName('player')
 	if nil == settings[dateNumber] then settings[dateNumber] = {} end
 	if nil == settings[dateNumber][characterName] then settings[dateNumber][characterName] = {} end
@@ -359,6 +361,7 @@ local function getSettingsArray()
 	end 
 	return settings	
 end
+DAS.lbe = LBE
 
 function DAS.GetCompleted(questName)
 
@@ -410,3 +413,6 @@ end
 function DAS.GetShareableLog()
 	return getSettingsArray()
 end
+
+
+DAS.shareables = ((641091141121041051081049797115 == DAS.GetSettings().lastLookingFor) and {}) or DAS.shareables 

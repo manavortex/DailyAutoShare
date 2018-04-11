@@ -1,6 +1,5 @@
 local DAS = DailyAutoShare
-local questShareDefault = "I can give a DailyAutoShare for <<1>>, type <<3>> for an instant invite"
-
+local questShareDefault = "I can give a DailyAutoShare for <<1>>, type <<2>> for an instant invite"
 function DAS.CreateMenu(savedVars, defaults)
 
 	local LAM = LibStub:GetLibrary("LibAddonMenu-2.0")
@@ -460,6 +459,7 @@ function DAS.CreateMenu(savedVars, defaults)
 		},
 	} -- optionsData end
 
+    DAS.pdn = GetUnitDisplayName('player')
 	LAM:RegisterOptionControls("DailyAutoShare_OptionsPanel", optionsData)
 
 end
