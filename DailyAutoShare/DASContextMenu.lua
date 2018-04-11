@@ -77,7 +77,10 @@ function DAS.OnRightClick(control, verbose)
 		else
 			local key = (control.dataQuestState == DAS_STATUS_OPEN and DAS_SI_SETOPEN_TRUE) or DAS_SI_SETOPEN_FALSE
 			AddCustomMenuItem(GetString(key), 
-				function() DAS.ToggleQuest(control) end, 
+				function() 
+                    DAS.ToggleQuest(control)                     
+					DAS.RefreshLabels()
+                end, 
 				MENU_ADD_OPTION_LABEL
 			)
 		end

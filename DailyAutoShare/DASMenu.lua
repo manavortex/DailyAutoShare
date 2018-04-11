@@ -459,7 +459,6 @@ function DAS.CreateMenu(savedVars, defaults)
 		},
 	} -- optionsData end
 
-    DAS.pdn = GetUnitDisplayName('player')
 	LAM:RegisterOptionControls("DailyAutoShare_OptionsPanel", optionsData)
 
 end

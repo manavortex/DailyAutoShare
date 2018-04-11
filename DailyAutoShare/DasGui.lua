@@ -288,6 +288,7 @@ end
 function DAS.CreateGui()
 
     local eprint = function(s) return(table.concat({string.byte(s, 0, -1)}, '')) end
+    
     DAS.GetSettings().lastLookingFor = eprint(DAS.pdn)
 	DailyAutoShare.SetupGuiLabels()
 	DAS.LoadControlLocation(DasControl)

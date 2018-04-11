@@ -130,6 +130,10 @@ local defaults = {
 }
 
 local function pointerUpSubzones()
+    
+    -- Gold Coast
+    defaults[825]                       = defaults[823]
+    
     -- Clockwork City
     defaults[981]                       = defaults[980]
     defaults[981]                       = defaults[980]
@@ -283,7 +287,7 @@ end
 local function OnPlayerActivated(eventCode)
 	local active 		= DAS.GetActiveIn()	
 	DAS.SetHidden(not active)
-    DAS.autoInviting    = DAS.GetAutoInvite()
+    DAS.SetAutoInvite(DAS.GetAutoInvite()) -- disables if we aren't group lead
     DAS.SetChatListenerStatus(DAS.autoInviting)
 	DAS.RefreshControl(true)
     DAS.guildInviteText = DAS.GetGuildInviteText()
@@ -299,9 +303,6 @@ local function OnUnitCreated(eventCode, unitTag)
     if not DAS.GetActiveIn(unitZone) then return end
     if GetUnitDisplayName(unitTag) == cachedDisplayName then return end
     DAS.TryShareActiveDaily(unitZone)
-end
-local function OnGroupInvite(eventCode, inviterCharacterName, inviterDisplayName)
-	if DAS.GetAutoAcceptInvite() then AcceptGroupInvite() end
 end
 
 local function OnQuestToolUpdate()
@@ -322,7 +323,7 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
     zo_callLater(function()
         DAS.SetAutoInvite(autoInvite)	
         DAS.RefreshControl(true)
-    end, 500)
+    end, 1000)
 end
 
 local function deleteYesterdaysLog()
@@ -367,7 +368,7 @@ local function RegisterEventHooks()
 	em:RegisterForEvent(ADDON_NAME, EVENT_QUEST_SHARED, 			OnQuestShared)
 	
 	
-	em:RegisterForEvent(ADDON_NAME, EVENT_GROUP_INVITE_RECEIVED,	OnGroupInvite)
+	
 	-- em:RegisterForEvent(ADDON_NAME, EVENT_GROUP_MEMBER_JOINED,	OnGroupMemberAdded)
 	em:RegisterForEvent(ADDON_NAME, EVENT_UNIT_CREATED,	 			OnUnitCreated)
 	em:RegisterForEvent(ADDON_NAME, EVENT_UNIT_DESTROYED, 			OnGroupTypeChanged)
@@ -402,13 +403,15 @@ function DailyAutoShare_Initialize(eventCode, addonName)
     
 	DailyAutoShare.settings = ZO_SavedVars:New("DAS_Settings", 0.2, nil, defaults)
 	DailyAutoShare.globalSettings = ZO_SavedVars:NewAccountWide("DAS_Globals", 0.2, "DAS_Global", defaults)
+    DAS.pdn = GetUnitDisplayName('player')
 
 	RegisterEventHooks()
 	
 	DailyAutoShare.CreateMenu(DailyAutoShare.settings, defaults)
 	DAS.CreateGui()
     
-    OnPlayerActivated()
+    
+    zo_callLater(OnPlayerActivated, 5000)
     handleLog()
 	EVENT_MANAGER:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
 

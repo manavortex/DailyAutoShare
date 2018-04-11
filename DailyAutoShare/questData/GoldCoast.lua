@@ -13,6 +13,7 @@ table.insert(tbl, GetString(DAS_DB_GOOD))
 table.insert(tbl, GetString(DAS_DB_EVIL))
 
 DAS.shareables[zoneId] = tbl
+DAS.shareables[825] = DAS.shareables[zoneId]
 
 local tbl2 = {}
 table.insert(tbl2, "mino")
@@ -21,6 +22,7 @@ table.insert(tbl2, {[1] = "good", [2] = "common"})
 table.insert(tbl2, {[1] = "evil", [2] = "buried"})
 
 DAS.makeBingoTable(zoneId, tbl2) 
+DAS.bingo[825] = DAS.bingo[zoneId]
 
 
 DAS.questStarter[zoneId] = {
@@ -28,10 +30,8 @@ DAS.questStarter[zoneId] = {
 }
 
 DAS.questFinisher[zoneId] = {
-
     [GetString(DAS_QUEST_DB_ARVINA)]    = true,
     [GetString(DAS_QUEST_DB_LARONEN)]   = true,
     [GetString(DAS_QUEST_DB_FINIA)]     = true,
     [GetString(DAS_QUEST_DB_CODUS)]     = true,
-
 }
