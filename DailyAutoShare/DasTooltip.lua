@@ -28,20 +28,6 @@ function DAS.SetTooltipText(control)
 	SetTooltipText(control)
 end
 
-function DAS.CreateControlTooltip(control)
-	
-	DailyAutoShare_Tooltip:ClearAnchors()
-    local controlSettings = DAS.GetSettings().DasControl
-    local anchorX = controlSettings.x > 100 and RIGHT or LEFT
-    local anchorY = controlSettings.y > 100 and BOTTOM or TOP
-    
-    local anchorParent = anchorX + anchorY == TOPLEFT and TOP or BOTTOM
-    
-	DailyAutoShare_Tooltip:SetAnchor(anchorX + anchorY, DasHeader, anchorParent)
-	
-	SetTooltipText(control)
-	
-end
 
 local function setTooltipOffset(control)
 	local offsetY = control:GetTop() - DasList:GetTop()
@@ -54,10 +40,16 @@ local function setTooltipOffset(control)
 	DailyAutoShare_Tooltip:SetAnchor(myAnchorPos, DasList, parentAnchorPos, 0, offsetY)
 end
 
+function DAS.CreateControlTooltip(control)
+	
+	SetTooltipText(control)
+    setTooltipOffset(DasHeader)
+	
+end
+
 function DAS.CreateTooltip(control)
 	
-	setTooltipOffset(control)
-	
+	setTooltipOffset(control)	
 	SetTooltipText(control, isButton)
 	
  end

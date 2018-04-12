@@ -75,9 +75,9 @@ local function SetLockedButton(value)
 end
 
 local function SetMinimizedButton(value)
-	local upsideDown = DAS.GetUpsideDown()
-	local minimizedTex = "DailyAutoShare/textures/" .. tostring((upsideDown and "up") or "down")
-	local maximizedTex = "DailyAutoShare/textures/"  .. tostring((upsideDown and "down") or "up")
+    
+	local minimizedTex = "/esoui/art/buttons/plus"
+	local maximizedTex = "/esoui/art/buttons/minus"
 	local tex = (value and minimizedTex) or maximizedTex
 	DasButtonMinmax:SetNormalTexture(tex.. "_up.dds")
 	DasButtonMinmax:SetMouseOverTexture(tex.. "_over.dds")
@@ -86,15 +86,16 @@ local function SetMinimizedButton(value)
 end
 
 function DAS.QuestButtonClicked(control, mouseButton)
+    
+    if mouseButton == MOUSE_BUTTON_INDEX_RIGHT then -- and isValidJournalIndex then
+		return DAS.OnRightClick(control)	
+	end	
+    
 	local journalIndex = control["dataJournalIndex"]
 	local isValidJournalIndex = IsValidQuestIndex(journalIndex)
 	
-	if mouseButton == MOUSE_BUTTON_INDEX_LEFT and isValidJournalIndex then
-		
-		ShareQuest(journalIndex)
-		
-	elseif mouseButton == MOUSE_BUTTON_INDEX_RIGHT then -- and isValidJournalIndex then
-		DAS.OnRightClick(control)	
+	if isValidJournalIndex then		
+		ShareQuest(journalIndex)		
 	end	
 end
 

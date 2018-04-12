@@ -14,29 +14,29 @@
 					
 					
 					<Controls>		
-						<Backdrop name="$(parent)_BG" edgeColor="000000" centerColor="#FFD700" alpha="0.3" drawLayer="0">
+						<Backdrop name="$(parent)_BG" edgeColor="000000" centerColor="969696" alpha="0.5" drawLayer="0">
 							<Anchor point="TOPLEFT" 	relativeTo="$(parent)" relativePoint="TOPLEFT"/>
 							<Anchor point="BOTTOMRIGHT" relativeTo="$(parent)" relativePoint="BOTTOMRIGHT"/>													
 						</Backdrop>				
 								
 						<Button name="DasButtonLock" >						
 							<Dimensions x="16" y="16" />   
-							<Anchor point="TOPLEFT" relativeTo="DasHandle" relativePoint="TOPLEFT" offsetX="10" offsetY="15"/>
+							<Anchor point="TOPLEFT" relativeTo="DasHandle" relativePoint="TOPLEFT" offsetX="15" offsetY="15"/>
 							<OnMouseUp> DailyAutoShare.SetLocked(not DailyAutoShare.GetLocked()) </OnMouseUp>
 							<Textures
-								normal="/esoui/art/miscellaneous/locked_up.dds"
-								pressed="/esoui/art/miscellaneous/locked_down.dds"
-								mouseOver="/esoui/art/miscellaneous/locked_over.dds"
+								normal		="esoui/art/miscellaneous/locked_up.dds"
+                                pressed		="esoui/art/miscellaneous/locked_down.dds"
+                                mouseOver	="esoui/art/miscellaneous/locked_over.dds"
 							/>
 						</Button>
 						<Button name="DasButtonHide" > 
 							<Dimensions x="15" y="15" />
-							<Anchor point="LEFT" relativeTo="DasButtonLock" relativePoint="RIGHT" offsetX="10"  offsetY="2"/>
+							<Anchor point="LEFT" relativeTo="DasButtonLock" relativePoint="RIGHT" offsetX="10"  offsetY="1"/>
 						
 							<Textures
-								normal="DailyAutoShare/textures/x_up.dds"
-								pressed="DailyAutoShare/textures/x_down.dds"
-								mouseOver="DailyAutoShare/textures/x_down.dds"
+								normal		="/esoui/art/buttons/decline_up.dds"
+                                pressed		="/esoui/art/buttons/decline_down.dds"
+                                mouseOver	="/esoui/art/buttons/decline_over.dds"
 							 />	
 							<OnMouseUp>	 DasControl:SetHidden(true) </OnMouseUp>
 						</Button>
@@ -44,13 +44,17 @@
 						<Button name="DasButtonMinmax" >				
 							<Dimensions x="16" y="16" />   
 							<Anchor point="TOPRIGHT" relativeTo="DasHandle" relativePoint="TOPRIGHT" offsetX="-20" offsetY="15"/>
-							
+							<Textures 
+                                normal		="/esoui/art/buttons/minus_up.dds"
+                                pressed		="/esoui/art/buttons/minus_down.dds"
+                                mouseOver	="/esoui/art/buttons/minus_over.dds"
+                            />
 							<OnMouseUp>DailyAutoShare.MinMaxButton()</OnMouseUp>							
 						</Button>
 						
 						<Button name="DasButtonRefresh"> 
-                            <Anchor point="RIGHT" relativeTo="DasHandle" relativePoint="RIGHT" offsetX="-40"/>
-                            <Dimensions x="20" y="20" />	
+                            <Anchor point="RIGHT" relativeTo="DasHandle" relativePoint="RIGHT" offsetX="-40" offsetY="1"/>
+                            <Dimensions x="30" y="30" />	
                             <Textures 
                                 normal		="/esoui/art/help/help_tabicon_feedback_up.dds"
                                 pressed		="/esoui/art/help/help_tabicon_feedback_down.dds "
@@ -64,7 +68,7 @@
 						<Label name="$(parent)_Label" font="ZoFontWinH2" color="ffffff" text="DailyAutoShare" 
 							verticalAlignment="CENTER" horizontalAlignment="LEFT" alpha="0.85">
 							<Dimensions x="350" y="50" />
-							<Anchor point="TOPLEFT"  relativeTo="DasHandle" relativePoint="TOPLEFT" offsetX="60" offsetY="0"/>
+							<Anchor point="TOPLEFT"  relativeTo="DasHandle" relativePoint="TOPLEFT" offsetX="80" offsetY="-2"/>
 						</Label>
 							
 					</Controls>

@@ -316,6 +316,8 @@ function DAS.LoadControlLocation(control)
 
 	control:ClearAnchors()
 	control:SetAnchor(TOPLEFT, GuiRoot, TOPLEFT, x, y)
+    
+    DAS.SetTooltipRight(DAS.GetTooltipRight() or x < 200)
 	
 end
 
