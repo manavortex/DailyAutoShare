@@ -138,6 +138,7 @@ DAS.questStarter[zoneId] = {
     [GetString(DAS_QUEST_M_TRAYLAN)]    = true,  -- Hall of Justice
     [GetString(DAS_QUEST_M_ASHLANDER)]  = true,  -- Ashlander Hunt
     [GetString(DAS_QUEST_M_NUMANI)]     = true,  -- Ashlander Relics
+    [GetString(DAS_QUEST_M_RIVYN)]      = true,  -- Battlegrounds
 }
 
 DAS.questFinisher[zoneId] = {
@@ -160,5 +161,6 @@ DAS.questFinisher[zoneId] = {
     [GetString(DAS_QUEST_M_DREDASE )]   = true, 
     [GetString(DAS_QUEST_M_VORAR   )]   = true, 
     [GetString(DAS_QUEST_M_VALGA   )]   = true, 
+    [GetString(DAS_QUEST_M_RIVYN)]      = true,  -- Battlegrounds
 }
 

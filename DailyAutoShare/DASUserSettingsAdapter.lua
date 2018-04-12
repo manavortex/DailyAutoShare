@@ -108,9 +108,9 @@ end
 function DAS.SetAutoAcceptInvite(value)
 	DAS.settings.autoAcceptInvite = value
     if value then
-        EVENT_MANAGER:RegisterForEvent(ADDON_NAME, EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
+        EVENT_MANAGER:RegisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
     else 
-        EVENT_MANAGER:UnregisterForEvent(ADDON_NAME, EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
+        EVENT_MANAGER:UnregisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
     
     end
 end

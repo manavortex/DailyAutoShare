@@ -18,19 +18,12 @@ function DAS.TryDisableAutoShare(fromName, messageText)
 	end
 end
 
-local sharingCooldown = false
 
-local function resetSharingCooldown() 
-    sharingCooldown = false
-end
 function DAS.TryShareActiveDaily()
-    if sharingCooldown then return end
-    sharingCooldown = true
-	if not DAS.GetAutoShare() then return end
-	for _, questIndex in ipairs(DAS.GetActiveQuestIndices()) do
-		if IsValidQuestIndex(questIndex) then ShareQuest(questIndex) end
-	end
-    zo_callLater(resetSharingCooldown, 1000)
+  if not DAS.GetAutoShare() then return end
+  for _, questIndex in ipairs(DAS.GetActiveQuestIndices()) do
+        if IsValidQuestIndex(questIndex) then ShareQuest(questIndex) end
+    end
  end
 
 local function EscapeString(text)

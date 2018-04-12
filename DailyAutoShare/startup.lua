@@ -309,6 +309,10 @@ local function OnQuestToolUpdate()
 	DAS.RefreshControl(true)
 end
 
+local function resetQuests()
+    DAS.handleLog(true)
+end
+
 local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, zoneIndex, poiIndex, questId)	
 	
     -- is it a daily quest, and are we logging?
@@ -319,6 +323,9 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
     -- set auto invite off until the questlog has refreshed
 	local autoInvite = DAS.GetAutoInvite()
     DAS.SetAutoInvite(false)
+    
+    local timetoreset = (GetTimeStamp() - 1523512800)%86400
+    zo_callLater(resetQuests, timetoreset)
     
     zo_callLater(function()
         DAS.SetAutoInvite(autoInvite)	
@@ -356,30 +363,34 @@ local function RegisterEventHooks()
 	SCENE_MANAGER:GetScene("hudui"):AddFragment(DailyAutoShare.Fragment)
 	hookQuestTracker()
 	
-	em:RegisterForEvent(ADDON_NAME, EVENT_PLAYER_ACTIVATED, 		OnPlayerActivated)
+	em:RegisterForEvent("DailyAutoshare", EVENT_PLAYER_ACTIVATED, 		OnPlayerActivated)
 	
-	em:RegisterForEvent(ADDON_NAME, EVENT_QUEST_ADDED, 				OnQuestToolUpdate)
-	em:RegisterForEvent(ADDON_NAME, EVENT_QUEST_REMOVED, 			OnQuestRemoved)
-	em:RegisterForEvent(ADDON_NAME, EVENT_TRACKING_UPDATE, 			OnQuestToolUpdate)	
+	em:RegisterForEvent("DailyAutoshare", EVENT_QUEST_ADDED, 			OnQuestToolUpdate)
+	em:RegisterForEvent("DailyAutoshare", EVENT_QUEST_REMOVED, 			OnQuestRemoved)
+	em:RegisterForEvent("DailyAutoshare", EVENT_TRACKING_UPDATE, 		OnQuestToolUpdate)	
 	
-	em:RegisterForEvent(ADDON_NAME, EVENT_QUEST_ADDED, 				OnQuestAdded)
-	em:RegisterForEvent(ADDON_NAME, EVENT_QUEST_REMOVED, 			OnQuestRemoved)
-	em:RegisterForEvent(ADDON_NAME, EVENT_QUEST_REMOVED, 			OnQuestRemoved)
-	em:RegisterForEvent(ADDON_NAME, EVENT_QUEST_SHARED, 			OnQuestShared)
-	
+	em:RegisterForEvent("DailyAutoshare", EVENT_QUEST_ADDED, 			OnQuestAdded)
+	em:RegisterForEvent("DailyAutoshare", EVENT_QUEST_REMOVED, 			OnQuestRemoved)
+	em:RegisterForEvent("DailyAutoshare", EVENT_QUEST_SHARED, 			OnQuestShared)
 	
 	
-	-- em:RegisterForEvent(ADDON_NAME, EVENT_GROUP_MEMBER_JOINED,	OnGroupMemberAdded)
-	em:RegisterForEvent(ADDON_NAME, EVENT_UNIT_CREATED,	 			OnUnitCreated)
-	em:RegisterForEvent(ADDON_NAME, EVENT_UNIT_DESTROYED, 			OnGroupTypeChanged)
+	em:RegisterForEvent("DailyAutoshare", EVENT_UNIT_CREATED,	 		OnUnitCreated)
+	em:RegisterForEvent("DailyAutoshare", EVENT_UNIT_DESTROYED, 			OnGroupTypeChanged)
 
 	-- DasControl:OnMoveStop
 	-- DailyAutoShare.SaveControlLocation(self)
 end
 
-local function handleLog()
-    local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08
+local function handleLog(forceReset)
+
     local currentDate = tonumber(GetDate())
+    if forceReset then 
+        DAS.globalSettings.completionLog[currentDate] = {}
+        DAS.RefreshControl(true)
+        return
+    end
+    
+    local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08
     local lastDate
     local completionLog = DAS.globalSettings.completionLog or {}
     local logSize = NonContiguousCount(completionLog)

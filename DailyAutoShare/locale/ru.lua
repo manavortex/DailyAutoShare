@@ -146,7 +146,8 @@ local strings  = {
     
     
     
-    DAS_QUEST_M_ASHLANDER   = "Huntmaster Sorim-Nakar",    
+    DAS_QUEST_M_ASHLANDER   = "Huntmaster Sorim-Nakar",   
+    DAS_QUEST_M_RIVYN       = "Battlemaster Rivyn",   
     
     DAS_QUEST_CC_ROBOT      = "Clockwork Facilitator",      
     DAS_QUEST_CC_CROW       = "Bursar of Tributes",
