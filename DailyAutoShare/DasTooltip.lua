@@ -31,7 +31,13 @@ end
 function DAS.CreateControlTooltip(control)
 	
 	DailyAutoShare_Tooltip:ClearAnchors()
-	DailyAutoShare_Tooltip:SetAnchor(BOTTOM, DasList, TOP)
+    local controlSettings = DAS.GetSettings().DasControl
+    local anchorX = controlSettings.x > 100 and RIGHT or LEFT
+    local anchorY = controlSettings.y > 100 and BOTTOM or TOP
+    
+    local anchorParent = anchorX + anchorY == TOPLEFT and TOP or BOTTOM
+    
+	DailyAutoShare_Tooltip:SetAnchor(anchorX + anchorY, DasHeader, anchorParent)
 	
 	SetTooltipText(control)
 	

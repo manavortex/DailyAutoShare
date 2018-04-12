@@ -381,9 +381,12 @@ local function handleLog()
     local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08
     local currentDate = tonumber(GetDate())
     local lastDate
-    DAS.globalSettings.completionLog = DAS.globalSettings.completionLog or {}
-    for dateString, dateLog in pairs(DAS.globalSettings.completionLog) do
-        if dateString < currentDate -5 then 
+    local completionLog = DAS.globalSettings.completionLog or {}
+    local logSize = NonContiguousCount(completionLog)
+    local counter = 0
+    for dateString, dateLog in pairs(completionLog) do
+        counter = counter +1
+        if counter < logSize -2 and dateString < currentDate then 
             DAS.globalSettings.completionLog[dateString] = nil 
         else
             lastDate = dateString
@@ -392,8 +395,9 @@ local function handleLog()
     if not afterEight then 
         DAS.globalSettings.completionLog[currentDate] = DAS.globalSettings.completionLog[dateString]
     end
+    DAS.globalSettings.completionLog = completionLog
 end
-
+DAS.handleLog = handleLog
 --==============================
 --===== Rise, my minion!  ======
 --==============================
@@ -413,7 +417,7 @@ function DailyAutoShare_Initialize(eventCode, addonName)
     
     
     zo_callLater(OnPlayerActivated, 5000)
-    handleLog()
+    -- handleLog()
 	EVENT_MANAGER:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
 
 end

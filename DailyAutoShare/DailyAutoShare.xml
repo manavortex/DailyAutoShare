@@ -50,7 +50,7 @@
 						
 						<Button name="DasButtonRefresh"> 
                             <Anchor point="RIGHT" relativeTo="DasHandle" relativePoint="RIGHT" offsetX="-40"/>
-                            <Dimensions x="28" y="28" />	
+                            <Dimensions x="20" y="20" />	
                             <Textures 
                                 normal		="/esoui/art/help/help_tabicon_feedback_up.dds"
                                 pressed		="/esoui/art/help/help_tabicon_feedback_down.dds "
@@ -84,10 +84,10 @@
 						</Backdrop>
 						<Control name="DasHeader">
 							<Anchor point="TOPLEFT" relativeTo="DasList_Backdrop" relativePoint="TOPLEFT"		offsetX="20" offsetY="15"/>
-							<Anchor point="BOTTOMRIGHT" relativeTo="DasList_Backdrop" relativePoint="TOPRIGHT" 	offsetX="-20" offsetY="40" />
+							<Anchor point="BOTTOMRIGHT" relativeTo="DasList_Backdrop" relativePoint="TOPRIGHT" 	offsetX="-20" offsetY="30" />
 							<Controls>
 								<Button name="DasButtonInvite"> 
-									<Dimensions x="28" y="28" />									
+									<Dimensions x="20" y="20" />									
 									<Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT"  />
 									<Textures
 										normal="/DailyAutoShare/textures/invite_up.dds"
@@ -102,7 +102,7 @@
 								</Button>
 								
 								<Button name="DasButtonAccept" > 
-									<Dimensions x="28" y="28" />
+									<Dimensions x="20" y="20" />
 									<Anchor point="TOPLEFT" relativeTo="DasButtonInvite" relativePoint="TOPRIGHT" offsetX="10" />
 
 									<Textures
@@ -116,7 +116,7 @@
 								</Button>
 								 
 								<Button name="DasButtonShare" > 
-									<Dimensions x="28" y="28" />										
+									<Dimensions x="20" y="20" />										
 									<Anchor point="TOPLEFT" relativeTo="DasButtonAccept" relativePoint="TOPRIGHT" offsetX="10" />
 									
 									<Textures
@@ -132,7 +132,7 @@
 								
 								<Button name="DasButtonSpam"> 
 									<Anchor point="TOPLEFT" relativeTo="DasButtonShare" relativePoint="TOPRIGHT" offsetX="50" />
-									<Dimensions x="28" y="28" />	
+									<Dimensions x="20" y="20" />	
 									<Textures
 										normal="DailyAutoShare/textures/speaker_up.dds"
 										pressed="DailyAutoShare/textures/speaker_down.dds"
@@ -146,7 +146,7 @@
 								
 								<Button name="DasButtonDonate" alpha="0.6"> 
 									<Anchor point="TOPRIGHT" relativeTo="$(parent)" relativePoint="TOPRIGHT" offsetY="-4" />
-									<Dimensions x="40" y="40" />
+									<Dimensions x="30" y="30" />
 									<Textures
 										normal="esoui/art/chatwindow/chat_mail_up.dds"
 										pressed="esoui/art/chatwindow/chat_mail_down.dds"
