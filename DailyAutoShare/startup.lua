@@ -381,6 +381,7 @@ local function handleLog()
     local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08
     local currentDate = tonumber(GetDate())
     local lastDate
+    DAS.globalSettings.completionLog = DAS.globalSettings.completionLog or {}
     for dateString, dateLog in pairs(DAS.globalSettings.completionLog) do
         if dateString < currentDate -5 then 
             DAS.globalSettings.completionLog[dateString] = nil 
@@ -389,7 +390,7 @@ local function handleLog()
         end
     end
     if not afterEight then 
-        DAS.settings.completionLog[currentDate] = dateString
+        DAS.globalSettings.completionLog[currentDate] = DAS.globalSettings.completionLog[dateString]
     end
 end
 
