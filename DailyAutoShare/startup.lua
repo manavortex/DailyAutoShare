@@ -424,8 +424,8 @@ function DailyAutoShare_Initialize(eventCode, addonName)
 	DailyAutoShare.CreateMenu(DailyAutoShare.settings, defaults)
 	DAS.CreateGui()    
         
-    local timetoreset = (GetTimeStamp() - 1523512800)%86400
-    zo_callLater(resetQuests, timetoreset)
+    -- local timetoreset = (GetTimeStamp() - 60*60*7)%86400
+    -- zo_callLater(resetQuests, timetoreset)
     
     -- remove this soon
     if DAS.GetSettings().questShareString:find("<<3>>") then
