@@ -16,10 +16,10 @@ DAS.shareables[zoneId] = tbl
 DAS.shareables[825] = DAS.shareables[zoneId]
 
 local tbl2 = {}
-table.insert(tbl2, "mino")
-table.insert(tbl2, "arena")
-table.insert(tbl2, {[1] = "good", [2] = "common"})
-table.insert(tbl2, {[1] = "evil", [2] = "buried"})
+table.insert(tbl2, {[1] = "mino", [2] = "m"})
+table.insert(tbl2, {[1] = "arena",[2] = "a"})
+table.insert(tbl2, {[1] = "good", [2] = "common", [3] = "cg"})
+table.insert(tbl2, {[1] = "evil", [2] = "buried", [3] = "be"})
 
 DAS.makeBingoTable(zoneId, tbl2) 
 DAS.bingo[825] = DAS.bingo[zoneId]

@@ -20,6 +20,7 @@ DAS.channelTypes 	        = {
     [CHAT_CHANNEL_SAY ]     = false, 
     [CHAT_CHANNEL_YELL]     = false, 
     [CHAT_CHANNEL_ZONE]     = false,
+    [CHAT_CHANNEL_WHISPER]  = false,
 }
 
 DAS.locale 			    = GetCVar("language.2")
@@ -36,8 +37,6 @@ DAS.fullBingoString         = ""
 local fullBingoString       = DAS.fullBingoString
 
 local defaults = {
-
-	
 
 	["singleDailies"]               = {},
 	["shareableDailies"]            = {},
@@ -117,9 +116,11 @@ local defaults = {
 	autoMinimize 				= false,
 	autoShare 					= true,
 	hideCompleted				= false,
+	startupMinimized			= true,
 	lastLookingFor 				= "",
 	guildInviteNumber 			= 1,
 	guildInviteText,
+    questShareString            = "I can give a DailyAutoShare for <<1>>, type <<2>> for an instant invite",
 	listenInGuilds,
     ["tracked"] = {
 		[684] = true,
@@ -206,6 +207,7 @@ function DAS.Report(text)
 	if not DAS.GetShutUp() then d(text) end	
 end
 
+DAS.activeZoneQuests = {}
 
 --==============================
 --======= Event hooks  =========
@@ -221,8 +223,9 @@ local function OnQuestAdded(eventCode, journalIndex, questName, objectiveName)
 	local zoneId = DAS.GetZoneId()
 	if not DAS.GetActiveIn(zoneId) 			then return end
 	if not GetIsQuestSharable(journalIndex) then return end	
-	
-	if nil ~= DAS.GetArrayEntry(DAS.shareables[zoneId], questName) then
+	local shareables = DAS.shareables[zoneId] or {}
+    
+	if nil ~= shareables[questName] then
 		DAS.LogQuest(questName, false)
 		zo_callLater(function() DAS.RefreshControl(true) end, 700)
 	end		
@@ -270,17 +273,13 @@ function DAS.getBingoTable(zoneId)
     return DAS.bingo[zoneId] or {} 
 end
 
-
 function DAS.SetChatListenerStatus(status)
 
     DAS.channelTypes[CHAT_CHANNEL_SAY ]     = status
     DAS.channelTypes[CHAT_CHANNEL_YELL]     = status
     DAS.channelTypes[CHAT_CHANNEL_ZONE]     = status
-	if status then
-		em:RegisterForEvent("DailyAutoShare", EVENT_CHAT_MESSAGE_CHANNEL, OnChatMessage)
-	else
-		em:UnregisterForEvent("DailyAutoShare", EVENT_CHAT_MESSAGE_CHANNEL, OnChatMessage)
-	end	
+    DAS.channelTypes[CHAT_CHANNEL_WHISPER]  = status	
+	
 end
 
 
@@ -293,10 +292,6 @@ local function OnPlayerActivated(eventCode)
     DAS.guildInviteText = DAS.GetGuildInviteText()
     DAS.cacheChatterData()
 end
-
--- local function OnGroupMemberAdded(eventCode, memberName)
-	-- DAS.TryShareActiveDaily()
--- end
 
 local function OnUnitCreated(eventCode, unitTag)
     local unitZone = GetZoneId(GetUnitZoneIndex(unitTag))
@@ -323,9 +318,7 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
     -- set auto invite off until the questlog has refreshed
 	local autoInvite = DAS.GetAutoInvite()
     DAS.SetAutoInvite(false)
-    
-    local timetoreset = (GetTimeStamp() - 1523512800)%86400
-    zo_callLater(resetQuests, timetoreset)
+
     
     zo_callLater(function()
         DAS.SetAutoInvite(autoInvite)	
@@ -375,8 +368,9 @@ local function RegisterEventHooks()
 	
 	
 	em:RegisterForEvent("DailyAutoshare", EVENT_UNIT_CREATED,	 		OnUnitCreated)
-	em:RegisterForEvent("DailyAutoshare", EVENT_UNIT_DESTROYED, 			OnGroupTypeChanged)
+	em:RegisterForEvent("DailyAutoshare", EVENT_UNIT_DESTROYED, 		OnGroupTypeChanged)
 
+	em:RegisterForEvent("DailyAutoShare", EVENT_CHAT_MESSAGE_CHANNEL,   OnChatMessage)
 	-- DasControl:OnMoveStop
 	-- DailyAutoShare.SaveControlLocation(self)
 end
@@ -409,6 +403,10 @@ local function handleLog(forceReset)
     DAS.globalSettings.completionLog = completionLog
 end
 DAS.handleLog = handleLog
+
+local function minimiseOnStartup()    
+	DasList:SetHidden(DAS.GetSettings().startupMinimized)    
+end
 --==============================
 --===== Rise, my minion!  ======
 --==============================
@@ -424,10 +422,18 @@ function DailyAutoShare_Initialize(eventCode, addonName)
 	RegisterEventHooks()
 	
 	DailyAutoShare.CreateMenu(DailyAutoShare.settings, defaults)
-	DAS.CreateGui()
+	DAS.CreateGui()    
+        
+    local timetoreset = (GetTimeStamp() - 1523512800)%86400
+    zo_callLater(resetQuests, timetoreset)
     
+    -- remove this soon
+    if DAS.GetSettings().questShareString:find("<<3>>") then
+        DAS.GetSettings().questShareString = defaults.questShareString
+    end
     
     zo_callLater(OnPlayerActivated, 5000)
+    zo_callLater(minimiseOnStartup, 5500)
     -- handleLog()
 	EVENT_MANAGER:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
 

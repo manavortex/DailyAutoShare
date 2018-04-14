@@ -1,7 +1,11 @@
 local DAS = DailyAutoShare
-local questShareDefault = "I can give a DailyAutoShare for <<1>>, type <<2>> for an instant invite"
-function DAS.CreateMenu(savedVars, defaults)
 
+local optionsData
+local questShareDefault
+
+function DAS.CreateMenu(savedVars, defaults)
+    
+    questShareDefault = defaults.questShareString
 	local LAM = LibStub:GetLibrary("LibAddonMenu-2.0")
 	local panelData = {
 		type    = "panel",
@@ -14,7 +18,7 @@ function DAS.CreateMenu(savedVars, defaults)
 
 	LAM:RegisterAddonPanel("DailyAutoShare_OptionsPanel", panelData)
 
-	local optionsData = { -- optionsData
+	optionsData = { -- optionsData
 		{ -- Use global configuration?
 			type    = "checkbox",
 			name    = "Turn on debugging?",			
@@ -286,13 +290,14 @@ function DAS.CreateMenu(savedVars, defaults)
 			name        = "Look and feel and behavior",
 			controls    = {			
 				{   -- editbox: Quest share text
-                    type    = "editbox", 
-                    name    = "Quest share text",
-                    tooltip = ("Text to generate when you spam quest shares.\n" 
+                    type        = "editbox", 
+                    isExtraWide = true, 
+                    name        = "Quest share text",
+                    tooltip     = ("Text to generate when you spam quest shares.\n" 
                                 .. "<<1>> will be replaced with the quest names, <<2>> with the bingo codes.\n"
                                 .. "Omit either to remove parameter. Include neither and sound like a fool."),
-                    getFunc = function() return DAS.GetSettings().questShareString end,
-                    setFunc = function(value) DAS.GetSettings().questShareString = value end,
+                    getFunc     = function() return DAS.GetSettings().questShareString end,
+                    setFunc     = function(value) DAS.GetSettings().questShareString = value end,
                 },                	
 				{   -- editbox: Quest share text
                     type    = "button", 
@@ -300,6 +305,7 @@ function DAS.CreateMenu(savedVars, defaults)
                     tooltip = "Reset quest share text to default value",
                     getFunc = function() return questShareDefault end,
                     setFunc = function(value) DAS.GetSettings().questShareString = questShareDefault end,
+                    reference = "qsButton",
                 },                
 				{ -- checkbox: Lock UI window
 					type    = "checkbox",
@@ -320,6 +326,13 @@ function DAS.CreateMenu(savedVars, defaults)
 					tooltip = "Check this if you want the questList to appear above the drag bar instead of below",
 					getFunc = function() return DAS.GetUpsideDown() end,
 					setFunc = function(value) DAS.SetUpsideDown(value) end
+				},
+				{ -- checkbox: Start up minimized?
+					type    = "checkbox",
+					name    = "Start up minimized?",
+					tooltip = "Always minimize AddOn on first startup",
+					getFunc = function() return DAS.GetSettings().startupMinimized end,
+					setFunc = function(value) DAS.GetSettings().startupMinimized = value end
 				},
 				{ -- checkbox: AutoHide
 					type    = "checkbox",

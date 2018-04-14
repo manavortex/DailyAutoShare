@@ -35,7 +35,7 @@ function DAS.RefreshControl(refreshQuestCache)
 	DasList:SetHidden(    stateIsMinimised or stateIsHidden)
 	if stateIsMinimised or stateIsHidden then return end
 	
-	DAS.RefreshLabels(true)
+	DAS.RefreshLabels(refreshQuestCache)
 	
 end
 local function SetAlpha(control, value)
@@ -158,6 +158,7 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
 	cacheVisibilityStatus(true)
 	setButtonStates()
 	
+    DAS.activeZoneQuests = {}
 	local trackedIndex = 0
 	if QUEST_TRACKER and QUEST_TRACKER.assistedData then
 		trackedIndex = QUEST_TRACKER.assistedData.arg1
@@ -173,38 +174,38 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
 	end
 	local zoneId = DAS.GetZoneId()
 	local questList = DAS.QuestLists[zoneId]
-	for index, questName in pairs(DAS.GetZoneQuests()) do
+	for index, questName in pairs(DAS.GetZoneQuests()) do        
 		label = DAS.labels[buttonIndex] -- despite the name these are actually buttons
 		
 		if nil ~= label then	
 			local status 	= DAS.GetQuestStatus(questName, questList, zoneId)
 			local hideLabel = hidden or (hideCompleted and status == DAS_STATUS_COMPLETE) or shouldHideLabel(questName, questList, zoneId)
 			-- d(zo_strformat("DAS: <<1>> shoud be hidden <<2>>", questName, tostring(hideLabel)))
-			if hideLabel then
-				label:SetHidden(true)
-				label:SetText("")
-			else
-				label:SetHidden(false)				
-				visibleButtonIndex 			= visibleButtonIndex +1
-				-- d( tostring(status) .. " - " .. tostring(questName))
-				label["dataJournalIndex"] 	= DAS.GetLogIndex(questName)
-				label["dataBingoString"] 	= DAS.GetBingoStringFromQuestName(questName)
-				label["dataQuestName"] 		= questName
-				label["dataQuestState"] 	= status
-				if label.dataJournalIndex == trackedIndex then
-					label:SetText("* " .. questName)
-				else
-					label:SetText(questName)
-				end				
-				if status == DAS_STATUS_COMPLETE then
-					label:SetState(BSTATE_DISABLED)
-				elseif status == DAS_STATUS_ACTIVE then 
-					label:SetState(BSTATE_PRESSED)							
-				elseif status == DAS_STATUS_OPEN then
-					label:SetState(BSTATE_NORMAL)
-				end					
-			end
-			buttonIndex = buttonIndex+1
+            label:SetHidden(hideLabel)				
+            visibleButtonIndex 			= visibleButtonIndex +1
+            -- d( tostring(status) .. " - " .. tostring(questName))
+            label["dataJournalIndex"] 	= DAS.GetLogIndex(questName)
+            label["dataBingoString"] 	= DAS.GetBingoStringFromQuestName(questName)
+            label["dataQuestName"] 		= questName
+            label["dataQuestState"] 	= status
+            if label.dataJournalIndex == trackedIndex then
+                label:SetText("* " .. questName)
+            elseif hideLabel then 
+                label:SetText("")
+            else
+                label:SetText(questName)
+            end
+            
+            if status == DAS_STATUS_COMPLETE then
+                label:SetState(BSTATE_DISABLED)
+            elseif status == DAS_STATUS_ACTIVE then
+                DAS.activeZoneQuests[index] = true
+                label:SetState(BSTATE_PRESSED)							
+            elseif status == DAS_STATUS_OPEN then
+                label:SetState(BSTATE_NORMAL)
+            end					
+			
+			buttonIndex = buttonIndex + 1
 		end -- nil check end
 		
 	end -- for loop end

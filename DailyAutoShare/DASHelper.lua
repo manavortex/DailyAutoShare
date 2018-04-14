@@ -18,13 +18,33 @@ function DAS.TryDisableAutoShare(fromName, messageText)
 	end
 end
 
+local alreadySharing = false
+local questQueue = {}
+local function shareQuestQueue()
+    -- d("shareQuestQueue called with " .. tostring(#questQueue) .. " entries")
+    if #questQueue == 0 then 
+        alreadySharing = false
+        return 
+    end
+    alreadySharing = true
+    local questIndex = table.remove(questQueue, 1)
+    ShareQuest(questIndex)
+    zo_callLater(shareQuestQueue, 250)
+end
 
 function DAS.TryShareActiveDaily()
-  if not DAS.GetAutoShare() then return end
-  for _, questIndex in ipairs(DAS.GetActiveQuestIndices()) do
-        if IsValidQuestIndex(questIndex) then ShareQuest(questIndex) end
+    if not DAS.GetAutoShare() then return end
+    local activeQuestIndices = DAS.GetActiveQuestIndices() 
+    for _, questIndex in ipairs(activeQuestIndices) do
+        if IsValidQuestIndex(questIndex) and not table.contains(questQueue, questIndex) then 
+           table.insert(questQueue, questIndex)
+        end
+    end
+    if not alreadySharing then 
+        shareQuestQueue()
     end
  end
+ 
 
 local function EscapeString(text)
 	if nil == text then return "" end
@@ -63,9 +83,9 @@ function DAS.FindInList(array, item)
 end
 
 function DAS.TryTriggerAutoAcceptInvite()
-	if tonumber(DAS.GetAutoAcceptInviteInterval()) > 0 then
+	if DAS.GetAutoAcceptInviteInterval() then
 		DAS.SetAutoAcceptInvite(true)
-		zo_callLater(function() DAS.SetAutoAcceptInvite(false) end, (tonumber(DAS.GetAutoAcceptInviteInterval())*1000))
+		zo_callLater(DAS.SetAutoAcceptInvite, DAS.GetAutoAcceptInviteInterval()*1000)
 	end
 end
 

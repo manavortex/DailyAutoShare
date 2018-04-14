@@ -106,6 +106,7 @@ local function OnGroupInvite()
 end
 
 function DAS.SetAutoAcceptInvite(value)
+    d("DAS.SetAutoAcceptInvite(" .. tostring(value)..")")
 	DAS.settings.autoAcceptInvite = value
     if value then
         EVENT_MANAGER:RegisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)

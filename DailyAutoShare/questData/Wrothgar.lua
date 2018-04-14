@@ -23,18 +23,18 @@ DAS.shareables[zoneId] = {
 }
 local tbl2 = {}
 
-table.insert(tbl2, {[1] = "poa", [2] = "poacher"})
+table.insert(tbl2, {[1] = "poa",    [2] = "poacher"})
 table.insert(tbl2, "edu")
 table.insert(tbl2, "nyz")
-table.insert(tbl2, "cori")
-table.insert(tbl2, {[1] ="dolmen", [2] = "zan"})
-table.insert(tbl2, {[1] = "ogre", [2] = "mad", [3] = "shrek"})
+table.insert(tbl2, {[1] = "cori",   [2] = "nb"})
+table.insert(tbl2, {[1] = "dolmen", [2] = "zan", [3] = "dol",   [4] = "ud"})
+table.insert(tbl2, {[1] = "ogre",   [2] = "mad", [3] = "shrek"})
 
 table.insert(tbl2, "harpy")
 table.insert(tbl2, "spirits")
 table.insert(tbl2, "durzog")
 table.insert(tbl2, "dwemer")
-table.insert(tbl2, {[1] = "wolf", [2] = "skintrade"})
+table.insert(tbl2, {[1] = "wolf",   [2] = "skintrade"})
 table.insert(tbl2, {[1] = "bandit", [2] = "fire"})
 
 DAS.makeBingoTable(zoneId, tbl2) 
@@ -45,7 +45,6 @@ DAS.questStarter[zoneId] = {
 }
 
 DAS.questFinisher[zoneId] = {
-
     [GetString(DAS_QUEST_W_OUFA      )] = true,
     [GetString(DAS_QUEST_W_USHANG    )] = true,
     
