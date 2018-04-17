@@ -87,7 +87,18 @@ function DAS.SetTooltipRight(value)
 	GetSettings().tooltipRight = value
 end
 
-
+function DAS.GetQuestShareDelay()
+	return GetSettings.questShareDelay
+end
+function DAS.SetQuestShareDelay(value)
+	GetSettings.questShareDelay = value
+end
+function DAS.GetGroupInviteDelay()
+	return GetSettings.groupInviteDelay
+end
+function DAS.SetGroupInviteDelay(value)
+	GetSettings.groupInviteDelay = value
+end
 
 -- called from settings
 function DAS.GetAutoTrack()

@@ -49,16 +49,30 @@ function DAS.CreateMenu(savedVars, defaults)
 		},
 		{ -- header: be elaborate?
 			type    = "header",
-			name    = "Speak English instead of bingo?"
+			name    = "Throttle"
+		},    
+		{ -- slider: group invite delay
+			type 	= "slider",
+			name 	= "Group invite delay (in ms)",
+			tooltip = ("adjust this if you encounter disconnects when trying to create a group.\n"
+					.."1000 ms are one second.") ,
+			min 	= 250,
+			step	= 10, 
+			max 	= 2500,
+			getFunc = function() return DAS.GetGroupInviteDelay() end,
+			setFunc = function(value) DAS.SetGroupInviteDelay(value) end
+		},    
+		{ -- slider: group invite delay
+			type 	= "slider",
+			name 	= "Quest share delay (in ms)",
+			tooltip = ("adjust this if you encounter disconnects when new group members join.\n"
+					.."1000 ms are one second.") ,
+			min 	= 250,
+			step	= 10, 
+			max 	= 2500,
+			getFunc = function() return DAS.GetQuestShareDelay() end,
+			setFunc = function(value) DAS.SetQuestShareDelay(value) end
 		},
-		{ -- checkbox: don't use bingo 
-			type    = "checkbox",
-			name    = "Speak in whole sentences?",
-			tooltip = "While this is optional, you will sound far less ludicrous if you don't talk like a telegram.\nIf you don't know what that is, please get older before unchecking this box.",
-			getFunc = function() return not DAS.GetSpeakStupid() end,
-			setFunc = function(value) DAS.SetSpeakStupid(not value) end
-		},
-    
 
 		{ -- header: activate add-on in...
 			type    = "submenu",

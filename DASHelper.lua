@@ -29,7 +29,7 @@ local function shareQuestQueue()
     alreadySharing = true
     local questIndex = table.remove(questQueue, 1)
     ShareQuest(questIndex)
-    zo_callLater(shareQuestQueue, 250)
+    zo_callLater(shareQuestQueue, DAS.GetQuestShareDelay())
 end
 
 function DAS.TryShareActiveDaily()

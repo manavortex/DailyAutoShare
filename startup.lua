@@ -119,6 +119,8 @@ local defaults = {
 	startupMinimized			= true,
 	lastLookingFor 				= "",
 	guildInviteNumber 			= 1,
+	groupInviteDelay			= 500,
+	questShareDelay				= 500,
 	guildInviteText,
     questShareString            = "I can give a DailyAutoShare for <<1>>, type <<2>> for an instant invite",
 	listenInGuilds,
