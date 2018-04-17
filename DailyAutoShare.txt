@@ -1,11 +1,12 @@
 ## Title: DailyAutoShare
 ## Author: manavortex
-## Version: 3.1.0c
+## Version: 3.1.1
 ## APIVersion: 100022
 ## SavedVariables: DAS_Settings DAS_Globals
-## OptionalDependsOn: LibStub LibAddonMenu-2.0 LibMediaProvider-1.0 pchat
+## OptionalDependsOn: LibStub LibCustomMenu LibAddonMenu-2.0 LibMediaProvider-1.0 pchat
 
 libs\LibStub\LibStub.lua
+libs\LibCustomMenu\LibCustomMenu.lua
 
 libs\LibAddonMenu-2.0\LibAddonMenu-2.0.lua
 libs\LibAddonMenu-2.0\controls\panel.lua
