@@ -377,8 +377,9 @@ local function RegisterEventHooks()
 	-- DailyAutoShare.SaveControlLocation(self)
 end
 
-local currentDate = tonumber(GetDate())
+
 local function resetQuests()
+    local currentDate = tonumber(GetDate())
     DAS.todaysLog = {}
     DAS.globalSettings.completionLog[currentDate] = DAS.todaysLog
     DAS.RefreshControl(true)
@@ -389,25 +390,25 @@ end
 local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 
 local function handleLog(forceReset)
 
-   
+    local currentDate = tonumber(GetDate())
     DAS.todaysLog = DAS.globalSettings.completionLog[currentDate] or {}
-    local lastDate, logSize, counter = _, NonContiguousCount(DAS.todaysLog), 0 
+    local logSize, lastDate = NonContiguousCount(DAS.todaysLog)
 
     if forceReset then         
         return resetQuests()
     end
-    
+    local counter = 0 
     for dateString, dateLog in pairs(DAS.todaysLog) do
         counter = counter + 1
-        if counter < logSize-2 and dateString < currentDate then 
-            DAS.globalSettings.completionLog[dateString] = nil 
+        if counter < logSize-2 and tonumber(currentDate) < currentDate then 
+            DAS.globalSettings.completionLog[currentDate] = nil 
         else
-            lastDate = dateString
+            lastDate = currentDate
         end
     end
     
     local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 -- has to be a local var, lua error if not
-    if (not afterEight) and DAS.todaysLog == {} and lastDate ~= dateString then 
+    if (not afterEight) and DAS.todaysLog == {} and lastDate ~= currentDate then 
         DAS.todaysLog = DAS.globalSettings.completionLog[lastDate]
     end
     DAS.globalSettings.completionLog[currentDate] = DAS.todaysLog
