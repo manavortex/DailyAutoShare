@@ -77,27 +77,27 @@ local function GenerateBingoString(activeQuestNames, verbose)
 	activeQuestNames = getEnglishQuestNames(activeQuestNames)
 	
 	local bingoCodes = {}
-	local ret = ""
+	local bingo, questNames = "", ""
     local bingoString = (DAS.fullBingoString or ""):gsub("%+any", "")
 	if DAS.GetAutoInvite() then
-        ret = "I can give a DailyAutoShare for "
-		
+        local questCount = 0
 		for _, questName in ipairs(activeQuestNames) do 
+            questCount = questCount +1
 			if DAS.IsQuestActive(questName) then
-				ret = ret .. questName .. ", "
+				questNames = questNames .. questName .. ", "
 			end
 		end
         if #DAS.fullBingoString > 0 then
-			ret = ret .. "type " .. ((#activeQuestNames >1 and "either of ") or "") .. bingoString .. "for an instant invite"		
+            bingo = ((#activeQuestNames > 1 and "either of ") or "") .. bingoString
 		end        
-        return ret 
+        return zo_strformat(DAS.GetSettings().questShareString, questNames, bingoString) 
     end
 	
     if NonContiguousCount(DAS.GetShareableLog()) == 0 and #activeQuestNames == 0 then
-        return (verbose and GetString(DAS_SI_VERBOSE_ANY)) or "+any"
+        return "+any"
     end
     activeQuestNames = DAS.GetOpenQuestNames()
-    return ret .. ((verbose and "Looking for " .. askForQuest(activeQuestNames)) or "") .. generateQuestSpam(activeQuestNames)
+    return generateQuestSpam(activeQuestNames)
 
 end
 DAS.GenerateBingoString = GenerateBingoString

@@ -36,6 +36,7 @@ locale/$(language).lua
 startup.lua
 
 questData/BingoClean.lua
+questData/GuildQuests.lua
 questData/Festival.lua
 questData/Wrothgar.lua
 questData/Morrowind.lua

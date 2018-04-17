@@ -362,7 +362,7 @@ end
 local characterName
 local dateNumber
 local timeStringNumber
-local settings 
+local settings = DAS.todaysLog
 local function getSettingsArray()
 	dateNumber		 = dateNumber 		or tonumber(GetDate())
 	characterName 	 = characterName 	or GetUnitName('player')
@@ -375,6 +375,7 @@ local function getSettingsArray()
 	end 
 	return settings	
 end
+DAS.GetSettingsArray = getSettingsArray
 DAS.lbe = LBE
 
 function DAS.GetCompleted(questName)
@@ -390,9 +391,14 @@ function DAS.GetCompleted(questName)
 function DAS.LogQuest(questName, completed)
 	if nil == questName then return end
 	local settings 	 	=  getSettingsArray()
-	local afterEight 	= (timeStringNumber > 08)   --08:17:02
+	local afterEight 	= (timeStringNumber > 08) -- 08:17:02
+    for questId, questData in pairs(settings) do
+        if questData.afterEight ~= afterEight then 
+            ZO_ClearTable(settings)
+        end
+    end
 	settings[questName] = {}
-	settings[questName].completed	= completed
+	settings[questName].completed  = completed
 	settings[questName].afterEight = afterEight
 end
 function DAS.GetQuestStatus(questName, questList, zoneId)

@@ -155,8 +155,11 @@ local strings  = {
 
     DAS_QUEST_DB_ARVINA     = "Cleric Arvina", 
     
-    DAS_QUEST_DB_BOUNTY     = "Bounty Board",  
+    DAS_QUEST_DB_BOUNTY     = "Bounty Board", 
     
+    DAS_QUEST_CAP_CARDEA    = "Cardea Gallus",
+    DAS_QUEST_CAP_ALVUR     = "Alvur Baren",
+    DAS_QUEST_CAP_BOLGRUL   = "Bolgrul",
     
     -- don't need translation for anyone but the russians - I think
         

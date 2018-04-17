@@ -53,7 +53,7 @@ function DAS.CreateMenu(savedVars, defaults)
 		},
 		{ -- checkbox: don't use bingo 
 			type    = "checkbox",
-			name    = "Soeak in whole sentences?",
+			name    = "Speak in whole sentences?",
 			tooltip = "While this is optional, you will sound far less ludicrous if you don't talk like a telegram.\nIf you don't know what that is, please get older before unchecking this box.",
 			getFunc = function() return not DAS.GetSpeakStupid() end,
 			setFunc = function(value) DAS.SetSpeakStupid(not value) end
@@ -261,6 +261,16 @@ function DAS.CreateMenu(savedVars, defaults)
 					getFunc = function() return DAS.GetActiveIn(888) end,
 					setFunc = function(value) DAS.SetActiveIn(888, value) end
 				},
+				{ -- checkbox: Fighters Guild dailies?
+					type    = "checkbox",
+					tooltip = "Fighters/Mages Guild and Undaunted dailies? This is work in progress.",
+					name    = "Guild quests?",
+					getFunc = function() return DAS.GetActiveIn(57) end,
+					setFunc = function(value)   
+                        DAS.SetActiveIn(57, value) 
+                    end
+				},
+                
 				{
 					type        = "submenu",
 					name        = "Festivals", 

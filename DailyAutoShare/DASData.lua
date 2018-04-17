@@ -42,7 +42,7 @@ function PrintZoneId() d(GetZoneId(GetUnitZoneIndex('player'))) end
 
 function DAS.GetZoneQuests(zoneId)
 	zoneId = zoneId or DAS.GetZoneId()
-    zoneId = DAS.subzones[zoneId] or DAS.festivals[zoneId] or zoneId
+    zoneId = DAS.subzones[zoneId] or zoneId
 	return DAS.shareables[zoneId] or {}	
 end
 
@@ -118,7 +118,7 @@ function DAS.GetActiveQuestNames()
 	local questLabel
 	for i=1, #DAS.labels do
 		questLabel = DAS.labels[i]
-		if (questLabel.dataQuestState == DAS_STATUS_ACTIVE) or (questLabel.dataQuestState == DAS_STATUS_TRACKED) then
+		if not questLabel:IsHidden() and (questLabel.dataQuestState == DAS_STATUS_ACTIVE) or (questLabel.dataQuestState == DAS_STATUS_TRACKED) then
 			table.insert(ret, questLabel.dataQuestName)
 		end
 	end

@@ -62,7 +62,7 @@ table.insert(tbl2, {[1] ="nil", [2] = "nilthog", [3] = "oxen"})
 table.insert(tbl, GetString(DAS_M_BOSS_SALOT))
 table.insert(tbl2, {[1] ="salo", [2] = "salothan", [3] = "sal"})
 table.insert(tbl, GetString(DAS_M_BOSS_SIREN))
-table.insert(tbl2, {[1] ="siren", [2] = "song", [3] = "songbird", [4] = "ss"})
+table.insert(tbl2, {[1] ="siren", [2] = "song", [3] = "songbird", [4] = "ss", [5] = "sirene"})
 table.insert(tbl, GetString(DAS_M_BOSS_APPRE))
 table.insert(tbl2, {[1] = "dub", [2] = "dubdil" })
 

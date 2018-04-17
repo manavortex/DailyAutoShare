@@ -153,28 +153,13 @@ local function shouldHideLabel(questName, questList, zoneId)
 	end
 	return false
 end
-
-function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
-	cacheVisibilityStatus(true)
-	setButtonStates()
-	
-    DAS.activeZoneQuests = {}
-	local trackedIndex = 0
-	if QUEST_TRACKER and QUEST_TRACKER.assistedData then
-		trackedIndex = QUEST_TRACKER.assistedData.arg1
-	end
-	
-	local buttonIndex = 1
-	
-	local hideCompleted = DAS.GetHideCompleted()
-	local hidden 		= DasList:IsHidden()
-	local label, questIndex, tracked
-	if not forceSkipQuestRefresh then 
-		DAS.RefreshQuestLogs(forceQuestRefresh)
-	end
-	local zoneId = DAS.GetZoneId()
-	local questList = DAS.QuestLists[zoneId]
-	for index, questName in pairs(DAS.GetZoneQuests()) do        
+local typeTable = "table"
+function DAS.setLabels(zoneQuests, questList, buttonIndex)
+    
+	for index, questName in pairs(zoneQuests) do
+        if type(questName) == typeTable then 
+            return DAS.setLabels(questName, questList, buttonIndex)
+        end
 		label = DAS.labels[buttonIndex] -- despite the name these are actually buttons
 		
 		if nil ~= label then	
@@ -209,6 +194,33 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
 		end -- nil check end
 		
 	end -- for loop end
+    
+    return buttonIndex
+end
+
+function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
+	cacheVisibilityStatus(true)
+	setButtonStates()
+	
+    DAS.activeZoneQuests = {}
+	local trackedIndex = 0
+	if QUEST_TRACKER and QUEST_TRACKER.assistedData then
+		trackedIndex = QUEST_TRACKER.assistedData.arg1
+	end
+	
+	local buttonIndex = 1
+	
+	local hideCompleted = DAS.GetHideCompleted()
+	local hidden 		= DasList:IsHidden()
+	local label, questIndex, tracked
+	if not forceSkipQuestRefresh then 
+		DAS.RefreshQuestLogs(forceQuestRefresh)
+	end
+	local zoneId = DAS.GetZoneId()
+	local questList = DAS.QuestLists[zoneId]
+    local zoneQuests = DAS.GetZoneQuests()
+    
+    buttonIndex = DAS.setLabels(zoneQuests, questList, 1)
 	
 
 	for buttonIndex=#DAS.GetZoneQuests()+1, #DAS.labels do

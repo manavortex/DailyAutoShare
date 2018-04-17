@@ -135,6 +135,10 @@ local function pointerUpSubzones()
     -- Gold Coast
     defaults[825]                       = defaults[823]
     
+    -- Capitals
+    defaults[19]                       = defaults[57]
+    defaults[383]                      = defaults[57]
+    
     -- Clockwork City
     defaults[981]                       = defaults[980]
     defaults[981]                       = defaults[980]
@@ -304,9 +308,7 @@ local function OnQuestToolUpdate()
 	DAS.RefreshControl(true)
 end
 
-local function resetQuests()
-    DAS.handleLog(true)
-end
+
 
 local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, zoneIndex, poiIndex, questId)	
 	
@@ -375,37 +377,41 @@ local function RegisterEventHooks()
 	-- DailyAutoShare.SaveControlLocation(self)
 end
 
+local currentDate = tonumber(GetDate())
+local function resetQuests()
+    DAS.todaysLog = {}
+    DAS.globalSettings.completionLog[currentDate] = DAS.todaysLog
+    DAS.RefreshControl(true)
+end
+
 local function handleLog(forceReset)
 
-    local currentDate = tonumber(GetDate())
-    if forceReset then 
-        DAS.globalSettings.completionLog[currentDate] = {}
-        DAS.RefreshControl(true)
-        return
+    local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 -- has to be a local var, lua error if not
+    DAS.todaysLog = DAS.globalSettings.completionLog[currentDate] or {}
+    local lastDate, logSize, counter = _, NonContiguousCount(DAS.todaysLog), 0 
+
+    if forceReset then         
+        return resetQuests()
     end
     
-    local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08
-    local lastDate
-    local completionLog = DAS.globalSettings.completionLog or {}
-    local logSize = NonContiguousCount(completionLog)
-    local counter = 0
-    for dateString, dateLog in pairs(completionLog) do
-        counter = counter +1
-        if counter < logSize -2 and dateString < currentDate then 
+    for dateString, dateLog in pairs(DAS.todaysLog) do
+        counter = counter + 1
+        if counter < logSize-2 and dateString < currentDate then 
             DAS.globalSettings.completionLog[dateString] = nil 
         else
             lastDate = dateString
         end
     end
-    if not afterEight then 
-        DAS.globalSettings.completionLog[currentDate] = DAS.globalSettings.completionLog[dateString]
+    
+    if (not afterEight) and DAS.todaysLog == {} and lastDate ~= dateString then 
+        DAS.todaysLog = DAS.globalSettings.completionLog[lastDate]
     end
-    DAS.globalSettings.completionLog = completionLog
+    DAS.globalSettings.completionLog[currentDate] = DAS.todaysLog
 end
 DAS.handleLog = handleLog
 
 local function minimiseOnStartup()    
-	DasList:SetHidden(DAS.GetSettings().startupMinimized)    
+	DAS.SetMinimized(DAS.GetSettings().startupMinimized)    
 end
 --==============================
 --===== Rise, my minion!  ======
@@ -432,9 +438,9 @@ function DailyAutoShare_Initialize(eventCode, addonName)
         DAS.GetSettings().questShareString = defaults.questShareString
     end
     
+    handleLog()
     zo_callLater(OnPlayerActivated, 5000)
     zo_callLater(minimiseOnStartup, 5500)
-    -- handleLog()
 	EVENT_MANAGER:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
 
 end
