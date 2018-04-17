@@ -162,7 +162,7 @@ function DAS.setLabels(zoneQuests, questList, buttonIndex)
         end
 		label = DAS.labels[buttonIndex] -- despite the name these are actually buttons
 		
-		if nil ~= label then	
+		if nil ~= label then
 			local status 	= DAS.GetQuestStatus(questName, questList, zoneId)
 			local hideLabel = hidden or (hideCompleted and status == DAS_STATUS_COMPLETE) or shouldHideLabel(questName, questList, zoneId)
 			-- d(zo_strformat("DAS: <<1>> shoud be hidden <<2>>", questName, tostring(hideLabel)))
@@ -188,7 +188,7 @@ function DAS.setLabels(zoneQuests, questList, buttonIndex)
                 label:SetState(BSTATE_PRESSED)							
             elseif status == DAS_STATUS_OPEN then
                 label:SetState(BSTATE_NORMAL)
-            end					
+            end
 			
 			buttonIndex = buttonIndex + 1
 		end -- nil check end

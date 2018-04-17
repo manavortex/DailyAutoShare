@@ -384,9 +384,12 @@ local function resetQuests()
     DAS.RefreshControl(true)
 end
 
+-- has to be a local var, lua error if not
+-- Keep outside of function namespace so we can overwrite it for debugging
+local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 
 local function handleLog(forceReset)
 
-    local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 -- has to be a local var, lua error if not
+   
     DAS.todaysLog = DAS.globalSettings.completionLog[currentDate] or {}
     local lastDate, logSize, counter = _, NonContiguousCount(DAS.todaysLog), 0 
 
@@ -403,6 +406,7 @@ local function handleLog(forceReset)
         end
     end
     
+    local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 -- has to be a local var, lua error if not
     if (not afterEight) and DAS.todaysLog == {} and lastDate ~= dateString then 
         DAS.todaysLog = DAS.globalSettings.completionLog[lastDate]
     end
@@ -433,10 +437,6 @@ function DailyAutoShare_Initialize(eventCode, addonName)
     -- local timetoreset = (GetTimeStamp() - 60*60*7)%86400
     -- zo_callLater(resetQuests, timetoreset)
     
-    -- remove this soon
-    if DAS.GetSettings().questShareString:find("<<3>>") then
-        DAS.GetSettings().questShareString = defaults.questShareString
-    end
     
     handleLog()
     zo_callLater(OnPlayerActivated, 5000)

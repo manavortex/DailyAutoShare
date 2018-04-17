@@ -101,17 +101,17 @@ function DAS.GetAutoAcceptInvite()
 	return DAS.settings.autoAcceptInvite
 end
 
-local function OnGroupInvite()
-
+local function autoAcceptInvite()
+    AcceptGroupInvite()
 end
 
 function DAS.SetAutoAcceptInvite(value)
     d("DAS.SetAutoAcceptInvite(" .. tostring(value)..")")
 	DAS.settings.autoAcceptInvite = value
     if value then
-        EVENT_MANAGER:RegisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
+        EVENT_MANAGER:RegisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, autoAcceptInvite)
     else 
-        EVENT_MANAGER:UnregisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
+        EVENT_MANAGER:UnregisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, autoAcceptInvite)
     
     end
 end
@@ -390,8 +390,9 @@ function DAS.GetCompleted(questName)
  end
 function DAS.LogQuest(questName, completed)
 	if nil == questName then return end
-	local settings 	 	=  getSettingsArray()
-	local afterEight 	= (timeStringNumber > 08) -- 08:17:02
+	local settings 	 	=  getSettingsArray()    
+	timeStringNumber = timeStringNumber or tonumber(GetTimeString():sub(1,2))
+	local afterEight 	= (timeStringNumber >= 8) -- 08:17:02 - reset is at 8
     for questId, questData in pairs(settings) do
         if questData.afterEight ~= afterEight then 
             ZO_ClearTable(settings)
