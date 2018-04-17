@@ -88,16 +88,16 @@ function DAS.SetTooltipRight(value)
 end
 
 function DAS.GetQuestShareDelay()
-	return GetSettings.questShareDelay
+	return GetSettings().questShareDelay
 end
 function DAS.SetQuestShareDelay(value)
-	GetSettings.questShareDelay = value
+	GetSettings().questShareDelay = value
 end
 function DAS.GetGroupInviteDelay()
-	return GetSettings.groupInviteDelay
+	return GetSettings().groupInviteDelay
 end
 function DAS.SetGroupInviteDelay(value)
-	GetSettings.groupInviteDelay = value
+	GetSettings().groupInviteDelay = value
 end
 
 -- called from settings
