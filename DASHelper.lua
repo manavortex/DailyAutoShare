@@ -32,9 +32,19 @@ local function shareQuestQueue()
     zo_callLater(shareQuestQueue, DAS.GetQuestShareDelay())
 end
 
+local allDailyQuestIds = DAS_QUEST_IDS
+
 function DAS.TryShareActiveDaily()
     if not DAS.GetAutoShare() then return end
-    local activeQuestIndices = DAS.GetActiveQuestIndices() 
+    local zoneQuests = DAS.GetZoneQuests(zoneId)
+	local activeQuestIndices = {}
+	local questLabel
+	for i=1, #DAS.labels do
+		questLabel = DAS.labels[i]
+		if (questLabel.dataQuestState == DAS_STATUS_ACTIVE) then
+			table.insert(activeQuestIndices, questLabel.dataJournalIndex)
+		end
+	end
     for _, questIndex in ipairs(activeQuestIndices) do
         if IsValidQuestIndex(questIndex) and not table.contains(questQueue, questIndex) then 
            table.insert(questQueue, questIndex)

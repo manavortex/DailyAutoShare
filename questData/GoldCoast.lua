@@ -3,6 +3,7 @@ DAS.bingo 		    = DAS.bingo 	    or {}
 
 
 local zoneId	= 823
+local zoneId2	= 825 -- Hrota Cave
 
 
 local tbl = {}
@@ -13,7 +14,7 @@ table.insert(tbl, GetString(DAS_DB_GOOD))
 table.insert(tbl, GetString(DAS_DB_EVIL))
 
 DAS.shareables[zoneId] = tbl
-DAS.shareables[825] = DAS.shareables[zoneId]
+DAS.shareables[zoneId2] = DAS.shareables[zoneId]
 
 local tbl2 = {}
 table.insert(tbl2, {[1] = "mino", [2] = "m"})
@@ -22,7 +23,7 @@ table.insert(tbl2, {[1] = "good", [2] = "common", [3] = "cg"})
 table.insert(tbl2, {[1] = "evil", [2] = "buried", [3] = "be"})
 
 DAS.makeBingoTable(zoneId, tbl2) 
-DAS.bingo[825] = DAS.bingo[zoneId]
+DAS.bingo[zoneId2] = DAS.bingo[zoneId]
 
 
 DAS.questStarter[zoneId] = {

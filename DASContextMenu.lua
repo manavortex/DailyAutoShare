@@ -25,6 +25,17 @@ local function getAnchorPos(control)
 	return	TOPLEFT, TOPRIGHT
 end
 
+local function spamChat(questName, bingoString)
+    if CHAT_SYSTEM.textEntry.editControl:HasFocus() then
+		CHAT_SYSTEM.textEntry.editControl:Clear()
+	end
+    local chatInputString = bingoString
+    if DAS.GetAutoInvite() then
+        chatInputString = zo_strformat(DAS.GetSettings().questShareString, questNames, bingoString) 
+    end
+    StartChatInput(chatInputString, CHAT_CHANNEL_ZONE)
+end
+
 function DAS.OnRightClick(control, verbose)
 	
 	if nil == control then return end
@@ -42,18 +53,12 @@ function DAS.OnRightClick(control, verbose)
         SetMenuMinimumWidth(185)
 		if control.dataQuestState ~= DAS_STATUS_COMPLETE then
 			AddCustomMenuItem(GetString(DAS_SI_SPAM_SINGLE), 
-				function() 
-					DAS.SpamChat(nil, questName)
+				function()
+					spamChat(questName, bingoString)
 				end, 
 				MENU_ADD_OPTION_LABEL
 			)
 		end	
-		AddCustomMenuItem(GetString(DAS_SI_SPAM_VERBOSE), 
-			function() 
-					DAS.SpamChat(true, questName)
-				end, 
-				MENU_ADD_OPTION_LABEL
-		)
 		if IsValidQuestIndex(control.dataJournalIndex) then
 			AddCustomMenuItem(GetString(DAS_SI_SHARE), 
 				function() ShareQuest(journalIndex) end, 
@@ -79,7 +84,7 @@ function DAS.OnRightClick(control, verbose)
 			AddCustomMenuItem(GetString(key), 
 				function() 
                     DAS.ToggleQuest(control)                     
-					DAS.RefreshLabels()
+					zo_callLater(DAS.RefreshLabels, 500)
                 end, 
 				MENU_ADD_OPTION_LABEL
 			)

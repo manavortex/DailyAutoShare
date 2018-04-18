@@ -137,15 +137,3 @@ function DAS.GetOpenQuestNames()
 	return ret
 end
 
-function DAS.GetActiveQuestIndices(zoneId)
-    local zoneQuests = DAS.GetZoneQuests(zoneId)
-	local ret = {}
-	local questLabel
-	for i=1, #DAS.labels do
-		questLabel = DAS.labels[i]
-		if (questLabel.dataQuestState == DAS_STATUS_ACTIVE) then
-			table.insert(ret, questLabel.dataJournalIndex)
-		end
-	end
-	return ret
-end
