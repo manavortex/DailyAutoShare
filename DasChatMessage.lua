@@ -87,7 +87,7 @@ function DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fro
     
     if isPlayerName then 
         local groupStatus = IsUnitGrouped(unittagplayer) 
-        if groupStatus and DAS.GetGroupLeaveOnNewSearch() then 
+        if groupStatus and not channelTypes[channelType] and DAS.GetGroupLeaveOnNewSearch() then 
             GroupLeave() 
         else
             DAS.TryTriggerAutoAcceptInvite()        
