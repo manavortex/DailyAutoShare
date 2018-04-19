@@ -93,7 +93,7 @@ function DAS.FindInList(array, item)
 end
 
 function DAS.TryTriggerAutoAcceptInvite()
-	if DAS.GetAutoAcceptInviteInterval() then
+	if DAS.GetAutoAcceptInviteInterval() > 0 then
 		DAS.SetAutoAcceptInvite(true)
 		zo_callLater(DAS.SetAutoAcceptInvite, DAS.GetAutoAcceptInviteInterval()*1000)
 	end

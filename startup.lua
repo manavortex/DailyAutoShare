@@ -3,7 +3,7 @@ DAS                         = DailyAutoShare
 local DailyAutoShare        = DailyAutoShare
 
 DAS.name                    = "Daily Autoshare"
-DAS.version                 = "3.1.2"
+DAS.version                 = "3.1.3"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -327,7 +327,7 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
     zo_callLater(function()
         DAS.SetAutoInvite(autoInvite)	
         DAS.RefreshControl(true)
-    end, 1000)
+    end, 3000)
 end
 
 local function deleteYesterdaysLog()

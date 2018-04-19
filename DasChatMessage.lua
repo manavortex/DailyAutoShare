@@ -72,7 +72,7 @@ function DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fro
     local isPlayerName = fromDisplayName:find(DAS.pdn)
     
     -- if we aren't listening, or if we are listening and the message's from us, ignore it
-    if not channelTypes[channelType] or (channelTypes[channelType] and isPlayerName) then return end
+    if not (channelTypes[channelType] or isPlayerName) then return end
     
     -- if it's a group message, react to the group message
     if (channelType == CHAT_CHANNEL_PARTY) and (messageText:find(stringShare) or messageText:find(stringQuest)) then
@@ -89,7 +89,7 @@ function DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fro
         local groupStatus = IsUnitGrouped(unittagplayer) 
         if groupStatus and DAS.GetGroupLeaveOnNewSearch() then 
             GroupLeave() 
-        elseif groupStatus then 
+        else
             DAS.TryTriggerAutoAcceptInvite()        
         end    
         return
