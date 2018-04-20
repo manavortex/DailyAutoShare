@@ -30,7 +30,7 @@ table.insert(tbl2, {[1] = "cori",   [2] = "nb"})
 table.insert(tbl2, {[1] = "dolmen", [2] = "zan", [3] = "dol",   [4] = "ud"})
 table.insert(tbl2, {[1] = "ogre",   [2] = "mad", [3] = "shrek"})
 
-table.insert(tbl2, "harpy")
+table.insert(tbl2, {[1] = "eggs",   [2] = "harpy"})
 table.insert(tbl2, "spirits")
 table.insert(tbl2, "durzog")
 table.insert(tbl2, {[1] ="dwemer",  [2] = "parts"})
