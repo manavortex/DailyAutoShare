@@ -303,7 +303,7 @@ function DAS.CreateMenu(savedVars, defaults)
 			},
 		},
 		
-		
+        
 		{ -- header: Use global variables?
 			type    = "header",
 			name    = "User UI settings"
@@ -439,7 +439,6 @@ function DAS.CreateMenu(savedVars, defaults)
 			type    = "header",
 			name    = "automatically..."
 		},
-
 		{ -- auto-track
 			type    = "checkbox",
 			tooltip = "Auto-track active daily quest?",
@@ -447,7 +446,6 @@ function DAS.CreateMenu(savedVars, defaults)
 			getFunc = function() return DAS.GetAutoTrack() end,
 			setFunc = function(value) DAS.SetAutoTrack(value) end
 		},
-
 		{ -- auto-accept
 			type    = "checkbox",
 			tooltip = "Accept repeatable quest if they are shared?",
@@ -455,14 +453,13 @@ function DAS.CreateMenu(savedVars, defaults)
 			getFunc = function() return DAS.GetAutoAcceptShared() end,
 			setFunc = function(value) DAS.SetAutoAcceptShared(value) end
 		},
-		{ -- auto-accept invites?
+		{ -- accept dailies from questgiver
 			type    = "checkbox",
 			tooltip = "Skip quest accept dialogue? \n Needs localization to work",
 			name    = "accept dailies from questgiver?",
 			getFunc = function() return DAS.GetSettings().autoAcceptQuest end,
 			setFunc = function(value) DAS.GetSettings().autoAcceptQuest = value end
 		},
-
 		{ --auto-invite
 			type    = "checkbox",
 			tooltip = "Are you the active kind? Check this box to auto-invite",
@@ -470,14 +467,13 @@ function DAS.CreateMenu(savedVars, defaults)
 			getFunc = function() return DAS.GetAutoInvite() end,
 			setFunc = function(value) DAS.SetAutoInvite(value) end
 		},
-		{ --auto-invite
+		{ --Stop inviting
 			type    = "checkbox",
 			tooltip = "Stop inviting when you leave a group?",
 			name    = "stop inviting when the group disbands",
 			getFunc = function() return DAS.GetStopInviteOnDegroup() end,
 			setFunc = function(value) DAS.SetStopInviteOnDegroup(value) end
 		},
-
 		{ --auto-leave
 			type    = "checkbox",
 			tooltip = "Automatically leave group when you're searching while still grouped?",
@@ -487,8 +483,10 @@ function DAS.CreateMenu(savedVars, defaults)
 		},
 		{ -- auto-accept interval
 			type    = "slider",
-			tooltip = "After using the DAS spam button, auto-accept invites for how many seconds?",
-			name    = "Accept auto-invite after hitting the spam buton for",
+			tooltip = ("After you've been looking for quest share, " 
+                       .. "how long do you want to automatically accept group-invites?\n" 
+                       .. "Set to 0 to disable"),
+			name    = "Accept auto-invite after +bingo in zone for ... seconds",
 			min     = 0,
 			max     = 60,
 			getFunc = function() return DAS.GetAutoAcceptInviteInterval() end,

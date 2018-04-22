@@ -122,8 +122,14 @@ function DAS.SetAutoAcceptInvite(value)
         EVENT_MANAGER:RegisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, autoAcceptInvite)
     else 
         EVENT_MANAGER:UnregisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, autoAcceptInvite)
-    
     end
+end
+
+function DAS.GetGroupLeaveOnNewSearch()
+
+end
+function DAS.SetGroupLeaveOnNewSearch(value)
+
 end
 
 function DAS.GetMinimized()
@@ -165,9 +171,9 @@ function DAS.GetAutoInvite()
 	return GetSettings().autoInvite
 end
 function DAS.SetAutoInvite(value)
-    if value then
-        value = IsUnitSoloOrGroupLeader('player') and DAS.HasActiveDaily()
-    end
+    
+    value = value and IsUnitSoloOrGroupLeader('player') and DAS.HasActiveDaily()
+    
 	GetSettings().autoInvite = value
     DAS.autoInviting = value
 	DAS.SetButtonStates()
@@ -221,6 +227,13 @@ function DAS.GetAutoLeave()
 end
 function DAS.SetAutoLeave(value)
 	GetSettings().autoLeave = value
+end
+
+function DAS.GetResetAutoShareOnNewGroup()
+    return GetSettings().resetAutoShareOnNewGroup
+end
+function DAS.SetResetAutoShareOnNewGroup(value)
+    GetSettings().resetAutoShareOnNewGroup = value
 end
 
 function DAS.GetUpsideDown()

@@ -161,6 +161,9 @@ local strings  = {
     DAS_QUEST_CAP_ALVUR     = "Alvur Baren",
     DAS_QUEST_CAP_BOLGRUL   = "Bolgrul",
     
+    DAS_QUEST_SS_TANO       = "Justiciar Tanorian",
+    DAS_QUEST_SS_FARO       = "Justiciar Farowel",
+    
     -- don't need translation for anyone but the russians - I think
         
     DAS_QUEST_DB_LARONEN    = "Laronen",

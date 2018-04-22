@@ -164,3 +164,39 @@ DAS.questFinisher[zoneId] = {
     [GetString(DAS_QUEST_M_RIVYN)]      = true,  -- Battlegrounds
 }
 
+
+DAS.questIds[zoneId] = {
+    -- Morrowind dailies
+	[5924]  = true, -- "Relics of Yasammidan",
+	[5925]  = true, -- "Relics of Assarnatamat",
+	[5926]  = true, -- "Relics of Maelkashishi",
+	[5927]  = true, -- "Relics of Ashurnabitashpi",
+	[5928]  = true, -- "Relics of Ebernanit",
+	[5929]  = true, -- "Relics of Dushariran",
+	[5930]  = true, -- "Relics of Ashalmawia",
+	
+	[5907]  = true, -- "Great Zexxin Hunt",
+	[5908]  = true, -- "Tarra-Suj Hunt",
+	[5909]  = true, -- "Writhing Sveeth Hunt",
+	[5910]  = true, -- "Mother Jagged-Claw Hunt",
+	[5911]  = true, -- "Ash-Eater Hunt",
+	[5912]  = true, -- "Old Stomper Hunt",
+	[5913]  = true, -- "King Razor-Tusk Hunt",
+
+	-- Cave dailies (Hall of Justice)
+	[5956]  = true, -- "Daedric Disruptions",
+	[5958]  = true, -- "Unsettled Syndicate",
+	[5961]  = true, -- "Planting Misinformation",
+	[5962]  = true, -- "Kwama Conundrum",
+	[5934]  = true, -- "Tax Deduction",
+	[5915]  = true, -- "Tribal Troubles",
+	[5958]  = true, -- "Unsettled Syndicate",
+		
+	-- World boss dailies (Hall of Justice)
+	[5916]  = true, -- "The Anxious Apprentice",
+	[5918]  = true, -- "A Creeping Hunger",
+	[5865]  = true, -- "Culling the Swarm",
+	[5866]  = true, -- "Oxen Free",
+	[5904]  = true, -- "Salothan's Curse",
+	[5906]  = true, -- "Siren's Song",
+}

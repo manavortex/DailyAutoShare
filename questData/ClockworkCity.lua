@@ -182,3 +182,29 @@ DAS.questFinisher[zoneId] = {
 }
 DAS.questFinisher[zoneId2] = DAS.questFinisher[zoneId]
 DAS.questFinisher[zoneId3] = DAS.questFinisher[zoneId]
+
+
+DAS.questIds[zoneId] = {
+    [6076]	 = true, -- Inciting the Imperfect, 
+	[6077]	 = true, -- A Fine-Feathered Foe, 
+	
+	[6039]	 = true, -- Loose Strands, 
+	[6040]	 = true, -- A Sticky Solution, 
+	[6041]	 = true, -- Enchanted Accumulation, 
+	[6038]	 = true, -- A Daily Grind, 
+	[6042]	 = true, -- A Bitter Pill, 
+	[6037]	 = true, -- Fuel for our Fires, 	
+	
+	[6088]	 = true, -- Changing the Filters, 
+	[6081]	 = true, -- Oiling the Fans, 
+	[6089]	 = true, -- Replacing the Commutators, 
+	[6080]	 = true, -- A Shadow Malfunction, 
+	[6073]	 = true, -- A Shadow Misplaced, 
+	[6079]	 = true, -- Again Into the Shadows, 
+	
+	[6110]	 = true, -- Glitter and Gleam, 
+	[6106]	 = true, -- A Matter of Tributes, 
+	[6070]	 = true, -- Nibbles and Bits, 
+	[6071]	 = true, -- Morsels and Pecks, 
+	[6072]	 = true, -- A Matter of Respect, 
+}

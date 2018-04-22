@@ -69,7 +69,7 @@ function DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fro
     -- ignore all chat channels that aren't set
     if nil == channelTypes[channelType] then return end
     
-    local isPlayerName = fromDisplayName:find(DAS.pdn)
+    local isPlayerName = fromDisplayName:find(DAS.pdn) 
     
     -- if we aren't listening, or if we are listening and the message's from us, ignore it
     if not (channelTypes[channelType] or isPlayerName) then return end
@@ -87,10 +87,11 @@ function DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fro
     
     if isPlayerName then 
         local groupStatus = IsUnitGrouped(unittagplayer) 
-        if groupStatus and not channelTypes[channelType] then --and DAS.GetGroupLeaveOnNewSearch() then 
-            -- GroupLeave() 
-            return
-        else
+        if groupStatus and not channelTypes[channelType] then 
+            if not DAS.GetAutoLeave() then return end
+            GroupLeave()
+            zo_callLater(DAS.TryTriggerAutoAcceptInvite, 5000)
+        elseif not groupStatus then
             DAS.TryTriggerAutoAcceptInvite()        
         end    
         return

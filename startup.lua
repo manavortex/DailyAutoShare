@@ -2,8 +2,8 @@ DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
 local DailyAutoShare        = DailyAutoShare
 
-DAS.name                    = "Daily Autoshare"
-DAS.version                 = "3.1.4"
+DAS.name                    = "DailyAutoshare"
+DAS.version                 = "3.1.5"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -12,9 +12,9 @@ DAS.shareables   	        = {}
 DAS.bingo 			        = {}
 DAS.subzones 		        = {}
 
-DAS.questFinisher      = {}
-DAS.questStarter       = {}
-
+DAS.questFinisher           = {}
+DAS.questStarter            = {}
+DAS.questIds                = {}
 DAS.channelTypes 	        = {
     [CHAT_CHANNEL_PARTY]    = true, 
     [CHAT_CHANNEL_SAY ]     = false, 
@@ -102,9 +102,12 @@ local defaults = {
 	autoAcceptQuest		        = true,
 	autoAcceptShared 			= true,
 	autoDeclineShared 			= false,
+	autoHide 					= false,
+	autoMinimize 				= false,
+	autoShare 					= true,
 	autoAcceptAllDailies 		= false,
 	autoInvite 					= false,
-	autoLeave 					= true,
+	autoLeave 					= false,
 	useGlobalSettings 			= true,
 	minimised 					= false,
 	locked 						= false,
@@ -112,11 +115,9 @@ local defaults = {
 	fontScale					= 1,
 	tooltipRight 				= false,
 	upsideDown 					= false,
-	autoHide 					= false,
-	autoMinimize 				= false,
-	autoShare 					= true,
-	hideCompleted				= false,
+    hideCompleted				= false,
 	startupMinimized			= true,
+	resetAutoShareOnNewGroup    = true,
 	lastLookingFor 				= "",
 	guildInviteNumber 			= 1,
 	groupInviteDelay			= 500,
@@ -127,8 +128,9 @@ local defaults = {
     ["tracked"] = {
 		[684] = true,
 		[823] = true,
-		[849] = true,	-- Vvardenfell
+		[849] = true,	    -- Vvardenfell
 		[181] = false,
+		[1011] = false,     -- Summerset
 	},
 }
 
@@ -136,10 +138,15 @@ local function pointerUpSubzones()
     
     -- Gold Coast
     defaults[825]                       = defaults[823]
+    defaults[826]                       = defaults[823]
+    defaults.tracked[825]                       = defaults.tracked[823]
+    defaults.tracked[826]               = defaults.tracked[823]
     
     -- Capitals
     defaults[19]                       = defaults[57]
     defaults[383]                      = defaults[57]
+    defaults.tracked[19]               = defaults.tracked[57]
+    defaults.tracked[383]              = defaults.tracked[57]
     
     -- Clockwork City
     defaults[981]                       = defaults[980]
@@ -220,8 +227,16 @@ DAS.activeZoneQuests = {}
 --==============================
 
 local function OnGroupTypeChanged(eventCode, unitTag)
-	if IsUnitGrouped("player") or not DAS.GetStopInviteOnDegroup() then return end
-	DAS.SetAutoInvite(false)
+	if IsUnitGrouped("player") then 
+        if not DAS.GetAutoShare() and DAS.GetResetAutoShareOnNewGroup() then 
+            DAS.SetAutoShare(true)
+        end
+    else
+        if DAS.GetStopInviteOnDegroup() then 
+            DAS.SetAutoInvite(false)
+        end
+    end 
+	
 end
 
 local function OnQuestAdded(eventCode, journalIndex, questName, objectiveName)
@@ -327,7 +342,7 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
     zo_callLater(function()
         DAS.SetAutoInvite(autoInvite)	
         DAS.RefreshControl(true)
-    end, 3000)
+    end, 5000)
 end
 
 local function deleteYesterdaysLog()
@@ -341,6 +356,8 @@ local function deleteYesterdaysLog()
 end
 
 local function hookQuestTracker()
+    -- pts fix
+    if nil == QUEST_TRACKER then return end
 	local function refreshLabels()
 		DAS.RefreshLabels(false, true)
 	end
@@ -360,21 +377,21 @@ local function RegisterEventHooks()
 	SCENE_MANAGER:GetScene("hudui"):AddFragment(DailyAutoShare.Fragment)
 	hookQuestTracker()
 	
-	em:RegisterForEvent("DailyAutoshare", EVENT_PLAYER_ACTIVATED, 		OnPlayerActivated)
+	em:RegisterForEvent(DAS.name, EVENT_PLAYER_ACTIVATED, 		OnPlayerActivated)
 	
-	em:RegisterForEvent("DailyAutoshare", EVENT_QUEST_ADDED, 			OnQuestToolUpdate)
-	em:RegisterForEvent("DailyAutoshare", EVENT_QUEST_REMOVED, 			OnQuestRemoved)
-	em:RegisterForEvent("DailyAutoshare", EVENT_TRACKING_UPDATE, 		OnQuestToolUpdate)	
+	em:RegisterForEvent(DAS.name, EVENT_QUEST_ADDED, 			OnQuestToolUpdate)
+	em:RegisterForEvent(DAS.name, EVENT_QUEST_REMOVED, 			OnQuestRemoved)
+	em:RegisterForEvent(DAS.name, EVENT_TRACKING_UPDATE, 		OnQuestToolUpdate)	
 	
-	em:RegisterForEvent("DailyAutoshare", EVENT_QUEST_ADDED, 			OnQuestAdded)
-	em:RegisterForEvent("DailyAutoshare", EVENT_QUEST_REMOVED, 			OnQuestRemoved)
-	em:RegisterForEvent("DailyAutoshare", EVENT_QUEST_SHARED, 			OnQuestShared)
+	em:RegisterForEvent(DAS.name, EVENT_QUEST_ADDED, 			OnQuestAdded)
+	em:RegisterForEvent(DAS.name, EVENT_QUEST_REMOVED, 			OnQuestRemoved)
+	em:RegisterForEvent(DAS.name, EVENT_QUEST_SHARED, 			OnQuestShared)
 	
-	
-	em:RegisterForEvent("DailyAutoshare", EVENT_UNIT_CREATED,	 		OnUnitCreated)
-	em:RegisterForEvent("DailyAutoshare", EVENT_UNIT_DESTROYED, 		OnGroupTypeChanged)
+	em:RegisterForEvent(DAS.name, EVENT_GROUP_TYPE_CHANGED,     OnGroupTypeChanged)
+	em:RegisterForEvent(DAS.name, EVENT_UNIT_CREATED,	 		OnUnitCreated)
+	em:RegisterForEvent(DAS.name, EVENT_UNIT_DESTROYED, 		OnGroupTypeChanged)
 
-	em:RegisterForEvent("DailyAutoShare", EVENT_CHAT_MESSAGE_CHANNEL,   OnChatMessage)
+	em:RegisterForEvent(DAS.name, EVENT_CHAT_MESSAGE_CHANNEL,   OnChatMessage)
 	-- DasControl:OnMoveStop
 	-- DailyAutoShare.SaveControlLocation(self)
 end

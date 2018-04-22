@@ -1,7 +1,7 @@
 DAS.shareables 	        = DAS.shareables            or {}
 DAS.bingo 		        = DAS.bingo 	            or {}
-DAS.questFinisher  = DAS.questFinisher    or {}
-DAS.questStarter   = DAS.questStarter     or {}
+DAS.questFinisher       = DAS.questFinisher         or {}
+DAS.questStarter        = DAS.questStarter          or {}
 
 local zoneId	= 684
 
@@ -23,18 +23,38 @@ DAS.shareables[zoneId] = {
 }
 local tbl2 = {}
 
+DAS.questIds[zoneId] = {
+    -- wrothgar dailies
+	[5518]  = true, -- "Meat for the Masses",
+	[5519]  = true, -- "Scholarly Salvage",
+	[5520]  = true, -- "Flames of Forge and Fallen",
+	[5521]  = true, -- "Nature's Bounty",
+	[5522]  = true, -- "Heresy of Ignorance",
+	[5523]  = true, -- "Snow and Steam",
+	[5524]  = true, -- "Reeking of Foul Play",
+
+	
+	-- wrothgar single
+	[5507]  = true, -- "Breakfast of the Bizarre",
+	[5515]  = true, -- "Free Spirits",
+	[5514]  = true, -- "Getting a Bellyful",
+	[5509]  = true, -- "Parts of the Whole",
+	[5504]  = true, -- "The Skin Trade",
+	[5505]  = true, -- "Fire in the Hold",
+}
+
 table.insert(tbl2, {[1] = "poa",    [2] = "poacher"})
 table.insert(tbl2, "edu")
 table.insert(tbl2, "nyz")
 table.insert(tbl2, {[1] = "cori",   [2] = "nb"})
-table.insert(tbl2, {[1] = "dolmen", [2] = "zan", [3] = "dol",   [4] = "ud"})
+table.insert(tbl2, {[1] = "zan",    [2] = "dolmen", [3] = "dol",   [4] = "ud"})
 table.insert(tbl2, {[1] = "ogre",   [2] = "mad", [3] = "shrek"})
 
 table.insert(tbl2, {[1] = "eggs",   [2] = "harpy"})
 table.insert(tbl2, "spirits")
 table.insert(tbl2, "durzog")
 table.insert(tbl2, {[1] ="dwemer",  [2] = "parts"})
-table.insert(tbl2, {[1] = "wolf",   [2] = "skintrade"})
+table.insert(tbl2, {[1] = "skin",   [2] = "skintrade", [3] = "wolf"})
 table.insert(tbl2, {[1] = "bandit", [2] = "fire"})
 
 DAS.makeBingoTable(zoneId, tbl2) 
