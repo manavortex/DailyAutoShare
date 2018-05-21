@@ -9,32 +9,6 @@ function DAS.GetLogIndex(questName)
 	return DAS.QuestNameTable[questName] or 0
 end
 
--- DAS_STATUS_COMPLETE 	= 0, 
--- DAS_STATUS_OPEN 		= 1, 
--- DAS_STATUS_ACTIVE 	= 2, 
--- DAS_STATUS_TRACKED 	= 3
-local refreshedRecently = false
-function refreshQuestLogs(forceOverride)
-
-	forceOverride 			= forceOverride or DAS.QuestIndexTable == {} or DAS.QuestNameTable == {}
-	if forceOverride 		then refreshedRecently = false end
-	if refreshedRecently 	then return end
-	DAS.QuestIndexTable		= {}
-	DAS.QuestNameTable		= {}
-	
-	for i=1, 25 do
-		if IsValidQuestIndex(i) then
-			journalQuestName, _, _, _, _, _, tracked = GetJournalQuestInfo(i)								
-			journalQuestName = zo_strformat(journalQuestName)
-			DAS.QuestIndexTable[i] = journalQuestName
-			DAS.QuestNameTable[journalQuestName] = i			
-		end
-	end
-    DAS.RefreshFullBingoString()
-	zo_callLater(function() refreshedRecently = false end, 5000)
-
-end
-DAS.RefreshQuestLogs = refreshQuestLogs
 
 local function getEnglishQuestNames(activeQuestNames)
 	activeQuestNames = activeQuestNames or DAS.GetZoneQuests()
@@ -67,7 +41,9 @@ local function generateQuestSpam(questNames)
     local ret = ""
     for _, questName in ipairs(questNames) do 
         bingoString = DAS.GetBingoStringFromQuestName(questName) 
-        ret = ret .. ((("" == bingoString) and "") or bingoString .. " ")
+        if not ret:find(bingoString) then 
+            ret = ret .. ((("" == bingoString) and "") or bingoString .. " ")
+        end
     end
     return ret
 end	

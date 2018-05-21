@@ -10,7 +10,11 @@ local strings  = {
 	DAS_SI_SHARE_FALSE 		= "Not automatically sharing your active daily, most likely someone yelled at you (Right-click to share anyway)",
 	DAS_SI_SPAM 			= "Click to spam in zone chat",
 	DAS_SI_SPAM_VERBOSE 	= "Click to ask for quest shares",
-		
+	
+    DAS_TOGGLE_SUBLIST      = "Click to open quest list",
+    
+    DAS_MENU_ACTIV_EXPLAIN  = "Activate or deactivate for zones below.",
+	
 	DAS_SI_HIDE		 		= "Hide DailyAutoShare",
 	DAS_SI_TOGGLE	 		= "Toggle hidden",
 	DAS_SI_MINIMISE	 		= "Toggle minimised",	
@@ -118,6 +122,27 @@ local strings  = {
 	DAS_NL_AURIDON		    = "Mud Ball Merriment",
 	DAS_NL_EASTMARCH	    = "Snow Bear Plunge",
 	
+    -- guild
+    DAS_GUILD_ANCHORS       = "Dark Anchors in ",
+    DAS_GUILD_MADNESS       = "Madness in ",
+
+    DAS_UD_ALIKR            = "Molten Pearls of Alik'r Desert",
+    DAS_UD_AURID            = "Veiled Darkness in Auridon",
+    DAS_UD_BANGK            = "Ancient Armaments in Bangkorai",
+    DAS_UD_DESHA            = "Ancestor Wards in Deshaan",
+    DAS_UD_EASTM            = "Icy Intrigue in Eastmarch",
+    DAS_UD_GLENU            = "Red Rook Ransack in Glenumbra",
+    DAS_UD_GRAHT            = "Ayleid Trinkets in Grahtwood",
+    DAS_UD_GREEN            = "Culinary Justice in Greenshade",
+    DAS_UD_MALAB            = "The Spirit Trap in Malabal Tor",
+    DAS_UD_REAPE            = "Mascot Theft in Reaper's March",
+    DAS_UD_RIFT             = "Inflamed Pyres of the Rift",
+    DAS_UD_RIVEN            = "Darkness Blooms in Rivenspire",
+    DAS_UD_SHADO            = "Give and Take in Shadowfen",
+    DAS_UD_STONE            = "Dwarven Relics of Stonefalls",
+    DAS_UD_STORM            = "Cursed Baubles of Stormhaven",
+    
+    
 	-- craglorn
 	-- lower
 	DAS_CRAG_SARA 		    = "Critical Mass",
@@ -163,6 +188,11 @@ local strings  = {
     
     DAS_QUEST_SS_TANO       = "Justiciar Tanorian",
     DAS_QUEST_SS_FARO       = "Justiciar Farowel",
+    
+    DAS_QUEST_CRY_BATTLE    = "Battle Mission Board",
+    DAS_QUEST_CRY_BOUNTY    = "Bounty Mission Board",
+    DAS_QUEST_CRY_SCOUT     = "Scouting Mission Board",
+    DAS_QUEST_CRY_WARFR     = "Warfront Mission Board",
     
     -- don't need translation for anyone but the russians - I think
         

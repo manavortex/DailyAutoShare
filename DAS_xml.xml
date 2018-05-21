@@ -73,22 +73,18 @@
 							
 					</Controls>
 				</Control> 
-				<Tooltip name="DailyAutoShare_Tooltip" inherits="ZO_BaseTooltip">					
+				<Tooltip name="DailyAutoShare_Tooltip" inherits="ZO_BaseTooltip" tier="1">
 					<Anchor point="TOPLEFT" relativeTo="DasList" relativePoint="TOPLEFT" offsetX="0" offsetY="-50"/>
 				</Tooltip>
 				
-				<Control name="DasList" >	
-					<Dimensions x="330" y="395" />
+				<Control name="DasList" resizeToFitDescendents="true" >	
+					<Dimensions x="330" />
 					<Anchor point="TOPLEFT" relativeTo="DasHandle" relativePoint="BOTTOMLEFT" offsetX="0" offsetY="0" />
 					<Controls>
-						<Backdrop name="DasList_Backdrop" edgeColor="000000" inherits="ZO_DefaultBackdrop" alpha="1" >
-								<!-- Change window size here -->
-								<Anchor point="TOPLEFT" relativeTo="DasList" relativePoint="TOPLEFT" 		 offsetX="0" offsetY="0"  />					
-								<Anchor point="BOTTOMRIGHT" relativeTo="DasList" relativePoint="BOTTOMRIGHT" offsetX="0" offsetY="0"  />					
-						</Backdrop>
+						<Backdrop name="$(parent)_BG" inherits="ZO_DefaultBackdrop"><AnchorFill/></Backdrop>
 						<Control name="DasHeader">
 							<Anchor point="TOPLEFT" relativeTo="DasList_Backdrop" relativePoint="TOPLEFT"		offsetX="20" offsetY="15"/>
-							<Anchor point="BOTTOMRIGHT" relativeTo="DasList_Backdrop" relativePoint="TOPRIGHT" 	offsetX="-20" offsetY="30" />
+							<Anchor point="BOTTOMRIGHT" relativeTo="DasList_Backdrop" relativePoint="TOPLEFT" 	offsetX="310" offsetY="30" />
 							<Controls>
 								<Button name="DasButtonInvite"> 
 									<Dimensions x="20" y="20" />									
@@ -166,25 +162,56 @@
 								
 							</Controls>
 						</Control>					
-					</Controls>
+					
+                        <Control name="DasInvisibleFooterSpacer" mouseEnabled="false" >
+                            <Dimensions y="15" />
+                        </Control>
+                    </Controls>
 					
 				</Control>
-			</Controls>
-		</TopLevelControl>			
-		<Button name="Das_Label" font="ZoFontChat" color="ffffff" text="" wrapMode="TRUNCATE" 
+			
+                <Control name="DasSubList" hidden="true" resizeToFitDescendents="true">
+                    <Dimensions x="310" />
+					<Anchor point="LEFT" relativeTo="DasList" relativePoint="RIGHT" offsetX="10" offsetY="10" />
+                    <Controls>
+                        <Backdrop name="$(parent)_BG" inherits="ZO_DefaultBackdrop"><AnchorFill/></Backdrop>
+                        <Button name="DasButtonHideSublist" > 
+							<Dimensions x="20" y="20" />
+							<Anchor point="TOPRIGHT" relativeTo="DasSubList" relativePoint="TOPRIGHT" offsetX="-8"  offsetY="5"/>
+						
+							<Textures
+								normal		="/esoui/art/buttons/decline_up.dds"
+                                pressed		="/esoui/art/buttons/decline_down.dds"
+                                mouseOver	="/esoui/art/buttons/decline_over.dds"
+							 />	
+							<OnMouseUp>	DasSubList:SetHidden(true)</OnMouseUp>
+						</Button>
+                        
+                    </Controls>
+                </Control> 
+            </Controls>
+		</TopLevelControl>
+		
+		<Button name="Das_Label" font="ZoFontChat" text="" wrapMode="TRUNCATE" 
 			verticalAlignment="CENTER" horizontalAlignment="LEFT" alpha="0.85" hidden="true" 
-			disabled="true" virtual="true">
+			disabled="true" virtual="true" 
+            drawLayer="1">
 			<Dimensions x="350" y="30" />						
-			<FontColors
-				normalColor="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_NORMAL"
-				pressedColor="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_SELECTED"
-				mouseOverColor="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_HIGHLIGHT"
-				disabledColor="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_DISABLED"
-			/>					
+            <FontColors
+                normalColor="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_NORMAL"
+                pressedColor="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_SELECTED"
+                mouseOverColor="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_HIGHLIGHT"
+                disabledColor="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_DISABLED"
+            />
+
+            
 			<OnMouseEnter>DailyAutoShare.CreateLabelTooltip(self)</OnMouseEnter>
 			<OnMouseExit>DailyAutoShare.HideTooltip(self)</OnMouseExit>
-			<OnMouseUp>DailyAutoShare.QuestButtonClicked(self, button)</OnMouseUp>
-		</Button>			
+			<OnMouseUp>DailyAutoShare.QuestLabelClicked(self, button)</OnMouseUp>
+		</Button>	
+        <Control name="DasInvisibleFooterSpacer" mouseEnabled="false" virtual="true">
+            <Dimensions y="15" />
+        </Control>		
 	</Controls>
 		
 </GuiXml>

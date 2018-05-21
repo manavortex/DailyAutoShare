@@ -116,4 +116,35 @@ DAS_QUEST_IDS  = {
 	[5765]  = true, -- "Taken Alive",
 	[5764]  = true, -- "The Truer Fangs",
 	[5772]  = true, -- "Uncaged",
+    
+    
+    -- guild
+    [5733]  = true, -- Ancient Armaments in Bangkorai
+    [5734]  = true, -- The Spirit Trap in Malabal Tor
+    [5735]  = true, -- Ancestor Wards in Deshaan
+    [5737]  = true, -- Dwarven Relics of Stonefalls    
+    [5738]  = true, -- Ayleid Trinkets in Grahtwood
+    [5739]  = true, -- Red Rook Ransack in Glenumbra
+    
+    [5740]  = true, -- Ancestor Wards in Deshaan
+    
+    [5744]  = true, -- Mascot Theft in Reaper's March
+    [5745]  = true, -- Molten Pearls of Alik'r Desert
+    
+    [5778]  = true, -- Give and Take in Shadowfen
+    [5779]  = true, -- Icy Intrigue in Eastmarch
+    [5798]  = true, -- Veiled Darkness in Auridon
+    
+    [5800]  = true, --  Cursed Baubles of Stormhaven ??
+    [5802]  = true, -- Inflamed Pyres of the Rift
+    [5808]  = true, -- Darkness Blooms in Rivenspire
+    [5853]  = true, -- Culinary Justice in Greenshade
+    
 }
+
+for questId=5814, 5830 do -- Madness in...
+    DAS_QUEST_IDS[questId] = true
+end
+for questId=5780, 5796 do -- Dark Anchors in...
+    DAS_QUEST_IDS[questId] = true
+end

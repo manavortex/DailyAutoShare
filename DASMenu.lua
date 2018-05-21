@@ -8,12 +8,12 @@ function DAS.CreateMenu(savedVars, defaults)
     questShareDefault = defaults.questShareString
 	local LAM = LibStub:GetLibrary("LibAddonMenu-2.0")
 	local panelData = {
-		type    = "panel",
-		name    = DAS.name,
-		displayname    = name,
-	 	author = DAS.author,
-		version = DAS.version,
-		slashCommand = "/das",
+		type            = "panel",
+		name            = DAS.name,
+		displayname     = name,
+	 	author          = DAS.author,
+		version         = DAS.version,
+		slashCommand    = "/das_menu",
 	}
 
 	LAM:RegisterAddonPanel("DailyAutoShare_OptionsPanel", panelData)
@@ -34,19 +34,18 @@ function DAS.CreateMenu(savedVars, defaults)
 			type    = "checkbox",
 			tooltip = "Use the same settings for all characters?",
 			name    = "Use global configuration?",
+            width   = "half",
 			getFunc = function() return DAS.GetUseGlobalSettings() end,
 			setFunc = function(value) DAS.SetUseGlobalSettings(value) end
-			},
-		{ -- header: Show/Hide?
-			type    = "header",
-			name    = "Show/Hide?"
-		},
-		{ -- checkbox: Hide UI window
+			},    
+        { -- checkbox: Hide UI window
 			type    = "checkbox",
 			name    = "Hide UI window",
+            width   = "half",
 			getFunc = function() return DAS.GetHidden() end,
 			setFunc = function(value) DAS.SetHidden(value) end
 		},
+		
 		{ -- header: be elaborate?
 			type    = "header",
 			name    = "Throttle"
@@ -73,10 +72,15 @@ function DAS.CreateMenu(savedVars, defaults)
 			getFunc = function() return DAS.GetQuestShareDelay() end,
 			setFunc = function(value) DAS.SetQuestShareDelay(value) end
 		},
+        {
+            type    = "description",
+            title   = "Activate auto quest stuff in...",
+            text    = GetString(DAS_MENU_ACTIV_EXPLAIN),
+        },
 
 		{ -- header: activate add-on in...
 			type    = "submenu",
-			name    = "Activate auto quest stuff in...",
+			name    = "Activate",
 			controls = {
                 
 				{
@@ -275,13 +279,51 @@ function DAS.CreateMenu(savedVars, defaults)
 					getFunc = function() return DAS.GetActiveIn(888) end,
 					setFunc = function(value) DAS.SetActiveIn(888, value) end
 				},
-				{ -- checkbox: Fighters Guild dailies?
+                {
+					type        = "submenu",
+					name        = "Guild dailies",
+					controls    = {
+                        { -- checkbox: Fighters Guild dailies?
+                            type    = "checkbox",
+                            tooltip = "Fighters/Mages Guild and Undaunted dailies? This is work in progress.",
+                            name    = "Guild quests?",
+                            getFunc = function() return DAS.GetActiveIn(57) end,
+                            setFunc = function(value)   
+                                DAS.SetActiveIn(57, value) 
+                            end
+                        },
+                        { -- checkbox: Fighters' Guild
+                            type    = "checkbox",
+                            tooltip = "Enable Fighters' Guild dailies",
+                            name    = "Fighters' Guild",
+                            getFunc = function() return DAS.GetQuestListItem(57, "fg", "active") end,
+                            setFunc = function(value)   DAS.SetQuestListItem(57, "fg", "active", value) end
+                        },
+                        { -- checkbox: Mages' Guild
+                            type    = "checkbox",
+                            tooltip = "Enable Mages' Guild dailies",
+                            name    = "Mages Guild",
+                            getFunc = function() return DAS.GetQuestListItem(57, "mg", "active") end,
+                            setFunc = function(value)   DAS.SetQuestListItem(57, "mg", "active", value) end
+                        },
+                        { -- checkbox: Fighters' Guild
+                            type    = "checkbox",
+                            tooltip = "Enable Undaunted dailies",
+                            name    = "Undaunted",
+                            getFunc = function() return DAS.GetQuestListItem(57, "ud", "active") end,
+                            setFunc = function(value)   DAS.SetQuestListItem(57, "ud", "active", value) end
+                        },
+                    },
+                   
+                    
+                },
+				{ -- checkbox: Cyro
 					type    = "checkbox",
-					tooltip = "Fighters/Mages Guild and Undaunted dailies? This is work in progress.",
-					name    = "Guild quests?",
-					getFunc = function() return DAS.GetActiveIn(57) end,
-					setFunc = function(value)   
-                        DAS.SetActiveIn(57, value) 
+					tooltip = "Auto-accept and -turnin",
+					name    = "Cyrodiil",
+					getFunc = function() return DAS.GetActiveIn(181) end,
+					setFunc = function(value)
+                        DAS.SetActiveIn(181, value) 
                     end
 				},
                 
@@ -341,8 +383,8 @@ function DAS.CreateMenu(savedVars, defaults)
 					type    = "checkbox",
 					name    = "Tooltip to the right?",
 					tooltip = "Check this box to display the tooltip on the left side of the window",
-					getFunc = function() return DAS.GetTooltipRight() end,
-					setFunc = function(value) DAS.SetTooltipRight(value) end
+					getFunc = function() return DAS.GetSettings().tooltipRight end,
+					setFunc = function(value) DAS.GetSettings().tooltipRight = value end
 				},
 				{ -- checkbox: Reposition DropDown
 					type    = "checkbox",

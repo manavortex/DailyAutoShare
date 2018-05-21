@@ -26,30 +26,19 @@ function table.contains(tbl, element)
   return false
 end
 
-local function HandleGroupMessage(messageText, fromDisplayName)
-        
-    local _, found 
-    _, found = pcall(string.find, messageText, share)
-    if 	found then return DAS.TryShareActiveDaily() end
-     _, found = pcall(string.find, messageText, stopsharing)
-    if found then return DAS.SetAutoShare(false) end
-    
-    zo_callLater(HandleGroupMessage, groupDelay)
-end
-
 local channelTypes = DAS.channelTypes
 local stringPlus = "+"
 local stringAny = "+any"
 local function HandleChatMessage(messageText, fromDisplayName, calledRecursively)
     
     if not DAS.autoInviting then return end
-
+    
     local found = stringAny == messageText -- it's +any
     
     -- lower case regex
     local _, bingoCode = pcall(string.match, messageText, "[%+/]+%s*(%w+)%s?[%+/]?")
     if not found and not bingoCode then return end
-    local bingoIndex = DAS.getBingoTable()[bingoCode]
+    local bingoIndex = DAS.bingo[DAS.GetZoneId()][bingoCode]
     found = found or (nil ~= bingoIndex and DAS.activeZoneQuests[bingoIndex])
     
     if not found then return HandleChatMessage(messageText:gsub(bingoCode, ""), fromDisplayName, true) end
@@ -96,7 +85,6 @@ function DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fro
         end    
         return
     end
-          
     
     -- we're not auto inviting, nothing to do 
     if not DAS.autoInviting then return end

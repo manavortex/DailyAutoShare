@@ -28,7 +28,6 @@ DAS.makeBingoTable(zoneId, tbl2)
 DAS.bingo[zoneId2] = DAS.bingo[zoneId]
 DAS.bingo[zoneId3] = DAS.bingo[zoneId]
 
-
 DAS.questStarter[zoneId] = {
     [GetString(DAS_QUEST_DB_BOUNTY)]    = true,
 }
@@ -40,8 +39,7 @@ DAS.questFinisher[zoneId] = {
     [GetString(DAS_QUEST_DB_CODUS)]     = true,
 }
 
-DAS.questIds[zoneId] = {
-    
+DAS.questIds[zoneId] = {    
 	-- gold coast
 	[5603]  = true, -- "Buried Evil",
 	[5604]  = true, -- "The Common Good",

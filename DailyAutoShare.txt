@@ -1,7 +1,7 @@
 ## Title: DailyAutoShare
 ## Author: manavortex
-## Version: 3.1.5
-## APIVersion: 100022
+## Version: 3.2.1
+## APIVersion: 100023
 ## SavedVariables: DAS_Settings DAS_Globals
 ## OptionalDependsOn: LibStub LibCustomMenu LibAddonMenu-2.0 LibMediaProvider-1.0 pchat
 
@@ -27,16 +27,15 @@ libs\LibAddonMenu-2.0\controls\divider.lua
 libs\LibCustomTitles\LibCustomTitles.lua
 
 xml/VirtualButtons.xml
-DailyAutoShare.xml
+DAS_xml.xml
 
 questData/00_ids.lua
 
 locale/en.lua
 locale/$(language).lua
 
-$(APIVersion).lua
-
-startup.lua
+00_startup.lua
+DASHelper.lua
 
 questData/BingoClean.lua
 questData/GuildQuests.lua
@@ -49,7 +48,6 @@ questData/Cyrodiil.lua
 questData/ClockworkCity.lua
 
 DASData.lua
-DASHelper.lua
 DASUserSettingsAdapter.lua
 DasChatMessage.lua
 

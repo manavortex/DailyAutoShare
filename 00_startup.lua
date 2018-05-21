@@ -3,14 +3,16 @@ DAS                         = DailyAutoShare
 local DailyAutoShare        = DailyAutoShare
 
 DAS.name                    = "DailyAutoshare"
-DAS.version                 = "3.1.5"
+DAS.version                 = "3.2.0"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
 
 DAS.shareables   	        = {}
 DAS.bingo 			        = {}
+DAS.bingoFallback           = {}
 DAS.subzones 		        = {}
+DAS.activeZoneQuests        = {}
 
 DAS.questFinisher           = {}
 DAS.questStarter            = {}
@@ -139,7 +141,7 @@ local function pointerUpSubzones()
     -- Gold Coast
     defaults[825]                       = defaults[823]
     defaults[826]                       = defaults[823]
-    defaults.tracked[825]                       = defaults.tracked[823]
+    defaults.tracked[825]               = defaults.tracked[823]
     defaults.tracked[826]               = defaults.tracked[823]
     
     -- Capitals
@@ -193,10 +195,7 @@ local allDailyQuestIds = DAS_QUEST_IDS
 local em = EVENT_MANAGER
 
 local function debugOut(p1, p2, p3, p4, p5, p6, p7, p8)
-    if (not p2) then 
-        d(p1) 
-        return
-    end
+    if (not p2) then d(p1); return; end
     if p8 then
         d(zo_strformat("<<1>> <<2>> <<3>> <<4>> <<5>> <<6>> <<7>> <<8>>", p1, p2, p3, p4, p5, p6, p7, p8)) 
     elseif p7 then
@@ -220,23 +219,26 @@ function DAS.Report(text)
 	if not DAS.GetShutUp() then d(text) end	
 end
 
-DAS.activeZoneQuests = {}
-
 --==============================
 --======= Event hooks  =========
 --==============================
 
 local function OnGroupTypeChanged(eventCode, unitTag)
-	if IsUnitGrouped("player") then 
+	if IsUnitGrouped("player") then
         if not DAS.GetAutoShare() and DAS.GetResetAutoShareOnNewGroup() then 
             DAS.SetAutoShare(true)
         end
-    else
-        if DAS.GetStopInviteOnDegroup() then 
-            DAS.SetAutoInvite(false)
-        end
-    end 
-	
+        return
+    end
+    
+    if DAS.GetStopInviteOnDegroup() then 
+        DAS.SetAutoInvite(false)
+    end
+    
+end
+
+local function forceRefreshControl()
+    DAS.RefreshControl(true)
 end
 
 local function OnQuestAdded(eventCode, journalIndex, questName, objectiveName)
@@ -248,21 +250,22 @@ local function OnQuestAdded(eventCode, journalIndex, questName, objectiveName)
     
 	if nil ~= shareables[questName] then
 		DAS.LogQuest(questName, false)
-		zo_callLater(function() DAS.RefreshControl(true) end, 700)
+		zo_callLater(forceRefreshControl, 700)
 	end		
 end
 
 local function OnQuestShared(eventCode, questId)
+    -- d(zo_strformat("<<1>> \t <<2>>", questId, questName))
 	if not allDailyQuestIds[questId] then return end
-	local questName, _, _, displayName = GetOfferedQuestShareInfo(questId)
-	local zoneId = DAS.GetZoneId()
-	if nil ~= DAS.GetArrayEntry(DAS.shareables[zoneId], questName) then
+	local zoneQuests = DAS.questIds[DAS.GetZoneId()] or {}
+    
+	if zoneQuests[questId] then
         if DAS.GetAutoDeclineShared() then 
             DAS.Report("DailyAutoShare declined a quest for you. Type /DailyAutoShare disabledecline to stop it from doing so.")
             DeclineSharedQuest(questId)
         else
             AcceptSharedQuest(questId)
-            zo_callLater(function() DAS.RefreshControl(true) end, 500)
+            zo_callLater(forceRefreshControl, 500)
         end
     end
 end
@@ -271,45 +274,12 @@ local function OnChatMessage(eventCode, channelType, fromName, messageText, _, f
     return DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fromDisplayName)
 end
 
-DAS.bingoFallback = {}
-function DAS.makeBingoTable(zoneId, tbl) 
-	DAS.bingo[zoneId] = {}    
-    DAS.bingoFallback[zoneId] = {}
-	for key, value in pairs(tbl) do
-        if type(value) == "table" then 
-            local best = value[1]
-            for _, actualValue in ipairs(value) do
-                DAS.bingo[zoneId][actualValue] = key
-                DAS.bingoFallback[zoneId][actualValue] = best
-            end
-        else
-            DAS.bingo[zoneId][value] = key
-        end
-	end
-	return DAS.bingo[zoneId]
-end
-
-function DAS.getBingoTable(zoneId)
-    zoneId = zoneId or DAS.GetZoneId()
-    return DAS.bingo[zoneId] or {} 
-end
-
-function DAS.SetChatListenerStatus(status)
-
-    DAS.channelTypes[CHAT_CHANNEL_SAY ]     = status
-    DAS.channelTypes[CHAT_CHANNEL_YELL]     = status
-    DAS.channelTypes[CHAT_CHANNEL_ZONE]     = status
-    DAS.channelTypes[CHAT_CHANNEL_WHISPER]  = status	
-	
-end
-
 
 local function OnPlayerActivated(eventCode)
 	local active 		= DAS.GetActiveIn()	
 	DAS.SetHidden(not active)
     DAS.SetAutoInvite(DAS.GetAutoInvite()) -- disables if we aren't group lead
     DAS.SetChatListenerStatus(DAS.autoInviting)
-	DAS.RefreshControl(true)
     DAS.guildInviteText = DAS.GetGuildInviteText()
     DAS.cacheChatterData()
 end
@@ -322,31 +292,30 @@ local function OnUnitCreated(eventCode, unitTag)
 end
 
 local function OnQuestToolUpdate()
-	DAS.RefreshControl(true)
+	forceRefreshControl()
 end
-
-
 
 local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, zoneIndex, poiIndex, questId)	
 	
+    local zoneId = DAS.GetZoneId()
+    local zoneIds = DAS.questIds[zoneId] or {}
     -- is it a daily quest, and are we logging?
-    if not (allDailyQuestIds[questId] and DAS.GetActiveIn()) then return end	
+    if not (zoneIds[questId] and DAS.GetActiveIn(zoneId)) then return end	
     
 	DAS.LogQuest(questName, isCompleted)
     
     -- set auto invite off until the questlog has refreshed
 	local autoInvite = DAS.GetAutoInvite()
     DAS.SetAutoInvite(false)
-
     
     zo_callLater(function()
         DAS.SetAutoInvite(autoInvite)	
-        DAS.RefreshControl(true)
+        forceRefreshControl()
     end, 5000)
 end
 
 local function deleteYesterdaysLog()
-	-- kill yesterday's log, we don't need it	
+	-- kill yesterday's log, we don't need it
 	local currentDate = tonumber(GetDate())
 	if (nil ~= DAS.globalSettings and nil ~= DAS.globalSettings.lastLogDate) and (DAS.globalSettings.lastLogDate < currentDate) then 
 	if nil == DAS.Log then DAS.Log = {} end
@@ -355,14 +324,17 @@ local function deleteYesterdaysLog()
 	end
 end
 
+local QUEST_TRACKER = QUEST_TRACKER or FOCUSED_QUEST_TRACKER
 local function hookQuestTracker()
     -- pts fix
-    if nil == QUEST_TRACKER then return end
+    
 	local function refreshLabels()
 		DAS.RefreshLabels(false, true)
 	end
-	-- SetMapToQuestZone
-	ZO_PreHook(QUEST_TRACKER, "ForceAssist", refreshLabels)
+    
+    if nil ~= QUEST_TRACKER then        
+        ZO_PreHook(QUEST_TRACKER, "ForceAssist", refreshLabels)  
+    end
 end
 
 --==============================
@@ -401,36 +373,55 @@ local function resetQuests()
     local currentDate = tonumber(GetDate())
     DAS.todaysLog = {}
     DAS.globalSettings.completionLog[currentDate] = DAS.todaysLog
-    DAS.RefreshControl(true)
+    forceRefreshControl()
 end
-
+local typeTable = "table"
+local function isEmpty(tbl)
+    local ret = true
+    for key, value in pairs(tbl) do
+        if type(value) == typeTable then 
+            ret = ret and isEmpty(value) 
+        else
+            ret = false
+        end
+    end
+    return ret
+end
 -- has to be a local var, lua error if not
 -- Keep outside of function namespace so we can overwrite it for debugging
 local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 
 local function handleLog(forceReset)
-
+    local allLogs = DAS.globalSettings.completionLog
     local currentDate = tonumber(GetDate())
-    DAS.todaysLog = DAS.globalSettings.completionLog[currentDate] or {}
-    local logSize, lastDate = NonContiguousCount(DAS.todaysLog)
+    DAS.globalSettings.completionLog[currentDate] = DAS.globalSettings.completionLog[currentDate] or {}
+
+    local logSize, lastDate = NonContiguousCount(DAS.globalSettings.completionLog)
 
     if forceReset then         
         return resetQuests()
     end
     local counter = 0 
-    for dateString, dateLog in pairs(DAS.todaysLog) do
+    for dateNumber, dateLog in pairs(DAS.globalSettings.completionLog) do
         counter = counter + 1
-        if counter < logSize-2 and tonumber(currentDate) < currentDate then 
-            DAS.globalSettings.completionLog[currentDate] = nil 
-        else
-            lastDate = currentDate
+        if dateNumber < currentDate then 
+            lastDate = dateNumber
+        end
+        if counter < logSize-2 then 
+            DAS.globalSettings.completionLog[dateNumber] = nil            
         end
     end
     
     local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 -- has to be a local var, lua error if not
-    if (not afterEight) and DAS.todaysLog == {} and lastDate ~= currentDate then 
-        DAS.todaysLog = DAS.globalSettings.completionLog[lastDate]
+    if (not afterEight) and isEmpty(DAS.todaysLog) and lastDate ~= currentDate then 
+        DAS.globalSettings.completionLog[currentDate] = ZO_DeepTableCopy(DAS.globalSettings.completionLog[lastDate], {})
+        for charName, charLog in pairs(DAS.globalSettings.completionLog[currentDate]) do
+            for questName, questData in pairs(charLog) do
+                questData.afterEight = false
+            end
+        end
     end
-    DAS.globalSettings.completionLog[currentDate] = DAS.todaysLog
+    
+    DAS.todaysLog = DAS.globalSettings.completionLog[currentDate]
 end
 DAS.handleLog = handleLog
 

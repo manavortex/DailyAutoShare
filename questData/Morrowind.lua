@@ -9,20 +9,47 @@ local zoneId	= 849
 local tbl = {}
 local tbl2 = {}
 
-table.insert(tbl, GetString(DAS_M_REL_ASHAL))
-table.insert(tbl2, "ashal")
-table.insert(tbl, GetString(DAS_M_REL_ASSAR))
-table.insert(tbl2, "assar")
-table.insert(tbl, GetString(DAS_M_REL_ASHUR))
-table.insert(tbl2, "ashur")
-table.insert(tbl, GetString(DAS_M_REL_DUSHA))
-table.insert(tbl2, "dushar")
-table.insert(tbl, GetString(DAS_M_REL_EBERN))
-table.insert(tbl2, "eber")
-table.insert(tbl, GetString(DAS_M_REL_MAELK))
-table.insert(tbl2, "maelk")
-table.insert(tbl, GetString(DAS_M_REL_YASAM))
-table.insert(tbl2, "yasam")
+DAS.QuestLists = DAS.QuestLists or {}
+DAS.QuestLists[zoneId] = {
+	["relic"] = {
+		[1] = GetString(DAS_M_REL_ASHAL),
+		[2] = GetString(DAS_M_REL_ASSAR),
+		[3] = GetString(DAS_M_REL_ASHUR),
+		[4] = GetString(DAS_M_REL_DUSHA),
+		[5] = GetString(DAS_M_REL_EBERN),
+		[6] = GetString(DAS_M_REL_MAELK),
+		[7] = GetString(DAS_M_REL_YASAM),
+	},    
+	["hunt"] = {
+		[1] = GetString(DAS_M_HUNT_EATER),
+		[2] = GetString(DAS_M_HUNT_ZEXXI),
+		[3] = GetString(DAS_M_HUNT_RAZOR),
+		[4] = GetString(DAS_M_HUNT_JAGGE),
+		[5] = GetString(DAS_M_HUNT_STOMP),
+		[6] = GetString(DAS_M_HUNT_TARRA),
+		[7] = GetString(DAS_M_HUNT_SVEET),	
+	},
+	["delve"] = {
+		[1] = GetString(DAS_M_DELVE_DAEDR),
+		[2] = GetString(DAS_M_DELVE_KWAMA),
+		[3] = GetString(DAS_M_DELVE_MISIN),
+		[4] = GetString(DAS_M_DELVE_TAXES),
+		[5] = GetString(DAS_M_DELVE_TRIBA),
+		[6] = GetString(DAS_M_DELVE_SYNDI),
+	},
+	["boss"] = {
+		[1] = GetString(DAS_M_BOSS_WUYWU),
+		[2] = GetString(DAS_M_BOSS_SWARM),
+		[3] = GetString(DAS_M_BOSS_NILTH),
+		[4] = GetString(DAS_M_BOSS_SALOT),
+		[5] = GetString(DAS_M_BOSS_SIREN),
+		[6] = GetString(DAS_M_BOSS_APPRE),
+	},
+}
+
+
+table.insert(tbl, DAS.QuestLists[zoneId].relic)
+table.insert(tbl2, "relic")
 
 table.insert(tbl, GetString(DAS_M_HUNT_EATER))
 table.insert(tbl2, "ash")
@@ -38,7 +65,6 @@ table.insert(tbl, GetString(DAS_M_HUNT_TARRA))
 table.insert(tbl2, "tarra")
 table.insert(tbl, GetString(DAS_M_HUNT_SVEET))
 table.insert(tbl2, "sveeth")
-
 
 table.insert(tbl, GetString(DAS_M_DELVE_DAEDR))
 table.insert(tbl2, "daedra")
@@ -66,44 +92,25 @@ table.insert(tbl2, {[1] ="siren", [2] = "song", [3] = "songbird", [4] = "ss", [5
 table.insert(tbl, GetString(DAS_M_BOSS_APPRE))
 table.insert(tbl2, {[1] = "dub", [2] = "dubdil" })
 
+
+
+table.insert(tbl, GetString(DAS_M_REL_ASHAL))
+table.insert(tbl2, "ashal")
+table.insert(tbl, GetString(DAS_M_REL_ASSAR))
+table.insert(tbl2, "assar")
+table.insert(tbl, GetString(DAS_M_REL_ASHUR))
+table.insert(tbl2, "ashur")
+table.insert(tbl, GetString(DAS_M_REL_DUSHA))
+table.insert(tbl2, "dushar")
+table.insert(tbl, GetString(DAS_M_REL_EBERN))
+table.insert(tbl2, "eber")
+table.insert(tbl, GetString(DAS_M_REL_MAELK))
+table.insert(tbl2, "maelk")
+table.insert(tbl, GetString(DAS_M_REL_YASAM))
+table.insert(tbl2, "yasam")
+
 DAS.shareables[zoneId]      = tbl
-DAS.QuestLists = DAS.QuestLists or {}
-DAS.QuestLists[zoneId] = {
-	["relic"] = {
-		[GetString(DAS_M_REL_ASHAL)] = true,
-		[GetString(DAS_M_REL_ASSAR)] = true,
-		[GetString(DAS_M_REL_ASHUR)] = true,
-		[GetString(DAS_M_REL_DUSHA)] = true,
-		[GetString(DAS_M_REL_EBERN)] = true,
-		[GetString(DAS_M_REL_MAELK)] = true,
-		[GetString(DAS_M_REL_YASAM)] = true,
-	},
-	["hunt"] = {
-		[GetString(DAS_M_HUNT_EATER)] = true,
-		[GetString(DAS_M_HUNT_ZEXXI)] = true,
-		[GetString(DAS_M_HUNT_RAZOR)] = true,
-		[GetString(DAS_M_HUNT_JAGGE)] = true,
-		[GetString(DAS_M_HUNT_STOMP)] = true,
-		[GetString(DAS_M_HUNT_TARRA)] = true,
-		[GetString(DAS_M_HUNT_SVEET)] = true,	
-	},
-	["delve"] = {
-		[GetString(DAS_M_DELVE_DAEDR)] = true,
-		[GetString(DAS_M_DELVE_KWAMA)] = true,
-		[GetString(DAS_M_DELVE_MISIN)] = true,
-		[GetString(DAS_M_DELVE_TAXES)] = true,
-		[GetString(DAS_M_DELVE_TRIBA)] = true,
-		[GetString(DAS_M_DELVE_SYNDI)] = true,
-	},
-	["boss"] = {
-		[GetString(DAS_M_BOSS_WUYWU)] = true,
-		[GetString(DAS_M_BOSS_SWARM)] = true,
-		[GetString(DAS_M_BOSS_NILTH)] = true,
-		[GetString(DAS_M_BOSS_SALOT)] = true,
-		[GetString(DAS_M_BOSS_SIREN)] = true,
-		[GetString(DAS_M_BOSS_APPRE)] = true,
-	},
-}
+
 
 
 -- Khartag point
@@ -123,11 +130,11 @@ DAS.shareables[924] = {
 }
 -- Matus-Akin Egg Mine
 DAS.shareables[925] = {
-	[1] = DAS.shareables[zoneId][19],
+	[1] = GetString(DAS_M_DELVE_TRIBA),
 }
 -- Ashalmawia
 DAS.shareables[961] = {
-	[1] = DAS.shareables[zoneId][1],
+	[1] = DAS.shareables[zoneId][9],
 }
 
 DAS.makeBingoTable(zoneId, tbl2) 

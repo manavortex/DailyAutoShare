@@ -1,5 +1,5 @@
-local DAS = DailyAutoShare
-
+local DAS               = DailyAutoShare
+local groupTagPlayer    = "player"
 
 -- called from settings
 function DAS.GetUseGlobalSettings()
@@ -21,7 +21,7 @@ DAS.GetSettings = GetSettings
 
 local function CanInvite(unitTag, unitName)
 	if (nil == unitTag) and (nil == unitName) then
-        return ((not IsUnitGrouped("player") or (IsUnitGroupLeader("player") and GetGroupSize() < GROUP_SIZE_MAX)))
+        return ((not IsUnitGrouped(groupTagPlayer) or (IsUnitGroupLeader(groupTagPlayer) and GetGroupSize() < GROUP_SIZE_MAX)))
     elseif(unitTag and (not IsUnitPlayer(unitTag) or IsUnitGrouped(unitTag))) then
         return false
     elseif(unitName and IsPlayerInGroup(unitName)) then
@@ -69,22 +69,12 @@ function DAS.SetHidden(hidden)
 	DasControl:SetHidden(hidden)
 	if hidden then
 		SCENE_MANAGER:GetScene("hud"  ):RemoveFragment(DAS.Fragment)
-		SCENE_MANAGER:GetScene("hudui"):RemoveFragment(DAS.Fragment)
-		
+		SCENE_MANAGER:GetScene("hudui"):RemoveFragment(DAS.Fragment)		
 	else
 		SCENE_MANAGER:GetScene("hud"  ):AddFragment(DAS.Fragment)
-		SCENE_MANAGER:GetScene("hudui"):AddFragment(DAS.Fragment)
-		DAS.RefreshControl()
-	end
-	
-	if not hidden then DAS.RefreshControl() end
-end
-
-function DAS.GetTooltipRight()
-	return GetSettings().tooltipRight
-end
-function DAS.SetTooltipRight(value)
-	GetSettings().tooltipRight = value
+		SCENE_MANAGER:GetScene("hudui"):AddFragment(DAS.Fragment)		
+	end	
+	if not hidden then DAS.RefreshControl(true) end
 end
 
 function DAS.GetQuestShareDelay()
@@ -189,7 +179,7 @@ end
 function DAS.SetActiveIn(zoneIndex, value)
 	if (nil == zoneIndex) then zoneIndex = DAS.GetZoneId() end
 	GetSettings()["tracked"][zoneIndex] = value
-	zo_callLater(function() DailyAutoShare.RefreshGui() end, 500)
+	zo_callLater(function() DailyAutoShare.RefreshGui(not DAS.GetActiveIn()) end, 500)
 end
 
 local nestedLists = {
@@ -341,7 +331,7 @@ function DAS.LoadControlLocation(control)
 	control:ClearAnchors()
 	control:SetAnchor(TOPLEFT, GuiRoot, TOPLEFT, x, y)
     
-    DAS.SetTooltipRight(DAS.GetTooltipRight() or x < 200)
+    DAS.GetSettings().tooltipRight = DAS.GetSettings().tooltipRight or x < 200
 	
 end
 
@@ -425,20 +415,23 @@ function DAS.LogQuest(questName, completed)
 	settings[questName].completed  = completed
 	settings[questName].afterEight = afterEight
 end
-function DAS.GetQuestStatus(questName, questList, zoneId)
-	if nil == questName or "string" ~= type(questName) then return end
+function DAS.GetQuestStatus(questName)
+	if nil == questName then return end
 	
 	if nil ~= DAS.QuestNameTable[questName] then return DAS_STATUS_ACTIVE end
 	if DAS.GetCompleted(questName) then 
 		return DAS_STATUS_COMPLETE 
-	end	
+	end
+    
+	local zoneId = DAS.GetZoneId()
+    local questList = DAS.QuestLists[zoneId]
 	if nil == questList then return DAS_STATUS_OPEN end
-	zoneId = zoneId or DAS.GetZoneId()
 	for questListName, questListData in pairs(questList) do 
 		if questListData[questName] then 
 			return (DAS.GetQuestListItem(zoneId, questListName, "active") and DAS_STATUS_OPEN) or DAS_STATUS_COMPLETE
 		end
 	end
+    return DAS_STATUS_OPEN
 end
 
 function DAS.GetQuestListItem(zoneId, listName, listKey)

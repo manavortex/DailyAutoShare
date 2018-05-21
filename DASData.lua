@@ -37,6 +37,7 @@ DAS.festivals = {
 	[381] = "newLife",
 }
 
+
 function DAS.GetZoneId() return GetZoneId(GetUnitZoneIndex('player')) or 0 end
 function PrintZoneId() d(GetZoneId(GetUnitZoneIndex('player'))) end
 

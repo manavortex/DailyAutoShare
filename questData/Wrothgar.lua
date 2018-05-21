@@ -80,3 +80,22 @@ DAS.questFinisher[zoneId] = {
     -- [GetString(DAS_QUEST_W_RAYNOR    )] = true,
 
 }
+
+
+DAS.questIds[zoneId] = {
+    -- wrothgar boss
+	[5518]  = true, -- "Meat for the Masses",
+	[5519]  = true, -- "Scholarly Salvage",
+	[5520]  = true, -- "Flames of Forge and Fallen",
+	[5521]  = true, -- "Nature's Bounty",
+	[5522]  = true, -- "Heresy of Ignorance",
+	[5523]  = true, -- "Snow and Steam",
+	[5524]  = true, -- "Reeking of Foul Play",	
+	-- wrothgar delve
+	[5507]  = true, -- "Breakfast of the Bizarre",
+	[5515]  = true, -- "Free Spirits",
+	[5514]  = true, -- "Getting a Bellyful",
+	[5509]  = true, -- "Parts of the Whole",
+	[5504]  = true, -- "The Skin Trade",
+	[5505]  = true, -- "Fire in the Hold",
+}

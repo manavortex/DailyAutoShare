@@ -1,6 +1,9 @@
 local guiHeight = GuiRoot:GetHeight()
 local guiWidth = GuiRoot:GetWidth()
 
+local questName, journalIndex, bingoString, currentControl
+local QUEST_TRACKER = QUEST_TRACKER or FOCUSED_QUEST_TRACKER
+
 local function getAnchorPos(control)
 	local menuWidth 	= ZO_Menu:GetWidth()
 	local menuHeight 	= ZO_Menu:GetWidth()
@@ -11,7 +14,7 @@ local function getAnchorPos(control)
 	
 	local isTooHigh = (controlTop + menuHeight) >= guiHeight	
 	
-	if DAS.GetTooltipRight() then 
+	if DAS.GetSettings().tooltipRight then 
 		if (controlRight + menuWidth) >= guiWidth then 
 			if isTooHigh then return BOTTOMRIGHT, TOPLEFT end
 			return TOPRIGHT, TOPLEFT		
@@ -36,13 +39,35 @@ local function spamChat(questName, bingoString)
     StartChatInput(chatInputString, CHAT_CHANNEL_ZONE)
 end
 
+
+local function forceAssist()
+    if nil ~= QUEST_TRACKER then        
+        QUEST_TRACKER:ForceAssist(journalIndex)    
+    end
+end
+local function shareQuest()
+    ShareQuest(journalIndex)
+end
+local function abandonQuest()
+    AbandonQuest(journalIndex)
+    DAS.LogQuest(questName, false)
+    DAS.RefreshLabels(true)
+end
+local function toggleQuest()
+    DAS.ToggleQuest(currentControl)
+    zo_callLater(DAS.RefreshLabels, 500)
+end
+local function toggleSubList()    
+    DasSubList:SetHidden(not DasSubList:IsHidden())				
+end
+
 function DAS.OnRightClick(control, verbose)
 	
 	if nil == control then return end
-	local questName 	= control.dataQuestName
-	local journalIndex 	= control.dataJournalIndex
-	local bingoString 	= control.dataBingoString
-	
+	questName = control.dataQuestName
+	journalIndex 	= control.dataJournalIndex
+	bingoString 	= control.dataBingoString
+	currentControl  = control
 	
     local menuShowing = IsMenuVisisble() and GetMenuOwner() == control
     ClearMenu()
@@ -51,44 +76,40 @@ function DAS.OnRightClick(control, verbose)
         SetMenuSpacing(3)
         SetMenuPad(10)
         SetMenuMinimumWidth(185)
-		if control.dataQuestState ~= DAS_STATUS_COMPLETE then
-			AddCustomMenuItem(GetString(DAS_SI_SPAM_SINGLE), 
-				function()
-					spamChat(questName, bingoString)
-				end, 
+        if nil ~= control.dataQuestList then 
+            AddCustomMenuItem(GetString(DAS_TOGGLE_SUBLIST), 
+				toggleSubList, 
 				MENU_ADD_OPTION_LABEL
 			)
-		end	
-		if IsValidQuestIndex(control.dataJournalIndex) then
-			AddCustomMenuItem(GetString(DAS_SI_SHARE), 
-				function() ShareQuest(journalIndex) end, 
-				MENU_ADD_OPTION_LABEL
-			)
-			AddCustomMenuItem("* Focus", 
-				function() 
-					QUEST_TRACKER:ForceAssist(journalIndex) 
-					DAS.RefreshLabels(false, true)
-				end, 
-				MENU_ADD_OPTION_LABEL
-			)	
-			AddCustomMenuItem(GetString(DAS_SI_ABANDON), 
-				function() 
-					AbandonQuest(journalIndex)
-					DAS.LogQuest(questName, false)
-					DAS.RefreshLabels(true)
-				end, 
-				MENU_ADD_OPTION_LABEL
-			)	
-		else
-			local key = (control.dataQuestState == DAS_STATUS_OPEN and DAS_SI_SETOPEN_TRUE) or DAS_SI_SETOPEN_FALSE
-			AddCustomMenuItem(GetString(key), 
-				function() 
-                    DAS.ToggleQuest(control)                     
-					zo_callLater(DAS.RefreshLabels, 500)
-                end, 
-				MENU_ADD_OPTION_LABEL
-			)
-		end
+        else
+            if control.dataQuestState ~= DAS_STATUS_COMPLETE then
+                AddCustomMenuItem(GetString(DAS_SI_SPAM_SINGLE), 
+                    spamChat, 
+                    MENU_ADD_OPTION_LABEL
+                )
+            end 
+            if IsValidQuestIndex(control.dataJournalIndex) then
+                AddCustomMenuItem(GetString(DAS_SI_SHARE), 
+                    shareQuest, 
+                    MENU_ADD_OPTION_LABEL
+                )
+                AddCustomMenuItem("* Focus", 
+                    forceAssist,
+                    MENU_ADD_OPTION_LABEL
+                )	
+                AddCustomMenuItem(GetString(DAS_SI_ABANDON), 
+                    abandonQuest,
+                    MENU_ADD_OPTION_LABEL
+                )	
+            else
+                local key = (control.dataQuestState == DAS_STATUS_OPEN and DAS_SI_SETOPEN_TRUE) or DAS_SI_SETOPEN_FALSE
+                AddCustomMenuItem(GetString(key), 
+                    toggleQuest, 
+                    MENU_ADD_OPTION_LABEL
+                )
+            end
+           
+        end
 		
 		local myAnchor, parentAnchor = getAnchorPos(control)
 		
@@ -98,9 +119,7 @@ function DAS.OnRightClick(control, verbose)
 		
 	end
 
-
-
-	
+    
 end
 
 function DAS.InitRightclickMenu()

@@ -16,9 +16,9 @@ end
 
 
 local function SetTooltipText(control)
-	
 	DailyAutoShare_Tooltip:ClearLines() 
-	local tooltipText = GenerateTooltipText(control)	
+	local tooltipText = GenerateTooltipText(control)
+    if not tooltipText then return end
 	DailyAutoShare_Tooltip:AddLine(tooltipText)
 	DailyAutoShare_Tooltip:SetHidden(false)
 	
@@ -30,14 +30,13 @@ end
 
 
 local function setTooltipOffset(control)
-	local offsetY = control:GetTop() - DasList:GetTop()
-	local isTooltipRight = DAS.GetTooltipRight()
-	-- d(tostring(control:GetTop()) .. " / " .. tostring(DasList:GetTop()))
+	local offsetY = control:GetTop() - control:GetParent():GetTop()
+	local isTooltipRight = DAS.GetSettings().tooltipRight
 	local myAnchorPos 		= (isTooltipRight and TOPLEFT) or TOPRIGHT
 	local parentAnchorPos 	= (isTooltipRight and TOPRIGHT) or TOPLEFT 
 	
 	DailyAutoShare_Tooltip:ClearAnchors()	
-	DailyAutoShare_Tooltip:SetAnchor(myAnchorPos, DasList, parentAnchorPos, 0, offsetY)
+	DailyAutoShare_Tooltip:SetAnchor(myAnchorPos, control:GetParent(), parentAnchorPos, 0, offsetY)
 end
 
 function DAS.CreateControlTooltip(control)
@@ -47,27 +46,42 @@ function DAS.CreateControlTooltip(control)
 	
 end
 
-function DAS.CreateTooltip(control)
-	
+function DAS.CreateTooltip(control)	
 	setTooltipOffset(control)	
-	SetTooltipText(control, isButton)
-	
- end
- 
+	SetTooltipText(control, isButton)	
+end
+
+local questStateColors = {
+    [DAS_STATUS_ACTIVE]     = ZO_HIGHLIGHT_TEXT:UnpackRGBA(),
+    [DAS_STATUS_OPEN]       = ZO_NORMAL_TEXT:UnpackRGBA(),
+    [DAS_STATUS_COMPLETE]   = ZO_DISABLED_TEXT:UnpackRGBA(),
+}
+
+local dotDotDot = "%.%.%."
 function DAS.CreateLabelTooltip(control)
 	
+   
 	setTooltipOffset(control)
 	local tooltipText = ""
-	local questName = control["dataQuestName"]
-	local state = DAS.GetCompleted(questName)		
-	if control["dataQuestState"] == DAS_STATUS_COMPLETE then 
-		tooltipText = (questName .. " completed today with " .. GetUnitName('player'))
-	else
-		local bingoString = control["dataBingoString"] or ""
-		local bingoTooltip = (bingoString ~= "" and "\n The bingo code is " .. bingoString) or ""
-		local status = (( control["dataQuestState"] == DAS_STATUS_ACTIVE and " is acive") or " still open")
-		tooltipText = (questName .. status .. bingoTooltip)
-	end
+   
+    local questName = control.dataTitle or control.dataQuestName
+    
+    if nil == questName then return end
+    if nil ~= questName:find(dotDotDot) then 
+        tooltipText = GetString(DAS_TOGGLE_SUBLIST)
+    else             
+        local state = DAS.GetCompleted(questName)
+        if control.dataQuestState == DAS_STATUS_COMPLETE then 
+            tooltipText = (questName .. " completed today with " .. GetUnitName('player'))
+        else
+            local bingoString = control["dataBingoString"] or ""
+            local bingoTooltip = (bingoString ~= "" and "\n The bingo code is " .. bingoString) or ""
+            local status = (( control.dataQuestState == DAS_STATUS_ACTIVE and " is acive") or " still open")
+            tooltipText = (questName .. status .. bingoTooltip)
+        end
+    end
+    
+    
 	DailyAutoShare_Tooltip:AddLine(tooltipText)
 	DailyAutoShare_Tooltip:SetHidden(false)
 	
