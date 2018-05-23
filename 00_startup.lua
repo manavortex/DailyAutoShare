@@ -3,7 +3,7 @@ DAS                         = DailyAutoShare
 local DailyAutoShare        = DailyAutoShare
 
 DAS.name                    = "DailyAutoshare"
-DAS.version                 = "3.2.0"
+DAS.version                 = "3.3.0"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -138,6 +138,10 @@ local defaults = {
 
 local function pointerUpSubzones()
     
+    -- Summerset
+    defaults[1012]                      = defaults[1011]
+    defaults.tracked[1012]              = defaults.tracked[1011]
+    
     -- Gold Coast
     defaults[825]                       = defaults[823]
     defaults[826]                       = defaults[823]
@@ -195,6 +199,7 @@ local allDailyQuestIds = DAS_QUEST_IDS
 local em = EVENT_MANAGER
 
 local function debugOut(p1, p2, p3, p4, p5, p6, p7, p8)
+    if not DAS.GetDebugMode() then return end
     if (not p2) then d(p1); return; end
     if p8 then
         d(zo_strformat("<<1>> <<2>> <<3>> <<4>> <<5>> <<6>> <<7>> <<8>>", p1, p2, p3, p4, p5, p6, p7, p8)) 
@@ -255,7 +260,7 @@ local function OnQuestAdded(eventCode, journalIndex, questName, objectiveName)
 end
 
 local function OnQuestShared(eventCode, questId)
-    -- d(zo_strformat("<<1>> \t <<2>>", questId, questName))
+    p(zo_strformat("<<1>> \t <<2>>", questId, questName))
 	if not allDailyQuestIds[questId] then return end
 	local zoneQuests = DAS.questIds[DAS.GetZoneId()] or {}
     
@@ -377,6 +382,7 @@ local function resetQuests()
 end
 local typeTable = "table"
 local function isEmpty(tbl)
+    if not tbl then return true end
     local ret = true
     for key, value in pairs(tbl) do
         if type(value) == typeTable then 

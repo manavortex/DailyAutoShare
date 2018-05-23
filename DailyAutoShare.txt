@@ -1,6 +1,6 @@
 ## Title: DailyAutoShare
 ## Author: manavortex
-## Version: 3.2.1
+## Version: 3.3.0
 ## APIVersion: 100023
 ## SavedVariables: DAS_Settings DAS_Globals
 ## OptionalDependsOn: LibStub LibCustomMenu LibAddonMenu-2.0 LibMediaProvider-1.0 pchat
@@ -46,6 +46,7 @@ questData/HewsBane.lua
 questData/GoldCoast.lua
 questData/Cyrodiil.lua
 questData/ClockworkCity.lua
+questData/Summerset.lua
 
 DASData.lua
 DASUserSettingsAdapter.lua

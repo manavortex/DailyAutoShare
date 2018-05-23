@@ -1,5 +1,20 @@
 DAS_QUEST_IDS  = {
 
+    -- Summerset
+    [6152]   = true, -- Pilgrimage's End
+    [6153]   = true, -- 
+    [6154]   = true, -- 
+    [6155]   = true, -- 
+    [6156]   = true, -- Snuffing Out the Light
+    [6157]   = true, -- 
+    [6158]   = true, -- 
+    [6159]   = true, -- Culling Serpents
+    
+    [6083]   = true, -- Taming the Wild
+    [6084]   = true, --
+    [6085]   = true, --
+    [6086]   = true, -- Never Forgotten
+
     -- Clockwork City
 	[6076]	 = true, -- Inciting the Imperfect, 
 	[6077]	 = true, -- A Fine-Feathered Foe, 

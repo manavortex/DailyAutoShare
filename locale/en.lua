@@ -29,6 +29,19 @@ local strings  = {
 	DAS_SI_SETOPEN_TRUE	 	= "Toggle open",
 	DAS_SI_SETOPEN_FALSE	= "Toggle complete",
 		
+        
+    DAS_ELF_RELIC           = "Relic Runaround",    
+    DAS_ELF_PILGR           = "Pilgrimage's End",    
+    DAS_ELF_LIGHT           = "Snuffing Out the Light",    
+    
+    DAS_ELF_GRAVE           = "Never Forgotten",        
+    DAS_ELF_QUEEN           = "The Sickening Sea",    
+    DAS_ELF_GRIFFIN         = "Birds of a Feather",    
+    DAS_ELF_SNAKE           = "Run Aground",
+    DAS_ELF_WILD            = "Taming the Wild",
+    
+    
+        
 	-- Clockwork City
 	DAS_CLOCK_IMP			 = "Inciting the Imperfect", 
 	DAS_CLOCK_FOE			 = "A Fine-Feathered Foe", 	

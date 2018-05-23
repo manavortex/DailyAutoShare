@@ -175,6 +175,13 @@ function DAS.CreateMenu(savedVars, defaults)
 				},
 				{ -- checkbox: Morrowind
 					type    = "checkbox",
+					tooltip = "Summerset?",
+					name    = "Activate in Summerset?",
+					getFunc = function() return DAS.GetActiveIn(1011) end,
+					setFunc = function(value) DAS.SetActiveIn(1011, value) end
+				},
+				{ -- checkbox: Morrowind
+					type    = "checkbox",
 					tooltip = "Vvardenfell?",
 					name    = "Activate in Vvardenfell?",
 					getFunc = function() return DAS.GetActiveIn(849) end,
