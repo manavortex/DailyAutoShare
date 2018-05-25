@@ -3,7 +3,7 @@ DAS                         = DailyAutoShare
 local DailyAutoShare        = DailyAutoShare
 
 DAS.name                    = "DailyAutoshare"
-DAS.version                 = "3.3.0"
+DAS.version                 = "3.2.2"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -138,9 +138,23 @@ local defaults = {
 
 local function pointerUpSubzones()
     
-    -- Summerset
+      -- Summerset
     defaults[1012]                      = defaults[1011]
+    defaults[1013]                      = defaults[1011]
+    defaults[1014]                      = defaults[1011]
+    defaults[1015]                      = defaults[1011]
+    defaults[1016]                      = defaults[1011]
+    defaults[1017]                      = defaults[1011]
+    defaults[1018]                      = defaults[1011]
+    defaults[1019]                      = defaults[1011]
     defaults.tracked[1012]              = defaults.tracked[1011]
+    defaults.tracked[1013]              = defaults.tracked[1011]
+    defaults.tracked[1014]              = defaults.tracked[1011]
+    defaults.tracked[1015]              = defaults.tracked[1011]
+    defaults.tracked[1016]              = defaults.tracked[1011]
+    defaults.tracked[1017]              = defaults.tracked[1011]
+    defaults.tracked[1018]              = defaults.tracked[1011]
+    defaults.tracked[1019]              = defaults.tracked[1011]
     
     -- Gold Coast
     defaults[825]                       = defaults[823]

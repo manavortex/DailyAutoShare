@@ -11,7 +11,7 @@ DAS_QUEST_IDS  = {
     [6159]   = true, -- Culling Serpents
     
     [6083]   = true, -- Taming the Wild
-    [6084]   = true, --
+    [6084]   = true, -- The Abyssal Alchemist
     [6085]   = true, --
     [6086]   = true, -- Never Forgotten
 

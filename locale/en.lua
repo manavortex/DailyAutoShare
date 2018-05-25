@@ -32,8 +32,13 @@ local strings  = {
         
     DAS_ELF_RELIC           = "Relic Runaround",    
     DAS_ELF_PILGR           = "Pilgrimage's End",    
-    DAS_ELF_LIGHT           = "Snuffing Out the Light",    
+    DAS_ELF_LIGHT           = "Snuffing Out the Light",   
+    DAS_ELF_SERPE           = "Culling Serpents",
+    DAS_ELF_MEMO            = "Struck from Memory",
+    DAS_ELF_ROSE            = "A Rose's Beauty",
     
+      
+    DAS_ELF_ALCHE           = "The Abyssal Alchemist",   
     DAS_ELF_GRAVE           = "Never Forgotten",        
     DAS_ELF_QUEEN           = "The Sickening Sea",    
     DAS_ELF_GRIFFIN         = "Birds of a Feather",    
