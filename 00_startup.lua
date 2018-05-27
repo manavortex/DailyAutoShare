@@ -3,7 +3,7 @@ DAS                         = DailyAutoShare
 local DailyAutoShare        = DailyAutoShare
 
 DAS.name                    = "DailyAutoshare"
-DAS.version                 = "3.3.0"
+DAS.version                 = "3.3.1"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -354,7 +354,9 @@ local function queueQuestRefresh()
 end
 
 local function hookQuestTracker()   
-    ZO_PreHook(FOCUSED_QUEST_TRACKER, "ForceAssist", DAS.questTrackerUpdate)  
+    if FOCUSED_QUEST_TRACKER and FOCUSED_QUEST_TRACKER.ForceAssist then
+        ZO_PreHook(FOCUSED_QUEST_TRACKER, "ForceAssist", queueQuestRefresh)  
+    end
 
 end
 
