@@ -351,7 +351,13 @@ function DAS.CreateMenu(savedVars, defaults)
 				},
 			},
 		},
-		
+		{ -- checkbox: Hide UI window
+			type    = "checkbox",
+			name    = "Use whisper only",
+            tooltip = "This will ignore bingo spam in zone chat!",
+			getFunc = function() return DAS.GetWhisperOnly() end,
+			setFunc = function(value) DAS.SetWhisperOnly(value) end
+		},
         
 		{ -- header: Use global variables?
 			type    = "header",
@@ -371,6 +377,15 @@ function DAS.CreateMenu(savedVars, defaults)
                                 .. "Omit either to remove parameter. Include neither and sound like a fool."),
                     getFunc     = function() return DAS.GetSettings().questShareString end,
                     setFunc     = function(value) DAS.GetSettings().questShareString = value end,
+                },
+                {   -- editbox: Quest share text
+                    type        = "editbox", 
+                    isExtraWide = true, 
+                    name        = "Whisper only text",
+                    disabled    = not DAS.GetWhisperOnly(),
+                    tooltip     = "Will replace everything after <<1>>, in the string above",                                
+                    getFunc     = function() return DAS.GetSettings().whisperString end,
+                    setFunc     = function(value) DAS.GetSettings().whisperString = value end,
                 },                	
 				{   -- editbox: Quest share text
                     type    = "button", 

@@ -8,12 +8,10 @@ function DAS.GetArrayEntry(array, key)
 	end
 end
 function DAS.SetChatListenerStatus(status)
-
     DAS.channelTypes[CHAT_CHANNEL_SAY ]     = status
     DAS.channelTypes[CHAT_CHANNEL_YELL]     = status
-    DAS.channelTypes[CHAT_CHANNEL_ZONE]     = status
+    DAS.channelTypes[CHAT_CHANNEL_ZONE]     = status and not DAS.GetWhisperOnly()
     DAS.channelTypes[CHAT_CHANNEL_WHISPER]  = status	
-	
 end
 
 -- DAS_STATUS_COMPLETE 	= 0, 
@@ -22,10 +20,13 @@ end
 -- DAS_STATUS_TRACKED 	= 3
 local refreshedRecently = false
 function refreshQuestLogs(forceOverride)
-
-	forceOverride 			= forceOverride or DAS.QuestIndexTable == {} or DAS.QuestNameTable == {}
+    
+	forceOverride 			= forceOverride or DAS.questCacheNeedsRefresh or DAS.QuestIndexTable == {} or DAS.QuestNameTable == {} 
 	if forceOverride 		then refreshedRecently = false end
 	if refreshedRecently 	then return end
+    
+    DAS.questCacheNeedsRefresh = false
+    
 	DAS.QuestIndexTable		= {}
 	DAS.QuestNameTable		= {}
 	for i=1, 25 do

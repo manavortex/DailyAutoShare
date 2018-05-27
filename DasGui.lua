@@ -37,7 +37,7 @@ function DAS.RefreshControl(refreshQuestCache)
 	DasList:SetHidden(    stateIsMinimised or stateIsHidden)
 	if stateIsMinimised or stateIsHidden then return end
 	
-	DAS.RefreshLabels(refreshQuestCache)
+    DAS.RefreshLabelsWithDelay()
 	
 end
 local function SetAlpha(control, value)
@@ -302,8 +302,12 @@ function DAS.setLabels(zoneQuests)
     return buttonIndex
 end
 
+function DAS.RefreshLabelsWithDelay()
+    zo_callLater(DAS.RefreshLabels, 500)
+end
+
 function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
-    
+    forceQuestRefresh = forceQuestRefresh or DAS.questCacheNeedsRefresh
     -- p("DAS.RefreshLabels(" .. tostring(forceQuestRefresh) .. ", " .. tostring(forceSkipQuestRefresh) .. ")")
 	cacheVisibilityStatus()
 	setButtonStates()
@@ -351,7 +355,7 @@ function DAS.RefreshGui(hidden)
 	DasList:SetHidden(minmaxed)
 	DasControl:SetHidden(hidden)
 	DasHandle:SetMovable(not DAS.GetLocked())
-	DAS.RefreshLabels()
+	zo_callLater(DAS.RefreshLabels, 500)
 end
 
 function DAS.AnchorList()

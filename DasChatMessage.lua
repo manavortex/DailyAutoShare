@@ -53,30 +53,31 @@ end
 
 local stringShare = "share"
 local stringQuest = "quest"
+local stringPlusRegex = "%+"
 function DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fromDisplayName)
     
     -- ignore all chat channels that aren't set
     if nil == channelTypes[channelType] then return end
     
-    local isPlayerName = fromDisplayName:find(DAS.pdn) 
+    local isPlayerName = fromDisplayName:find(DAS.pdn)
     
     -- if we aren't listening, or if we are listening and the message's from us, ignore it
     if not (channelTypes[channelType] or isPlayerName) then return end
     
     -- if it's a group message, react to the group message
     if (channelType == CHAT_CHANNEL_PARTY) and (messageText:find(stringShare) or messageText:find(stringQuest)) then
-       DAS.TryShareActiveDaily()
-       return
+       return DAS.TryShareActiveDaily()
     end
     
     --  d(zo_strformat("[OnChatMessage] <<1>>: <<2>>, isPlayerName: <<3>>", fromDisplayName, messageText, tostring(isPlayerName)))
     
-    local _, result = pcall(string.find, messageText, "%+")
+    local _, result = pcall(string.find, messageText, stringPlusRegex)
     if not (result or #messageText <= 3) then return end
     
-    if isPlayerName then 
+    if result and isPlayerName then 
         local groupStatus = IsUnitGrouped(unittagplayer) 
-        if groupStatus and not channelTypes[channelType] then 
+        -- needs to be == false, ignore channels that aren't on the list
+        if groupStatus and (channelTypes[channelType] == false) then -- NO DON'T REFACTOR MANA
             if not DAS.GetAutoLeave() then return end
             GroupLeave()
             zo_callLater(DAS.TryTriggerAutoAcceptInvite, 5000)
@@ -89,12 +90,9 @@ function DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fro
     -- we're not auto inviting, nothing to do 
     if not DAS.autoInviting then return end
     
-    
     if #messageText == 1 and messageText == stringPlus then 
         table.insert(inviteQueue, fromDisplayName)
-        if not alreadyInviting then 
-            popInviteQueue()
-        end
+        if not alreadyInviting then popInviteQueue() end
         return
     end
     

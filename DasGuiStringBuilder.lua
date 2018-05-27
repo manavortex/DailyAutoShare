@@ -48,29 +48,63 @@ local function generateQuestSpam(questNames)
     return ret
 end	
 
+
+local empty = ""
+local comma = ", "
+local space = " "
+local any = "+any"
+local eitherof = "either of "
+
+local function getQuestNames(activeQuestNames)
+       
+    local questNames = empty
+    for _, questName in ipairs(activeQuestNames) do 
+        if DAS.IsQuestActive(questName) then
+            questNames = questNames .. questName .. comma
+        end
+    end
+    
+    return questNames
+    
+end
+
+local varargOne, varargTwo, varargAny = "<<1>>", "<<2>>", "%+any"
+local function whisperify(qsString)
+    local beginIndex, endIndex = string.find(qsString, varargOne) 
+    if endIndex then 
+        qsString = qsString:sub(0, endIndex+2) 
+    end
+    return qsString .. space .. varargTwo
+    
+end
+
+
 local function GenerateBingoString(activeQuestNames, verbose)
 
 	activeQuestNames = getEnglishQuestNames(activeQuestNames)
-	
+	local qsString = DAS.GetSettings().questShareString
 	local bingoCodes = {}
-	local bingo, questNames = "", ""
-    local bingoString = (DAS.fullBingoString or ""):gsub("%+any", "")
+    local bingo, questNames = empty, empty
+    local bingoString = (DAS.fullBingoString or empty):gsub(varargAny, empty)
 	if DAS.GetAutoInvite() then
-        local questCount = 0
-		for _, questName in ipairs(activeQuestNames) do 
-            questCount = questCount +1
-			if DAS.IsQuestActive(questName) then
-				questNames = questNames .. questName .. ", "
-			end
-		end
-        if #DAS.fullBingoString > 0 then
-            bingo = ((#activeQuestNames > 1 and "either of ") or "") .. bingoString
-		end        
-        return zo_strformat(DAS.GetSettings().questShareString, questNames, bingoString) 
+        local questNames = getQuestNames(activeQuestNames)       
+		
+        -- if we're listening for whisper only, adjust spam accordingly
+        if DAS.GetWhisperOnly() then 
+            qsString = whisperify(qsString)
+            bingoString = DAS.GetSettings().whisperString
+        else
+        
+        -- if we have more than one, insert either of
+            if #bingoString > 0 then        
+                bingo = ((#activeQuestNames > 1 and eitherof) or empty) .. bingoString
+            end
+        end        
+        return zo_strformat(qsString, questNames, bingoString) 
     end
 	
     if NonContiguousCount(DAS.GetShareableLog()) == 0 and #activeQuestNames == 0 then
-        return "+any"
+        return any
     end
     activeQuestNames = DAS.GetOpenQuestNames()
     return generateQuestSpam(activeQuestNames)
@@ -121,7 +155,7 @@ function DAS.SettingsButton(control, mouseButton)
 		end		
 	end
 
-	DAS.RefreshLabels()
+	-- DAS.RefreshLabels()
 	
  end
 

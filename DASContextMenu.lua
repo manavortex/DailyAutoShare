@@ -51,11 +51,12 @@ end
 local function abandonQuest()
     AbandonQuest(journalIndex)
     DAS.LogQuest(questName, false)
-    DAS.RefreshLabels(true)
+    DAS.questCacheNeedsRefresh = true
+    DAS.RefreshLabelsWithDelay()    
 end
 local function toggleQuest()
     DAS.ToggleQuest(currentControl)
-    zo_callLater(DAS.RefreshLabels, 500)
+    DAS.RefreshLabelsWithDelay()
 end
 local function toggleSubList()    
     DasSubList:SetHidden(not DasSubList:IsHidden())				

@@ -3,7 +3,7 @@ DAS                         = DailyAutoShare
 local DailyAutoShare        = DailyAutoShare
 
 DAS.name                    = "DailyAutoshare"
-DAS.version                 = "3.2.2"
+DAS.version                 = "3.3.0"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -127,6 +127,8 @@ local defaults = {
 	guildInviteText,
     questShareString            = "I can give a DailyAutoShare for <<1>>, type <<2>> for an instant invite",
 	listenInGuilds,
+    whisperOnly                 = false,
+    whisperString               = "whisper + for an instant invite", 
     ["tracked"] = {
 		[684] = true,
 		[823] = true,
@@ -250,9 +252,7 @@ local function OnGroupTypeChanged(eventCode, unitTag)
         return
     end
     
-    if DAS.GetStopInviteOnDegroup() then 
-        DAS.SetAutoInvite(false)
-    end
+    if DAS.GetStopInviteOnDegroup() then DAS.SetAutoInvite(false) end
     
 end
 
@@ -292,7 +292,6 @@ end
 local function OnChatMessage(eventCode, channelType, fromName, messageText, _, fromDisplayName)
     return DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fromDisplayName)
 end
-
 
 local function OnPlayerActivated(eventCode)
 	local active 		= DAS.GetActiveIn()	
@@ -343,17 +342,20 @@ local function deleteYesterdaysLog()
 	end
 end
 
-local QUEST_TRACKER = QUEST_TRACKER or FOCUSED_QUEST_TRACKER
-local function hookQuestTracker()
-    -- pts fix
-    
-	local function refreshLabels()
-		DAS.RefreshLabels(false, true)
-	end
-    
-    if nil ~= QUEST_TRACKER then        
-        ZO_PreHook(QUEST_TRACKER, "ForceAssist", refreshLabels)  
-    end
+local alreadyRefreshing = false
+local function questRefresh()
+    alreadyRefreshing = false
+    DAS.RefreshControl(true)
+end
+local function queueQuestRefresh()
+    if alreadyRefreshing then return end
+    alreadyRefreshing = true
+    zo_callLater(questRefresh, 600)
+end
+
+local function hookQuestTracker()   
+    ZO_PreHook(FOCUSED_QUEST_TRACKER, "ForceAssist", DAS.questTrackerUpdate)  
+
 end
 
 --==============================

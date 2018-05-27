@@ -115,6 +115,14 @@ function DAS.SetAutoAcceptInvite(value)
     end
 end
 
+function DAS.GetWhisperOnly()
+    return GetSettings().whisperOnly 
+end
+function DAS.SetWhisperOnly(value)
+    GetSettings().whisperOnly = value
+end
+
+
 function DAS.GetGroupLeaveOnNewSearch()
 
 end
