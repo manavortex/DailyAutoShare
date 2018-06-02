@@ -2,7 +2,7 @@ DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
 
 DAS.name                    = "DailyAutoShare"
-DAS.version                 = "3.3.2"
+DAS.version                 = "3.3.3"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -319,7 +319,7 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
     local zoneId = DAS.GetZoneId()
     local zoneIds = DAS.questIds[zoneId] or {}
     -- is it a daily quest, and are we logging?
-    if not (zoneIds[questId] and DAS.GetActiveIn(zoneId)) then return end	
+    if not ((zoneIds[questName] or DAS_QUEST_IDS[questId]) and DAS.GetActiveIn(zoneId)) then return end	
     
 	DAS.LogQuest(questName, isCompleted)
     

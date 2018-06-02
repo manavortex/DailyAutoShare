@@ -8,7 +8,7 @@ local tbl2 = {}
 
 
 table.insert(tbl, GetString(DAS_ELF_ALCHE))  
-table.insert(tbl2, {[1] = "welenkin",  [2] = "korgen", [3] = "korg"})
+table.insert(tbl2, {[1] = "korgen",  [2] = "b'korgen", [3] = "korg", [4] = "corgi"})
 table.insert(tbl, GetString(DAS_ELF_GRAVE))
 table.insert(tbl2, {[1] = "graveld",  [2] = "grave"})   
 table.insert(tbl, GetString(DAS_ELF_QUEEN))  
@@ -16,7 +16,7 @@ table.insert(tbl2, {[1] = "queen"})
 table.insert(tbl, GetString(DAS_ELF_GRIFFIN)) 
 table.insert(tbl2, {[1] = "griffon", [2] = "griffin", [3] = "gryphon", [4] = "gryffon"})
 table.insert(tbl, GetString(DAS_ELF_SNAKE))  
-table.insert(tbl2, {[1] = "adder", [2] = "snake"}) 
+table.insert(tbl2, {[1] = "keel", [2] = "snake"}) 
 table.insert(tbl, GetString(DAS_ELF_WILD)) 
 table.insert(tbl2, {[1] = "wild",  [2] = "ward"})
 
@@ -38,14 +38,17 @@ table.insert(tbl2, {[1] = "rose"})
 DAS.shareables[zoneId] = tbl
 DAS.shareables[zoneId2] = DAS.shareables[zoneId]
 
-for i=1012, 1019 do
-    DAS.shareables[i] = DAS.shareables[zoneId]
-end
+
 
 
 
 DAS.makeBingoTable(zoneId, tbl2) 
 DAS.bingo[zoneId2] = DAS.bingo[zoneId]
+
+for i=1012, 1019 do
+    DAS.shareables[i]  = DAS.shareables[zoneId]
+    DAS.bingo[i]       = DAS.bingo[zoneId]
+end
 
 DAS.questStarter[zoneId] = {
     [GetString(DAS_QUEST_SS_TANO)]    = true,

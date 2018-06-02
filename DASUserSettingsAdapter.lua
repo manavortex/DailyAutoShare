@@ -413,8 +413,9 @@ function DAS.GetCompleted(questName)
  end
 function DAS.LogQuest(questName, completed)
 	if nil == questName then return end
-	local settings 	 	=  getSettingsArray()    
-	timeStringNumber = timeStringNumber or tonumber(GetTimeString():sub(1,2))
+    getSettingsArray()
+	local settings 	 	=  DAS.globalSettings.completionLog[dateNumber][characterName]
+	timeStringNumber    = timeStringNumber or tonumber(GetTimeString():sub(1,2))
 	local afterEight 	= (timeStringNumber >= 8) -- 08:17:02 - reset is at 8
     for questId, questData in pairs(settings) do
         if questData.afterEight ~= afterEight then 
