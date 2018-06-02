@@ -541,7 +541,7 @@ function LibCustomTitles:Init()
 	GetTitle = function(index)
 		local titleOriginal = GetTitle_original(index)
 		local displayName = GetDisplayName()
-		local characterName = GetUnitName("player")
+		local characterName = GetUnitName(UNITTAG_PLAYER)
 		local registerType = GetCustomTitleType(displayName, characterName)
 		if registerType ~= CT_NO_TITLE then
 			return GetModifiedTitle(titleOriginal, displayName, characterName, registerType)

@@ -1,8 +1,7 @@
 DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
-local DailyAutoShare        = DailyAutoShare
 
-DAS.name                    = "DailyAutoshare"
+DAS.name                    = "DailyAutoShare"
 DAS.version                 = "3.3.1"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
@@ -37,6 +36,8 @@ DAS_STATUS_TRACKED	    = 3
 local activeInCurrentZone   = false
 DAS.fullBingoString         = ""
 local fullBingoString       = DAS.fullBingoString
+
+UNITTAG_PLAYER              = UNITTAG_PLAYER or "player"
 
 local defaults = {
 
@@ -129,7 +130,7 @@ local defaults = {
 	listenInGuilds,
     whisperOnly                 = false,
     whisperString               = "whisper + for an instant invite", 
-    ["tracked"] = {
+    tracked = {
 		[684] = true,
 		[823] = true,
 		[849] = true,	    -- Vvardenfell
@@ -208,7 +209,7 @@ local function pointerUpSubzones()
 end
 pointerUpSubzones()
 
-local characterName     = zo_strformat(GetUnitName('player'))
+local characterName     = zo_strformat(GetUnitName(UNITTAG_PLAYER))
 
 local allDailyQuestIds = DAS_QUEST_IDS
 
@@ -245,7 +246,7 @@ end
 --==============================
 
 local function OnGroupTypeChanged(eventCode, unitTag)
-	if IsUnitGrouped("player") then
+	if IsUnitGrouped(UNITTAG_PLAYER) then
         if not DAS.GetAutoShare() and DAS.GetResetAutoShareOnNewGroup() then 
             DAS.SetAutoShare(true)
         end
@@ -415,9 +416,10 @@ end
 -- Keep outside of function namespace so we can overwrite it for debugging
 local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 
 local function handleLog(forceReset)
+    DAS.globalSettings.completionLog = DAS.globalSettings.completionLog or {}
     local allLogs = DAS.globalSettings.completionLog
     local currentDate = tonumber(GetDate())
-    DAS.globalSettings.completionLog[currentDate] = DAS.globalSettings.completionLog[currentDate] or {}
+    allLogs[currentDate] = allLogs[currentDate] or {}
 
     local logSize, lastDate = NonContiguousCount(DAS.globalSettings.completionLog)
 
@@ -458,16 +460,16 @@ end
 
 function DailyAutoShare_Initialize(eventCode, addonName)
 
-	if addonName ~="DailyAutoShare" then return end
+	if addonName ~= DAS.name then return end
     
-	DailyAutoShare.settings = ZO_SavedVars:New("DAS_Settings", 0.2, nil, defaults)
-	DailyAutoShare.globalSettings = ZO_SavedVars:NewAccountWide("DAS_Globals", 0.2, "DAS_Global", defaults)
-    DAS.pdn = GetUnitDisplayName('player')
+	DAS.settings        = ZO_SavedVars:New("DAS_Settings", 1, "DAS_Settings", defaults)
+	DAS.globalSettings  = ZO_SavedVars:NewAccountWide("DAS_Globals", 1, "DAS_Global", defaults)
+    DAS.pdn = GetUnitDisplayName(UNITTAG_PLAYER)
 
 	RegisterEventHooks()
 	
-	DailyAutoShare.CreateMenu(DailyAutoShare.settings, defaults)
-	DAS.CreateGui()    
+	DAS.CreateMenu(DAS.settings, defaults)
+	DAS.CreateGui()
         
     -- local timetoreset = (GetTimeStamp() - 60*60*7)%86400
     -- zo_callLater(resetQuests, timetoreset)

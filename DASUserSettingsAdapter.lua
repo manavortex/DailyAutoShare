@@ -1,5 +1,5 @@
 local DAS               = DailyAutoShare
-local groupTagPlayer    = "player"
+local groupTagPlayer    = UNITTAG_PLAYER
 
 -- called from settings
 function DAS.GetUseGlobalSettings()
@@ -170,7 +170,7 @@ function DAS.GetAutoInvite()
 end
 function DAS.SetAutoInvite(value)
     
-    value = value and IsUnitSoloOrGroupLeader('player') and DAS.HasActiveDaily()
+    value = value and IsUnitSoloOrGroupLeader(UNITTAG_PLAYER) and DAS.HasActiveDaily()
     
 	GetSettings().autoInvite = value
     DAS.autoInviting = value
@@ -181,11 +181,13 @@ end
 -- called from settings and from internal helper
 function DAS.GetActiveIn(zoneIndex)
     zoneIndex = zoneIndex or DAS.GetZoneId()
+    if not zoneIndex then return end
 	zoneIndex = DAS.subzones[zoneIndex] or zoneIndex
-	return GetSettings()["tracked"][zoneIndex]
+	return GetSettings().tracked[zoneIndex]
 end
-function DAS.SetActiveIn(zoneIndex, value)
-	if (nil == zoneIndex) then zoneIndex = DAS.GetZoneId() end
+function DAS.SetActiveIn(zoneIndex, value) 
+    zoneIndex = zoneIndex or DAS.GetZoneId()
+    if not zoneIndex then return end
 	GetSettings()["tracked"][zoneIndex] = value
 	zo_callLater(function() DailyAutoShare.RefreshGui(not DAS.GetActiveIn()) end, 500)
 end
@@ -362,7 +364,7 @@ local function assertSettingArray(settings, dateNumber, characterName)
 
 	local dateNumber = tonumber(GetDate()) -- 20160411
 	local afterEight = (tonumber(GetTimeString():sub(0, 2)) >= 08) --08:17:02
-	local characterName = GetUnitName('player')
+	local characterName = GetUnitName(UNITTAG_PLAYER)
 	if nil == settings[dateNumber] then settings[dateNumber] = {} end
 	if nil == settings[dateNumber][characterName] then settings[dateNumber][characterName] = {} end
 
@@ -386,7 +388,7 @@ local timeStringNumber
 local settings = DAS.todaysLog
 local function getSettingsArray()
 	dateNumber		 = dateNumber 		or tonumber(GetDate())
-	characterName 	 = characterName 	or GetUnitName('player')
+	characterName 	 = characterName 	or GetUnitName(UNITTAG_PLAYER)
 	timeStringNumber = timeStringNumber or tonumber(GetTimeString():sub(1,2))
 	if nil == settings then
 		DAS.globalSettings.completionLog = DAS.globalSettings.completionLog or {}

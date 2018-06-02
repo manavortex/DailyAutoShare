@@ -8,7 +8,7 @@ local tbl2 = {}
 
 
 table.insert(tbl, GetString(DAS_ELF_ALCHE))  
-table.insert(tbl2, {[1] = "welenkin",  [2] = "korgen"})
+table.insert(tbl2, {[1] = "welenkin",  [2] = "korgen", [3] = "korg"})
 table.insert(tbl, GetString(DAS_ELF_GRAVE))
 table.insert(tbl2, {[1] = "graveld",  [2] = "grave"})   
 table.insert(tbl, GetString(DAS_ELF_QUEEN))  

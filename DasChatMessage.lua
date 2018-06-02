@@ -1,5 +1,5 @@
 local messageQueue              = {}
-local unittagplayer             = 'player'
+local unittagplayer             = UNITTAG_PLAYER
 local share                     = "share"
 local stopsharing               = "stop sharing"
 

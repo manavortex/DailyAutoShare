@@ -45,7 +45,7 @@ DAS.RefreshQuestLogs = refreshQuestLogs
 
 function DAS.TryDisableAutoShare(fromName, messageText)
 	if type(messageText) ~= "string" then return false end
-	if (DAS.IsMatch(messageText, GetUnitName('player'))
+	if (DAS.IsMatch(messageText, GetUnitName(UNITTAG_PLAYER))
 	or (DAS.IsMatch(messageText, DAS.GetBingoStringFromQuestName():gsub("+", ""))
 	and DAS.IsMatch(messageText "sharing")))
 	then

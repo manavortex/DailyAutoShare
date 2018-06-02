@@ -72,7 +72,7 @@ function DAS.CreateLabelTooltip(control)
     else             
         local state = DAS.GetCompleted(questName)
         if control.dataQuestState == DAS_STATUS_COMPLETE then 
-            tooltipText = (questName .. " completed today with " .. GetUnitName('player'))
+            tooltipText = (questName .. " completed today with " .. GetUnitName(UNITTAG_PLAYER))
         else
             local bingoString = control["dataBingoString"] or ""
             local bingoTooltip = (bingoString ~= "" and "\n The bingo code is " .. bingoString) or ""

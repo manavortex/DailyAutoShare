@@ -38,8 +38,8 @@ DAS.festivals = {
 }
 
 
-function DAS.GetZoneId() return GetZoneId(GetUnitZoneIndex('player')) or 0 end
-function PrintZoneId() d(GetZoneId(GetUnitZoneIndex('player'))) end
+function DAS.GetZoneId() return GetZoneId(GetUnitZoneIndex(UNITTAG_PLAYER)) or 0 end
+function PrintZoneId() d(GetZoneId(GetUnitZoneIndex(UNITTAG_PLAYER))) end
 
 function DAS.GetZoneQuests(zoneId)
 	zoneId = zoneId or DAS.GetZoneId()
