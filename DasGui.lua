@@ -220,7 +220,9 @@ function DAS.SetSubLabels(questTable)
         local label = DAS.sublabels[idx]
         
         label.dataJournalIndex 	= DAS.GetLogIndex(questName)
-        label.dataBingoString 	= DAS.GetBingoStringFromQuestName(questName)
+        local bingoString, bingoIndex = DAS.GetBingoStringFromQuestName(questName)
+        label.dataBingoString 	= bingoString
+        label.dataBingoIndex 	= bingoIndex
         label.dataQuestName		= questName
         label.dataTitle         = questName
         label.dataQuestState    = DAS.GetQuestStatus(questName)
@@ -282,7 +284,9 @@ function DAS.setLabels(zoneQuests)
                 -- d(zo_strformat("DAS: <<1>> state <<2>>", label.dataQuestName, label.dataQuestState))
                 label:SetHidden(hideLabel)
                 label.dataJournalIndex 	= DAS.GetLogIndex(label.dataQuestName)
-                label.dataBingoString 	= DAS.GetBingoStringFromQuestName(label.dataQuestName)
+                bingoString, bingoIndex = DAS.GetBingoStringFromQuestName(label.dataQuestName)
+                label.dataBingoString 	= bingoString
+                label.dataBingoIndex 	= bingoIndex
                 label.dataTitle         = label.dataTitle or ""
                 
                 if label.dataQuestState == DAS_STATUS_ACTIVE then

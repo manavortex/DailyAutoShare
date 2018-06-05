@@ -2,7 +2,7 @@ DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
 
 DAS.name                    = "DailyAutoShare"
-DAS.version                 = "3.3.3"
+DAS.version                 = "3.3.4"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -16,6 +16,7 @@ DAS.activeZoneQuests        = {}
 DAS.questFinisher           = {}
 DAS.questStarter            = {}
 DAS.questIds                = {}
+DAS.activeBingoIndices      = {}
 DAS.channelTypes 	        = {
     [CHAT_CHANNEL_PARTY]    = true, 
     [CHAT_CHANNEL_SAY ]     = false, 
@@ -267,7 +268,8 @@ local function OnQuestAdded(eventCode, journalIndex, questName, objectiveName)
 	if not DAS.GetActiveIn(zoneId) 			then return end
 	if not GetIsQuestSharable(journalIndex) then return end	
 	local shareables = DAS.shareables[zoneId] or {}
-    
+    local bingoIndex = DAS.getBingoIndexFromQuestName(questName) or 0
+    DAS.activeBingoIndices[bingoIndex] = true
 	if nil ~= shareables[questName] then
 		DAS.LogQuest(questName, false)
 		zo_callLater(forceRefreshControl, 700)
@@ -275,11 +277,12 @@ local function OnQuestAdded(eventCode, journalIndex, questName, objectiveName)
 end
 
 local function OnQuestShared(eventCode, questId)
+    local questName =  GetOfferedQuestShareInfo(questId)
     p(zo_strformat("<<1>> \t <<2>>", questId, questName))
-	if not allDailyQuestIds[questId] then return end
-	local zoneQuests = DAS.questIds[DAS.GetZoneId()] or {}
+	local zoneQuestIds = DAS.questIds[DAS.GetZoneId()] or {}
+	if not (zoneQuestIds[questName] or DAS_QUEST_IDS[questId]) and DAS.GetActiveIn(zoneId) then return end	
     
-	if zoneQuests[questId] then
+	if zoneQuestIds[questId] then
         if DAS.GetAutoDeclineShared() then 
             DAS.Report("DailyAutoShare declined a quest for you. Type /DailyAutoShare disabledecline to stop it from doing so.")
             DeclineSharedQuest(questId)
@@ -326,6 +329,9 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
     -- set auto invite off until the questlog has refreshed
 	local autoInvite = DAS.GetAutoInvite()
     DAS.SetAutoInvite(false)
+    
+    local bingoIndex = DAS.getBingoIndexFromQuestName(questName) or 0
+    DAS.activeBingoIndices[bingoIndex] = false
     
     zo_callLater(function()
         DAS.SetAutoInvite(autoInvite)	

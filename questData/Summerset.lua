@@ -34,6 +34,9 @@ table.insert(tbl2, {[1] = "memory"})
 table.insert(tbl, GetString(DAS_ELF_ROSE ))
 table.insert(tbl2, {[1] = "rose"})
 
+table.insert(tbl, GetString(DAS_ELF_GEYSER ))
+table.insert(tbl2, {[1] = "+geyser"})
+
 
 DAS.shareables[zoneId] = tbl
 DAS.shareables[zoneId2] = DAS.shareables[zoneId]
@@ -53,14 +56,26 @@ end
 DAS.questStarter[zoneId] = {
     [GetString(DAS_QUEST_SS_TANO)]    = true,
     [GetString(DAS_QUEST_SS_FARO)]    = true,
+    [GetString(DAS_QUEST_SS_TANE)]    = true,
 }
 
 DAS.questFinisher[zoneId] = {
     [GetString(DAS_QUEST_SS_TANO)]    = true,
     [GetString(DAS_QUEST_SS_FARO)]    = true,
+    [GetString(DAS_QUEST_SS_TANE)]    = true,
 }
-
 
 DAS.questIds[zoneId] = {
-    [5733]  = true, -- Ancient Armaments in Bangkorai
+
 }
+for i=6082, 6087 do
+    DAS.questIds[zoneId][i] = true
+    DAS_QUEST_IDS[i] = true
+end
+for i=6152, 6160 do
+    DAS.questIds[zoneId][i] = true
+    DAS_QUEST_IDS[i] = true
+end
+
+DAS.questIds[zoneId][6202] = true
+DAS_QUEST_IDS[6202] = true

@@ -45,6 +45,7 @@ local strings  = {
     DAS_ELF_SNAKE           = "Run Aground",
     DAS_ELF_WILD            = "Taming the Wild",
     
+    DAS_ELF_GEYSER          = "Sinking Summerset", 
     
         
 	-- Clockwork City
@@ -206,6 +207,7 @@ local strings  = {
     
     DAS_QUEST_SS_TANO       = "Justiciar Tanorian",
     DAS_QUEST_SS_FARO       = "Justiciar Farowel",
+    DAS_QUEST_SS_TANE       = "Battlereeve Tanerline",
     
     DAS_QUEST_CRY_BATTLE    = "Battle Mission Board",
     DAS_QUEST_CRY_BOUNTY    = "Bounty Mission Board",

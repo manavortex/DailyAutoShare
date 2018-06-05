@@ -26,6 +26,16 @@ function table.contains(tbl, element)
   return false
 end
 
+local function hasBingoQuestActive(bingoIndex)
+    if not bingoIndex then return end
+    local activeQuests = DAS.activeZoneQuests or {}
+    for _, value in pairs(activeQuests) do 
+        if value == bingoIndex then return true end
+    end
+    return false
+
+end
+
 local channelTypes = DAS.channelTypes
 local stringPlus = "+"
 local stringAny = "+any"
@@ -39,7 +49,7 @@ local function HandleChatMessage(messageText, fromDisplayName, calledRecursively
     local _, bingoCode = pcall(string.match, messageText, "[%+/]+%s*(%w+)%s?[%+/]?")
     if not found and not bingoCode then return end
     local bingoIndex = DAS.bingo[DAS.GetZoneId()][bingoCode]
-    found = found or (nil ~= bingoIndex and DAS.activeZoneQuests[bingoIndex])
+    found = found or DAS.activeBingoIndices[bingoIndex]
     
     if not found then return HandleChatMessage(messageText:gsub(bingoCode, ""), fromDisplayName, true) end
     if found and not table.contains(inviteQueue, fromDisplayName) then

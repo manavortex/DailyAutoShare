@@ -102,7 +102,8 @@ local function GenerateBingoString(activeQuestNames, verbose)
         end        
         return zo_strformat(qsString, questNames, bingoString) 
     end
-	
+	if #bingoString > 0 then return bingoString end
+    
     if NonContiguousCount(DAS.GetShareableLog()) == 0 and #activeQuestNames == 0 then
         return any
     end
@@ -124,7 +125,7 @@ local function SpamChat(verbose, questName)
 	end
 	if #activeQuestNames == 0 then 
 		DAS.SetAutoInvite(false)
-	end
+	end    
 	StartChatInput(DAS.GenerateBingoString(activeQuestNames, verbose), CHAT_CHANNEL_ZONE)
 
 end

@@ -50,7 +50,8 @@ end
 function DAS.RefreshFullBingoString()
     local ret = ""
     for _, questName in ipairs(DAS.GetActiveQuestNames()) do
-        ret = ret .. DAS.GetBingoStringFromQuestName(questName) .. " "
+        local bingoString = DAS.GetBingoStringFromQuestName(questName)
+        ret = ret .. bingoString .. " "
     end
     if (#ret > 0) then 
         ret = ret .. "+any"
@@ -100,7 +101,7 @@ function DAS.GetBingoStringFromQuestName(questName)
 		if (string.find(ret, "%+%+"))  then ret.gsub("%+%+", "%+") end
 	end
 	
-	return ret
+	return ret, index
 	
 end
 
@@ -115,12 +116,14 @@ function DAS.GetQuestNameFromBingoString(bingoString)
 end
 
 function DAS.GetActiveQuestNames()
+    DAS.activeBingoIndices = {}
 	local ret = {}
 	local questLabel
 	for i=1, #DAS.labels do
 		questLabel = DAS.labels[i]
 		if not questLabel:IsHidden() and (questLabel.dataQuestState == DAS_STATUS_ACTIVE) or (questLabel.dataQuestState == DAS_STATUS_TRACKED) then
 			table.insert(ret, questLabel.dataQuestName)
+            DAS.activeBingoIndices[questLabel.dataBingoIndex] = true
 		end
 	end
 	return ret
