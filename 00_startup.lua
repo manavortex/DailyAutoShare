@@ -2,7 +2,7 @@ DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
 
 DAS.name                    = "DailyAutoShare"
-DAS.version                 = "3.3.4"
+DAS.version                 = "3.3.5"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -268,7 +268,7 @@ local function OnQuestAdded(eventCode, journalIndex, questName, objectiveName)
 	if not DAS.GetActiveIn(zoneId) 			then return end
 	if not GetIsQuestSharable(journalIndex) then return end	
 	local shareables = DAS.shareables[zoneId] or {}
-    local bingoIndex = DAS.getBingoIndexFromQuestName(questName) or 0
+    local bingoIndex = DAS.GetBingoIndexFromQuestName(questName) or 0
     DAS.activeBingoIndices[bingoIndex] = true
 	if nil ~= shareables[questName] then
 		DAS.LogQuest(questName, false)
@@ -330,7 +330,7 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
 	local autoInvite = DAS.GetAutoInvite()
     DAS.SetAutoInvite(false)
     
-    local bingoIndex = DAS.getBingoIndexFromQuestName(questName) or 0
+    local bingoIndex = DAS.GetBingoIndexFromQuestName(questName) or 0
     DAS.activeBingoIndices[bingoIndex] = false
     
     zo_callLater(function()
