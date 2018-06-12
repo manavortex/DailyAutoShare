@@ -2,7 +2,7 @@ DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
 
 DAS.name                    = "DailyAutoShare"
-DAS.version                 = "3.3.5"
+DAS.version                 = "3.4.0"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -41,12 +41,9 @@ local fullBingoString       = DAS.fullBingoString
 UNITTAG_PLAYER              = UNITTAG_PLAYER or "player"
 
 local defaults = {
-
-	["singleDailies"]               = {},
-	["shareableDailies"]            = {},
-	["speakStupid"]                 = false,
-	["debug"] 		                = false,
-	["keepInviteUpOnDegroup"] 		= false,
+	
+	debugging		   			= false,
+	keepInviteUpOnDegroup 		= false,
 	
 	["DasControl"] = {
 		["x"] = 0,
@@ -95,28 +92,30 @@ local defaults = {
 			["active"] = true,
 		},
 	},
+    
     questShareString            = "I can give a DailyAutoShare for <<1>>, type <<2>> for an instant invite",
-	debugOutput		   			= false,
-	currentlyWithQuest 			= false,
-	currentQuestIndex 			= nil,
-	currentQuestName 			= nil,
-	autoTrack 					= false,
 	autoAcceptInvite 			= false,
 	autoAcceptInviteInterval 	= 5,
+    
 	autoAcceptQuest		        = true,
 	autoAcceptShared 			= true,
+    
 	autoDeclineShared 			= false,
+    
 	autoHide 					= false,
 	autoMinimize 				= false,
-	autoShare 					= true,
-	autoAcceptAllDailies 		= false,
-	autoInvite 					= false,
-	autoLeave 					= false,
-	useGlobalSettings 			= true,
+    
 	minimised 					= false,
 	locked 						= false,
 	hidden 						= false,
-	fontScale					= 1,
+    
+	autoShare 					= true,
+	autoInvite 					= false,
+	autoLeave 					= false,
+    
+	useGlobalSettings 			= true,
+    
+	fontScale					= 0.8,
 	tooltipRight 				= false,
 	upsideDown 					= false,
     hideCompleted				= false,
@@ -132,87 +131,85 @@ local defaults = {
     whisperOnly                 = false,
     whisperString               = "whisper + for an instant invite", 
     tracked = {
-		[684] = true,
-		[823] = true,
-		[849] = true,	    -- Vvardenfell
-		[181] = false,
-		[1011] = false,     -- Summerset
+		[684]  = true,
+		[823]  = true,
+		[849]  = true,	    -- Vvardenfell
+		[181]  = false,
+		[1011] = true,     -- Summerset
 	},
 }
 
 local function pointerUpSubzones()
     
+    local settings = DAS.GetSettings()
       -- Summerset
-    defaults[1012]                      = defaults[1011]
-    defaults[1013]                      = defaults[1011]
-    defaults[1014]                      = defaults[1011]
-    defaults[1015]                      = defaults[1011]
-    defaults[1016]                      = defaults[1011]
-    defaults[1017]                      = defaults[1011]
-    defaults[1018]                      = defaults[1011]
-    defaults[1019]                      = defaults[1011]
-    defaults.tracked[1012]              = defaults.tracked[1011]
-    defaults.tracked[1013]              = defaults.tracked[1011]
-    defaults.tracked[1014]              = defaults.tracked[1011]
-    defaults.tracked[1015]              = defaults.tracked[1011]
-    defaults.tracked[1016]              = defaults.tracked[1011]
-    defaults.tracked[1017]              = defaults.tracked[1011]
-    defaults.tracked[1018]              = defaults.tracked[1011]
-    defaults.tracked[1019]              = defaults.tracked[1011]
+    settings[1012]                      = settings[1011]
+    settings[1013]                      = settings[1011]
+    settings[1014]                      = settings[1011]
+    settings[1015]                      = settings[1011]
+    settings[1016]                      = settings[1011]
+    settings[1017]                      = settings[1011]
+    settings[1018]                      = settings[1011]
+    settings[1019]                      = settings[1011]
+    settings.tracked[1012]              = settings.tracked[1011]
+    settings.tracked[1013]              = settings.tracked[1011]
+    settings.tracked[1014]              = settings.tracked[1011]
+    settings.tracked[1015]              = settings.tracked[1011]
+    settings.tracked[1016]              = settings.tracked[1011]
+    settings.tracked[1017]              = settings.tracked[1011]
+    settings.tracked[1018]              = settings.tracked[1011]
+    settings.tracked[1019]              = settings.tracked[1011]
     
     -- Gold Coast
-    defaults[825]                       = defaults[823]
-    defaults[826]                       = defaults[823]
-    defaults.tracked[825]               = defaults.tracked[823]
-    defaults.tracked[826]               = defaults.tracked[823]
+    settings[825]                       = settings[823]
+    settings[826]                       = settings[823]
+    settings.tracked[825]               = settings.tracked[823]
+    settings.tracked[826]               = settings.tracked[823]
     
     -- Capitals
-    defaults[19]                       = defaults[57]
-    defaults[383]                      = defaults[57]
-    defaults.tracked[19]               = defaults.tracked[57]
-    defaults.tracked[383]              = defaults.tracked[57]
+    settings[19]                       = settings[57]
+    settings[383]                      = settings[57]
+    settings.tracked[19]               = settings.tracked[57]
+    settings.tracked[383]              = settings.tracked[57]
     
     -- Clockwork City
-    defaults[981]                       = defaults[980]
-    defaults[981]                       = defaults[980]
-    defaults[982]                       = defaults[980]
-    defaults.tracked[982]               = defaults.tracked[980]
-    defaults.tracked[983]               = defaults.tracked[980]
-    defaults.tracked[983]               = defaults.tracked[980]
+    settings[981]                       = settings[980]
+    settings[981]                       = settings[980]
+    settings[982]                       = settings[980]
+    settings.tracked[982]               = settings.tracked[980]
+    settings.tracked[983]               = settings.tracked[980]
+    settings.tracked[983]               = settings.tracked[980]
 
     -- Morrowind
-    defaults[921]                       = defaults[849]
-    defaults[922]                       = defaults[849]
-    defaults[923]                       = defaults[849]
-    defaults[924]                       = defaults[849]
-    defaults[925]                       = defaults[849]
-    defaults[961]                       = defaults[849]
-    defaults.tracked[921]               = defaults.tracked[849]
-    defaults.tracked[922]               = defaults.tracked[849]
-    defaults.tracked[923]               = defaults.tracked[849]
-    defaults.tracked[924]               = defaults.tracked[849]
-    defaults.tracked[925]               = defaults.tracked[849]
-    defaults.tracked[961]               = defaults.tracked[849]
+    settings[921]                       = settings[849]
+    settings[922]                       = settings[849]
+    settings[923]                       = settings[849]
+    settings[924]                       = settings[849]
+    settings[925]                       = settings[849]
+    settings[961]                       = settings[849]
+    settings.tracked[921]               = settings.tracked[849]
+    settings.tracked[922]               = settings.tracked[849]
+    settings.tracked[923]               = settings.tracked[849]
+    settings.tracked[924]               = settings.tracked[849]
+    settings.tracked[925]               = settings.tracked[849]
+    settings.tracked[961]               = settings.tracked[849]
 
     -- Wrothgar
-    defaults[689]                       = defaults[684]
-    defaults[690]                       = defaults[684]
-    defaults[691]                       = defaults[684]
-    defaults[692]                       = defaults[684]
-    defaults[693]                       = defaults[684]
-    defaults[694]                       = defaults[684]
-    defaults.tracked[689]               = defaults.tracked[684]
-    defaults.tracked[690]               = defaults.tracked[684]
-    defaults.tracked[691]               = defaults.tracked[684]
-    defaults.tracked[692]               = defaults.tracked[684]
-    defaults.tracked[693]               = defaults.tracked[684]
-    defaults.tracked[694]               = defaults.tracked[684]
+    settings[689]                       = settings[684]
+    settings[690]                       = settings[684]
+    settings[691]                       = settings[684]
+    settings[692]                       = settings[684]
+    settings[693]                       = settings[684]
+    settings[694]                       = settings[684]
+    settings.tracked[689]               = settings.tracked[684]
+    settings.tracked[690]               = settings.tracked[684]
+    settings.tracked[691]               = settings.tracked[684]
+    settings.tracked[692]               = settings.tracked[684]
+    settings.tracked[693]               = settings.tracked[684]
+    settings.tracked[694]               = settings.tracked[684]
 end
-pointerUpSubzones()
 
 local characterName     = zo_strformat(GetUnitName(UNITTAG_PLAYER))
-
-local allDailyQuestIds = DAS_QUEST_IDS
 
 local em = EVENT_MANAGER
 
@@ -282,14 +279,9 @@ local function OnQuestShared(eventCode, questId)
 	local zoneQuestIds = DAS.questIds[DAS.GetZoneId()] or {}
 	if not (zoneQuestIds[questName] or DAS_QUEST_IDS[questId]) and DAS.GetActiveIn(zoneId) then return end	
     
-	if zoneQuestIds[questId] then
-        if DAS.GetAutoDeclineShared() then 
-            DAS.Report("DailyAutoShare declined a quest for you. Type /DailyAutoShare disabledecline to stop it from doing so.")
-            DeclineSharedQuest(questId)
-        else
+	if zoneQuestIds[questId] then        
             AcceptSharedQuest(questId)
             zo_callLater(forceRefreshControl, 500)
-        end
     end
 end
 
@@ -298,12 +290,12 @@ local function OnChatMessage(eventCode, channelType, fromName, messageText, _, f
 end
 
 local function OnPlayerActivated(eventCode)
-	local active 		= DAS.GetActiveIn()	
+	local active 		= DAS.GetActiveIn()
 	DAS.SetHidden(not active)
     DAS.SetAutoInvite(DAS.GetAutoInvite()) -- disables if we aren't group lead
     DAS.SetChatListenerStatus(DAS.autoInviting)
     DAS.guildInviteText = DAS.GetGuildInviteText()
-    DAS.cacheChatterData()
+    DAS.cacheChatterData()    
 end
 
 local function OnUnitCreated(eventCode, unitTag)
@@ -332,10 +324,14 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
     
     local bingoIndex = DAS.GetBingoIndexFromQuestName(questName) or 0
     DAS.activeBingoIndices[bingoIndex] = false
+    if DAS.trackedIndex == journalIndex then 
+        DAS.trackedIndex = 99
+    end
     
     zo_callLater(function()
-        DAS.SetAutoInvite(autoInvite)	
+        DAS.SetAutoInvite(autoInvite)
         forceRefreshControl()
+        DAS.RefreshLabelsWithDelay()
     end, 5000)
 end
 
@@ -360,7 +356,7 @@ local function queueQuestRefresh()
     zo_callLater(questRefresh, 600)
 end
 
-local function hookQuestTracker()   
+local function hookQuestTracker()
     if FOCUSED_QUEST_TRACKER and FOCUSED_QUEST_TRACKER.ForceAssist then
         ZO_PreHook(FOCUSED_QUEST_TRACKER, "ForceAssist", queueQuestRefresh)  
     end
@@ -405,37 +401,43 @@ local function resetQuests()
     DAS.globalSettings.completionLog[currentDate] = DAS.todaysLog
     forceRefreshControl()
 end
+
 local typeTable = "table"
 local function isEmpty(tbl)
     if not tbl then return true end
     local ret = true
     for key, value in pairs(tbl) do
-        if type(value) == typeTable then 
-            ret = ret and isEmpty(value) 
+        if type(value) == typeTable then
+            ret = ret and ({} == value or isEmpty(value))
         else
             ret = false
-        end
+        end       
     end
     return ret
 end
+
+
 -- has to be a local var, lua error if not
 -- Keep outside of function namespace so we can overwrite it for debugging
 local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 
-local function handleLog(forceReset)
-    DAS.globalSettings.completionLog = DAS.globalSettings.completionLog or {}
+
+local function handleLog(forceNoAfterEight)
+
+    local todaysLog = DAS.GetSettingsArray()
+    if {} ~= todaysLog then 
+        todaysLog = ZO_DeepTableCopy(todaysLog, {}) 
+    end
+    
     local allLogs = DAS.globalSettings.completionLog
     local currentDate = tonumber(GetDate())
     allLogs[currentDate] = allLogs[currentDate] or {}
 
     local logSize, lastDate = NonContiguousCount(DAS.globalSettings.completionLog)
 
-    if forceReset then         
-        return resetQuests()
-    end
     local counter = 0 
     for dateNumber, dateLog in pairs(DAS.globalSettings.completionLog) do
         counter = counter + 1
-        if dateNumber < currentDate then 
+        if nil ~= dateNumber and dateNumber < currentDate then 
             lastDate = dateNumber
         end
         if counter < logSize-2 then 
@@ -443,19 +445,23 @@ local function handleLog(forceReset)
         end
     end
     
-    local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 -- has to be a local var, lua error if not
-    if (not afterEight) and isEmpty(DAS.todaysLog) and lastDate ~= currentDate then 
-        DAS.globalSettings.completionLog[currentDate] = ZO_DeepTableCopy(DAS.globalSettings.completionLog[lastDate], {})
+    local afterEight = not forceNoAfterEight and tonumber(GetTimeString():sub(0, 2)) >= 08 -- has to be a local var, lua error if not
+    
+    if (not afterEight) and isEmpty(DAS.todaysLog) and lastDate ~= currentDate then
+        local lastLog = DAS.globalSettings.completionLog[lastDate]
+        DAS.globalSettings.completionLog[currentDate] = ZO_DeepTableCopy(lastLog, {})
+        d(DAS.globalSettings.completionLog[currentDate])
         for charName, charLog in pairs(DAS.globalSettings.completionLog[currentDate]) do
             for questName, questData in pairs(charLog) do
                 questData.afterEight = false
             end
         end
+        characterName                   = characterName or GetUnitName(UNITTAG_PLAYER)
+        DAS.todaysLog                   = DAS.globalSettings.completionLog[currentDate]
+	DAS.todaysCharacterLog              = DAS.todaysLog[characterName]
     end
-    
-    DAS.todaysLog = DAS.globalSettings.completionLog[currentDate]
 end
-DAS.handleLog = handleLog
+DAS.handleLog = handleLog   -- expose this for debugging purpose
 
 local function minimiseOnStartup()    
 	DAS.SetMinimized(DAS.GetSettings().startupMinimized)    
@@ -468,10 +474,11 @@ function DailyAutoShare_Initialize(eventCode, addonName)
 
 	if addonName ~= DAS.name then return end
     
-	DAS.settings        = ZO_SavedVars:New("DAS_Settings", 1, "DAS_Settings", defaults)
-	DAS.globalSettings  = ZO_SavedVars:NewAccountWide("DAS_Globals", 1, "DAS_Global", defaults)
+	DAS.settings        = ZO_SavedVars:New(             "DAS_Settings", 2, "DAS_Settings", defaults)
+	DAS.globalSettings  = ZO_SavedVars:NewAccountWide(  "DAS_Globals",  2, "DAS_Globals",  defaults)
     DAS.pdn = GetUnitDisplayName(UNITTAG_PLAYER)
 
+    pointerUpSubzones()
 	RegisterEventHooks()
 	
 	DAS.CreateMenu(DAS.settings, defaults)

@@ -94,8 +94,6 @@ local function shareQuestQueue()
     zo_callLater(shareQuestQueue, DAS.GetQuestShareDelay())
 end
 
-local allDailyQuestIds = DAS_QUEST_IDS
-
 function DAS.TryShareActiveDaily()
     if not DAS.GetAutoShare() then return end
     for _, journalIndex in pairs(DAS.activeZoneQuests) do

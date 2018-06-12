@@ -1,3 +1,27 @@
+DailyAutoShare              = DailyAutoShare or {}
+DAS                         = DailyAutoShare
+
+DAS.subzones = {
+	
+    -- CC
+	[985]			= 980,		-- Halls of Regulation
+	[986]			= 980,		-- Shadow Cleft
+	[993]			= 980,		-- Planisphere
+    
+    -- Gold Coast
+	[824]			= 823,		-- Hrota Cave
+    
+    -- Wrothgar
+	[689]			= 684,		-- Nikolovara's Kennel
+	[690]			= 684,		-- 
+	[691]			= 684,		-- 
+	[692]			= 684,		-- 
+	[693]			= 684,		-- Argent Mine
+	[694]			= 684,		-- Argent Mine
+}
+
+
+
 DAS_QUEST_IDS  = {
 
     -- Summerset

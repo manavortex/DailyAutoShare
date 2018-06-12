@@ -3,6 +3,8 @@ local DAS = DailyAutoShare
 local optionsData
 local questShareDefault
 
+local GetSettings = DAS.GetSettings
+
 function DAS.CreateMenu(savedVars, defaults)
     
     questShareDefault = defaults.questShareString
@@ -356,7 +358,7 @@ function DAS.CreateMenu(savedVars, defaults)
 			name    = "Use whisper only",
             tooltip = "This will ignore bingo spam in zone chat!",
 			getFunc = function() return DAS.GetWhisperOnly() end,
-			setFunc = function(value) DAS.SetWhisperOnly(value) end
+			setFunc = function(value) GetSettings().whisperOnly = value end
 		},
         
 		{ -- header: Use global variables?
@@ -502,13 +504,6 @@ function DAS.CreateMenu(savedVars, defaults)
 		{ -- header: automatically
 			type    = "header",
 			name    = "automatically..."
-		},
-		{ -- auto-track
-			type    = "checkbox",
-			tooltip = "Auto-track active daily quest?",
-			name    = "track active daily",
-			getFunc = function() return DAS.GetAutoTrack() end,
-			setFunc = function(value) DAS.SetAutoTrack(value) end
 		},
 		{ -- auto-accept
 			type    = "checkbox",

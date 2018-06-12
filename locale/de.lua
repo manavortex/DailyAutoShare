@@ -25,37 +25,31 @@ local strings  = {
 	DAS_SI_SPAM_SINGLE	 	= "Spammen",
 	DAS_SI_REFRESH	 		="Aktualisieren",	
 	
-	
+ 
 	DAS_SI_SETOPEN_TRUE	 	= "Toggle open",
 	DAS_SI_SETOPEN_FALSE	= "Toggle complete",
 	
-    DAS_ELF_RELIC           = "Relic Runaround",    
-    DAS_ELF_PILGR           = "Pilgrimage's End",    
-    DAS_ELF_LIGHT           = "Snuffing Out the Light",   
-    DAS_ELF_SERPE           = "Culling Serpents",
-    DAS_ELF_MEMO            = "Struck from Memory",
-    DAS_ELF_ROSE            = "A Rose's Beauty",
+    DAS_ELF_RELIC           = "Die Reliktrettung",    
+    DAS_ELF_PILGR           = "Das Ende der Pilgerfahrt",    
+    DAS_ELF_LIGHT           = "Das verlöschen des Lichts",   
+    DAS_ELF_SERPE           = "Schlangentöter",
+    DAS_ELF_MEMO            = "Aus der Erinnerung getilgt",
+    DAS_ELF_ROSE            = "Die Schönheit einer Rose",
     
       
-    DAS_ELF_ALCHE           = "The Abyssal Alchemist",   
-    DAS_ELF_GRAVE           = "Never Forgotten",        
-    DAS_ELF_QUEEN           = "The Sickening Sea",    
-    DAS_ELF_GRIFFIN         = "Birds of a Feather",    
-    DAS_ELF_SNAKE           = "Run Aground",
-    DAS_ELF_WILD            = "Taming the Wild",
+    DAS_ELF_ALCHE           = "Der Kluftalchemist",   
+    DAS_ELF_GRAVE           = "Nie vergessen",        
+    DAS_ELF_QUEEN           = "Die Seuchensee",    
+    DAS_ELF_GRIFFIN         = "Fremde Federn",    
+    DAS_ELF_SNAKE           = "Auf Grund gelaufen",
+    DAS_ELF_WILD            = "Die Zähmung der Wildnis",
     
-    DAS_ELF_GEYSER          = "Sinking Summerset", 
+    DAS_ELF_GEYSER          = "Die Versenkung Sommersends", 
 	
 	-- Clockwork City
-	DAS_CLOCK_IMP		 = "Das Reizen des Unvollendeten", 
-	DAS_CLOCK_FOE		 = "Ein feingefiederter Feind", 
-	
-    -- Clockwork City
-	DAS_CLOCK_BOSS_START	 = "I'll take on a contract.",
-	DAS_CLOCK_CRAFT_START    = "Got any work?",
-	DAS_CLOCK_CAVE_START     = "What's the job?",
-	DAS_CLOCK_CROW_START     = "How can I help?",
-
+	DAS_CLOCK_IMP		    = "Das Reizen des Unvollendeten", 
+	DAS_CLOCK_FOE		    = "Ein feingefiederter Feind", 	
+  
 	DAS_CLOCK_CRAFT_CLOTH	 = "Lose Fasern", 
 	DAS_CLOCK_CRAFT_WATER	 = "Eine klebrige Lösung", 
 	DAS_CLOCK_CRAFT_RUNE	 = "Verzauberte Ansammlung", 
@@ -182,8 +176,11 @@ local strings  = {
 
     DAS_QUEST_DB_ARVINA     = "Cleric Arvina", 
     
-    DAS_QUEST_DB_BOUNTY     = "Bounty Board",  
+    DAS_QUEST_DB_BOUNTY     = "Bounty Board",
     
+    DAS_QUEST_SS_TANO       = "Justiziar Tanorian",
+    DAS_QUEST_SS_FARO       = "Justiziarin Farowel",
+    DAS_QUEST_SS_TANE       = "Battlereeve Tanerline",
     
 	
 }

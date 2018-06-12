@@ -9,23 +9,25 @@ function DAS.GetLogIndex(questName)
 	return DAS.QuestNameTable[questName] or 0
 end
 
-
-local function getEnglishQuestNames(activeQuestNames)
+local en = "en"
+local function getEnglishQuestNames(activeQuestNames)  
 	activeQuestNames = activeQuestNames or DAS.GetZoneQuests()
-	if DAS.locale == "en" then return activeQuestNames end
-	local ret = {}
-	for index, questName in pairs(activeQuestNames) do
-		if nil ~= DAS_STRINGS_LOCALE and nil ~= DAS.locale and nil ~= DAS_STRINGS_LOCALE.en then
-			for key, value in pairs(DAS_STRINGS_LOCALE[DAS.locale]) do 
-				if DAS.IsMatch(questName, value) then
-					table.insert(ret, DAS_STRINGS_LOCALE.en[key])
-				end
-			end
-		end
+	if DAS.locale == en or not DAS_STRINGS_LOCALE or not DAS.locale then
+        return activeQuestNames 
+    end	 
+    local ret = {}
+	for _, questName in ipairs(activeQuestNames) do
+        for key, value in pairs(DAS_STRINGS_LOCALE[DAS.locale]) do 
+            if value == questName then
+                table.insert(ret, DAS_STRINGS_LOCALE.en[key])
+            end
+        end		
 	end
+    
 	if ret == {} then return activeQuestNames end
 	return ret
 end
+DAS.getEnglishQuestNames = getEnglishQuestNames
 
 local function askForQuest(questNames)
     local ret = ""
@@ -81,7 +83,7 @@ end
 
 local function GenerateBingoString(activeQuestNames, verbose)
 
-	activeQuestNames = getEnglishQuestNames(activeQuestNames)
+	activeQuestNames = DAS.getEnglishQuestNames(activeQuestNames)
 	local qsString = DAS.GetSettings().questShareString
 	local bingoCodes = {}
     local bingo, questNames = empty, empty

@@ -9,7 +9,6 @@ DAS.labels = {}
 local labelTexts = {}
 
 local p = DAS.DebugOut
-local QUEST_TRACKER = QUEST_TRACKER or FOCUSED_QUEST_TRACKER
 
 local function isHidden()
 	return (not DAS.GetActiveIn()) or DAS.GetHidden() or (DAS.GetAutoHide() and (not DAS.OpenDailyPresent()))
@@ -20,12 +19,12 @@ local function isMinimised()
 end
 
 local function cacheVisibilityStatus(forceOverride)
-
 	stateIsHidden				= isHidden()
 	stateIsMinimised			= isMinimised()
 end
 
 function DAS.RefreshControl(refreshQuestCache)
+    
     -- p("DAS.RefreshControl(" .. tostring(refreshQuestCache).. ")")
 	if not DAS.HasActiveDaily() then 
 		DAS.SetAutoInvite(false)
@@ -34,9 +33,7 @@ function DAS.RefreshControl(refreshQuestCache)
 	cacheVisibilityStatus()
 	DasHandle:SetHidden(  stateIsHidden)
 	DasControl:SetHidden( stateIsHidden)
-	DasList:SetHidden(    stateIsMinimised or stateIsHidden)
-	if stateIsMinimised or stateIsHidden then return end
-	
+	DasList:SetHidden(    stateIsMinimised or stateIsHidden)	
     DAS.RefreshLabelsWithDelay()
 	
 end
@@ -105,13 +102,16 @@ function DAS.QuestLabelClicked(control, mouseButton)
     
     if mouseButton == MOUSE_BUTTON_INDEX_RIGHT then -- and isValidJournalIndex then
 		return DAS.OnRightClick(control)	
-	end	
+	end
     
-	local journalIndex = control["dataJournalIndex"]
-	local isValidJournalIndex = IsValidQuestIndex(journalIndex)
+	local journalIndex          = control.dataJournalIndex
+	local isValidJournalIndex   = IsValidQuestIndex(journalIndex)
 	
-	if isValidJournalIndex then		
-		ShareQuest(journalIndex)		
+	if isValidJournalIndex then	
+		ShareQuest(journalIndex)
+        if journalIndex ~= DAS.trackedIndex then
+            FOCUSED_QUEST_TRACKER:ForceAssist(journalIndex)
+        end
 	end	
 end
 
@@ -299,6 +299,7 @@ function DAS.setLabels(zoneQuests)
                     
                 buttonIndex = buttonIndex + 1
                 
+                
             end -- nil check end
         end
 	end -- for loop end
@@ -316,10 +317,7 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
 	cacheVisibilityStatus()
 	setButtonStates()
 	
-	DAS.trackedIndex = 99
-	if QUEST_TRACKER and QUEST_TRACKER.assistedData then
-		DAS.trackedIndex = QUEST_TRACKER.assistedData.arg1
-	end
+	
 	
 	local buttonIndex = 1
 	
@@ -327,7 +325,10 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
 	local hidden 		= DasList:IsHidden()
 	local label, questIndex, tracked
 	if not forceSkipQuestRefresh then 
-		DAS.RefreshQuestLogs(forceQuestRefresh)
+		DAS.RefreshQuestLogs(forceQuestRefresh)        
+        if FOCUSED_QUEST_TRACKER and FOCUSED_QUEST_TRACKER.assistedData then
+            DAS.trackedIndex = FOCUSED_QUEST_TRACKER.assistedData.arg1
+        end
 	end
 	
 	local questList = DAS.QuestLists[DAS.GetZoneId()]
@@ -377,15 +378,18 @@ function DAS.AnchorList()
 	end
 end
 
-
 local function setFontSize(labelList)
 	local labelHeight 	= 30
 	local fontScale 	= DAS.GetFontSize()
 	
 	local totalHeight 	= 0
 	local hidden		= false
-    
+    local parent        = nil
+    local maxWidth      = DasHandle:GetWidth()
+	
     for index, control in pairs(labelList) do		
+        parent = parent or control:GetParent()
+        maxWidth = math.max(maxWidth, control:GetWidth())
 		control:SetScale(fontScale)
 		if control:IsHidden() then
 			control:SetHeight(0)
@@ -393,14 +397,15 @@ local function setFontSize(labelList)
             control:SetHeight(labelHeight)
             control:SetScale(fontScale)
 		end
-	end	    
+	end
+    parent:SetWidth(maxWidth)
 end
 DAS.setFontSize = setFontSize
 
 function DAS.SetLabelFontSize()
-
-	setFontSize(DAS.labels)
-	DasControl:SetHeight(DasList:GetHeight() + DasHandle:GetHeight())
+	
+    setFontSize(DAS.labels)
+	DasControl:SetHeight(DasList:GetHeight() + DasHandle:GetHeight())    
     setFontSize(DAS.sublabels)
 	
 end

@@ -30,14 +30,6 @@ local function CanInvite(unitTag, unitName)
     return true
 end
 
-
-function DAS.GetSpeakStupid()
-	return GetSettings().speakStupid
-end
-function DAS.SetSpeakStupid(value)
-	GetSettings().speakStupid = value
-end
-
 function DAS.GetDebugMode()
 	return GetSettings().debugging
 end
@@ -76,7 +68,6 @@ function DAS.SetHidden(hidden)
 	end	
 	if not hidden then DAS.RefreshControl(true) end
 end
-
 function DAS.GetQuestShareDelay()
 	return GetSettings().questShareDelay
 end
@@ -89,45 +80,21 @@ end
 function DAS.SetGroupInviteDelay(value)
 	GetSettings().groupInviteDelay = value
 end
-
--- called from settings
-function DAS.GetAutoTrack()
-	return GetSettings().autoTrack
-end
-function DAS.SetAutoTrack(value)
-	GetSettings().autoTrack = value
-end
-
 function DAS.GetAutoAcceptInvite()
 	return DAS.settings.autoAcceptInvite
-end
-
-local function autoAcceptInvite()
-    AcceptGroupInvite()
 end
 
 function DAS.SetAutoAcceptInvite(value)
 	DAS.settings.autoAcceptInvite = value
     if value then
-        EVENT_MANAGER:RegisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, autoAcceptInvite)
+        EVENT_MANAGER:RegisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
     else 
-        EVENT_MANAGER:UnregisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, autoAcceptInvite)
+        EVENT_MANAGER:UnregisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
     end
 end
 
 function DAS.GetWhisperOnly()
     return GetSettings().whisperOnly 
-end
-function DAS.SetWhisperOnly(value)
-    GetSettings().whisperOnly = value
-end
-
-
-function DAS.GetGroupLeaveOnNewSearch()
-
-end
-function DAS.SetGroupLeaveOnNewSearch(value)
-
 end
 
 function DAS.GetMinimized()
@@ -135,13 +102,6 @@ function DAS.GetMinimized()
 end
 function DAS.SetMinimized(value)
 	DAS.settings.minimised = value
-end
-
-function DAS.GetAutoDeclineShared()
-	return GetSettings().autoDeclineShared
-end
-function DAS.SetAutoDeclineShared(value)
-	GetSettings().autoDeclineShared = value
 end
 
 function DAS.GetAutoAcceptShared()
@@ -276,9 +236,11 @@ end
 
 function DAS.SetFontSize(value)
 	GetSettings().fontScale = value
-	DAS.RefreshControl()
+    DAS.SetLabelFontSize()	
+    DAS.RefreshLabelsWithDelay()
 end
--- called from gui
+
+-- called from GUI
 function DAS.GetX(controlname)
 	controlname = controlname or "DasControl"
 	return GetSettings()[controlname].x
@@ -359,73 +321,60 @@ function DAS.SetUserMinimised(value)
 	GetSettings().userMinimised = value
 end
 
+local characterName         = GetUnitName(UNITTAG_PLAYER)
+local dateNumber            = tonumber(GetDate())
+local timeStringNumber      = tonumber(GetTimeString():sub(1,2))
 
-local function assertSettingArray(settings, dateNumber, characterName)
+DAS.todaysCharacterLog      = nil
 
-	local dateNumber = tonumber(GetDate()) -- 20160411
-	local afterEight = (tonumber(GetTimeString():sub(0, 2)) >= 08) --08:17:02
-	local characterName = GetUnitName(UNITTAG_PLAYER)
-	if nil == settings[dateNumber] then settings[dateNumber] = {} end
-	if nil == settings[dateNumber][characterName] then settings[dateNumber][characterName] = {} end
+local function getSettingsArray(forceRefresh)
 
-	return  settings[dateNumber][characterName]
-
+    if not forceRefresh and DAS.todaysCharacterLog then return DAS.todaysCharacterLog end
+    characterName                       = characterName or GetUnitName(UNITTAG_PLAYER)
+   
+    DAS.globalSettings.completionLog    = DAS.globalSettings.completionLog or {}
+    local completionLog                 = DAS.globalSettings.completionLog
+    
+    completionLog[dateNumber]           = completionLog[dateNumber] or {}
+    
+    DAS.todaysLog                       = DAS.todaysLog or completionLog[dateNumber]
+	DAS.todaysLog[characterName]        = DAS.todaysLog[characterName] or {}        
+	DAS.todaysCharacterLog              = DAS.todaysLog[characterName]
+    
+	return DAS.todaysCharacterLog
 end
 
-function DAS.GetSetting(settingsArray, arrayKey)
-	if not GetSettings()[settingsArray] then return false end
-	return GetSettings()[settingsArray][arrayKey]
-end
-function DAS.SetSetting(settingsArray, arrayKey, arrayValue)
-	GetSettings()[settingsArray] = DAS.settings[settingsArray] or {}
-	GetSettings()[settingsArray][arrayKey] = arrayValue
-end
-
-
-local characterName
-local dateNumber
-local timeStringNumber
-local settings = DAS.todaysLog
-local function getSettingsArray()
-	dateNumber		 = dateNumber 		or tonumber(GetDate())
-	characterName 	 = characterName 	or GetUnitName(UNITTAG_PLAYER)
-	timeStringNumber = timeStringNumber or tonumber(GetTimeString():sub(1,2))
-	if nil == settings then
-		DAS.globalSettings.completionLog = DAS.globalSettings.completionLog or {}
-		DAS.globalSettings.completionLog[dateNumber] = DAS.globalSettings.completionLog[dateNumber] or {}
-		DAS.globalSettings.completionLog[dateNumber][characterName] = DAS.globalSettings.completionLog[dateNumber][characterName] or {}
-		settings = DAS.globalSettings.completionLog[dateNumber][characterName]
-	end 
-	return settings	
-end
 DAS.GetSettingsArray = getSettingsArray
-DAS.lbe = LBE
 
+local typeString = "string"
 function DAS.GetCompleted(questName)
 
-	if nil == questName or "" == questName or "string" ~= type(questName) then return false end
-	questName = zo_strformat(questName)
+	if nil == questName or "" == questName or typeString ~= type(questName) then return false end
 
 	local settings 	 =  getSettingsArray()
-	local logEntry   =  settings[questName]
+	local logEntry   =  settings[zo_strformat(questName)]
 	return nil ~= logEntry and logEntry.completed
 	
- end
+end
+ 
 function DAS.LogQuest(questName, completed)
 	if nil == questName then return end
-    getSettingsArray()
-	local settings 	 	=  DAS.globalSettings.completionLog[dateNumber][characterName]
+     
 	timeStringNumber    = timeStringNumber or tonumber(GetTimeString():sub(1,2))
-	local afterEight 	= (timeStringNumber >= 8) -- 08:17:02 - reset is at 8
+	local settings 	    = getSettingsArray()
+    
+    local afterEight 	= (timeStringNumber >= 8) -- 08:17:02 - reset is at 8
     for questId, questData in pairs(settings) do
         if questData.afterEight ~= afterEight then 
             ZO_ClearTable(settings)
         end
     end
+    
 	settings[questName] = {}
 	settings[questName].completed  = completed
 	settings[questName].afterEight = afterEight
 end
+
 function DAS.GetQuestStatus(questName)
 	if nil == questName then return end
 	

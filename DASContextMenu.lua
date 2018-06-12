@@ -2,7 +2,7 @@ local guiHeight = GuiRoot:GetHeight()
 local guiWidth = GuiRoot:GetWidth()
 
 local questName, journalIndex, bingoString, currentControl
-local QUEST_TRACKER = QUEST_TRACKER or FOCUSED_QUEST_TRACKER
+
 
 local function getAnchorPos(control)
 	local menuWidth 	= ZO_Menu:GetWidth()
@@ -41,9 +41,8 @@ end
 
 
 local function forceAssist()
-    if nil ~= QUEST_TRACKER then        
-        QUEST_TRACKER:ForceAssist(journalIndex)    
-    end
+    if nil == FOCUSED_QUEST_TRACKER then return end
+    FOCUSED_QUEST_TRACKER:ForceAssist(journalIndex)
 end
 local function shareQuest()
     ShareQuest(journalIndex)

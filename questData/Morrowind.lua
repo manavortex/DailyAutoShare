@@ -111,12 +111,11 @@ table.insert(tbl2, "yasam")
 
 DAS.shareables[zoneId]      = tbl
 
-
-
 -- Khartag point
 DAS.shareables[921] = {
 	[1] = DAS.shareables[zoneId][20],
-}-- Zainsipilu
+}
+-- Zainsipilu
 DAS.shareables[922] = {
 	[1] = DAS.shareables[zoneId][17],
 }
@@ -136,6 +135,12 @@ DAS.shareables[925] = {
 DAS.shareables[961] = {
 	[1] = DAS.shareables[zoneId][9],
 }
+
+DAS.subzones[921] = zoneId
+DAS.subzones[922] = zoneId
+DAS.subzones[923] = zoneId
+DAS.subzones[924] = zoneId
+DAS.subzones[961] = zoneId
 
 DAS.makeBingoTable(zoneId, tbl2) 
 	
