@@ -24,7 +24,25 @@ local strings  = {
 	DAS_SI_SPAM_SINGLE	 	= "Rechercher cette quête uniquement",
 	DAS_SI_SETOPEN_TRUE	 	= "Toggle open",
 	DAS_SI_SETOPEN_FALSE	= "Toggle complete",
-		
+				
+        
+    DAS_ELF_RELIC           = "La course aux reliques",    
+    DAS_ELF_PILGR           = "La fin du pélerinage",    
+    DAS_ELF_LIGHT           = "Souffler la lumière",   
+    DAS_ELF_SERPE           = "Abattage de serpents",
+    DAS_ELF_MEMO            = "Qu'on oublie jusqu'à leur nom",
+    DAS_ELF_ROSE            = "La beauté d'une rose",
+    
+      
+    DAS_ELF_ALCHE           = "L'Alchimiste abyssal",   
+    DAS_ELF_GRAVE           = "Inoubliable",        
+    DAS_ELF_QUEEN           = "La mer maladive",    
+    DAS_ELF_GRIFFIN         = "Qui se ressemble...",    
+    DAS_ELF_SNAKE           = "Naufragé",
+    DAS_ELF_WILD            = "Dompter la nature",
+    
+    DAS_ELF_GEYSER          = "Sinking Summerset", 
+    
 	-- Clockwork City
 	DAS_CLOCK_IMP			= "Attirer l'Imparfait", 
 	DAS_CLOCK_FOE			= "Un si beau plumage", 
