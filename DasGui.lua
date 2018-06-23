@@ -5,6 +5,8 @@ local stateIsMinimised 		= false
 local visibleButtonIndex	= 0
 DAS.sublabels = {}
 DAS.labels = {}
+local numLabels             = 0
+
 
 local labelTexts = {}
 
@@ -104,13 +106,13 @@ function DAS.QuestLabelClicked(control, mouseButton)
 		return DAS.OnRightClick(control)	
 	end
     
-	local journalIndex          = control.dataJournalIndex
-	local isValidJournalIndex   = IsValidQuestIndex(journalIndex)
+	local journalIndex          = control.dataJournalIndex or 99 
 	
-	if isValidJournalIndex then	
-		ShareQuest(journalIndex)
+	if IsValidQuestIndex(journalIndex) then
         if journalIndex ~= DAS.trackedIndex then
             FOCUSED_QUEST_TRACKER:ForceAssist(journalIndex)
+        else
+            ShareQuest(journalIndex)
         end
 	end	
 end
@@ -255,12 +257,12 @@ function DAS.setLabels(zoneQuests)
     labelTexts = {}
     -- p("DAS.setLabels")
     DAS.activeZoneQuests = {}
-    local buttonIndex = 1
+    numLabels = 1
     local questName 
 	for index, questNameOrTable in pairs(zoneQuests) do
         
         if not labelTexts[questNameOrTable] then 
-            label = DAS.labels[buttonIndex] -- despite the name these are actually buttons
+            label = DAS.labels[numLabels] -- despite the name these are actually buttons
             
             if nil ~= label then
                 local status                = DAS_STATUS_OPEN           
@@ -297,14 +299,14 @@ function DAS.setLabels(zoneQuests)
                 labelTexts[label.dataQuestName] = true
                 setControlText(label, hideLabel)
                     
-                buttonIndex = buttonIndex + 1
+                numLabels = numLabels + 1
                 
                 
             end -- nil check end
         end
 	end -- for loop end
     
-    return buttonIndex
+    return numLabels
 end
 
 function DAS.RefreshLabelsWithDelay()
@@ -316,10 +318,6 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
     -- p("DAS.RefreshLabels(" .. tostring(forceQuestRefresh) .. ", " .. tostring(forceSkipQuestRefresh) .. ")")
 	cacheVisibilityStatus()
 	setButtonStates()
-	
-	
-	
-	local buttonIndex = 1
 	
 	local hideCompleted = DAS.GetHideCompleted()
 	local hidden 		= DasList:IsHidden()
@@ -334,16 +332,15 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
 	local questList = DAS.QuestLists[DAS.GetZoneId()]
     local zoneQuests = DAS.GetZoneQuests()
     
-    buttonIndex = DAS.setLabels(zoneQuests)	
+    DAS.setLabels(zoneQuests)	
 
-	for buttonIndex=#DAS.GetZoneQuests()+1, #DAS.labels do
-		if DAS.labels[buttonIndex] then
-			DAS.labels[buttonIndex]:SetHidden(true)
-            DAS.labels[buttonIndex]:SetText("")
+	for bIndex=#DAS.GetZoneQuests()+1, #DAS.labels do
+		if DAS.labels[bIndex] then
+			DAS.labels[bIndex]:SetHidden(true)
+            DAS.labels[bIndex]:SetText("")
 		end
 	end
-    
-	DAS.RefreshFullBingoString()    
+	DAS.RefreshFullBingoString()
 	DAS.SetLabelFontSize()
 end
 
@@ -402,12 +399,19 @@ local function setFontSize(labelList)
 end
 DAS.setFontSize = setFontSize
 
+local function setGuiHeight()
+    local buttonIndex = numLabels or 0
+    local listHeight = DasHeader:GetHeight() + buttonIndex*(DAS.labels[1]:GetHeight() + 2)
+    DasList:SetHeight(listHeight)
+    DasControl:SetHeight(listHeight + DasHandle:GetHeight())   
+end
+DAS.SetGuiHeight = setGuiHeight
+
 function DAS.SetLabelFontSize()
 	
     setFontSize(DAS.labels)
-	DasControl:SetHeight(DasList:GetHeight() + DasHandle:GetHeight())    
     setFontSize(DAS.sublabels)
-	
+	DAS.SetGuiHeight() 
 end
 
 
@@ -415,8 +419,8 @@ function DAS.CreateGui()
 
     local function setupGuiLabels()
         
-        local predecessor 	= DasHeader	
-        local offsetY 		= 10
+        local predecessor 	    = DasHeader	
+        local offsetX, offsetY  = 10, 10
         
         for i=1, 28 do
             local button 	= WINDOW_MANAGER:CreateControlFromVirtual("Das_Label_"..tostring(i), DasList, "Das_Label")
@@ -425,12 +429,13 @@ function DAS.CreateGui()
             offsetY 		= 0		
             table.insert(DAS.labels, button)
         end
+        
         local spacer = WINDOW_MANAGER:CreateControlFromVirtual("Das_Spacer_1", DasList, "DasInvisibleFooterSpacer")
         spacer:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, offsetY)
         
         predecessor 	    = DasSubList	
-        local offsetY 		= 10
-        local offsetX 		= 10
+        offsetY 		    = 10
+        
         local anchor        = TOPLEFT
         for i=1, 15 do
             local button 	= WINDOW_MANAGER:CreateControlFromVirtual("Das_Sublabel_"..tostring(i), DasSubList, "Das_Label")

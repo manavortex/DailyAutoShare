@@ -37,7 +37,7 @@ local strings  = {
     DAS_ELF_ALCHE           = "L'Alchimiste abyssal",   
     DAS_ELF_GRAVE           = "Inoubliable",        
     DAS_ELF_QUEEN           = "La mer maladive",    
-    DAS_ELF_GRIFFIN         = "Qui se ressemble...",    
+    DAS_ELF_GRIFFIN         = "Qui se ressemble",    
     DAS_ELF_SNAKE           = "Naufragé",
     DAS_ELF_WILD            = "Dompter la nature",
     

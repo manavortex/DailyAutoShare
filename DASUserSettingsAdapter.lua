@@ -80,10 +80,10 @@ end
 function DAS.SetGroupInviteDelay(value)
 	GetSettings().groupInviteDelay = value
 end
+
 function DAS.GetAutoAcceptInvite()
 	return DAS.settings.autoAcceptInvite
 end
-
 function DAS.SetAutoAcceptInvite(value)
 	DAS.settings.autoAcceptInvite = value
     if value then
@@ -105,10 +105,10 @@ function DAS.SetMinimized(value)
 end
 
 function DAS.GetAutoAcceptShared()
-	return GetSettings().autoAcceptShared
+	return DAS.settings.autoAcceptShared
 end
 function DAS.SetAutoAcceptShared(value)
-	GetSettings().autoAcceptShared = value
+	DAS.settings.autoAcceptShared = value
 	DAS.SetButtonStates()
 end
 
@@ -343,7 +343,6 @@ local function getSettingsArray(forceRefresh)
     
 	return DAS.todaysCharacterLog
 end
-
 DAS.GetSettingsArray = getSettingsArray
 
 local typeString = "string"
@@ -352,8 +351,8 @@ function DAS.GetCompleted(questName)
 	if nil == questName or "" == questName or typeString ~= type(questName) then return false end
 
 	local settings 	 =  getSettingsArray()
-	local logEntry   =  settings[zo_strformat(questName)]
-	return nil ~= logEntry and logEntry.completed
+	local logEntry   =  settings[zo_strformat(questName)] or {}
+	return logEntry.completed
 	
 end
  

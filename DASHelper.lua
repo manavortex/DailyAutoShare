@@ -11,7 +11,6 @@ function DAS.SetChatListenerStatus(status)
     DAS.channelTypes[CHAT_CHANNEL_SAY ]     = status
     DAS.channelTypes[CHAT_CHANNEL_YELL]     = status
     DAS.channelTypes[CHAT_CHANNEL_ZONE]     = status and not DAS.GetWhisperOnly()
-    DAS.channelTypes[CHAT_CHANNEL_WHISPER]  = status	
 end
 
 -- DAS_STATUS_COMPLETE 	= 0, 

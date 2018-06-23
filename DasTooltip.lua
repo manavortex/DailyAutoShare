@@ -58,8 +58,15 @@ local questStateColors = {
 }
 
 local dotDotDot = "%.%.%."
-function DAS.CreateLabelTooltip(control)
-	
+
+local questStates = {
+    [DAS_STATUS_COMPLETE]   = " completed today",
+    [DAS_STATUS_ACTIVE]     = " is acive",
+    [DAS_STATUS_OPEN]       = " still open",
+}
+
+local bingoCodeIs = GetString(DAS_BINGO_CODE_IS)
+function DAS.CreateLabelTooltip(control)	
    
 	setTooltipOffset(control)
 	local tooltipText = ""
@@ -69,18 +76,18 @@ function DAS.CreateLabelTooltip(control)
     if nil == questName then return end
     if nil ~= questName:find(dotDotDot) then 
         tooltipText = GetString(DAS_TOGGLE_SUBLIST)
-    else             
-        local state = DAS.GetCompleted(questName)
-        if control.dataQuestState == DAS_STATUS_COMPLETE then 
-            tooltipText = (questName .. " completed today with " .. GetUnitName(UNITTAG_PLAYER))
+    else
+        local bingoString = control.dataBingoString or ""
+        local questState = control.dataQuestState
+        if questState == DAS_STATUS_COMPLETE then 
+            tooltipText = bingoString .. questStates[questState]
+        elseif DAS_STATUS_ACTIVE == questState or DAS_STATUS_OPEN == questState then
+            tooltipText = (questName .. questStates[questState] .. bingoCodeIs .. bingoString)
         else
-            local bingoString = control["dataBingoString"] or ""
-            local bingoTooltip = (bingoString ~= "" and "\n The bingo code is " .. bingoString) or ""
-            local status = (( control.dataQuestState == DAS_STATUS_ACTIVE and " is acive") or " still open")
-            tooltipText = (questName .. status .. bingoTooltip)
+            DailyAutoShare_Tooltip:SetHidden(true)
+            return
         end
     end
-    
     
 	DailyAutoShare_Tooltip:AddLine(tooltipText)
 	DailyAutoShare_Tooltip:SetHidden(false)

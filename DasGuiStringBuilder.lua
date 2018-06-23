@@ -81,7 +81,7 @@ local function whisperify(qsString)
 end
 
 
-local function GenerateBingoString(activeQuestNames, verbose)
+local function GenerateBingoString(activeQuestNames)
 
 	activeQuestNames = DAS.getEnglishQuestNames(activeQuestNames)
 	local qsString = DAS.GetSettings().questShareString
@@ -115,20 +115,20 @@ local function GenerateBingoString(activeQuestNames, verbose)
 end
 DAS.GenerateBingoString = GenerateBingoString
 
-local function SpamChat(verbose, questName)
+local function SpamChat(questName)
 	if CHAT_SYSTEM.textEntry.editControl:HasFocus() then
 		CHAT_SYSTEM.textEntry.editControl:Clear()
 	end
-	local activeQuestNames = {}
+	local activeQuestNames = (questName and {[1] = questName,}) or DAS.GetActiveQuestNames()
 	if nil == questName then	
-		activeQuestNames = DAS.GetActiveQuestNames()       
+		activeQuestNames = DAS.GetActiveQuestNames()
 	else
 		table.insert(activeQuestNames, questName)
 	end
 	if #activeQuestNames == 0 then 
 		DAS.SetAutoInvite(false)
 	end    
-	StartChatInput(DAS.GenerateBingoString(activeQuestNames, verbose), CHAT_CHANNEL_ZONE)
+	StartChatInput(DAS.GenerateBingoString(activeQuestNames), CHAT_CHANNEL_ZONE)
 
 end
 DAS.SpamChat = SpamChat
@@ -146,16 +146,12 @@ end
 function DAS.SettingsButton(control, mouseButton)
 
 	local name = control:GetName():gsub("DasButton", "")
-	if name == "Spam" 		then
-    return SpamChat(mouseButton == 2)
-	elseif 	name == "Invite" 	then DAS.SetAutoInvite(not DAS.GetAutoInvite()) 
-	elseif  name == "Accept"	then DAS.SetAutoAcceptInvite(not DAS.GetAutoAcceptInvite()) 
-	elseif 	name == "Share" 	then 
-		if mouseButton == 2 then
-			DAS.TryShareActiveDaily()
-		else
-			DAS.SetAutoShare(not DAS.GetAutoShare()) 
-		end		
+	if name == "Spam" 		then return SpamChat() end
+	if 	name == "Invite" 	then return DAS.SetAutoInvite(not DAS.GetAutoInvite()) end
+	if  name == "Accept"	then return DAS.SetAutoAcceptShared(not DAS.GetAutoAcceptShared()) end
+	if 	name == "Share" 	then 
+		if mouseButton == 2 then return DAS.TryShareActiveDaily() end
+        DAS.SetAutoShare(not DAS.GetAutoShare()) 		
 	end
 
 	-- DAS.RefreshLabels()

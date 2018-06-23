@@ -155,7 +155,7 @@
 									 	
 									<OnMouseEnter>		DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
 									<OnMouseExit> 		DailyAutoShare.HideTooltip(self)			</OnMouseExit>	
-									<OnMouseUp> DailyAutoShare.Donate(self, button) </OnMouseUp>
+									<OnMouseUp>         DailyAutoShare.Donate(self, button)         </OnMouseUp>
 								</Button>	
 								
 								

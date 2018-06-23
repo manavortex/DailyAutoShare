@@ -77,6 +77,8 @@ function DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fro
     -- if it's a group message, react to the group message
     if (channelType == CHAT_CHANNEL_PARTY) and (messageText:find(stringShare) or messageText:find(stringQuest)) then
        return DAS.TryShareActiveDaily()
+    elseif channelType == CHAT_CHANNEL_WHISPER and messageText:find(stringPlusRegex) then 
+        return HandleChatMessage("+any", fromDisplayName, false)
     end
     
     --  d(zo_strformat("[OnChatMessage] <<1>>: <<2>>, isPlayerName: <<3>>", fromDisplayName, messageText, tostring(isPlayerName)))

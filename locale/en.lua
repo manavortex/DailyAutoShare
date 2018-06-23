@@ -28,6 +28,8 @@ local strings  = {
 	DAS_SI_SPAM_SINGLE	 	= "Spam",
 	DAS_SI_SETOPEN_TRUE	 	= "Toggle open",
 	DAS_SI_SETOPEN_FALSE	= "Toggle complete",
+    
+    DAS_BINGO_CODE_IS       = "\nThe bingo code is ",
 		
         
     DAS_ELF_RELIC           = "Relic Runaround",    

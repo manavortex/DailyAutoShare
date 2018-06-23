@@ -2,7 +2,7 @@ DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
 
 DAS.name                    = "DailyAutoShare"
-DAS.version                 = "3.4.1"
+DAS.version                 = "3.4.2"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -22,7 +22,7 @@ DAS.channelTypes 	        = {
     [CHAT_CHANNEL_SAY ]     = false, 
     [CHAT_CHANNEL_YELL]     = false, 
     [CHAT_CHANNEL_ZONE]     = false,
-    [CHAT_CHANNEL_WHISPER]  = false,
+    [CHAT_CHANNEL_WHISPER]  = true,
 }
 
 DAS.locale 			    = GetCVar("language.2")
@@ -264,24 +264,50 @@ local function OnQuestAdded(eventCode, journalIndex, questName, objectiveName)
 	local zoneId = DAS.GetZoneId()
 	if not DAS.GetActiveIn(zoneId) 			then return end
 	if not GetIsQuestSharable(journalIndex) then return end	
-	local shareables = DAS.shareables[zoneId] or {}
+	
+    local shareables = DAS.shareables[zoneId] or {}
     local bingoIndex = DAS.GetBingoIndexFromQuestName(questName) or 0
     DAS.activeBingoIndices[bingoIndex] = true
-	if nil ~= shareables[questName] then
+	
+    if nil ~= shareables[questName] then
 		DAS.LogQuest(questName, false)
 		zo_callLater(forceRefreshControl, 700)
-	end		
+	end	
+end
+
+local questSharePending = false
+local questLoopInterval = 500
+local function stopAcceptQuestLoop(eventCode, journalIndex)
+    if not questSharePending then 
+        ShareQuest(journalIndex)
+        return
+    end
+    questSharePending = nil ~= GetOfferedQuestShareIds()
+    questLoopInterval = 500
+end
+
+local function acceptQuestLoop()
+    if not questSharePending then return end
+    for id, _ in pairs(GetOfferedQuestShareIds()) do
+        AcceptSharedQuest(id)
+    end
+    questLoopInterval = questLoopInterval + questLoopInterval*0.5
+    zo_callLater(acceptQuestLoop, questLoopInterval)
 end
 
 local function OnQuestShared(eventCode, questId)
+    
+    if not DAS.settings.autoAcceptShared then return end 
     local questName =  GetOfferedQuestShareInfo(questId)
     p(zo_strformat("<<1>> \t <<2>>", questId, questName))
 	local zoneQuestIds = DAS.questIds[DAS.GetZoneId()] or {}
 	if not (zoneQuestIds[questName] or DAS_QUEST_IDS[questId]) and DAS.GetActiveIn(zoneId) then return end	
     
-	if zoneQuestIds[questId] then        
-            AcceptSharedQuest(questId)
-            zo_callLater(forceRefreshControl, 500)
+	if zoneQuestIds[questId] then
+        pendingQuestIds[questId] = true
+        AcceptSharedQuest(questId)
+        em:RegisterForEvent(DAS.name, EVENT_QUEST_ADDED, stopAcceptQuestLoop)
+        zo_callLater(forceRefreshControl, 500)
     end
 end
 
@@ -450,7 +476,7 @@ local function handleLog(forceNoAfterEight)
     if (not afterEight) and isEmpty(DAS.todaysLog) and lastDate ~= currentDate then
         local lastLog = DAS.globalSettings.completionLog[lastDate]
         DAS.globalSettings.completionLog[currentDate] = ZO_DeepTableCopy(lastLog, {})
-        d(DAS.globalSettings.completionLog[currentDate])
+        -- d(DAS.globalSettings.completionLog[currentDate])
         for charName, charLog in pairs(DAS.globalSettings.completionLog[currentDate]) do
             for questName, questData in pairs(charLog) do
                 questData.afterEight = false
