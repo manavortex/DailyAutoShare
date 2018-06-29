@@ -59,4 +59,5 @@ DasGui.lua
 DasQuestAccept.lua
 DasGuiStringBuilder.lua
 DasTooltip.lua
+DasMapMarker.lua
 DASMenu.lua

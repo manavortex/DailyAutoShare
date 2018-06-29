@@ -517,6 +517,7 @@ function DailyAutoShare_Initialize(eventCode, addonName)
     handleLog()
     zo_callLater(OnPlayerActivated, 5000)
     zo_callLater(minimiseOnStartup, 5500)
+    DAS.CreateMapMarkers()
 	EVENT_MANAGER:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
 
 end
