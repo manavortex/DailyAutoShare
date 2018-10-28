@@ -66,15 +66,15 @@ table.insert(tbl2, {[1] = "tools" })
 
 
 DAS.questStarter[zoneId] = {
-    [GetString(DAS_QUEST_SS_TANO)]    = true,
-    [GetString(DAS_QUEST_SS_FARO)]    = true,
-    [GetString(DAS_QUEST_SS_TANE)]    = true,
+    [GetString(DAS_SLAVES_QUEST1)]    = true,
+    [GetString(DAS_SLAVES_QUEST2)]    = true,
+    [GetString(DAS_SLAVES_QUEST3)]    = true,
 }
 
 DAS.questFinisher[zoneId] = {
-    [GetString(DAS_QUEST_SS_TANO)]    = true,
-    [GetString(DAS_QUEST_SS_FARO)]    = true,
-    [GetString(DAS_QUEST_SS_TANE)]    = true,
+    [GetString(DAS_SLAVES_QUEST1)]    = true,
+    [GetString(DAS_SLAVES_QUEST2)]    = true,
+    [GetString(DAS_SLAVES_QUEST3)]    = true,
 }
 
 DAS.questIds[zoneId] = {

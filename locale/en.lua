@@ -34,6 +34,11 @@ local strings  = {
 	DAS_SI_COMPLETED        = "completed",
 	DAS_SI_OPEN             = "open",
   
+  
+  DAS_SLAVES_QUEST1       = "Varo Hosidias",
+  DAS_SLAVES_QUEST2       = "Tuwul",
+  DAS_SLAVES_QUEST3       = "Erithel",
+  
   DAS_SLAVES_1             = "Old Baubles", 
   DAS_SLAVES_2             = "Old Scrolls", 
   DAS_SLAVES_3             = "Old Growth", 
