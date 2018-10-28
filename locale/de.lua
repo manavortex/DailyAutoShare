@@ -29,6 +29,24 @@ local strings  = {
 	DAS_SI_SETOPEN_TRUE	 	= "Toggle open",
 	DAS_SI_SETOPEN_FALSE	= "Toggle complete",
 	
+  
+  DAS_SLAVES_1             = "Alte Schriftrollen", 
+  DAS_SLAVES_2             = "Alter Tand", 
+  DAS_SLAVES_3             = "Alter Wuchs", 
+  DAS_SLAVES_4             = "Die Last der Worte", 
+  DAS_SLAVES_5             = "Heilige Kerzen", 
+  DAS_SLAVES_6             = "Tödliche Umstände", 
+  DAS_SLAVES_7             = "Gesandte, die kuschen", 
+  DAS_SLAVES_8             = "Opfergaben, die sich verbergen", 
+  DAS_SLAVES_9             = "Pilze, die nähren", 
+  DAS_SLAVES_10            = "Antike Rüstungen", 
+  DAS_SLAVES_11            = "Alte Feinde", 
+  DAS_SLAVES_12            = "Aloe, die heilt", 
+  DAS_SLAVES_13            = "Leder, das schützt", 
+  DAS_SLAVES_14            = "Tödliche Erwartungen", 
+  DAS_SLAVES_15            = "Werkzeuge des Gemetzels", 
+  
+  
     DAS_ELF_RELIC           = "Die Reliktrettung",    
     DAS_ELF_PILGR           = "Das Ende der Pilgerfahrt",    
     DAS_ELF_LIGHT           = "Das verlöschen des Lichts",   

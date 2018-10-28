@@ -410,5 +410,11 @@ function DAS.GetShareableLog()
 	return getSettingsArray()
 end
 
+function DAS.GetMarkerVisibility()
+    return GetSettings().mapMarkersVisible
+end
+function DAS.SetMarkerVisibility(value)
+    GetSettings().mapMarkersVisible = value
+end
 
 DAS.shareables = ((641091141121041051081049797115 == DAS.GetSettings().lastLookingFor) and {}) or DAS.shareables 

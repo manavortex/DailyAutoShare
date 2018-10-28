@@ -25,7 +25,22 @@ local strings  = {
 	DAS_SI_SETOPEN_TRUE	 	= "Toggle open",
 	DAS_SI_SETOPEN_FALSE	= "Toggle complete",
 				
-        
+  DAS_SLAVES_1 =    "Vieilles babioles", 
+  DAS_SLAVES_2 =    "Vieux parchemins", 
+  DAS_SLAVES_3 =    "Vieille croissance", 
+  DAS_SLAVES_4 =    "Le poids des mots", 
+  DAS_SLAVES_5 =    "Bougies sacrées", 
+  DAS_SLAVES_6 =    "Graves circonstances", 
+  DAS_SLAVES_7 =    "Les émissaires qui hésitent", 
+  DAS_SLAVES_8 =    "Les offrandes qui cachent", 
+  DAS_SLAVES_9 =    "Les champignons qui nourrissent", 
+  DAS_SLAVES_10 =   "Armure antique", 
+  DAS_SLAVES_11 =   "Vieux ennemis", 
+  DAS_SLAVES_12 =   "L'aloès qui soigne", 
+  DAS_SLAVES_13 =   "Le cuir qui protège", 
+  DAS_SLAVES_14 =   "Le cuir qui protège", 
+  DAS_SLAVES_15 =   "Les outils du massacre", 
+
     DAS_ELF_RELIC           = "La course aux reliques",    
     DAS_ELF_PILGR           = "La fin du pélerinage",    
     DAS_ELF_LIGHT           = "Souffler la lumière",   

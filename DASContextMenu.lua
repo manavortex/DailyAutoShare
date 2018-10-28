@@ -28,11 +28,11 @@ local function getAnchorPos(control)
 	return	TOPLEFT, TOPRIGHT
 end
 
-local function spamChat(questName, bingoString)
+local function spamChat(questNameParam, bingoStringParam)
     if CHAT_SYSTEM.textEntry.editControl:HasFocus() then
 		CHAT_SYSTEM.textEntry.editControl:Clear()
 	end
-    local chatInputString = bingoString
+    local chatInputString = bingoStringParam or bingoString
     if DAS.GetAutoInvite() then
         chatInputString = zo_strformat(DAS.GetSettings().questShareString, questNames, bingoString) 
     end

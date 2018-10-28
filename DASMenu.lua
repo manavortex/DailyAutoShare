@@ -85,7 +85,23 @@ function DAS.CreateMenu(savedVars, defaults)
 			name    = "Activate",
 			controls = {
                 
-				{
+				
+				{ -- checkbox: Murkmire
+					type    = "checkbox",
+					tooltip = "Murkmire?",
+					name    = "Activate in Murkmire?",
+					getFunc = function() return DAS.GetActiveIn(726) end,
+					setFunc = function(value) DAS.SetActiveIn(726, value) end
+				},
+        
+        { -- checkbox: Summerset
+					type    = "checkbox",
+					tooltip = "Summerset?",
+					name    = "Activate in Summerset?",
+					getFunc = function() return DAS.GetActiveIn(1011) end,
+					setFunc = function(value) DAS.SetActiveIn(1011, value) end
+				},
+        {
 					type    = "submenu",
 					name    = "Clockwork City", 
 					controls = {
@@ -175,13 +191,7 @@ function DAS.CreateMenu(savedVars, defaults)
 						},
 					},
 				},
-				{ -- checkbox: Morrowind
-					type    = "checkbox",
-					tooltip = "Summerset?",
-					name    = "Activate in Summerset?",
-					getFunc = function() return DAS.GetActiveIn(1011) end,
-					setFunc = function(value) DAS.SetActiveIn(1011, value) end
-				},
+        
 				{ -- checkbox: Morrowind
 					type    = "checkbox",
 					tooltip = "Vvardenfell?",
@@ -369,7 +379,15 @@ function DAS.CreateMenu(savedVars, defaults)
 		{ -- submenu: User UI settings
 			type        = "submenu",
 			name        = "Look and feel and behavior",
-			controls    = {			
+			controls    = {	
+              
+				{ -- checkbox: Lock UI window
+					type    = "checkbox",
+					name    = "Show Map markers?",
+					getFunc = function() return DAS.GetMarkerVisibility() end,
+					setFunc = function(value) DAS.SetMarkerVisibility(value) end
+				},
+            
 				{   -- editbox: Quest share text
                     type        = "editbox", 
                     isExtraWide = true, 

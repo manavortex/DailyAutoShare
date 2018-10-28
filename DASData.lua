@@ -22,6 +22,11 @@ function DAS.GetZoneQuests(zoneId)
 	return DAS.shareables[zoneId] or {}	
 end
 
+function DAS.questCompleted(id) 
+    local questText, questType = GetCompletedQuestInfo(id)
+    return nil ~= questText and #questText > 0
+end
+
 function DAS.RefreshFullBingoString()
     local ret = ""
     for _, questName in ipairs(DAS.GetActiveQuestNames()) do

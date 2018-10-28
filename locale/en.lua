@@ -29,8 +29,26 @@ local strings  = {
 	DAS_SI_SETOPEN_TRUE	 	= "Toggle open",
 	DAS_SI_SETOPEN_FALSE	= "Toggle complete",
     
-    DAS_BINGO_CODE_IS       = "\nThe bingo code is ",
-		
+  DAS_BINGO_CODE_IS       = "\nThe bingo code is ",
+  DAS_SI_PREQUEST         = "\nPrequest <<1>>: <<2>>",
+	DAS_SI_COMPLETED        = "completed",
+	DAS_SI_OPEN             = "open",
+  
+  DAS_SLAVES_1             = "Old Baubles", 
+  DAS_SLAVES_2             = "Old Scrolls", 
+  DAS_SLAVES_3             = "Old Growth", 
+  DAS_SLAVES_4             = "The Weight of Words", 
+  DAS_SLAVES_5             = "Sacred Candles", 
+  DAS_SLAVES_6             = "Grave Circumstances", 
+  DAS_SLAVES_7             = "Envoys Who Cower", 
+  DAS_SLAVES_8             = "Offerings That Hide", 
+  DAS_SLAVES_9             = "Mushrooms That Nourish", 
+  DAS_SLAVES_10            = "Antique Armor", 
+  DAS_SLAVES_11            = "Old Enemies", 
+  DAS_SLAVES_12            = "Aloe That Heals", 
+  DAS_SLAVES_13            = "Leather That Protects", 
+  DAS_SLAVES_14            = "Grave Expectations", 
+  DAS_SLAVES_15            = "Tools of Slaughter", 
         
     DAS_ELF_RELIC           = "Relic Runaround",    
     DAS_ELF_PILGR           = "Pilgrimage's End",    
@@ -38,15 +56,15 @@ local strings  = {
     DAS_ELF_SERPE           = "Culling Serpents",
     DAS_ELF_MEMO            = "Struck from Memory",
     DAS_ELF_ROSE            = "A Rose's Beauty",
+  
     
-      
     DAS_ELF_ALCHE           = "The Abyssal Alchemist",   
     DAS_ELF_GRAVE           = "Never Forgotten",        
     DAS_ELF_QUEEN           = "The Sickening Sea",    
     DAS_ELF_GRIFFIN         = "Birds of a Feather",    
     DAS_ELF_SNAKE           = "Run Aground",
     DAS_ELF_WILD            = "Taming the Wild",
-    
+  
     DAS_ELF_GEYSER          = "Sinking Summerset", 
     
         

@@ -65,6 +65,19 @@ local questStates = {
     [DAS_STATUS_OPEN]       = " still open",
 }
 
+local prequestString    = GetString(DAS_SI_PREQUEST)
+local completedString   = GetString(DAS_SI_COMPLETED)
+local openString        = GetString(DAS_SI_OPEN)
+local questCompleted    = DAS.questCompleted
+    
+
+local function getPrequestTooltipData(questName)
+    local prequestData = DAS.prequests[questName]
+    if not prequestData then return end
+    local prequestStatus = (questCompleted(prequestData.prequestId) and completedString) or openString
+    return zo_strformat(prequestString, prequestData.prequestName, prequestStatus)
+end
+
 local bingoCodeIs = GetString(DAS_BINGO_CODE_IS)
 function DAS.CreateLabelTooltip(control)	
    
@@ -90,6 +103,7 @@ function DAS.CreateLabelTooltip(control)
     end
     
 	DailyAutoShare_Tooltip:AddLine(tooltipText)
+	DailyAutoShare_Tooltip:AddLine(getPrequestTooltipData(questName))
 	DailyAutoShare_Tooltip:SetHidden(false)
 	
  end

@@ -2,7 +2,7 @@ DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
 
 DAS.name                    = "DailyAutoShare"
-DAS.version                 = "3.4.2"
+DAS.version                 = "3.5"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -17,6 +17,7 @@ DAS.questFinisher           = {}
 DAS.questStarter            = {}
 DAS.questIds                = {}
 DAS.activeBingoIndices      = {}
+DAS.prequests               = {}
 DAS.channelTypes 	        = {
     [CHAT_CHANNEL_PARTY]    = true, 
     [CHAT_CHANNEL_SAY ]     = false, 
@@ -118,7 +119,7 @@ local defaults = {
 	fontScale					= 0.8,
 	tooltipRight 				= false,
 	upsideDown 					= false,
-    hideCompleted				= false,
+  hideCompleted				= false,
 	startupMinimized			= true,
 	resetAutoShareOnNewGroup    = true,
 	lastLookingFor 				= "",
@@ -130,12 +131,14 @@ local defaults = {
 	listenInGuilds,
     whisperOnly                 = false,
     whisperString               = "whisper + for an instant invite", 
+    mapMarkersVisible           = true,
     tracked = {
 		[684]  = true,
 		[823]  = true,
 		[849]  = true,	    -- Vvardenfell
 		[181]  = false,
 		[1011] = true,     -- Summerset
+		[726] = true,      -- Murkmire
 	},
 }
 
@@ -304,7 +307,6 @@ local function OnQuestShared(eventCode, questId)
 	if not (zoneQuestIds[questName] or DAS_QUEST_IDS[questId]) and DAS.GetActiveIn(zoneId) then return end	
     
 	if zoneQuestIds[questId] then
-        pendingQuestIds[questId] = true
         AcceptSharedQuest(questId)
         em:RegisterForEvent(DAS.name, EVENT_QUEST_ADDED, stopAcceptQuestLoop)
         zo_callLater(forceRefreshControl, 500)
