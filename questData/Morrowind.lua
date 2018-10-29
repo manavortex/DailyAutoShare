@@ -19,7 +19,7 @@ DAS.QuestLists[zoneId] = {
 		[5] = GetString(DAS_M_REL_EBERN),
 		[6] = GetString(DAS_M_REL_MAELK),
 		[7] = GetString(DAS_M_REL_YASAM),
-	},    
+  },    
 	["hunt"] = {
 		[1] = GetString(DAS_M_HUNT_EATER),
 		[2] = GetString(DAS_M_HUNT_ZEXXI),
@@ -28,7 +28,7 @@ DAS.QuestLists[zoneId] = {
 		[5] = GetString(DAS_M_HUNT_STOMP),
 		[6] = GetString(DAS_M_HUNT_TARRA),
 		[7] = GetString(DAS_M_HUNT_SVEET),	
-	},
+  },
 	["delve"] = {
 		[1] = GetString(DAS_M_DELVE_DAEDR),
 		[2] = GetString(DAS_M_DELVE_KWAMA),
@@ -36,7 +36,7 @@ DAS.QuestLists[zoneId] = {
 		[4] = GetString(DAS_M_DELVE_TAXES),
 		[5] = GetString(DAS_M_DELVE_TRIBA),
 		[6] = GetString(DAS_M_DELVE_SYNDI),
-	},
+  },
 	["boss"] = {
 		[1] = GetString(DAS_M_BOSS_WUYWU),
 		[2] = GetString(DAS_M_BOSS_SWARM),
@@ -44,7 +44,7 @@ DAS.QuestLists[zoneId] = {
 		[4] = GetString(DAS_M_BOSS_SALOT),
 		[5] = GetString(DAS_M_BOSS_SIREN),
 		[6] = GetString(DAS_M_BOSS_APPRE),
-	},
+  },
 }
 
 
@@ -143,42 +143,42 @@ DAS.subzones[924] = zoneId
 DAS.subzones[961] = zoneId
 
 DAS.makeBingoTable(zoneId, tbl2) 
-	
+
 
 DAS.questStarter[zoneId] = {
-    [GetString(DAS_QUEST_M_BELERU)]     = true,  -- Hall of Justice
-    [GetString(DAS_QUEST_M_TRAYLAN)]    = true,  -- Hall of Justice
-    [GetString(DAS_QUEST_M_ASHLANDER)]  = true,  -- Ashlander Hunt
-    [GetString(DAS_QUEST_M_NUMANI)]     = true,  -- Ashlander Relics
-    [GetString(DAS_QUEST_M_RIVYN)]      = true,  -- Battlegrounds
+  [GetString(DAS_QUEST_M_BELERU)]     = true,  -- Hall of Justice
+  [GetString(DAS_QUEST_M_TRAYLAN)]    = true,  -- Hall of Justice
+  [GetString(DAS_QUEST_M_ASHLANDER)]  = true,  -- Ashlander Hunt
+  [GetString(DAS_QUEST_M_NUMANI)]     = true,  -- Ashlander Relics
+  [GetString(DAS_QUEST_M_RIVYN)]      = true,  -- Battlegrounds
 }
 
 DAS.questFinisher[zoneId] = {
-    [GetString(DAS_QUEST_M_ASHLANDER)]  = true, 
-    [GetString(DAS_QUEST_M_NUMANI)]     = true, 
-    
-    [GetString(DAS_QUEST_M_NARA)]       = true, 
-    [GetString(DAS_QUEST_M_TRAYLAN )]   = true, 
-    [GetString(DAS_QUEST_M_BELERU  )]   = true, 
-    [GetString(DAS_QUEST_M_NUMANI  )]   = true, 
-    [GetString(DAS_QUEST_M_NARA    )]   = true, 
-    [GetString(DAS_QUEST_M_TIRVINA )]   = true, 
-    [GetString(DAS_QUEST_M_DINOR   )]   = true, 
-    [GetString(DAS_QUEST_M_BRAVOSI )]   = true, 
-    [GetString(DAS_QUEST_M_IVULEN  )]   = true, 
-    [GetString(DAS_QUEST_M_SAVILE  )]   = true, 
-    [GetString(DAS_QUEST_M_KYLIA   )]   = true, 
-    [GetString(DAS_QUEST_M_EVOS    )]   = true, 
-    [GetString(DAS_QUEST_M_ALVES   )]   = true, 
-    [GetString(DAS_QUEST_M_DREDASE )]   = true, 
-    [GetString(DAS_QUEST_M_VORAR   )]   = true, 
-    [GetString(DAS_QUEST_M_VALGA   )]   = true, 
-    [GetString(DAS_QUEST_M_RIVYN)]      = true,  -- Battlegrounds
+  [GetString(DAS_QUEST_M_ASHLANDER)]  = true, 
+  [GetString(DAS_QUEST_M_NUMANI)]     = true, 
+  
+  [GetString(DAS_QUEST_M_NARA)]       = true, 
+  [GetString(DAS_QUEST_M_TRAYLAN )]   = true, 
+  [GetString(DAS_QUEST_M_BELERU  )]   = true, 
+  [GetString(DAS_QUEST_M_NUMANI  )]   = true, 
+  [GetString(DAS_QUEST_M_NARA    )]   = true, 
+  [GetString(DAS_QUEST_M_TIRVINA )]   = true, 
+  [GetString(DAS_QUEST_M_DINOR   )]   = true, 
+  [GetString(DAS_QUEST_M_BRAVOSI )]   = true, 
+  [GetString(DAS_QUEST_M_IVULEN  )]   = true, 
+  [GetString(DAS_QUEST_M_SAVILE  )]   = true, 
+  [GetString(DAS_QUEST_M_KYLIA   )]   = true, 
+  [GetString(DAS_QUEST_M_EVOS    )]   = true, 
+  [GetString(DAS_QUEST_M_ALVES   )]   = true, 
+  [GetString(DAS_QUEST_M_DREDASE )]   = true, 
+  [GetString(DAS_QUEST_M_VORAR   )]   = true, 
+  [GetString(DAS_QUEST_M_VALGA   )]   = true, 
+  [GetString(DAS_QUEST_M_RIVYN)]      = true,  -- Battlegrounds
 }
 
 
 DAS.questIds[zoneId] = {
-    -- Morrowind dailies
+  -- Morrowind dailies
 	[5924]  = true, -- "Relics of Yasammidan",
 	[5925]  = true, -- "Relics of Assarnatamat",
 	[5926]  = true, -- "Relics of Maelkashishi",
@@ -194,7 +194,7 @@ DAS.questIds[zoneId] = {
 	[5911]  = true, -- "Ash-Eater Hunt",
 	[5912]  = true, -- "Old Stomper Hunt",
 	[5913]  = true, -- "King Razor-Tusk Hunt",
-
+  
 	-- Cave dailies (Hall of Justice)
 	[5956]  = true, -- "Daedric Disruptions",
 	[5958]  = true, -- "Unsettled Syndicate",
@@ -203,7 +203,7 @@ DAS.questIds[zoneId] = {
 	[5934]  = true, -- "Tax Deduction",
 	[5915]  = true, -- "Tribal Troubles",
 	[5958]  = true, -- "Unsettled Syndicate",
-		
+  
 	-- World boss dailies (Hall of Justice)
 	[5916]  = true, -- "The Anxious Apprentice",
 	[5918]  = true, -- "A Creeping Hunger",

@@ -3,66 +3,98 @@ local zoneId  = 726
 local tbl = {}
 local tbl2 = {}
 
- -- Old Baubles
-table.insert(tbl, GetString(DAS_SLAVES_1))  
-table.insert(tbl2, {[1] = "baubles"})
+local tbl3 =  {
+	["root"] = {
+		[1] = GetString(DAS_SLAVES_ROOT_1),
+		[2] = GetString(DAS_SLAVES_ROOT_2),
+		[3] = GetString(DAS_SLAVES_ROOT_3),
+		[4] = GetString(DAS_SLAVES_ROOT_4),
+		[5] = GetString(DAS_SLAVES_ROOT_5),
+  },
+	["delve"] = {
+		[1] = GetString(DAS_SLAVES_DELVE_1),
+		[2] = GetString(DAS_SLAVES_DELVE_2),
+		[3] = GetString(DAS_SLAVES_DELVE_3),
+		[4] = GetString(DAS_SLAVES_DELVE_4),
+		[5] = GetString(DAS_SLAVES_DELVE_5),
+		[6] = GetString(DAS_SLAVES_DELVE_6),
+  },
+	["boss"] = {
+		[1] = GetString(DAS_SLAVES_BOSS_1),
+		[2] = GetString(DAS_SLAVES_BOSS_2),
+		[3] = GetString(DAS_SLAVES_BOSS_3),
+		[4] = GetString(DAS_SLAVES_BOSS_4),
+		[5] = GetString(DAS_SLAVES_BOSS_5),
+  },
 
--- Old Scrolls
-table.insert(tbl, GetString(DAS_SLAVES_2))
-table.insert(tbl2, {[1] = "scrolls"})   
-
--- Old Growth
-table.insert(tbl, GetString(DAS_SLAVES_3))  
-table.insert(tbl2, {[1] = "growth"}) 
- 
--- Old Enemies
-table.insert(tbl, GetString(DAS_SLAVES_11))  
-table.insert(tbl2, {[1] = "enemy", [2] = "enemies"}) 
-
--- The Weight of Words
-table.insert(tbl, GetString(DAS_SLAVES_4)) 
-table.insert(tbl2, {[1] = "words"})
-
--- Sacred Candles
-table.insert(tbl, GetString(DAS_SLAVES_5))  
-table.insert(tbl2, {[1] = "candle", [2] = "candles"}) 
 
 -- Grave Circumstances
-table.insert(tbl, GetString(DAS_SLAVES_6)) 
+table.insert(tbl, GetString(DAS_SLAVES_BOSS_1)) 
 table.insert(tbl2, {[1] = "circ" })
 
 -- Grave Expectations
-table.insert(tbl, GetString(DAS_SLAVES_14)) 
+table.insert(tbl, GetString(DAS_SLAVES_BOSS_2)) 
 table.insert(tbl2, {[1] = "expe" })
+  
+ -- Old Baubles
+table.insert(tbl, GetString(DAS_SLAVES_BOSS_3))  
+table.insert(tbl2, {[1] = "baubles"})
 
+-- Old Enemies
+table.insert(tbl, GetString(DAS_SLAVES_BOSS_4))  
+table.insert(tbl2, {[1] = "enemy", [2] = "enemies"}) 
 
--- Envoys Who Cower
-table.insert(tbl, GetString(DAS_SLAVES_7))
-table.insert(tbl2, {[1] = "envoys"})
-
--- Offerings That Hide
-table.insert(tbl, GetString(DAS_SLAVES_8))
-table.insert(tbl2, {[1] = "offer", [2] = "hide" })
-
--- Mushrooms That Nourish
-table.insert(tbl, GetString(DAS_SLAVES_9))
-table.insert(tbl2, {[1] = "mushrooms", [2] = "nourish" , [3] = "shroom", [4] = "shrooms"  })
-
+-- Old Growth
+table.insert(tbl, GetString(DAS_SLAVES_BOSS_5))  
+table.insert(tbl2, {[1] = "growth"}) 
+ 
+ 
 -- Antique Armor
-table.insert(tbl, GetString(DAS_SLAVES_10))
+table.insert(tbl, GetString(DAS_SLAVES_DELVE_1))
 table.insert(tbl2, {[1] = "armor", [2] = "armour" })
 
--- Aloe That Heals
-table.insert(tbl, GetString(DAS_SLAVES_12))
-table.insert(tbl2, {[1] = "aloe" })
+-- Grave Subject Matter
+table.insert(tbl, GetString(DAS_SLAVES_DELVE_2))
+table.insert(tbl2, {[1] = "subject"})   
 
--- Leather That Protects
-table.insert(tbl, GetString(DAS_SLAVES_13))
-table.insert(tbl2, {[1] = "leather" })
+-- Old Scrolls
+table.insert(tbl, GetString(DAS_SLAVES_DELVE_3))
+table.insert(tbl2, {[1] = "scrolls"})   
+
+-- Sacred Candles
+table.insert(tbl, GetString(DAS_SLAVES_DELVE_4))  
+table.insert(tbl2, {[1] = "candle", [2] = "candles"}) 
 
 -- Tools of Slaughter
-table.insert(tbl, GetString(DAS_SLAVES_15))
+table.insert(tbl, GetString(DAS_SLAVES_DELVE_5))
 table.insert(tbl2, {[1] = "tools" })
+
+-- The Weight of Words
+table.insert(tbl, GetString(DAS_SLAVES_DELVE_6)) 
+table.insert(tbl2, {[1] = "words"})
+
+
+-- Aloe That Heals
+table.insert(tbl, GetString(DAS_SLAVES_ROOT_1))
+table.insert(tbl2, {[1] = "aloe" })
+
+-- Envoys Who Cower
+table.insert(tbl, GetString(DAS_SLAVES_ROOT_2))
+table.insert(tbl2, {[1] = "envoys"})
+
+-- Leather That Protects
+table.insert(tbl, GetString(DAS_SLAVES_ROOT_3))
+table.insert(tbl2, {[1] = "leather" })
+
+-- Mushrooms That Nourish
+table.insert(tbl, GetString(DAS_SLAVES_ROOT_4))
+table.insert(tbl2, {[1] = "mushrooms", [2] = "nourish" , [3] = "shroom", [4] = "shrooms"  })
+
+-- Offerings That Hide
+table.insert(tbl, GetString(DAS_SLAVES_ROOT_5))
+table.insert(tbl2, {[1] = "offer", [2] = "hide" })
+
+
 
 
 DAS.questStarter[zoneId] = {

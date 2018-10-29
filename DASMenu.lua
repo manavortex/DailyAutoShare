@@ -93,6 +93,66 @@ function DAS.CreateMenu(savedVars, defaults)
 					getFunc = function() return DAS.GetActiveIn(726) end,
 					setFunc = function(value) DAS.SetActiveIn(726, value) end
 				},
+				{
+					type        = "submenu",
+					name        = "Murkmire", 
+					controls    = {
+						{ -- header: Boss dailies
+							type    = "header",
+							name    = "Murkmire: Boss dailies"
+						},
+						{ -- checkbox: boss
+							type    = "checkbox",
+							tooltip = "Go boss hunting for Bolu?",
+							name    = "Enable?",
+							getFunc = function() return DAS.GetQuestListItem(726, "boss", "active") end,
+							setFunc = function(value)   DAS.SetQuestListItem(726, "boss", "active", value) end
+						},
+						{ -- checkbox: boss (hide)
+							type    = "checkbox",
+							name    = "Hide",
+							tooltip = "Don't show boss dailies on UI list \nKeeps sharing on group invite",
+							getFunc = function() return DAS.GetQuestListItem(726, "boss", "invisible") end,
+							setFunc = function(value) DAS.SetQuestListItem(726,   "boss", "invisible", value) end
+						},
+						{ -- header: Murkmire - Delves
+							type    = "header",
+							name    = "Murkmire: Delves"
+						},
+						{ -- checkbox: Murkmire - Delves
+							type    = "checkbox",
+							name    = "Enable?",
+							tooltip = "Delve dailies for Varo Hosidias",
+							getFunc = function() return DAS.GetQuestListItem(726, "delve", "active") end,
+							setFunc = function(value) DAS.SetQuestListItem(726,   "delve", "active", value) end
+						},
+						{ -- checkbox: Murkmire - Delves
+							type    = "checkbox",
+							name    = "Hide",
+							tooltip = "Don't show Ashlander hunt dailies on UI list",
+							getFunc = function() return DAS.GetQuestListItem(726, "delve", "invisible") end,
+							setFunc = function(value) DAS.SetQuestListItem(726,   "delve", "invisible", value) end
+						},
+						{ -- header: Root Whisper
+							type    = "header",
+							name    = "Root Whisper"
+						},
+						{ -- checkbox: Root Whisper
+							type    = "checkbox",
+							name    = "Enable?",
+							tooltip = "Enable Root Whisper dailies?",
+							getFunc = function() return DAS.GetQuestListItem(726, "root", "active") end,
+							setFunc = function(value) DAS.SetQuestListItem(726,   "root", "active", value) end
+						},
+						{ -- checkbox: Root Whisper
+							type    = "checkbox",
+							name    = "Hide?",
+							tooltip = "Don't show Root Whisper dailies on UI list",							
+							getFunc = function() return DAS.GetQuestListItem(726, "root", "invisible") end,
+							setFunc = function(value) DAS.SetQuestListItem(726,   "root", "invisible", value) end
+						},
+					},
+				},
         
         { -- checkbox: Summerset
 					type    = "checkbox",

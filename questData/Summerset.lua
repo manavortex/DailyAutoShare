@@ -44,33 +44,33 @@ DAS.makeBingoTable(zoneId, tbl2)
 DAS.bingo[zoneId2] = DAS.bingo[zoneId]
 
 for i=1012, 1019 do
-    DAS.shareables[i]  = DAS.shareables[zoneId]
-    DAS.bingo[i]       = DAS.bingo[zoneId]
-    DAS.subzones[i]    = zoneId
+  DAS.shareables[i]  = DAS.shareables[zoneId]
+  DAS.bingo[i]       = DAS.bingo[zoneId]
+  DAS.subzones[i]    = zoneId
 end
 
 DAS.questStarter[zoneId] = {
-    [GetString(DAS_QUEST_SS_TANO)]    = true,
-    [GetString(DAS_QUEST_SS_FARO)]    = true,
-    [GetString(DAS_QUEST_SS_TANE)]    = true,
+  [GetString(DAS_QUEST_SS_TANO)]    = true,
+  [GetString(DAS_QUEST_SS_FARO)]    = true,
+  [GetString(DAS_QUEST_SS_TANE)]    = true,
 }
 
 DAS.questFinisher[zoneId] = {
-    [GetString(DAS_QUEST_SS_TANO)]    = true,
-    [GetString(DAS_QUEST_SS_FARO)]    = true,
-    [GetString(DAS_QUEST_SS_TANE)]    = true,
+  [GetString(DAS_QUEST_SS_TANO)]    = true,
+  [GetString(DAS_QUEST_SS_FARO)]    = true,
+  [GetString(DAS_QUEST_SS_TANE)]    = true,
 }
 
 DAS.questIds[zoneId] = {
-
+  
 }
 for i=6082, 6087 do
-    DAS.questIds[zoneId][i] = true
-    DAS_QUEST_IDS[i] = true
+  DAS.questIds[zoneId][i] = true
+  DAS_QUEST_IDS[i] = true
 end
 for i=6152, 6160 do
-    DAS.questIds[zoneId][i] = true
-    DAS_QUEST_IDS[i] = true
+  DAS.questIds[zoneId][i] = true
+  DAS_QUEST_IDS[i] = true
 end
 
 DAS.questIds[zoneId][6202] = true
@@ -78,6 +78,6 @@ DAS_QUEST_IDS[6202] = true
 
 
 DAS.prequests[GetString(DAS_ELF_GEYSER)] = { -- Sinking Summerset
-    prequestName = "The Abyssal Cabal",
-    prequestId = 6165,    
+  prequestName = "The Abyssal Cabal",
+  prequestId = 6165,    
 }
