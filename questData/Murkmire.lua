@@ -3,7 +3,7 @@ local zoneId  = 726
 local tbl = {}
 local tbl2 = {}
 
-local tbl3 =  {
+DAS.QuestLists[zoneId] = {
 	["root"] = {
 		[1] = GetString(DAS_SLAVES_ROOT_1),
 		[2] = GetString(DAS_SLAVES_ROOT_2),
@@ -26,6 +26,7 @@ local tbl3 =  {
 		[4] = GetString(DAS_SLAVES_BOSS_4),
 		[5] = GetString(DAS_SLAVES_BOSS_5),
   },
+}
 
 
 -- Grave Circumstances
