@@ -93,3 +93,13 @@ for i=6082, 6087 do
     DAS.questIds[zoneId][i] = true
     DAS_QUEST_IDS[i] = true
 end
+
+--[[ 
+  Don't forget to register the zone ID in the options. If the AddOn isn't detecting active in the settings 
+  for its zone ID, it won't show. 
+  ..\00_startup
+  defaults.tracked[zoneId]
+ 
+ You also need to register a menu setting so users can toggle it on and off 
+ ..\DASMenu.lua
+]]
