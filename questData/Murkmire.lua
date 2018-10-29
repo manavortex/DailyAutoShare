@@ -113,6 +113,31 @@ DAS.questIds[zoneId] = {
 
 }
 
+DAS.prequests[GetString(DAS_SLAVES_ROOT_1)] = { -- Aloe That Heals
+  prequestName = "By River and Root",
+  prequestId = 6165,    
+}
+
+DAS.prequests[GetString(DAS_SLAVES_ROOT_2)] = { -- Envoys Who Cower
+  prequestName = "By River and Root",
+  prequestId = 6165,    
+}
+
+DAS.prequests[GetString(DAS_SLAVES_ROOT_3)] = { -- Leather That Protects
+  prequestName = "By River and Root",
+  prequestId = 6165,    
+}
+
+DAS.prequests[GetString(DAS_SLAVES_ROOT_4)] = { -- Mushrooms That Nourish
+  prequestName = "By River and Root",
+  prequestId = 6165,    
+}
+
+DAS.prequests[GetString(DAS_SLAVES_ROOT_5)] = { -- Offerings That Hide
+  prequestName = "By River and Root",
+  prequestId = 6165,    
+}
+
 DAS.shareables[zoneId] = tbl
 DAS.makeBingoTable(zoneId, tbl2)
 
