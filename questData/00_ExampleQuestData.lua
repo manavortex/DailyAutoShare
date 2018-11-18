@@ -94,6 +94,10 @@ for i=6082, 6087 do
   DAS_QUEST_IDS[i] = true
 end
 
+-- now hook up additiona subzone IDs (like Clockwork City - Brass Citadel has its own ID
+
+DAS.zoneHasAdditionalId(zoneId2, zoneId)
+
 --[[ 
   Don't forget to register the zone ID in the options. If the AddOn isn't detecting active in the settings 
   for its zone ID, it won't show. 

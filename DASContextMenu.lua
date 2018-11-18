@@ -64,7 +64,7 @@ end
 function DAS.OnRightClick(control, verbose)
 	
 	if nil == control then return end
-	questName = control.dataQuestName
+	questName     = control.dataQuestName
 	journalIndex 	= control.dataJournalIndex
 	bingoString 	= control.dataBingoString
 	currentControl  = control

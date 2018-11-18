@@ -5,10 +5,6 @@ DAS.QuestNameTable = {}
 
 local p = DAS.DebugOut
 
-function DAS.GetLogIndex(questName)
-	return DAS.QuestNameTable[questName] or 0
-end
-
 local en = "en"
 local function getEnglishQuestNames(activeQuestNames)  
 	activeQuestNames = activeQuestNames or DAS.GetZoneQuests()
@@ -153,8 +149,6 @@ function DAS.SettingsButton(control, mouseButton)
 		if mouseButton == 2 then return DAS.TryShareActiveDaily() end
         DAS.SetAutoShare(not DAS.GetAutoShare()) 		
 	end
-
-	-- DAS.RefreshLabels()
 	
  end
 
@@ -162,9 +156,9 @@ function DAS.ToggleQuest(control)
 	local questName = control["dataQuestName"] or control:GetText()
 	local completed = DAS.GetCompleted(questName)
 	
-	control.dataQuestState = (completed and DAS_STATUS_OPEN) or DAS_STATUS_COMPLETE
+	local newQuestState = (completed and DAS_STATUS_OPEN) or DAS_STATUS_COMPLETE
 	if not completed then 
 		control.dataIsTracked = false
 	end	
-	DAS.LogQuest(questName, not completed)
+	DAS.LogQuest(questName, newQuestState)
 end

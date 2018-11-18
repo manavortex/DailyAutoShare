@@ -111,5 +111,4 @@ function DAS.CreateLabelTooltip(control)
 function DAS.HideTooltip(control)
 	DailyAutoShare_Tooltip:ClearLines()
 	 DailyAutoShare_Tooltip:SetHidden(true)
-	 -- DAS.RefreshLabels()
 end

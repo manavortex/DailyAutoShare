@@ -85,6 +85,26 @@ function DAS.GetBingoStringFromQuestName(questName)
 	
 end
 
+local zoneCloneDebug = "Couldn't copy zone <<1>> to zone <<2>>, one of the IDs was nil"
+function DAS.zoneHasAdditionalId(zoneId2, zoneId) 
+  
+  if not zoneId and zoneId2 then 
+    d(zo_strformat(zoneCloneDebug, zoneId, zoneId2))
+    return 
+  end
+  
+  DAS.questIds[zoneId2] = DAS.questIds[zoneId] 
+  
+
+  DAS.shareables[zoneId2] = DAS.shareables[zoneId]
+  DAS.bingo[zoneId2] = DAS.bingo[zoneId]
+
+  DAS.QuestLists[zoneId2] = DAS.QuestLists[zoneId]
+
+  DAS.questStarter[zoneId2] = DAS.questStarter[zoneId]
+  DAS.questFinisher[zoneId2] = DAS.questFinisher[zoneId]
+  end
+
 function DAS.GetQuestNameFromIndex(bingoIndex)
 	return DAS.GetZoneQuests()[bingoIndex] 
 end

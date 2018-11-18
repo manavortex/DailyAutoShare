@@ -24,6 +24,8 @@ DAS.subzones = {
 
 DAS_QUEST_IDS  = {
 
+    -- Murkmire 
+    
     -- Summerset
     [6152]   = true, -- Pilgrimage's End
     [6153]   = true, -- 

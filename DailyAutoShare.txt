@@ -21,6 +21,7 @@ locale/$(language).lua
 00_startup.lua
 xml/Bindings.xml
 DASHelper.lua
+DASData.lua
 
 questData/BingoClean.lua
 questData/GuildQuests.lua
@@ -34,7 +35,6 @@ questData/ClockworkCity.lua
 questData/Summerset.lua
 questData/Murkmire.lua
 
-DASData.lua
 DASUserSettingsAdapter.lua
 DasChatMessage.lua
 
@@ -45,3 +45,5 @@ DasGuiStringBuilder.lua
 DasTooltip.lua
 DasMapMarker.lua
 DASMenu.lua
+
+DasLog.lua

@@ -2,15 +2,15 @@ DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
 
 DAS.name                    = "DailyAutoShare"
-DAS.version                 = "3.51"
+DAS.version                 = "3.6"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
 
-DAS.shareables   	        = {}
-DAS.bingo 			        = {}
+DAS.shareables   	          = {}
+DAS.bingo 			            = {}
 DAS.bingoFallback           = {}
-DAS.subzones 		        = {}
+DAS.subzones 		            = {}
 DAS.activeZoneQuests        = {}
 
 DAS.questFinisher           = {}
@@ -18,7 +18,8 @@ DAS.questStarter            = {}
 DAS.questIds                = {}
 DAS.activeBingoIndices      = {}
 DAS.prequests               = {}
-DAS.channelTypes 	        = {
+
+DAS.channelTypes 	          = {
   [CHAT_CHANNEL_PARTY]    = true, 
   [CHAT_CHANNEL_SAY ]     = false, 
   [CHAT_CHANNEL_YELL]     = false, 
@@ -26,14 +27,14 @@ DAS.channelTypes 	        = {
   [CHAT_CHANNEL_WHISPER]  = true,
 }
 
-DAS.locale 			    = GetCVar("language.2")
-DAS.autoInviting        = false
-DAS.guildInviteText     = nil
+DAS.locale 			            = GetCVar("language.2")
+DAS.autoInviting            = false
+DAS.guildInviteText         = nil
 
-DAS_STATUS_COMPLETE 	= 0
-DAS_STATUS_OPEN 		= 1
-DAS_STATUS_ACTIVE		= 2
-DAS_STATUS_TRACKED	    = 3
+DAS_STATUS_COMPLETE 	      = 0
+DAS_STATUS_OPEN 		        = 1
+DAS_STATUS_ACTIVE		        = 2
+DAS_STATUS_TRACKED	        = 3
 
 local activeInCurrentZone   = false
 DAS.fullBingoString         = ""
@@ -55,7 +56,7 @@ local defaults = {
 		y = 0,
   },
 	inactiveZones			= {
-hide				= true,
+    hide				= true,
   },
 	[849] = {
 		relic = {
@@ -63,7 +64,7 @@ hide				= true,
 			active = true,
     },
 		hunt = {
-invisible = false,
+      invisible = false,
 			active = true,
     },
 		delve = {
@@ -124,7 +125,7 @@ invisible = false,
   
 	autoHide 					          = false,
 	autoMinimize 				        = false,
-          
+  
 	minimised 					        = false,
 	locked 						          = false,
 	hidden 						          = false,
@@ -273,9 +274,7 @@ local function OnGroupTypeChanged(eventCode, unitTag)
   
 end
 
-local function forceRefreshControl()
-  DAS.RefreshControl(true)
-end
+local function forceRefreshControl() DAS.RefreshControl(true) end
 
 local function OnQuestAdded(eventCode, journalIndex, questName, objectiveName)
 	
@@ -315,11 +314,14 @@ end
 
 local function OnQuestShared(eventCode, questId)
   
-  if not DAS.settings.autoAcceptShared then return end 
-  local questName =  GetOfferedQuestShareInfo(questId)
+  if not (DAS.GetActiveIn()) and DAS.settings.autoAcceptShared  then return end
+  
+  local questName     =  GetOfferedQuestShareInfo(questId)
   p(zo_strformat("<<1>> \t <<2>>", questId, questName))
-	local zoneQuestIds = DAS.questIds[DAS.GetZoneId()] or {}
-	if not (zoneQuestIds[questName] or DAS_QUEST_IDS[questId]) and DAS.GetActiveIn(zoneId) then return end	
+	local zoneQuestIds  = DAS.questIds[DAS.GetZoneId()] or {}
+	local zoneQuests    = DAS.GetZoneQuests() or {}
+
+	if not (zoneQuestIds[questName] or DAS_QUEST_IDS[questId] or ZO_IsElementInNumericallyIndexedTable(zoneQuests, questName)) then return end	
   
 	if zoneQuestIds[questId] then
     AcceptSharedQuest(questId)
@@ -328,8 +330,8 @@ local function OnQuestShared(eventCode, questId)
   end
 end
 
-local function OnChatMessage(eventCode, channelType, fromName, messageText, _, fromDisplayName)
-  return DAS.OnChatMessage(eventCode, channelType, fromName, messageText, _, fromDisplayName)
+local function OnChatMessage(...)
+   DAS.OnChatMessage(...)
 end
 
 local function OnPlayerActivated(eventCode)
@@ -348,12 +350,14 @@ local function OnUnitCreated(eventCode, unitTag)
   DAS.TryShareActiveDaily(unitZone)
 end
 
-local function OnQuestToolUpdate()
-	forceRefreshControl()
+local function OnQuestToolUpdate() 
+  p("OnQuestToolUpdate")
+  forceRefreshControl() 
 end
 
 local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, zoneIndex, poiIndex, questId)	
 	
+  -- p("OnQuestRemoved called: <<1>> (journalIndex <<2>>, questId <<3>>)", questName, journalIndex, questId)
   local zoneId = DAS.GetZoneId()
   local zoneIds = DAS.questIds[zoneId] or {}
   -- is it a daily quest, and are we logging?
@@ -372,45 +376,36 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
   end
   
   zo_callLater(function()
-  DAS.SetAutoInvite(autoInvite)
-  forceRefreshControl()
-  DAS.RefreshLabelsWithDelay()
+    DAS.SetAutoInvite(autoInvite)
+    forceRefreshControl()
+    DAS.RefreshLabelsWithDelay()
   end, 5000)
-  end
-  
-  local function deleteYesterdaysLog()
-	-- kill yesterday's log, we don't need it
-	local currentDate = tonumber(GetDate())
-	if (nil ~= DAS.globalSettings and nil ~= DAS.globalSettings.lastLogDate) and (DAS.globalSettings.lastLogDate < currentDate) then 
-	if nil == DAS.Log then DAS.Log = {} end
-  DAS.Log[DAS.globalSettings.lastLogDate] = nil
-  DAS.globalSettings.lastLogDate = currentDate
-	end
-  end
-  
-  local alreadyRefreshing = false
-  local function questRefresh()
+end
+
+
+local alreadyRefreshing = false
+local function questRefresh()
   alreadyRefreshing = false
   DAS.RefreshControl(true)
-  end
-  local function queueQuestRefresh()
+end
+local function queueQuestRefresh()
   if alreadyRefreshing then return end
   alreadyRefreshing = true
   zo_callLater(questRefresh, 600)
-  end
-  
-  local function hookQuestTracker()
+end
+
+local function hookQuestTracker()
   if FOCUSED_QUEST_TRACKER and FOCUSED_QUEST_TRACKER.ForceAssist then
-  ZO_PreHook(FOCUSED_QUEST_TRACKER, "ForceAssist", queueQuestRefresh)  
+    ZO_PreHook(FOCUSED_QUEST_TRACKER, "ForceAssist", queueQuestRefresh)  
   end
   
-  end
-  
-  --==============================
-  --= DailyAutoShare_Initialize ==
-  --==============================
-  
-  local function RegisterEventHooks()
+end
+
+--==============================
+--= DailyAutoShare_Initialize ==
+--==============================
+
+local function RegisterEventHooks()
   
 	DailyAutoShare.Fragment 	= ZO_HUDFadeSceneFragment:New(DasControl) 
 	
@@ -435,112 +430,72 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
 	em:RegisterForEvent(DAS.name, EVENT_CHAT_MESSAGE_CHANNEL,   OnChatMessage)
 	-- DasControl:OnMoveStop
 	-- DailyAutoShare.SaveControlLocation(self)
-  end
-  
-  
-  local function resetQuests()
-  local currentDate = tonumber(GetDate())
-  DAS.todaysLog = {}
-  DAS.globalSettings.completionLog[currentDate] = DAS.todaysLog
-  forceRefreshControl()
-  end
-  
-  local typeTable = "table"
-  local function isEmpty(tbl)
+end
+
+
+-- local function resetQuests()
+  -- DAS.todaysLog = {}
+  -- DAS.globalSettings.completionLog[tonumber(GetDate())] = DAS.todaysLog
+  -- forceRefreshControl()
+-- end
+
+local typeTable = "table"
+local function isEmpty(tbl)
   if not tbl then return true end
   local ret = true
   for key, value in pairs(tbl) do
-  if type(value) == typeTable then
-  ret = ret and ({} == value or isEmpty(value))
-  else
-  ret = false
-  end       
+    if type(value) == typeTable then
+      ret = ret and ({} == value or isEmpty(value))
+      else
+      ret = false
+    end       
   end
   return ret
-  end
+end
+
+
+-- has to be a local var, lua error if not
+-- Keep outside of function namespace so we can overwrite it for debugging
+local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 
+
+
+local function minimiseOnStartup()    
+  DAS.SetMinimized(DAS.GetSettings().startupMinimized)    
+end
+--==============================
+--===== Rise, my minion!  ======
+--==============================
+
+function DailyAutoShare_Initialize(eventCode, addonName)
   
+  if addonName ~= DAS.name then return end
   
-  -- has to be a local var, lua error if not
-  -- Keep outside of function namespace so we can overwrite it for debugging
-  local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08 
+  DAS.settings        = ZO_SavedVars:New(             "DAS_Settings", 2, "DAS_Settings", defaults)
+  DAS.globalSettings  = ZO_SavedVars:NewAccountWide(  "DAS_Globals",  2, "DAS_Globals",  defaults)
+  DAS.globalSettings.completionLog = DAS.globalSettings.completionLog or {}
   
-  local function handleLog(forceNoAfterEight)
-  
-  local todaysLog = DAS.GetSettingsArray()
-  if {} ~= todaysLog then 
-  todaysLog = ZO_DeepTableCopy(todaysLog, {}) 
-  end
-  
-  local allLogs = DAS.globalSettings.completionLog
-  local currentDate = tonumber(GetDate())
-  allLogs[currentDate] = allLogs[currentDate] or {}
-  
-  local logSize, lastDate = NonContiguousCount(DAS.globalSettings.completionLog)
-  
-  local counter = 0 
-  for dateNumber, dateLog in pairs(DAS.globalSettings.completionLog) do
-  counter = counter + 1
-  if nil ~= dateNumber and dateNumber < currentDate then 
-  lastDate = dateNumber
-  end
-  if counter < logSize-2 then 
-  DAS.globalSettings.completionLog[dateNumber] = nil            
-  end
-  end
-  
-  local afterEight = not forceNoAfterEight and tonumber(GetTimeString():sub(0, 2)) >= 08 -- has to be a local var, lua error if not
-  
-  if (not afterEight) and isEmpty(DAS.todaysLog) and lastDate ~= currentDate then
-  local lastLog = DAS.globalSettings.completionLog[lastDate]
-  DAS.globalSettings.completionLog[currentDate] = ZO_DeepTableCopy(lastLog, {})
-  -- d(DAS.globalSettings.completionLog[currentDate])
-  for charName, charLog in pairs(DAS.globalSettings.completionLog[currentDate]) do
-  for questName, questData in pairs(charLog) do
-  questData.afterEight = false
-  end
-  end
-  characterName                   = characterName or GetUnitName(UNITTAG_PLAYER)
-  DAS.todaysLog                   = DAS.globalSettings.completionLog[currentDate]
-	DAS.todaysCharacterLog              = DAS.todaysLog[characterName]
-  end
-  end
-  DAS.handleLog = handleLog   -- expose this for debugging purpose
-  
-  local function minimiseOnStartup()    
-	DAS.SetMinimized(DAS.GetSettings().startupMinimized)    
-  end
-  --==============================
-  --===== Rise, my minion!  ======
-  --==============================
-  
-  function DailyAutoShare_Initialize(eventCode, addonName)
-  
-	if addonName ~= DAS.name then return end
-  
-	DAS.settings        = ZO_SavedVars:New(             "DAS_Settings", 2, "DAS_Settings", defaults)
-	DAS.globalSettings  = ZO_SavedVars:NewAccountWide(  "DAS_Globals",  2, "DAS_Globals",  defaults)
   DAS.pdn = GetUnitDisplayName(UNITTAG_PLAYER)
   
+  
   pointerUpSubzones()
-	RegisterEventHooks()
-	
-	DAS.CreateMenu(DAS.settings, defaults)
-	DAS.CreateGui()
+  RegisterEventHooks()
+  
+  DAS.CreateMenu(DAS.settings, defaults)
+  DAS.CreateGui()
   
   -- local timetoreset = (GetTimeStamp() - 60*60*7)%86400
   -- zo_callLater(resetQuests, timetoreset)
   
   
-  handleLog()
+  DAS.handleLog()
   zo_callLater(OnPlayerActivated, 5000)
   zo_callLater(minimiseOnStartup, 5500)
   DAS.CreateMapMarkers()
-	EVENT_MANAGER:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
+  EVENT_MANAGER:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
   
-  end
-  
-  
-  ZO_CreateStringId("SI_BINDING_NAME_TOGGLE_DAS_GUI",  GetString(DAS_SI_TOGGLE))
-  ZO_CreateStringId("SI_BINDING_NAME_TOGGLE_DAS_LIST", GetString(DAS_SI_MINIMISE))
-  EVENT_MANAGER:RegisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED, DailyAutoShare_Initialize)
-    
+end
+
+
+ZO_CreateStringId("SI_BINDING_NAME_TOGGLE_DAS_GUI",  GetString(DAS_SI_TOGGLE))
+ZO_CreateStringId("SI_BINDING_NAME_TOGGLE_DAS_LIST", GetString(DAS_SI_MINIMISE))
+EVENT_MANAGER:RegisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED, DailyAutoShare_Initialize)

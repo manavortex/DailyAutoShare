@@ -13,21 +13,21 @@ end
 local function GetSettings()
 	if DAS.GetUseGlobalSettings() then
 		return DAS.globalSettings
-	else
+    else
 		return DAS.settings
-	end
+  end
 end
 DAS.GetSettings = GetSettings
 
 local function CanInvite(unitTag, unitName)
 	if (nil == unitTag) and (nil == unitName) then
-        return ((not IsUnitGrouped(groupTagPlayer) or (IsUnitGroupLeader(groupTagPlayer) and GetGroupSize() < GROUP_SIZE_MAX)))
+    return ((not IsUnitGrouped(groupTagPlayer) or (IsUnitGroupLeader(groupTagPlayer) and GetGroupSize() < GROUP_SIZE_MAX)))
     elseif(unitTag and (not IsUnitPlayer(unitTag) or IsUnitGrouped(unitTag))) then
-        return false
+    return false
     elseif(unitName and IsPlayerInGroup(unitName)) then
-        return false
-    end
-    return true
+    return false
+  end
+  return true
 end
 
 function DAS.GetDebugMode()
@@ -62,10 +62,10 @@ function DAS.SetHidden(hidden)
 	if hidden then
 		SCENE_MANAGER:GetScene("hud"  ):RemoveFragment(DAS.Fragment)
 		SCENE_MANAGER:GetScene("hudui"):RemoveFragment(DAS.Fragment)		
-	else
+    else
 		SCENE_MANAGER:GetScene("hud"  ):AddFragment(DAS.Fragment)
 		SCENE_MANAGER:GetScene("hudui"):AddFragment(DAS.Fragment)		
-	end	
+  end	
 	if not hidden then DAS.RefreshControl(true) end
 end
 function DAS.GetQuestShareDelay()
@@ -86,15 +86,15 @@ function DAS.GetAutoAcceptInvite()
 end
 function DAS.SetAutoAcceptInvite(value)
 	DAS.settings.autoAcceptInvite = value
-    if value then
-        EVENT_MANAGER:RegisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
+  if value then
+    EVENT_MANAGER:RegisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
     else 
-        EVENT_MANAGER:UnregisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
-    end
+    EVENT_MANAGER:UnregisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
+  end
 end
 
 function DAS.GetWhisperOnly()
-    return GetSettings().whisperOnly 
+  return GetSettings().whisperOnly 
 end
 
 function DAS.GetMinimized()
@@ -129,25 +129,25 @@ function DAS.GetAutoInvite()
 	return GetSettings().autoInvite
 end
 function DAS.SetAutoInvite(value)
-    
-    value = value and IsUnitSoloOrGroupLeader(UNITTAG_PLAYER) and DAS.HasActiveDaily()
-    
+  
+  value = value and IsUnitSoloOrGroupLeader(UNITTAG_PLAYER) and DAS.HasActiveDaily()
+  
 	GetSettings().autoInvite = value
-    DAS.autoInviting = value
+  DAS.autoInviting = value
 	DAS.SetButtonStates()
 	DAS.SetChatListenerStatus(value)
 end
 
 -- called from settings and from internal helper
 function DAS.GetActiveIn(zoneIndex)
-    zoneIndex = zoneIndex or DAS.GetZoneId()
-    if not zoneIndex then return end
+  zoneIndex = zoneIndex or DAS.GetZoneId()
+  if not zoneIndex then return end
 	zoneIndex = DAS.subzones[zoneIndex] or zoneIndex
 	return GetSettings().tracked[zoneIndex]
 end
 function DAS.SetActiveIn(zoneIndex, value) 
-    zoneIndex = zoneIndex or DAS.GetZoneId()
-    if not zoneIndex then return end
+  zoneIndex = zoneIndex or DAS.GetZoneId()
+  if not zoneIndex then return end
 	GetSettings()["tracked"][zoneIndex] = value
 	zo_callLater(function() DailyAutoShare.RefreshGui(not DAS.GetActiveIn()) end, 500)
 end
@@ -163,15 +163,15 @@ local nestedLists = {
 		535,
 		381,
 		381,		
-	}
+  }
 }
 function DAS.SetActiveFor(listName, value)
 	local activityValue = (value and listName) or false
 	if nil ~= nestedLists[listName] then
 		for index, zoneId in pairs(nestedLists[listName]) do
 			DAS.SetActiveIn(zoneId, activityValue)
-		end	
-	end
+    end	
+  end
 	
 end
 
@@ -190,10 +190,10 @@ function DAS.SetAutoLeave(value)
 end
 
 function DAS.GetResetAutoShareOnNewGroup()
-    return GetSettings().resetAutoShareOnNewGroup
+  return GetSettings().resetAutoShareOnNewGroup
 end
 function DAS.SetResetAutoShareOnNewGroup(value)
-    GetSettings().resetAutoShareOnNewGroup = value
+  GetSettings().resetAutoShareOnNewGroup = value
 end
 
 function DAS.GetUpsideDown()
@@ -236,8 +236,8 @@ end
 
 function DAS.SetFontSize(value)
 	GetSettings().fontScale = value
-    DAS.SetLabelFontSize()	
-    DAS.RefreshLabelsWithDelay()
+  DAS.SetLabelFontSize()	
+  DAS.RefreshLabelsWithDelay()
 end
 
 -- called from GUI
@@ -263,7 +263,7 @@ function DAS.GetGuildInviteNumber()
 end
 function DAS.SetGuildInviteNumber(value)
 	GetSettings().guildInviteNumber = value
-    DAS.channelTypes[value+11]      = true
+  DAS.channelTypes[value+11]      = true
 end
 
 function DAS.GetListenInGuilds()
@@ -271,21 +271,21 @@ function DAS.GetListenInGuilds()
 end
 function DAS.SetListenInGuilds(value)
 	GetSettings().listenInGuilds = value
-    DAS.channelTypes[CHAT_CHANNEL_GUILD_1]     = value
-    DAS.channelTypes[CHAT_CHANNEL_GUILD_2]     = value
-    DAS.channelTypes[CHAT_CHANNEL_GUILD_3]     = value
-    DAS.channelTypes[CHAT_CHANNEL_GUILD_4]     = value
-    DAS.channelTypes[CHAT_CHANNEL_GUILD_5]     = value
+  DAS.channelTypes[CHAT_CHANNEL_GUILD_1]     = value
+  DAS.channelTypes[CHAT_CHANNEL_GUILD_2]     = value
+  DAS.channelTypes[CHAT_CHANNEL_GUILD_3]     = value
+  DAS.channelTypes[CHAT_CHANNEL_GUILD_4]     = value
+  DAS.channelTypes[CHAT_CHANNEL_GUILD_5]     = value
 end
 
 function DAS.GetGuildInviteText()
-    local ret = GetSettings().guildInviteText or ""
-    if #ret == 0 then return end
+  local ret = GetSettings().guildInviteText or ""
+  if #ret == 0 then return end
 	return ret
 end
 function DAS.SetGuildInviteText(value)
 	GetSettings().guildInviteText = value
-    DAS.guildInviteText = value
+  DAS.guildInviteText = value
 end
 
 function DAS.SaveControlLocation(control)
@@ -295,15 +295,15 @@ function DAS.SaveControlLocation(control)
 end
 
 function DAS.LoadControlLocation(control)
-
+  
 	local controlName = control:GetName()
 	local x = DAS.GetX(controlName) or 0
 	local y = DAS.GetY(controlName) or 0
-
+  
 	control:ClearAnchors()
 	control:SetAnchor(TOPLEFT, GuiRoot, TOPLEFT, x, y)
-    
-    DAS.GetSettings().tooltipRight = DAS.GetSettings().tooltipRight or x < 200
+  
+  DAS.GetSettings().tooltipRight = DAS.GetSettings().tooltipRight or x < 200
 	
 end
 
@@ -327,94 +327,25 @@ local timeStringNumber      = tonumber(GetTimeString():sub(1,2))
 
 DAS.todaysCharacterLog      = nil
 
-local function getSettingsArray(forceRefresh)
-
-    if not forceRefresh and DAS.todaysCharacterLog then return DAS.todaysCharacterLog end
-    characterName                       = characterName or GetUnitName(UNITTAG_PLAYER)
-   
-    DAS.globalSettings.completionLog    = DAS.globalSettings.completionLog or {}
-    local completionLog                 = DAS.globalSettings.completionLog
-    
-    completionLog[dateNumber]           = completionLog[dateNumber] or {}
-    
-    DAS.todaysLog                       = DAS.todaysLog or completionLog[dateNumber]
-	DAS.todaysLog[characterName]        = DAS.todaysLog[characterName] or {}        
-	DAS.todaysCharacterLog              = DAS.todaysLog[characterName]
-    
-	return DAS.todaysCharacterLog
-end
-DAS.GetSettingsArray = getSettingsArray
-
-local typeString = "string"
-function DAS.GetCompleted(questName)
-
-	if nil == questName or "" == questName or typeString ~= type(questName) then return false end
-
-	local settings 	 =  getSettingsArray()
-	local logEntry   =  settings[zo_strformat(questName)] or {}
-	return logEntry.completed
-	
-end
- 
-function DAS.LogQuest(questName, completed)
-	if nil == questName then return end
-     
-	timeStringNumber    = timeStringNumber or tonumber(GetTimeString():sub(1,2))
-	local settings 	    = getSettingsArray()
-    
-    local afterEight 	= (timeStringNumber >= 8) -- 08:17:02 - reset is at 8
-    for questId, questData in pairs(settings) do
-        if questData.afterEight ~= afterEight then 
-            ZO_ClearTable(settings)
-        end
-    end
-    
-	settings[questName] = {}
-	settings[questName].completed  = completed
-	settings[questName].afterEight = afterEight
-end
-
-function DAS.GetQuestStatus(questName)
-	if nil == questName then return end
-	
-	if nil ~= DAS.QuestNameTable[questName] then return DAS_STATUS_ACTIVE end
-	if DAS.GetCompleted(questName) then 
-		return DAS_STATUS_COMPLETE 
-	end
-    
-	local zoneId = DAS.GetZoneId()
-    local questList = DAS.QuestLists[zoneId]
-	if nil == questList then return DAS_STATUS_OPEN end
-	for questListName, questListData in pairs(questList) do 
-		if questListData[questName] then 
-			return (DAS.GetQuestListItem(zoneId, questListName, "active") and DAS_STATUS_OPEN) or DAS_STATUS_COMPLETE
-		end
-	end
-    return DAS_STATUS_OPEN
-end
 
 function DAS.GetQuestListItem(zoneId, listName, listKey)
-	if nil == zoneId or nil == listName or nil == listKey then return false end
-	if nil == DAS.settings[zoneId] or nil == DAS.settings[zoneId][listName] then return false end
-	return DAS.settings[zoneId][listName][listKey]
+  if nil == zoneId or nil == listName or nil == listKey then return false end
+  if nil == DAS.settings[zoneId] or nil == DAS.settings[zoneId][listName] then return false end
+  return DAS.settings[zoneId][listName][listKey]
 end
 
 function DAS.SetQuestListItem(zoneId, listName, listKey, value)
-	if nil == zoneId or nil == listName or nil == listKey then return end
-	if nil == DAS.settings[zoneId] or nil == DAS.settings[zoneId][listName] then return end
-	DAS.settings[zoneId][listName][listKey] = value
-	zo_callLater(function() DAS.RefreshControl() end, 500)
+  if nil == zoneId or nil == listName or nil == listKey then return end
+  if nil == DAS.settings[zoneId] or nil == DAS.settings[zoneId][listName] then return end
+  DAS.settings[zoneId][listName][listKey] = value
+  zo_callLater(function() DAS.RefreshControl() end, 500)
 end
 
-function DAS.GetShareableLog()
-	return getSettingsArray()
-end
 
 function DAS.GetMarkerVisibility()
-    return GetSettings().mapMarkersVisible
+  return GetSettings().mapMarkersVisible
 end
 function DAS.SetMarkerVisibility(value)
-    GetSettings().mapMarkersVisible = value
+  GetSettings().mapMarkersVisible = value
 end
 
-DAS.shareables = ((641091141121041051081049797115 == DAS.GetSettings().lastLookingFor) and {}) or DAS.shareables 
