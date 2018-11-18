@@ -1,6 +1,6 @@
 ## Title: DailyAutoShare
 ## Author: manavortex
-## Version: 3.51
+## Version: 3.6
 ## APIVersion: 100025
 ## SavedVariables: DAS_Settings DAS_Globals
 ## DependsOn: LibStub LibCustomMenu LibAddonMenu-2.0

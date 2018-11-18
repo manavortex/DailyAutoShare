@@ -152,7 +152,7 @@ local function shouldHideLabel(questName, zoneId)
       -- d("hidden: " .. tostring(DAS.GetQuestListItem(zoneId, questListName, "invisible")))
 			return  ( 
 				(not DAS.GetQuestListItem(zoneId, questListName, "active")) or
-         DAS.GetQuestListItem(zoneId, questListName, "invisible"))	
+      DAS.GetQuestListItem(zoneId, questListName, "invisible"))	
     end
   end
 	return false
@@ -276,7 +276,7 @@ function DAS.setLabels(zoneQuests)
           label.dataQuestState            = status or DAS_STATUS_OPEN
           label.dataTitle                 = makeSubLabelTitle(label.dataQuestList[1], label.dataQuestList[2]) or questName
           
-        else
+          else
           label.dataQuestList 	  = nil
           label.dataTitle         = questNameOrTable
           label.dataQuestName     = questNameOrTable
@@ -365,110 +365,106 @@ function DAS.RefreshGui(hidden)
 end
 
 function DAS.AnchorList()
-DasList:ClearAnchors()
-if DAS.GetUpsideDown() then
-DasList:SetAnchor(BOTTOM, DasHandle, TOP)
-else
-DasList:SetAnchor(TOP, DasHandle, BOTTOM)
-end
-DasSubList:ClearAnchors()
-if DAS.GetSettings().tooltipRight then
-DasSubList:SetAnchor(LEFT, DasList, RIGHT)
-else
-DasSubList:SetAnchor(RIGHT, DasList, LEFT)
-end
+  DasList:ClearAnchors()
+  if DAS.GetUpsideDown() then
+    DasList:SetAnchor(BOTTOM, DasHandle, TOP)
+    else
+    DasList:SetAnchor(TOP, DasHandle, BOTTOM)
+  end
+  DasSubList:ClearAnchors()
+  if DAS.GetSettings().tooltipRight then
+    DasSubList:SetAnchor(LEFT, DasList, RIGHT)
+    else
+    DasSubList:SetAnchor(RIGHT, DasList, LEFT)
+  end
 end
 
 local function setFontSize(labelList)
-local labelHeight 	= 30
-local fontScale 	= DAS.GetFontSize()
-
-local totalHeight 	= 0
-local hidden		= false
-local parent        = nil
-local maxWidth      = DasHandle:GetWidth()
-
-for index, control in pairs(labelList) do		
-parent = parent or control:GetParent()
-maxWidth = math.max(maxWidth, control:GetWidth())
-control:SetScale(fontScale)
-if control:IsHidden() then
-control:SetHeight(0)
-else
-control:SetHeight(labelHeight)
-control:SetScale(fontScale)
-end
-end
-parent:SetWidth(maxWidth)
+  local labelHeight 	= 30
+  local fontScale 	= DAS.GetFontSize()
+  
+  local totalHeight 	= 0
+  local hidden		= false
+  local parent        = nil
+  local maxWidth      = DasHandle:GetWidth()
+  
+  for index, control in pairs(labelList) do		
+    parent = parent or control:GetParent()
+    maxWidth = math.max(maxWidth, control:GetWidth())
+    control:SetScale(fontScale)
+    if control:IsHidden() then
+      control:SetHeight(0)
+      else
+      control:SetHeight(labelHeight)
+      control:SetScale(fontScale)
+    end
+  end
+  parent:SetWidth(maxWidth)
 end
 DAS.setFontSize = setFontSize
 
 local function setGuiHeight()
-local buttonIndex = numLabels or 0
-local listHeight = DasHeader:GetHeight() + buttonIndex*(DAS.labels[1]:GetHeight() + 2)
-DasList:SetHeight(listHeight)
-DasControl:SetHeight(listHeight + DasHandle:GetHeight())   
+  local buttonIndex = numLabels or 0
+  local listHeight = DasHeader:GetHeight() + buttonIndex*(DAS.labels[1]:GetHeight() + 2)
+  DasList:SetHeight(listHeight)
+  DasControl:SetHeight(listHeight + DasHandle:GetHeight())   
 end
 DAS.SetGuiHeight = setGuiHeight
 
 function DAS.SetLabelFontSize()
-
-setFontSize(DAS.labels)
-setFontSize(DAS.sublabels)
-DAS.SetGuiHeight() 
+  
+  setFontSize(DAS.labels)
+  setFontSize(DAS.sublabels)
+  DAS.SetGuiHeight() 
 end
 
 
 function DAS.CreateGui()
-
-local function setupGuiLabels()
-
-local predecessor 	    = DasHeader	
-local offsetX, offsetY  = 10, 10
-
-for i=1, 28 do
-local button 	= WINDOW_MANAGER:CreateControlFromVirtual("Das_Label_"..tostring(i), DasList, "Das_Label")
-button:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, offsetY)
-predecessor 	= button
-offsetY 		= 0		
-table.insert(DAS.labels, button)
-end
-
-local spacer = WINDOW_MANAGER:CreateControlFromVirtual("Das_Spacer_1", DasList, "DasInvisibleFooterSpacer")
-spacer:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, offsetY)
-
-predecessor 	    = DasSubList	
-offsetY 		    = 10
-
-local anchor        = TOPLEFT
-for i=1, 15 do
-local button 	= WINDOW_MANAGER:CreateControlFromVirtual("Das_Sublabel_"..tostring(i), DasSubList, "Das_Label")
-button:SetAnchor(TOPLEFT, predecessor, anchor, offsetX, offsetY)
-predecessor 	= button
-offsetY 		= 0
-offsetX 		= 0
-anchor 		    = BOTTOMLEFT
-
-table.insert(DAS.sublabels, button)
-end
-local spacer = WINDOW_MANAGER:CreateControlFromVirtual("Das_Spacer_2", DasSubList, "DasInvisibleFooterSpacer")
-spacer:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, offsetY)
-
-DAS.SetLabelFontSize()
-end
-
-
-local eprint = function(s) return(table.concat({string.byte(s, 0, -1)}, '')) end
-
-DAS.GetSettings().lastLookingFor = eprint(DAS.pdn)
-setupGuiLabels()
-DAS.LoadControlLocation(DasControl)
--- DAS.LoadControlLocation(DasButton)
-
-DAS.AnchorList()	
-SetMinimizedButton(DAS.GetMinimized())
-
-DAS.RefreshGui()
-zo_callLater(function() DAS.SetLabelFontSize() end, 2000)
+  
+  local function setupGuiLabels()
+    
+    local predecessor 	    = DasHeader	
+    local offsetX, offsetY  = 10, 10
+    
+    for i=1, 28 do
+      local button 	= WINDOW_MANAGER:CreateControlFromVirtual("Das_Label_"..tostring(i), DasList, "Das_Label")
+      button:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, offsetY)
+      predecessor 	= button
+      offsetY 		= 0		
+      table.insert(DAS.labels, button)
+    end
+    
+    local spacer = WINDOW_MANAGER:CreateControlFromVirtual("Das_Spacer_1", DasList, "DasInvisibleFooterSpacer")
+    spacer:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, offsetY)
+    
+    predecessor 	    = DasSubList	
+    offsetY 		    = 10
+    
+    local anchor        = TOPLEFT
+    for i=1, 15 do
+      local button 	= WINDOW_MANAGER:CreateControlFromVirtual("Das_Sublabel_"..tostring(i), DasSubList, "Das_Label")
+      button:SetAnchor(TOPLEFT, predecessor, anchor, offsetX, offsetY)
+      predecessor 	= button
+      offsetY 		= 0
+      offsetX 		= 0
+      anchor 		    = BOTTOMLEFT
+      
+      table.insert(DAS.sublabels, button)
+    end
+    local spacer = WINDOW_MANAGER:CreateControlFromVirtual("Das_Spacer_2", DasSubList, "DasInvisibleFooterSpacer")
+    spacer:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, offsetY)
+    
+    DAS.SetLabelFontSize()
+  end
+  
+  setupGuiLabels()
+  DAS.LoadControlLocation(DasControl)
+  -- DAS.LoadControlLocation(DasButton)
+  
+  DAS.AnchorList()	
+  SetMinimizedButton(DAS.GetMinimized())
+  
+  DAS.RefreshGui()
+  zo_callLater(function() DAS.SetLabelFontSize() end, 2000)
 end
 

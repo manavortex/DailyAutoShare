@@ -149,7 +149,7 @@ function DAS.SetActiveIn(zoneIndex, value)
   zoneIndex = zoneIndex or DAS.GetZoneId()
   if not zoneIndex then return end
 	GetSettings()["tracked"][zoneIndex] = value
-	zo_callLater(function() DailyAutoShare.RefreshGui(not DAS.GetActiveIn()) end, 500)
+	zo_callLater(function() DailyAutoShare.RefreshGui(not DAS.GetActiveIn()) end, 200)
 end
 
 local nestedLists = {

@@ -58,6 +58,7 @@ local defaults = {
 	inactiveZones			= {
     hide				= true,
   },
+  -- Morrowind
 	[849] = {
 		relic = {
 			invisible = false,
@@ -76,6 +77,7 @@ local defaults = {
 			active = true,
     },
   },
+  -- Clockwork
 	[980] = {
 		crow = {
 			invisible = false,
@@ -94,6 +96,7 @@ local defaults = {
 			active = true,
     },
   },
+  -- Murkmire
   [726] = {
 		root = {
 			invisible = false,
@@ -149,12 +152,14 @@ local defaults = {
   mapMarkersVisible           = true,
   
   tracked = {
-		[684]  = true,
-		[823]  = true,
-		[849]  = true,	    -- Vvardenfell
-		[181]  = false,
-		[1011] = true,     -- Summerset
-		[726] = true,      -- Murkmire
+		[684]   = true,
+		[823]   = true,
+		[181]   = true,     -- Cyrodiil
+    
+		[849]   = true,	    -- Vvardenfell
+		[980]   = true,	    -- Clockwork
+		[1011]  = true,     -- Summerset
+		[726]   = true,     -- Murkmire
   },
 }
 

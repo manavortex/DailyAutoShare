@@ -86,14 +86,8 @@ function DAS.CreateMenu(savedVars, defaults)
 			controls = {
                 
 				
-				{ -- checkbox: Murkmire
-					type    = "checkbox",
-					tooltip = "Murkmire?",
-					name    = "Activate in Murkmire?",
-					getFunc = function() return DAS.GetActiveIn(726) end,
-					setFunc = function(value) DAS.SetActiveIn(726, value) end
-				},
-				{
+				
+				{ -- submenu: Murkmire
 					type        = "submenu",
 					name        = "Murkmire", 
 					controls    = {
@@ -153,7 +147,18 @@ function DAS.CreateMenu(savedVars, defaults)
 						},
 					},
 				},
+        { -- checkbox: Murkmire
+					type    = "checkbox",
+					tooltip = "Murkmire?",
+					name    = "Activate in Murkmire?",
+					getFunc = function() return DAS.GetActiveIn(726) end,
+					setFunc = function(value) DAS.SetActiveIn(726, value) end
+				},
         
+         {
+            type    = "header",
+            title   = "Summerset",
+        },
         { -- checkbox: Summerset
 					type    = "checkbox",
 					tooltip = "Summerset?",
@@ -161,21 +166,11 @@ function DAS.CreateMenu(savedVars, defaults)
 					getFunc = function() return DAS.GetActiveIn(1011) end,
 					setFunc = function(value) DAS.SetActiveIn(1011, value) end
 				},
-        {
+        
+        { -- submenu: Clockwork City
 					type    = "submenu",
 					name    = "Clockwork City", 
 					controls = {
-                        { -- checkbox: Clockwork City?
-                            type    = "checkbox",
-                            tooltip = "activate",
-                            name    = "Activate in Clockwork City?",
-                            getFunc = function() return DAS.GetActiveIn(980) end,
-                            setFunc = function(value) 
-                                DAS.SetActiveIn(980, value) 
-                                DAS.SetActiveIn(981, value) 
-                                DAS.SetActiveIn(983, value) 
-                            end
-                        },
 						{ -- header: CC Worldbosses
 							type    = "header",
 							name    = "Worldbosses"
@@ -251,15 +246,20 @@ function DAS.CreateMenu(savedVars, defaults)
 						},
 					},
 				},
-        
-				{ -- checkbox: Morrowind
-					type    = "checkbox",
-					tooltip = "Vvardenfell?",
-					name    = "Activate in Vvardenfell?",
-					getFunc = function() return DAS.GetActiveIn(849) end,
-					setFunc = function(value) DAS.SetActiveIn(849, value) end
-				},
-				{
+        { -- checkbox: Clockwork City?
+            type    = "checkbox",
+            tooltip = "activate",
+            name    = "Activate in Clockwork City?",
+            getFunc = function() return DAS.GetActiveIn(980) end,
+            setFunc = function(value) 
+                DAS.SetActiveIn(980, value) 
+                DAS.SetActiveIn(981, value) 
+                DAS.SetActiveIn(983, value) 
+            end
+        },
+
+				
+				{ -- submenu: Morrowind
 					type        = "submenu",
 					name        = "Vvardenfell", 
 					controls    = {
@@ -337,7 +337,15 @@ function DAS.CreateMenu(savedVars, defaults)
 						},
 					},
 				},
-				{ -- checkbox: Wrothgar
+				{ -- checkbox: Morrowind
+					type    = "checkbox",
+					tooltip = "Vvardenfell?",
+					name    = "Activate in Vvardenfell?",
+					getFunc = function() return DAS.GetActiveIn(849) end,
+					setFunc = function(value) DAS.SetActiveIn(849, value) end
+				},
+        
+        { -- checkbox: Wrothgar
 					type    = "checkbox",
 					tooltip = "Wrothgar?",
 					name    = "Activate in Wrothgar?",
