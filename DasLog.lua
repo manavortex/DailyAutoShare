@@ -88,6 +88,21 @@ function DAS.GetQuestStatus(questName)
   return DAS_STATUS_OPEN
 end
 
+
+local typeTable = "table"
+local function isEmpty(tbl)
+  if not tbl then return true end
+  local ret = true
+  for key, value in pairs(tbl) do
+    if type(value) == typeTable then
+      ret = ret and ({} == value or isEmpty(value))
+      else
+      ret = false
+    end       
+  end
+  return ret
+end
+
 function DAS.GetLogIndex(questName)
 	return DAS.QuestNameTable[questName] or 0
 end
