@@ -134,6 +134,7 @@ local function handleLog(forceNoAfterEight)
   
   if (not afterEight) and isEmpty(DAS.todaysLog) and lastDate ~= currentDate then
     local lastLog = DAS.globalSettings.completionLog[lastDate]
+    if not lastLog then return end
     DAS.globalSettings.completionLog[currentDate] = ZO_DeepTableCopy(lastLog, {})
     -- d(DAS.globalSettings.completionLog[currentDate])
     for charName, charLog in pairs(DAS.globalSettings.completionLog[currentDate]) do
