@@ -11,14 +11,10 @@
     default = {r = defaults.r, g = defaults.g, b = defaults.b, a = defaults.a}, --(optional) table of default color values (or default = defaultColor, where defaultColor is a table with keys of r, g, b[, a]) or a function that returns the color
     reference = "MyAddonColorpicker" -- unique global reference to control (optional)
 } ]]
-
-
 local widgetVersion = 13
 local LAM = LibStub("LibAddonMenu-2.0")
 if not LAM:RegisterWidget("colorpicker", widgetVersion) then return end
-
 local wm = WINDOW_MANAGER
-
 local function UpdateDisabled(control)
     local disable
     if type(control.data.disabled) == "function" then
@@ -26,16 +22,13 @@ local function UpdateDisabled(control)
     else
         disable = control.data.disabled
     end
-
     if disable then
         control.label:SetColor(ZO_DEFAULT_DISABLED_COLOR:UnpackRGBA())
     else
         control.label:SetColor(ZO_DEFAULT_ENABLED_COLOR:UnpackRGBA())
     end
-
     control.isDisabled = disable
 end
-
 local function UpdateValue(control, forceDefault, valueR, valueG, valueB, valueA)
     if forceDefault then --if we are forcing defaults
         local color = LAM.util.GetDefaultValue(control.data.default)
@@ -48,59 +41,46 @@ local function UpdateValue(control, forceDefault, valueR, valueG, valueB, valueA
     else
         valueR, valueG, valueB, valueA = control.data.getFunc()
     end
-
     control.thumb:SetColor(valueR, valueG, valueB, valueA or 1)
 end
-
 function LAMCreateControl.colorpicker(parent, colorpickerData, controlName)
     local control = LAM.util.CreateLabelAndContainerControl(parent, colorpickerData, controlName)
-
     control.color = control.container
     local color = control.color
-
     control.thumb = wm:CreateControl(nil, color, CT_TEXTURE)
     local thumb = control.thumb
     thumb:SetDimensions(36, 18)
     thumb:SetAnchor(LEFT, color, LEFT, 4, 0)
-
     color.border = wm:CreateControl(nil, color, CT_TEXTURE)
     local border = color.border
     border:SetTexture("EsoUI\\Art\\ChatWindow\\chatOptions_bgColSwatch_frame.dds")
     border:SetTextureCoords(0, .625, 0, .8125)
     border:SetDimensions(40, 22)
     border:SetAnchor(CENTER, thumb, CENTER, 0, 0)
-
     local function ColorPickerCallback(r, g, b, a)
         control:UpdateValue(false, r, g, b, a)
     end
-
     control:SetHandler("OnMouseUp", function(self, btn, upInside)
         if self.isDisabled then return end
-
         if upInside then
             local r, g, b, a = colorpickerData.getFunc()
             COLOR_PICKER:Show(ColorPickerCallback, r, g, b, a, LAM.util.GetStringFromValue(colorpickerData.name))
         end
     end)
-
     if colorpickerData.warning ~= nil or colorpickerData.requiresReload then
         control.warning = wm:CreateControlFromVirtual(nil, control, "ZO_Options_WarningIcon")
         control.warning:SetAnchor(RIGHT, control.color, LEFT, -5, 0)
         control.UpdateWarning = LAM.util.UpdateWarning
         control:UpdateWarning()
     end
-
     control.data.tooltipText = LAM.util.GetStringFromValue(colorpickerData.tooltip)
-
     control.UpdateValue = UpdateValue
     control:UpdateValue()
     if colorpickerData.disabled ~= nil then
         control.UpdateDisabled = UpdateDisabled
         control:UpdateDisabled()
     end
-
     LAM.util.RegisterForRefreshIfNeeded(control)
     LAM.util.RegisterForReloadIfNeeded(control)
-
     return control
 end

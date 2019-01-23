@@ -18,13 +18,10 @@
     default = defaults.var, -- default value or function that returns the default value (optional)
     reference = "MyAddonIconPicker" -- unique global reference to control (optional)
 } ]]
-
 local widgetVersion = 8
 local LAM = LibStub("LibAddonMenu-2.0")
 if not LAM:RegisterWidget("iconpicker", widgetVersion) then return end
-
 local wm = WINDOW_MANAGER
-
 local IconPickerMenu = ZO_Object:Subclass()
 local iconPicker
 LAM.util.GetIconPickerMenu = function()
@@ -39,19 +36,16 @@ LAM.util.GetIconPickerMenu = function()
     end
     return iconPicker
 end
-
 function IconPickerMenu:New(...)
     local object = ZO_Object.New(self)
     object:Initialize(...)
     return object
 end
-
 function IconPickerMenu:Initialize(name)
     local control = wm:CreateTopLevelWindow(name)
     control:SetDrawTier(DT_HIGH)
     control:SetHidden(true)
     self.control = control
-
     local scrollContainer = wm:CreateControlFromVirtual(name .. "ScrollContainer", control, "ZO_ScrollContainer")
     -- control:SetDimensions(control.container:GetWidth(), height) -- adjust to icon size / col count
     scrollContainer:SetAnchorFill()
@@ -61,25 +55,21 @@ function IconPickerMenu:Initialize(name)
     local scroll = GetControl(scrollContainer, "ScrollChild")
     self.scroll = scroll
     self.scrollContainer = scrollContainer
-
     local bg = wm:CreateControl(nil, scrollContainer, CT_BACKDROP)
     bg:SetAnchor(TOPLEFT, scrollContainer, TOPLEFT, 0, -3)
     bg:SetAnchor(BOTTOMRIGHT, scrollContainer, BOTTOMRIGHT, 2, 5)
     bg:SetEdgeTexture("EsoUI\\Art\\Tooltips\\UI-Border.dds", 128, 16)
     bg:SetCenterTexture("EsoUI\\Art\\Tooltips\\UI-TooltipCenter.dds")
     bg:SetInsets(16, 16, -16, -16)
-
     local mungeOverlay = wm:CreateControl(nil, bg, CT_TEXTURE)
     mungeOverlay:SetTexture("EsoUI/Art/Tooltips/munge_overlay.dds")
     mungeOverlay:SetDrawLevel(1)
     mungeOverlay:SetAddressMode(TEX_MODE_WRAP)
     mungeOverlay:SetAnchorFill()
-
     local mouseOver = wm:CreateControl(nil, scrollContainer, CT_TEXTURE)
     mouseOver:SetDrawLevel(2)
     mouseOver:SetTexture("EsoUI/Art/Buttons/minmax_mouseover.dds")
     mouseOver:SetHidden(true)
-
     local function IconFactory(pool)
         local icon = wm:CreateControl(name .. "Entry" .. pool:GetNextControlId(), scroll, CT_TEXTURE)
         icon:SetMouseEnabled(true)
@@ -110,16 +100,13 @@ function IconPickerMenu:Initialize(name)
         end)
         return icon
     end
-
     local function ResetFunction(icon)
         icon:ClearAnchors()
     end
-
     self.iconPool = ZO_ObjectPool:New(IconFactory, ResetFunction)
     self:SetMaxColumns(1)
     self.icons = {}
     self.color = ZO_DEFAULT_ENABLED_COLOR
-
     EVENT_MANAGER:RegisterForEvent(name .. "_OnGlobalMouseUp", EVENT_GLOBAL_MOUSE_UP, function()
         if self.refCount ~= nil then
             local moc = wm:GetMouseOverControl()
@@ -132,57 +119,47 @@ function IconPickerMenu:Initialize(name)
         end
     end)
 end
-
 function IconPickerMenu:OnMouseEnter(icon)
     InitializeTooltip(InformationTooltip, icon, TOPLEFT, 0, 0, BOTTOMRIGHT)
     SetTooltipText(InformationTooltip, LAM.util.GetStringFromValue(icon.tooltip))
     InformationTooltipTopLevel:BringWindowToTop()
 end
-
 function IconPickerMenu:OnMouseExit(icon)
     ClearTooltip(InformationTooltip)
 end
-
 function IconPickerMenu:SetMaxColumns(value)
     self.maxCols = value ~= nil and value or 5
 end
-
 local DEFAULT_SIZE = 28
 function IconPickerMenu:SetIconSize(value)
     local iconSize = DEFAULT_SIZE
     if value ~= nil then iconSize = math.max(iconSize, value) end
     self.iconSize = iconSize
 end
-
 function IconPickerMenu:SetVisibleRows(value)
     self.visibleRows = value ~= nil and value or 4.5
 end
-
 function IconPickerMenu:SetMouseHandlers(onEnter, onExit)
     self.customOnMouseEnter = onEnter
     self.customOnMouseExit = onExit
 end
-
 function IconPickerMenu:UpdateDimensions()
     local iconSize = self.iconSize
     local width = iconSize * self.maxCols + 20
     local height = iconSize * self.visibleRows
     self.control:SetDimensions(width, height)
-
     local icons = self.icons
     for i = 1, #icons do
         local icon = icons[i]
         icon:SetDimensions(iconSize, iconSize)
     end
 end
-
 function IconPickerMenu:UpdateAnchors()
     local iconSize = self.iconSize
     local col, maxCols = 1, self.maxCols
     local previousCol, previousRow
     local scroll = self.scroll
     local icons = self.icons
-
     for i = 1, #icons do
         local icon = icons[i]
         icon:ClearAnchors()
@@ -199,7 +176,6 @@ function IconPickerMenu:UpdateAnchors()
         col = col >= maxCols and 1 or col + 1
     end
 end
-
 function IconPickerMenu:Clear()
     self.icons = {}
     self.iconPool:ReleaseAllObjects()
@@ -210,7 +186,6 @@ function IconPickerMenu:Clear()
     self.customOnMouseEnter = nil
     self.customOnMouseExit = nil
 end
-
 function IconPickerMenu:AddIcon(texturePath, callback, tooltip)
     local icon, key = self.iconPool:AcquireObject()
     icon:SetTexture(texturePath)
@@ -220,13 +195,11 @@ function IconPickerMenu:AddIcon(texturePath, callback, tooltip)
     icon.OnSelect = callback
     self.icons[#self.icons + 1] = icon
 end
-
 function IconPickerMenu:Show(parent)
     if #self.icons == 0 then return false end
     if not self.control:IsHidden() then self:Clear() return false end
     self:UpdateDimensions()
     self:UpdateAnchors()
-
     local control = self.control
     control:ClearAnchors()
     control:SetAnchor(TOPLEFT, parent, BOTTOMLEFT, 0, 8)
@@ -234,10 +207,8 @@ function IconPickerMenu:Show(parent)
     control:BringWindowToTop()
     self.parent = parent
     self.refCount = 2
-
     return true
 end
-
 function IconPickerMenu:SetColor(color)
     local icons = self.icons
     self.color = color
@@ -246,16 +217,13 @@ function IconPickerMenu:SetColor(color)
         icon:SetColor(color:UnpackRGBA())
     end
 end
-
 -------------------------------------------------------------
-
 local function UpdateChoices(control, choices, choicesTooltips)
     local data = control.data
     if not choices then
         choices, choicesTooltips = data.choices, data.choicesTooltips or {}
     end
     local addedChoices = {}
-
     local iconPicker = LAM.util.GetIconPickerMenu()
     iconPicker:Clear()
     for i = 1, #choices do
@@ -270,7 +238,6 @@ local function UpdateChoices(control, choices, choicesTooltips)
         end
     end
 end
-
 local function IsDisabled(control)
     if type(control.data.disabled) == "function" then
         return control.data.disabled()
@@ -278,7 +245,6 @@ local function IsDisabled(control)
         return control.data.disabled
     end
 end
-
 local function SetColor(control, color)
     local icon = control.icon
     if IsDisabled(control) then
@@ -287,24 +253,19 @@ local function SetColor(control, color)
         icon.color = color or control.data.defaultColor or ZO_DEFAULT_ENABLED_COLOR
         icon:SetColor(icon.color:UnpackRGBA())
     end
-
     local iconPicker = LAM.util.GetIconPickerMenu()
     if iconPicker.parent == control.container and not iconPicker.control:IsHidden() then
         iconPicker:SetColor(icon.color)
     end
 end
-
 local function UpdateDisabled(control)
     local disable = IsDisabled(control)
-
     control.dropdown:SetMouseEnabled(not disable)
     control.dropdownButton:SetEnabled(not disable)
-
     local iconPicker = LAM.util.GetIconPickerMenu()
     if iconPicker.parent == control.container and not iconPicker.control:IsHidden() then
         iconPicker:Clear()
     end
-
     SetColor(control, control.icon.color)
     if disable then
         control.label:SetColor(ZO_DEFAULT_DISABLED_COLOR:UnpackRGBA())
@@ -312,7 +273,6 @@ local function UpdateDisabled(control)
         control.label:SetColor(ZO_DEFAULT_ENABLED_COLOR:UnpackRGBA())
     end
 end
-
 local function UpdateValue(control, forceDefault, value)
     if forceDefault then --if we are forcing defaults
         value = LAM.util.GetDefaultValue(control.data.default)
@@ -327,14 +287,12 @@ local function UpdateValue(control, forceDefault, value)
         control.icon:SetTexture(value)
     end
 end
-
 local MIN_HEIGHT = 26
 local HALF_WIDTH_LINE_SPACING = 2
 local function SetIconSize(control, size)
     local icon = control.icon
     icon.size = size
     icon:SetDimensions(size, size)
-
     local height = size + 4
     control.dropdown:SetDimensions(size + 20, height)
     height = math.max(height, MIN_HEIGHT)
@@ -344,7 +302,6 @@ local function SetIconSize(control, size)
     else
         control:SetHeight(height)
     end
-
     local iconPicker = LAM.util.GetIconPickerMenu()
     if iconPicker.parent == control.container and not iconPicker.control:IsHidden() then
         iconPicker:SetIconSize(size)
@@ -352,10 +309,8 @@ local function SetIconSize(control, size)
         iconPicker:UpdateAnchors()
     end
 end
-
 function LAMCreateControl.iconpicker(parent, iconpickerData, controlName)
     local control = LAM.util.CreateLabelAndContainerControl(parent, iconpickerData, controlName)
-
     local function ShowIconPicker()
         local iconPicker = LAM.util.GetIconPickerMenu()
         if iconPicker.parent == control.container then
@@ -375,7 +330,6 @@ function LAMCreateControl.iconpicker(parent, iconpickerData, controlName)
             iconPicker:Show(control.container)
         end
     end
-
     local iconSize = iconpickerData.iconSize ~= nil and iconpickerData.iconSize or DEFAULT_SIZE
     control.dropdown = wm:CreateControl(nil, control.container, CT_CONTROL)
     local dropdown = control.dropdown
@@ -384,18 +338,15 @@ function LAMCreateControl.iconpicker(parent, iconpickerData, controlName)
     dropdown:SetHandler("OnMouseUp", ShowIconPicker)
     dropdown:SetHandler("OnMouseEnter", function() ZO_Options_OnMouseEnter(control) end)
     dropdown:SetHandler("OnMouseExit", function() ZO_Options_OnMouseExit(control) end)
-
     control.icon = wm:CreateControl(nil, dropdown, CT_TEXTURE)
     local icon = control.icon
     icon:SetAnchor(LEFT, dropdown, LEFT, 3, 0)
     icon:SetDrawLevel(2)
-
     local dropdownButton = wm:CreateControlFromVirtual(nil, dropdown, "ZO_DropdownButton")
     dropdownButton:SetDimensions(16, 16)
     dropdownButton:SetHandler("OnClicked", ShowIconPicker)
     dropdownButton:SetAnchor(RIGHT, dropdown, RIGHT, -3, 0)
     control.dropdownButton = dropdownButton
-
     control.bg = wm:CreateControl(nil, dropdown, CT_BACKDROP)
     local bg = control.bg
     bg:SetAnchor(TOPLEFT, dropdown, TOPLEFT, 0, -3)
@@ -408,14 +359,12 @@ function LAMCreateControl.iconpicker(parent, iconpickerData, controlName)
     mungeOverlay:SetDrawLevel(1)
     mungeOverlay:SetAddressMode(TEX_MODE_WRAP)
     mungeOverlay:SetAnchorFill()
-
     if iconpickerData.warning ~= nil or iconpickerData.requiresReload then
         control.warning = wm:CreateControlFromVirtual(nil, control, "ZO_Options_WarningIcon")
         control.warning:SetAnchor(RIGHT, control.container, LEFT, -5, 0)
         control.UpdateWarning = LAM.util.UpdateWarning
         control:UpdateWarning()
     end
-
     control.UpdateChoices = UpdateChoices
     control.UpdateValue = UpdateValue
     control:UpdateValue()
@@ -423,14 +372,11 @@ function LAMCreateControl.iconpicker(parent, iconpickerData, controlName)
     control:SetColor()
     control.SetIconSize = SetIconSize
     control:SetIconSize(iconSize)
-
     if iconpickerData.disabled ~= nil then
         control.UpdateDisabled = UpdateDisabled
         control:UpdateDisabled()
     end
-
     LAM.util.RegisterForRefreshIfNeeded(control)
     LAM.util.RegisterForReloadIfNeeded(control)
-
     return control
 end

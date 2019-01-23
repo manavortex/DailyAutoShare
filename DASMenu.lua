@@ -1,12 +1,8 @@
 local DAS = DailyAutoShare
-
 local optionsData
 local questShareDefault
-
 local GetSettings = DAS.GetSettings
-
 function DAS.CreateMenu(savedVars, defaults)
-    
     questShareDefault = defaults.questShareString
 	local LAM = LibStub:GetLibrary("LibAddonMenu-2.0")
 	local panelData = {
@@ -17,17 +13,14 @@ function DAS.CreateMenu(savedVars, defaults)
 		version         = DAS.version,
 		slashCommand    = "/das_menu",
 	}
-
 	LAM:RegisterAddonPanel("DailyAutoShare_OptionsPanel", panelData)
-
 	optionsData = { -- optionsData
 		{ -- Use global configuration?
 			type    = "checkbox",
-			name    = "Turn on debugging?",			
+			name    = "Turn on debugging?",
 			getFunc = function() return DAS.GetDebugMode() end,
 			setFunc = function(value) DAS.SetDebugMode(value) end
-		},	
-	
+		},
 		{ -- header: Use global variables?
 			type    = "header",
 			name    = "Use global variables?"
@@ -39,7 +32,7 @@ function DAS.CreateMenu(savedVars, defaults)
             width   = "half",
 			getFunc = function() return DAS.GetUseGlobalSettings() end,
 			setFunc = function(value) DAS.SetUseGlobalSettings(value) end
-			},    
+			},
         { -- checkbox: Hide UI window
 			type    = "checkbox",
 			name    = "Hide UI window",
@@ -47,29 +40,28 @@ function DAS.CreateMenu(savedVars, defaults)
 			getFunc = function() return DAS.GetHidden() end,
 			setFunc = function(value) DAS.SetHidden(value) end
 		},
-		
 		{ -- header: be elaborate?
 			type    = "header",
 			name    = "Throttle"
-		},    
+		},
 		{ -- slider: group invite delay
 			type 	= "slider",
 			name 	= "Group invite delay (in ms)",
 			tooltip = ("adjust this if you encounter disconnects when trying to create a group.\n"
 					.."1000 ms are one second.") ,
 			min 	= 250,
-			step	= 10, 
+			step	= 10,
 			max 	= 2500,
 			getFunc = function() return DAS.GetGroupInviteDelay() end,
 			setFunc = function(value) DAS.SetGroupInviteDelay(value) end
-		},    
+		},
 		{ -- slider: group invite delay
 			type 	= "slider",
 			name 	= "Quest share delay (in ms)",
 			tooltip = ("adjust this if you encounter disconnects when new group members join.\n"
 					.."1000 ms are one second.") ,
 			min 	= 250,
-			step	= 10, 
+			step	= 10,
 			max 	= 2500,
 			getFunc = function() return DAS.GetQuestShareDelay() end,
 			setFunc = function(value) DAS.SetQuestShareDelay(value) end
@@ -79,17 +71,13 @@ function DAS.CreateMenu(savedVars, defaults)
             title   = "Activate auto quest stuff in...",
             text    = GetString(DAS_MENU_ACTIV_EXPLAIN),
         },
-
 		{ -- header: activate add-on in...
 			type    = "submenu",
 			name    = "Activate",
 			controls = {
-                
-				
-				
 				{ -- submenu: Murkmire
 					type        = "submenu",
-					name        = "Murkmire", 
+					name        = "Murkmire",
 					controls    = {
 						{ -- header: Boss dailies
 							type    = "header",
@@ -141,7 +129,7 @@ function DAS.CreateMenu(savedVars, defaults)
 						{ -- checkbox: Root Whisper
 							type    = "checkbox",
 							name    = "Hide?",
-							tooltip = "Don't show Root Whisper dailies on UI list",							
+							tooltip = "Don't show Root Whisper dailies on UI list",
 							getFunc = function() return DAS.GetQuestListItem(726, "root", "invisible") end,
 							setFunc = function(value) DAS.SetQuestListItem(726,   "root", "invisible", value) end
 						},
@@ -154,7 +142,6 @@ function DAS.CreateMenu(savedVars, defaults)
 					getFunc = function() return DAS.GetActiveIn(726) end,
 					setFunc = function(value) DAS.SetActiveIn(726, value) end
 				},
-        
          {
             type    = "header",
             title   = "Summerset",
@@ -166,10 +153,9 @@ function DAS.CreateMenu(savedVars, defaults)
 					getFunc = function() return DAS.GetActiveIn(1011) end,
 					setFunc = function(value) DAS.SetActiveIn(1011, value) end
 				},
-        
         { -- submenu: Clockwork City
 					type    = "submenu",
-					name    = "Clockwork City", 
+					name    = "Clockwork City",
 					controls = {
 						{ -- header: CC Worldbosses
 							type    = "header",
@@ -222,7 +208,6 @@ function DAS.CreateMenu(savedVars, defaults)
 							type    = "checkbox",
 							name    = "Hide?",
 							tooltip = "Don't show Clockwork City delve dailies on UI list",
-							
 							getFunc = function() return DAS.GetQuestListItem(980, "delve", "invisible") end,
 							setFunc = function(value) DAS.SetQuestListItem(980, "delve", "invisible", value) end
 						},
@@ -251,17 +236,15 @@ function DAS.CreateMenu(savedVars, defaults)
             tooltip = "activate",
             name    = "Activate in Clockwork City?",
             getFunc = function() return DAS.GetActiveIn(980) end,
-            setFunc = function(value) 
-                DAS.SetActiveIn(980, value) 
-                DAS.SetActiveIn(981, value) 
-                DAS.SetActiveIn(983, value) 
+            setFunc = function(value)
+                DAS.SetActiveIn(980, value)
+                DAS.SetActiveIn(981, value)
+                DAS.SetActiveIn(983, value)
             end
         },
-
-				
 				{ -- submenu: Morrowind
 					type        = "submenu",
-					name        = "Vvardenfell", 
+					name        = "Vvardenfell",
 					controls    = {
 						{ -- header: Ashlander: Relics
 							type    = "header",
@@ -313,7 +296,7 @@ function DAS.CreateMenu(savedVars, defaults)
 						{ -- checkbox: Vivec: Delves
 							type    = "checkbox",
 							name    = "Hide?",
-							tooltip = "Don't show Hall of Justice delve dailies on UI list",							
+							tooltip = "Don't show Hall of Justice delve dailies on UI list",
 							getFunc = function() return DAS.GetQuestListItem(849, "delve", "invisible") end,
 							setFunc = function(value) DAS.SetQuestListItem(849, "delve", "invisible", value) end
 						},
@@ -344,7 +327,6 @@ function DAS.CreateMenu(savedVars, defaults)
 					getFunc = function() return DAS.GetActiveIn(849) end,
 					setFunc = function(value) DAS.SetActiveIn(849, value) end
 				},
-        
         { -- checkbox: Wrothgar
 					type    = "checkbox",
 					tooltip = "Wrothgar?",
@@ -374,35 +356,31 @@ function DAS.CreateMenu(savedVars, defaults)
                             type    = "checkbox",
                             tooltip = "Fighters/Mages Guild and Undaunted dailies? This is work in progress.",
                             name    = "Guild quests?",
-                            getFunc = function() return DAS.GetActiveIn(57) end,
-                            setFunc = function(value)   
-                                DAS.SetActiveIn(57, value) 
-                            end
+                            getFunc = function() return DAS.GetActiveIn("guilds") end,
+                            setFunc = function(value) DAS.SetActiveFor("guilds", value) end
                         },
                         { -- checkbox: Fighters' Guild
                             type    = "checkbox",
                             tooltip = "Enable Fighters' Guild dailies",
                             name    = "Fighters' Guild",
-                            getFunc = function() return DAS.GetQuestListItem(57, "fg", "active") end,
-                            setFunc = function(value)   DAS.SetQuestListItem(57, "fg", "active", value) end
+                            getFunc = function() return DAS.GetActiveIn("fg") end,
+                            setFunc = function(value) DAS.SetActiveFor("fg", value) end
                         },
                         { -- checkbox: Mages' Guild
                             type    = "checkbox",
                             tooltip = "Enable Mages' Guild dailies",
                             name    = "Mages Guild",
-                            getFunc = function() return DAS.GetQuestListItem(57, "mg", "active") end,
-                            setFunc = function(value)   DAS.SetQuestListItem(57, "mg", "active", value) end
+                            getFunc = function() return DAS.GetActiveIn("mg") end,
+                            setFunc = function(value) DAS.SetActiveFor("mg", value) end
                         },
                         { -- checkbox: Fighters' Guild
                             type    = "checkbox",
                             tooltip = "Enable Undaunted dailies",
                             name    = "Undaunted",
-                            getFunc = function() return DAS.GetQuestListItem(57, "ud", "active") end,
-                            setFunc = function(value)   DAS.SetQuestListItem(57, "ud", "active", value) end
+                            getFunc = function() return DAS.GetActiveIn("ud") end,
+                            setFunc = function(value) DAS.SetActiveFor("ud", value) end
                         },
                     },
-                   
-                    
                 },
 				{ -- checkbox: Cyro
 					type    = "checkbox",
@@ -410,22 +388,19 @@ function DAS.CreateMenu(savedVars, defaults)
 					name    = "Cyrodiil",
 					getFunc = function() return DAS.GetActiveIn(181) end,
 					setFunc = function(value)
-                        DAS.SetActiveIn(181, value) 
+                        DAS.SetActiveIn(181, value)
                     end
 				},
-                
 				{
 					type        = "submenu",
-					name        = "Festivals", 
-					controls = {						
+					name        = "Festivals",
+					controls = {
 						{ -- checkbox: relic
 							type    = "checkbox",
 							name    = "New Life",
 							tooltip = "Enable New Life festival",
 							getFunc = function() return DAS.GetActiveIn(101) end,
-							setFunc = function(value)
-								DAS.SetActiveFor("newLife", value)								
-							end
+							setFunc = function(value) DAS.SetActiveFor("newLife", value) end
 						},
 					},
 				},
@@ -438,51 +413,47 @@ function DAS.CreateMenu(savedVars, defaults)
 			getFunc = function() return DAS.GetWhisperOnly() end,
 			setFunc = function(value) GetSettings().whisperOnly = value end
 		},
-        
 		{ -- header: Use global variables?
 			type    = "header",
 			name    = "User UI settings"
 		},
-		
 		{ -- submenu: User UI settings
 			type        = "submenu",
 			name        = "Look and feel and behavior",
-			controls    = {	
-              
+			controls    = {
 				{ -- checkbox: Lock UI window
 					type    = "checkbox",
 					name    = "Show Map markers?",
 					getFunc = function() return DAS.GetMarkerVisibility() end,
 					setFunc = function(value) DAS.SetMarkerVisibility(value) end
 				},
-            
 				{   -- editbox: Quest share text
-                    type        = "editbox", 
-                    isExtraWide = true, 
+                    type        = "editbox",
+                    isExtraWide = true,
                     name        = "Quest share text",
-                    tooltip     = ("Text to generate when you spam quest shares.\n" 
+                    tooltip     = ("Text to generate when you spam quest shares.\n"
                                 .. "<<1>> will be replaced with the quest names, <<2>> with the bingo codes.\n"
                                 .. "Omit either to remove parameter. Include neither and sound like a fool."),
                     getFunc     = function() return DAS.GetSettings().questShareString end,
                     setFunc     = function(value) DAS.GetSettings().questShareString = value end,
                 },
                 {   -- editbox: Quest share text
-                    type        = "editbox", 
-                    isExtraWide = true, 
+                    type        = "editbox",
+                    isExtraWide = true,
                     name        = "Whisper only text",
                     disabled    = not DAS.GetWhisperOnly(),
-                    tooltip     = "Will replace everything after <<1>>, in the string above",                                
+                    tooltip     = "Will replace everything after <<1>>, in the string above",
                     getFunc     = function() return DAS.GetSettings().whisperString end,
                     setFunc     = function(value) DAS.GetSettings().whisperString = value end,
-                },                	
+                },
 				{   -- editbox: Quest share text
-                    type    = "button", 
+                    type    = "button",
                     name    = "Reset",
                     tooltip = "Reset quest share text to default value",
                     getFunc = function() return questShareDefault end,
                     setFunc = function(value) DAS.GetSettings().questShareString = questShareDefault end,
                     reference = "qsButton",
-                },                
+                },
 				{ -- checkbox: Lock UI window
 					type    = "checkbox",
 					name    = "Lock UI window",
@@ -536,12 +507,11 @@ function DAS.CreateMenu(savedVars, defaults)
 					name 	= "Font size",
 					tooltip = "adjust font size",
 					min 	= 50,
-					step	= 5, 
+					step	= 5,
 					max 	= 250,
 					getFunc = function() return DAS.GetFontSize()*100 end,
 					setFunc = function(value) DAS.SetFontSize(value/100) end
 				},
-				
 			},
 		}, -- submenu UI settings end
 		{ -- behavior if hidden
@@ -555,7 +525,7 @@ function DAS.CreateMenu(savedVars, defaults)
 					getFunc = function() return DAS.GetHiddenInInactiveZones() end,
 					setFunc = function(value) DAS.SetHiddenInInactiveZones(value) end
 				},
-			}				
+			}
 		},
 		{ -- submenu: Guild settings
 			type    = "submenu",
@@ -583,10 +553,8 @@ function DAS.CreateMenu(savedVars, defaults)
 					getFunc = function() return DAS.GetListenInGuilds() end,
 					setFunc = function(value) DAS.SetListenInGuilds(value) end
 				},
-
 			},
 		}, -- submenu UI settings end
-
 		{ -- header: automatically
 			type    = "header",
 			name    = "automatically..."
@@ -628,8 +596,8 @@ function DAS.CreateMenu(savedVars, defaults)
 		},
 		{ -- auto-accept interval
 			type    = "slider",
-			tooltip = ("After you've been looking for quest share, " 
-                       .. "how long do you want to automatically accept group-invites?\n" 
+			tooltip = ("After you've been looking for quest share, "
+                       .. "how long do you want to automatically accept group-invites?\n"
                        .. "Set to 0 to disable"),
 			name    = "Accept auto-invite after +bingo in zone for ... seconds",
 			min     = 0,
@@ -638,7 +606,5 @@ function DAS.CreateMenu(savedVars, defaults)
 			setFunc = function(value) DAS.SetAutoAcceptInviteInterval(value) end
 		},
 	} -- optionsData end
-
 	LAM:RegisterOptionControls("DailyAutoShare_OptionsPanel", optionsData)
-
 end

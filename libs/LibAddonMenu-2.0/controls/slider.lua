@@ -9,7 +9,7 @@
     clampInput = true, -- boolean, if set to false the input won't clamp to min and max and allow any number instead (optional)
     decimals = 0, -- when specified the input value is rounded to the specified number of decimals (optional)
     autoSelect = false, -- boolean, automatically select everything in the text input field when it gains focus (optional)
-    inputLocation = "below", -- or "right", determines where the input field is shown. This should not be used within the addon menu and is for custom sliders (optional) 
+    inputLocation = "below", -- or "right", determines where the input field is shown. This should not be used within the addon menu and is for custom sliders (optional)
     tooltip = "Slider's tooltip text.", -- or string id or function returning a string (optional)
     width = "full", --or "half" (optional)
     disabled = function() return db.someBooleanSetting end, --or boolean (optional)
@@ -18,18 +18,14 @@
     default = defaults.var, -- default value or function that returns the default value (optional)
     reference = "MyAddonSlider" -- unique global reference to control (optional)
 } ]]
-
 local widgetVersion = 12
 local LAM = LibStub("LibAddonMenu-2.0")
 if not LAM:RegisterWidget("slider", widgetVersion) then return end
-
 local wm = WINDOW_MANAGER
 local strformat = string.format
-
 local function RoundDecimalToPlace(d, place)
     return tonumber(strformat("%." .. tostring(place) .. "f", d))
 end
-
 local function UpdateDisabled(control)
     local disable
     if type(control.data.disabled) == "function" then
@@ -37,7 +33,6 @@ local function UpdateDisabled(control)
     else
         disable = control.data.disabled
     end
-
     control.slider:SetEnabled(not disable)
     control.slidervalue:SetEditEnabled(not disable)
     if disable then
@@ -52,7 +47,6 @@ local function UpdateDisabled(control)
         control.slidervalue:SetColor(ZO_DEFAULT_ENABLED_COLOR:UnpackRGBA())
     end
 end
-
 local function UpdateValue(control, forceDefault, value)
     if forceDefault then --if we are forcing defaults
         value = LAM.util.GetDefaultValue(control.data.default)
@@ -70,15 +64,12 @@ local function UpdateValue(control, forceDefault, value)
     else
         value = control.data.getFunc()
     end
-
     control.slider:SetValue(value)
     control.slidervalue:SetText(value)
 end
-
 function LAMCreateControl.slider(parent, sliderData, controlName)
     local control = LAM.util.CreateLabelAndContainerControl(parent, sliderData, controlName)
-    local isInputOnRight = sliderData.inputLocation == "right" 
-
+    local isInputOnRight = sliderData.inputLocation == "right"
     --skipping creating the backdrop...  Is this the actual slider texture?
     control.slider = wm:CreateControl(nil, control.container, CT_SLIDER)
     local slider = control.slider
@@ -98,26 +89,22 @@ function LAMCreateControl.slider(parent, sliderData, controlName)
     slider:SetMinMax(minValue, maxValue)
     slider:SetHandler("OnMouseEnter", function() ZO_Options_OnMouseEnter(control) end)
     slider:SetHandler("OnMouseExit", function() ZO_Options_OnMouseExit(control) end)
-
     slider.bg = wm:CreateControl(nil, slider, CT_BACKDROP)
     local bg = slider.bg
     bg:SetCenterColor(0, 0, 0)
     bg:SetAnchor(TOPLEFT, slider, TOPLEFT, 0, 4)
     bg:SetAnchor(BOTTOMRIGHT, slider, BOTTOMRIGHT, 0, -4)
-    bg:SetEdgeTexture("EsoUI\\Art\\Tooltips\\UI-SliderBackdrop.dds", 32, 4) 
-
+    bg:SetEdgeTexture("EsoUI\\Art\\Tooltips\\UI-SliderBackdrop.dds", 32, 4)
     control.minText = wm:CreateControl(nil, slider, CT_LABEL)
     local minText = control.minText
     minText:SetFont("ZoFontGameSmall")
     minText:SetAnchor(TOPLEFT, slider, BOTTOMLEFT)
     minText:SetText(sliderData.min)
-
     control.maxText = wm:CreateControl(nil, slider, CT_LABEL)
     local maxText = control.maxText
     maxText:SetFont("ZoFontGameSmall")
     maxText:SetAnchor(TOPRIGHT, slider, BOTTOMRIGHT)
     maxText:SetText(sliderData.max)
-
     control.slidervalueBG = wm:CreateControlFromVirtual(nil, slider, "ZO_EditBackdrop")
     if(isInputOnRight) then
         control.slidervalueBG:SetDimensions(60, 26)
@@ -137,7 +124,6 @@ function LAMCreateControl.slider(parent, sliderData, controlName)
     else
         slidervalue:SetFont("ZoFontGameSmall")
     end
-
     local isHandlingChange = false
     local function HandleValueChanged(value)
         if isHandlingChange then return end
@@ -149,7 +135,6 @@ function LAMCreateControl.slider(parent, sliderData, controlName)
         slidervalue:SetText(value)
         isHandlingChange = false
     end
-
     slidervalue:SetHandler("OnEscape", function(self)
         HandleValueChanged(sliderData.getFunc())
         self:LoseFocus()
@@ -174,7 +159,6 @@ function LAMCreateControl.slider(parent, sliderData, controlName)
             self:SelectAll()
         end)
     end
-
     local range = maxValue - minValue
     slider:SetValueStep(sliderData.step or 1)
     slider:SetHandler("OnValueChanged", function(self, value, eventReason)
@@ -189,24 +173,19 @@ function LAMCreateControl.slider(parent, sliderData, controlName)
         local new_value = (tonumber(slidervalue:GetText()) or sliderData.min or 0) + ((sliderData.step or 1) * value)
         control:UpdateValue(false, new_value)
     end)
-
     if sliderData.warning ~= nil or sliderData.requiresReload then
         control.warning = wm:CreateControlFromVirtual(nil, control, "ZO_Options_WarningIcon")
         control.warning:SetAnchor(RIGHT, slider, LEFT, -5, 0)
         control.UpdateWarning = LAM.util.UpdateWarning
         control:UpdateWarning()
     end
-
     control.UpdateValue = UpdateValue
     control:UpdateValue()
-
     if sliderData.disabled ~= nil then
         control.UpdateDisabled = UpdateDisabled
         control:UpdateDisabled()
     end
-
     LAM.util.RegisterForRefreshIfNeeded(control)
     LAM.util.RegisterForReloadIfNeeded(control)
-
     return control
 end

@@ -10,13 +10,10 @@
     warning = "Will need to reload the UI.", --(optional)
     reference = "MyAddonButton", -- unique global reference to control (optional)
 } ]]
-
 local widgetVersion = 11
 local LAM = LibStub("LibAddonMenu-2.0")
 if not LAM:RegisterWidget("button", widgetVersion) then return end
-
 local wm = WINDOW_MANAGER
-
 local function UpdateDisabled(control)
     local disable = control.data.disabled
     if type(disable) == "function" then
@@ -24,21 +21,18 @@ local function UpdateDisabled(control)
     end
     control.button:SetEnabled(not disable)
 end
-
 --controlName is optional
 local MIN_HEIGHT = 28 -- default_button height
 local HALF_WIDTH_LINE_SPACING = 2
 function LAMCreateControl.button(parent, buttonData, controlName)
     local control = LAM.util.CreateBaseControl(parent, buttonData, controlName)
     control:SetMouseEnabled(true)
-
     local width = control:GetWidth()
     if control.isHalfWidth then
         control:SetDimensions(width / 2, MIN_HEIGHT * 2 + HALF_WIDTH_LINE_SPACING)
     else
         control:SetDimensions(width, MIN_HEIGHT)
     end
-
     if buttonData.icon then
         control.button = wm:CreateControl(nil, control, CT_BUTTON)
         control.button:SetDimensions(26, 26)
@@ -63,7 +57,6 @@ function LAMCreateControl.button(parent, buttonData, controlName)
             buttonData.func(unpack(args))
             LAM.util.RequestRefreshIfNeeded(control)
         end
-
         if(buttonData.isDangerous) then
             local title = LAM.util.GetStringFromValue(buttonData.name)
             local body = LAM.util.GetStringFromValue(buttonData.warning)
@@ -72,20 +65,16 @@ function LAMCreateControl.button(parent, buttonData, controlName)
             callback()
         end
     end)
-
     if buttonData.warning ~= nil then
         control.warning = wm:CreateControlFromVirtual(nil, control, "ZO_Options_WarningIcon")
         control.warning:SetAnchor(RIGHT, button, LEFT, -5, 0)
         control.UpdateWarning = LAM.util.UpdateWarning
         control:UpdateWarning()
     end
-
     if buttonData.disabled ~= nil then
         control.UpdateDisabled = UpdateDisabled
         control:UpdateDisabled()
     end
-
     LAM.util.RegisterForRefreshIfNeeded(control)
-
     return control
 end

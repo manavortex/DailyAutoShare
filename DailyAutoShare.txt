@@ -1,28 +1,21 @@
 ## Title: DailyAutoShare
 ## Author: manavortex
-## Version: 3.61
+## Version: 3.7
 ## APIVersion: 100025
 ## SavedVariables: DAS_Settings DAS_Globals
 ## DependsOn: LibStub LibCustomMenu LibAddonMenu-2.0
 ## OptionalDependsOn: pchat
-
-
 libs\LibCustomTitles\LibCustomTitles.lua
-
 xml/VirtualButtons.xml
 DAS_xml.xml
-
 questData/00_ids.lua
 questData/01_subzones.lua
-
 locale/en.lua
 locale/$(language).lua
-
 00_startup.lua
 xml/Bindings.xml
 DASHelper.lua
 DASData.lua
-
 questData/BingoClean.lua
 questData/GuildQuests.lua
 questData/Festival.lua
@@ -34,10 +27,8 @@ questData/Cyrodiil.lua
 questData/ClockworkCity.lua
 questData/Summerset.lua
 questData/Murkmire.lua
-
 DASUserSettingsAdapter.lua
 DasChatMessage.lua
-
 DASContextMenu.lua
 DasGui.lua
 DasQuestAccept.lua
@@ -45,5 +36,4 @@ DasGuiStringBuilder.lua
 DasTooltip.lua
 DasMapMarker.lua
 DASMenu.lua
-
 DasLog.lua
