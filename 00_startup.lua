@@ -1,7 +1,7 @@
 DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
 DAS.name                    = "DailyAutoShare"
-DAS.version                 = "3.7"
+DAS.version                 = "3.8"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
