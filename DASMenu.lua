@@ -75,6 +75,18 @@ function DAS.CreateMenu(savedVars, defaults)
 			type    = "submenu",
 			name    = "Activate",
 			controls = {
+        {-- Elsweyr
+           type    = "header",
+            title  = "Elsweyr",
+        },
+        { -- checkbox: Summerset
+					type    = "checkbox",
+					tooltip = "Elsweyr?",
+					name    = "Activate in Elsweyr?",
+					getFunc = function() return DAS.GetActiveIn(1086) end,
+					setFunc = function(value) DAS.SetActiveIn(1086, value) end
+				},
+      
 				{ -- submenu: Murkmire
 					type        = "submenu",
 					name        = "Murkmire",

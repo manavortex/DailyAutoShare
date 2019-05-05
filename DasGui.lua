@@ -251,7 +251,7 @@ function DAS.setLabels(zoneQuests)
     end
   end -- for loop end
   return numLabels
-end
+end 
 function DAS.RefreshLabelsWithDelay() zo_callLater(DAS.RefreshLabels, 500) end
 function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
   forceQuestRefresh = forceQuestRefresh or DAS.questCacheNeedsRefresh

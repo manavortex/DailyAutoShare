@@ -141,6 +141,7 @@ local defaults = {
 		[980]   = true,	    -- Clockwork
 		[1011]  = true,     -- Summerset
 		[726]   = true,     -- Murkmire
+		[1086]  = true,     -- Elsweyr
   },
   trackedLists = {
     newLife = false,
@@ -312,8 +313,7 @@ local function OnUnitCreated(eventCode, unitTag)
   if GetUnitDisplayName(unitTag) == cachedDisplayName then return end
   DAS.TryShareActiveDaily(unitZone)
 end
-local function OnQuestToolUpdate()
-  p("OnQuestToolUpdate")
+local function OnQuestToolUpdate() 
   forceRefreshControl()
 end
 local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, zoneIndex, poiIndex, questId)
@@ -334,6 +334,7 @@ local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, z
   zo_callLater(function()
     DAS.SetAutoInvite(autoInvite)
     forceRefreshControl()
+    DAS.questCacheNeedsRefresh = true
     DAS.RefreshLabelsWithDelay()
   end, 5000)
 end

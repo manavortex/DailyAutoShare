@@ -27,9 +27,22 @@ local strings  = {
   DAS_SI_PREQUEST         = "\nPrequest <<1>>: <<2>>",
 	DAS_SI_COMPLETED        = "completed",
 	DAS_SI_OPEN             = "open",
+  
+  -- Elsweyr
+  -- NIsuzi
+  DAS_KITTY_WILY          = "The Traders' Terror",
+  DAS_KITTY_WIND          = "Wisdom in the Winds",
+  
+  -- Rihirr
+  DAS_KITTY_HUNGRY        = "The Hungry Cat's Favor",
+  DAS_KITTY_DEATH         = "Another Day, Another Death",
+  
+  
+  -- Murkmire
   DAS_SLAVES_QUEST1       = "Varo Hosidias",
   DAS_SLAVES_QUEST2       = "Tuwul",
   DAS_SLAVES_QUEST3       = "Erithel",
+  
   DAS_SLAVES_BOSS_1       = "Grave Circumstances",
   DAS_SLAVES_BOSS_2       = "Grave Expectations",
   DAS_SLAVES_BOSS_3       = "Old Baubles",
