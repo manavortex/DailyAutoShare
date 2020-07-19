@@ -4,13 +4,13 @@ local questShareDefault
 local GetSettings = DAS.GetSettings
 function DAS.CreateMenu(savedVars, defaults)
     questShareDefault = defaults.questShareString
-	local LAM = LibStub:GetLibrary("LibAddonMenu-2.0")
-	local panelData = {
-		type            = "panel",
-		name            = DAS.name,
-		displayname     = name,
-	 	author          = DAS.author,
-		version         = DAS.version,
+	local LAM = LibAddonMenu2
+	local panelData 	= {
+		type            	= "panel",
+		name            	= DAS.name,
+		displayname 	= name,
+	 	author         	= DAS.author,
+		version        = DAS.version,
 		slashCommand    = "/das_menu",
 	}
 	LAM:RegisterAddonPanel("DailyAutoShare_OptionsPanel", panelData)

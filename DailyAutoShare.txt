@@ -4,18 +4,25 @@
 ## APIVersion: 100026 100027
 ## SavedVariables: DAS_Settings DAS_Globals
 ## DependsOn: LibStub LibCustomMenu LibAddonMenu-2.0
-## OptionalDependsOn: pchat
-libs\LibCustomTitles\LibCustomTitles.lua
+## OptionalDependsOn: pchat rchat
+
+libs\LibCustomTitles.lua
+
 xml/VirtualButtons.xml
 DAS_xml.xml
+
 questData/00_ids.lua
 questData/01_subzones.lua
+
 locale/en.lua
 locale/$(language).lua
+
 00_startup.lua
 xml/Bindings.xml
+
 DASHelper.lua
 DASData.lua
+
 questData/BingoClean.lua
 questData/GuildQuests.lua
 questData/Festival.lua
@@ -28,6 +35,7 @@ questData/ClockworkCity.lua
 questData/Summerset.lua
 questData/Murkmire.lua
 questData/Elsweyr.lua
+
 DASUserSettingsAdapter.lua
 DasChatMessage.lua
 DASContextMenu.lua
