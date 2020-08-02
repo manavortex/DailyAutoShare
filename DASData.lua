@@ -123,9 +123,11 @@ function DAS.GetActiveQuestNamesFromGui()
 	local questLabel
 	for i=1, #DAS.labels do
 		questLabel = DAS.labels[i]
-		if not questLabel:IsHidden() and (questLabel.dataQuestState == DAS_STATUS_ACTIVE) or (questLabel.dataQuestState == DAS_STATUS_TRACKED) then
-			table.insert(ret, questLabel.dataQuestName)
-            DAS.activeBingoIndices[questLabel.dataBingoIndex] = true
+    if  questLabel.dataBingoIndex then 
+      if not questLabel:IsHidden() and (questLabel.dataQuestState == DAS_STATUS_ACTIVE) or (questLabel.dataQuestState == DAS_STATUS_TRACKED) then
+        table.insert(ret, questLabel.dataQuestName)
+              DAS.activeBingoIndices[questLabel.dataBingoIndex] = true
+      end
 		end
 	end
 	return ret

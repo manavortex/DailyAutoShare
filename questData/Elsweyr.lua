@@ -14,38 +14,82 @@ local tbl2  = {}
 --]]
 
 -- Nisuzi
-table.insert(tbl, GetString(DAS_KITTY_WILY))
-table.insert(tbl2, {[1] = "wily", [2] = "trade", [3] = "trader"})
 
+-- Dousing the Daedric Flame
+table.insert(tbl, GetString(DAS_KITTY_FLAME))
+table.insert(tbl2, {[1] = "flames", [2] = "flame" })
+
+-- Wisdom in the Winds
 table.insert(tbl, GetString(DAS_KITTY_WIND))
+table.insert(tbl2, {[1] = "scrolls", [2] = "wind"  })
+
+-- Rifling Through Ruins
+table.insert(tbl, GetString(DAS_KITTY_RUINS))
+table.insert(tbl2, {[1] = "ruins" })
+
+
+-- The Hungry Cat's Favor
+table.insert(tbl, GetString(DAS_KITTY_HUNGRY))
+table.insert(tbl2, {[1] = "kitty", [2] = "food"})
+ 
+-- The Serpent's Stampede
+table.insert(tbl, GetString(DAS_KITTY_STAMPEDE))
+table.insert(tbl2, {[1] = "serpent" })
+
+-- Tangled Tea Leaves
+table.insert(tbl, GetString(DAS_KITTY_TEA))
+table.insert(tbl2, {[1] = "tea" })
+
 
 -- Ri'hirr
-table.insert(tbl, GetString(DAS_KITTY_HUNGRY))
-table.insert(tbl2, {[1] = "hungry", [2] = "food"})
 
+-- The Traders' Terror
+table.insert(tbl, GetString(DAS_KITTY_WILY))
+table.insert(tbl2, {[1] = "bird", [2] = "keeva", [3] = "kee"})
+
+
+-- Another Day, Another Death
 table.insert(tbl, GetString(DAS_KITTY_DEATH))
-table.insert(tbl2, {[1] = "death", [2] = "day"})
+table.insert(tbl2, {[1] = "bones", [2] = "naruzz"})
+
+-- A Dastardly Duo
+table.insert(tbl, GetString(DAS_KITTY_DUO))
+table.insert(tbl2, {[1] = "red"})
+
+-- A waking nightmare
+table.insert(tbl, GetString(DAS_KITTY_NIGHTMARE))
+table.insert(tbl2, {[1] = "duo"})
+
+
+-- Sword of the Serpent
+table.insert(tbl, GetString(DAS_KITTY_SWORD))
+table.insert(tbl2, {[1] = "sword", [2] = "vhys" })
+
+-- The Senche of Decay
+table.insert(tbl, GetString(DAS_KITTY_SENCHE))
+table.insert(tbl2, {[1] = "senche", [2] = "decay" })
+
+-- Battlereeve Tanerline
+table.insert(tbl, GetString(DAS_KITTY_DRAGON))
+table.insert(tbl2, {[1] = "dragon", [2] = "hunt" })
 
 
 
-
-
--- rinse and repeat, until all your corresponding quest names / bingo strings are in your tables
--- ...
--- now set the table with the quest names for the zone
-DAS.shareables[zoneId]      = tbl
--- call the func to make the bingo table.
+DAS.shareables[zoneId]  = tbl
 DAS.makeBingoTable(zoneId, tbl2)
 
 DAS.questStarter[zoneId] = {
     ["Ri'hirr"] = true,
     ["Nisuzi"] = true, 
+    [GetString(DAS_QUEST_TANERLIN)] = true, 
 }
 DAS.questFinisher[zoneId] = {
     ["Ri'hirr"] = true,
     ["Nisuzi"] = true, 
+    [GetString(DAS_QUEST_TANERLIN)] = true, 
 }
 DAS.questIds[zoneId] = {
+  
   -- single
 	-- [5518]  = true, -- "Meat for the Masses",
 	-- [5519]  = true, -- "Scholarly Salvage",

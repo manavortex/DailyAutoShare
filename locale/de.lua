@@ -19,6 +19,33 @@ local strings  = {
 	DAS_SI_REFRESH	 		  ="Aktualisieren",
 	DAS_SI_SETOPEN_TRUE	 	= "Toggle open",
 	DAS_SI_SETOPEN_FALSE	= "Toggle complete",
+  
+  
+  
+    
+  -- Elsweyr
+  -- Nisuzi
+  DAS_KITTY_WIND          = "Weisheit im Wind",
+  DAS_KITTY_FLAME         = "Erlöschen der daedrischen Flammen",
+  DAS_KITTY_RUINS         = "Das Durchstöbern von Ruinen",
+  DAS_KITTY_STAMPEDE      = "Der Exodus der Schlange",
+  DAS_KITTY_TEA           = "Widerspenstige Teeblätter",
+  
+  -- Rihirr
+  DAS_KITTY_WILY          = "Der Schrecken der Händler",
+  DAS_KITTY_HUNGRY        = "Der Gefallen der hungrigen Katze",
+  DAS_KITTY_DEATH         = "Ein weiterer Tag, ein weiterer Tod",
+  DAS_KITTY_DUO           = "Gemeine Ganoven",
+  DAS_KITTY_SWORD         = "Das Schwert der Schlange",
+  DAS_KITTY_SENCHE        = "Der Senche der Verwesung",
+  DAS_KITTY_NIGHTMARE     = "Ein aufweckender Albtraum",
+  
+  
+  -- Battlereeve Tanerline
+  DAS_QUEST_TANERLIN      = "Battlereeve Tanerline",
+  DAS_KITTY_DRAGON        = "Dragon Hunt",
+  
+  
   DAS_SLAVES_BOSS_1            = "Tödliche Umstände",
   DAS_SLAVES_BOSS_2            = "Tödliche Erwartungen",
   DAS_SLAVES_BOSS_3            = "Alte Schriftrollen",
