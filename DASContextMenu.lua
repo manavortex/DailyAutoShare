@@ -57,7 +57,7 @@ function DAS.OnRightClick(control, verbose)
 	journalIndex 	= control.dataJournalIndex
 	bingoString 	= control.dataBingoString
 	currentControl  = control
-    local menuShowing = IsMenuVisisble() and GetMenuOwner() == control
+    local menuShowing = IsMenuVisible() and GetMenuOwner() == control
     ClearMenu()
     if not menuShowing then
         SetMenuSpacing(3)
