@@ -15,6 +15,19 @@ table.insert(tbl, GetString(DAS_BLACKWD_XANMEER))
 table.insert(tbl2, {[1] = "toad", [2] = "xanmeer"})
 table.insert(tbl, GetString(DAS_BLACKWD_LAGOON))
 table.insert(tbl2, {[1] = "lagoon",[2] = "test"})
+
+table.insert(tbl, GetString(DAS_BLACKWD_BLOODRUN))
+table.insert(tbl2, {[1] = "ru", [2] = "Bloodrun"})
+table.insert(tbl, GetString(DAS_BLACKWD_DELVE2))
+table.insert(tbl2, {[1] = "delve", [2] = "delve2"})
+table.insert(tbl, GetString(DAS_BLACKWD_DELVE3))
+table.insert(tbl2, {[1] = "delve", [2] = "delve3"})
+table.insert(tbl, GetString(DAS_BLACKWD_DELVE4))
+table.insert(tbl2, {[1] = "delve", [2] = "delve4"})
+table.insert(tbl, GetString(DAS_BLACKWD_DELVE5))
+table.insert(tbl2, {[1] = "delve", [2] = "delv5"})
+table.insert(tbl, GetString(DAS_BLACKWD_DELVE6))
+table.insert(tbl2, {[1] = "delve", [2] = "delve6"})
 DAS.shareables[zoneId]      = tbl
 DAS.makeBingoTable(zoneId, tbl2)
 
@@ -26,18 +39,17 @@ DAS.makeBingoTable(zoneId, tbl2)
 local zoneId = DAS.GetZoneId()
 local quests = DAS.shareables[zoneId] or DAS.shareables[DAS.subzones[zoneId]] or {}
 
---[[ Not checked further as i don't haveall these ID
+-- Not checked further as i don't haveall these ID
 
 -- set up auto quest accept:
 DAS.questStarter[zoneId] = {
-  [GetString(DAS_QUEST_YOUR_NPC1)]    = true,  -- Questgiver 1
-  [GetString(DAS_QUEST_YOUR_NPC2)]    = true,  -- Questgiver 2
-  [GetString(DAS_QUEST_YOUR_NPC3)]    = true,  -- Questgiver 3
+  [GetString(DAS_QUEST_BW_BOSS)]	= true,  -- Questgiver 1
+  [GetString(DAS_QUEST_BW_DELVE)]    	= true,  -- Questgiver 2
 }
 -- set up auto quest turnin:
 DAS.questFinisher[zoneId] = {
-  [GetString(DAS_QUEST_YOUR_NPC1)]  = true,
-  [GetString(DAS_QUEST_YOUR_NPC2)]  = true,
+  [GetString(DAS_QUEST_BW_BOSS)]  = true,
+  [GetString(DAS_QUEST_BW_DELVE)]  = true,
   -- fictional NPC3 just hands out, doesn't accept
 }
 --[[
