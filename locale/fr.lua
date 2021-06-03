@@ -163,7 +163,7 @@ local strings  = {
 --Blackwood
 	--Boss dailies : NPC = Brita Silanus
 	DAS_BLACKWD_TOAD	=	"Recherches Gobelines",
-	DAS_BLACKWD_RITUAL	=	"Les rites de Sul-Xan",
+	DAS_BLACKWD_RITUAL	=	"Les rites des Sul-Xan",
 	DAS_BLACKWD_EXCAV	=	"La légende de l'homme-taureau",
 	DAS_BLACKWD_FROG	=	"Grenouille de l'héritier",
 	DAS_BLACKWD_XANMEER	=	"L'appel du ruinarque",
