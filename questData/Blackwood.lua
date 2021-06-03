@@ -57,20 +57,26 @@ DAS.questFinisher[zoneId] = {
   Reason: Comparing numbers is a tonne cheaper than comparing strings.
   Make sure you register the quest IDs. Unfortunately, you can only see them
   when you get a quest shared OR via iteration after yu have completed those.
--- ]
+-- ]]
 -- Set up like below (Morrowind example):
 DAS.questIds[zoneId] = {
-  [5924]  = true, -- "Relics of Yasammidan",
-	[5925]  = true, -- "Relics of Assarnatamat",
+	[6644]  = true, --	"A Proper Blessing",			DELVE
+	[6645]  = true, --	"Legend of the Man-Bull	",		BOSS
+	[6649]  = true, -- 	"Goblin Research",			BOSS
+ 	[6650]  = true, -- 	"Rites of the Sul-Xan",			BOSS
+	[6651]  = true, --	"A Reign of Frogs",			BOSS
+	[6652]  = true, -- 	"The Trophy-Taker",			BOSS	
+	[6653]  = true, --	"Call of the Ruinach",			BOSS
+	[6665]  = true, --	"Shadow Tactics",			DELVE
+	[6668]  = true, --	"Beauty Amid Danger",			DELVE
+	[6673]  = true, -- 	"Conflict of Interest",			DELVE
+	[6674]  = true, --	"Breaking the Chain			DELVE
+	[6675]  = true, --	"Insect Savior",			DELVE
+
 }
--- or by loop (Summerset example)
-DAS.questIds[zoneId] = {}
-for i=6082, 6087 do
-  DAS.questIds[zoneId][i] = true
-  DAS_QUEST_IDS[i] = true
-end
+
 -- now hook up additiona subzone IDs (like Clockwork City - Brass Citadel has its own ID
-DAS.zoneHasAdditionalId(zoneId2, zoneId)
+--DAS.zoneHasAdditionalId(zoneId2, zoneId)
 --[[
   Don't forget to register the zone ID in the options. If the AddOn isn't detecting active in the settings
   for its zone ID, it won't show.
