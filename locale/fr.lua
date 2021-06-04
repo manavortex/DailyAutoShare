@@ -168,15 +168,15 @@ local strings  = {
 	DAS_BLACKWD_FROG	=	"Grenouille de l'héritier",
 	DAS_BLACKWD_XANMEER	=	"L'appel du ruinarque",
 	DAS_BLACKWD_LAGOON	=	"Le collectionneur de trophées.",
-	DAS_QUEST_BW_BOSS	=	"Britta Silanus"     
+	DAS_QUEST_BW_BOSS	=	"Britta Silanus",     
 	--Delve dailies : NPC = Deetum-Jas
 	DAS_BLACKWD_BLOODRUN	=	"Tactiques Clandestines",
 	DAS_BLACKWD_BEAUTY	=	"La beauté au milieu du danger",
-	DAS_BLACKWD_DELVE3	=	"DELVE 3",
-	DAS_BLACKWD_DELVE4	=	"DELVE 4",
-	DAS_BLACKWD_DELVE5	=	"DELVE 5",
-	DAS_BLACKWD_DELVE6	=	"DELVE 6",
-	DAS_QUEST_BW_DELVE	=	"Deetum-Jas" 
+	DAS_BLACKWD_BLESS	=	"A Proper Blessing",
+	DAS_BLACKWD_CHAIN	=	"Briser la chaîne",
+	DAS_BLACKWD_INSECT	=	"Insect Savior",
+	DAS_BLACKWD_CONFLICT	=	"Conflict of Interest",
+	DAS_QUEST_BW_DELVE	=	"Deetum-Jas", 
 }
 DAS_STRINGS_LOCALE.fr = strings
 for stringId, stringValue in pairs(strings) do
