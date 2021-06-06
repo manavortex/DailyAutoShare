@@ -174,7 +174,7 @@ local strings  = {
 	DAS_BLACKWD_BEAUTY	=	"La beauté au milieu du danger",
 	DAS_BLACKWD_BLESS	=	"A Proper Blessing",
 	DAS_BLACKWD_CHAIN	=	"Briser la chaîne",
-	DAS_BLACKWD_INSECT	=	"Insect Savior",
+	DAS_BLACKWD_INSECT	=	"Sauvez les insectes!",
 	DAS_BLACKWD_CONFLICT	=	"Conflict of Interest",
 	DAS_QUEST_BW_DELVE	=	"Deetum-Jas", 
 }
