@@ -172,10 +172,10 @@ local strings  = {
 	--Delve dailies : NPC = Deetum-Jas
 	DAS_BLACKWD_BLOODRUN	=	"Tactiques clandestines",
 	DAS_BLACKWD_BEAUTY	=	"La beauté au milieu du danger",
-	DAS_BLACKWD_BLESS	=	"A Proper Blessing",
+	DAS_BLACKWD_BLESS	=	"La bonne bénédiction",
 	DAS_BLACKWD_CHAIN	=	"Briser la chaîne",
 	DAS_BLACKWD_INSECT	=	"Sauvez les insectes!",
-	DAS_BLACKWD_CONFLICT	=	"Conflict of Interest",
+	DAS_BLACKWD_CONFLICT	=	"Conflit d'interêt",
 	DAS_QUEST_BW_DELVE	=	"Deetum-Jas", 
 }
 DAS_STRINGS_LOCALE.fr = strings
