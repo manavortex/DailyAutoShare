@@ -1,5 +1,3 @@
---WiP
-
 local zoneId	= 1261
 local tbl   = {}
 local tbl2  = {}
