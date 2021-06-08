@@ -132,7 +132,13 @@ function DAS.CreateMenu(savedVars, defaults)
 							getFunc = function() return DAS.GetActiveIn(823) end,
 							setFunc = function(value) DAS.SetActiveIn(823, value) end
 						},
-				--HERE BLKWD--
+						{ -- checkbox: Blackwood
+							type    = "checkbox",
+							tooltip = "Blackwood?",
+							name    = "Activate in Blackwood?",
+							getFunc = function() return DAS.GetActiveIn(1261) end,
+							setFunc = function(value) DAS.SetActiveIn(1261, value) end
+						},
 						{ -- checkbox: Craglorn
 							type    = "checkbox",
 							tooltip = "Craglorn?",
