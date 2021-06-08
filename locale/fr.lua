@@ -1,4 +1,4 @@
-﻿DAS_STRINGS_LOCALE = DAS_STRINGS_LOCALE or {}
+DAS_STRINGS_LOCALE = DAS_STRINGS_LOCALE or {}
 local strings  = {
 --config_var
 	DAS_SI_INVITE_TRUE 	= 	"Invite auto activé",
@@ -13,7 +13,7 @@ local strings  = {
 	DAS_SI_TOGGLE	 	= 	"Toggle hidden",
 	DAS_SI_MINIMISE	 	= 	"Toggle minimised",
 	DAS_SI_REFRESH	 	= 	"Mettre a jour",
-	DAS_SI_DONATE	 	= 	"Clic pour remercier:\nGauche: 2k\nDroit: 10k\nMilieu: 25k\nVos commentaires et/ou don seront apprécié!",
+	DAS_SI_DONATE	 	= 	"Clic pour remercier:\nGauche: 2k\nDroit: 10k\nMilieu: 25k\nVos commentaires et/ou don seront appréciés!",
 	DAS_SI_SHARE	 	= 	"Share",
 	DAS_SI_TRACK	 	= 	"* Track",
 	DAS_SI_ABANDON	 	= 	"|cFF0000Abandon|r",
