@@ -100,10 +100,15 @@ function DAS.Donate(control, mouseButton)
   end
 	SCENE_MANAGER:Show('mailSend')
 	zo_callLater(function()
-		ZO_MailSendToField:SetText("@manavortex")
+		ZO_MailSendToField:SetText("@HowlyBlood")
 		ZO_MailSendSubjectField:SetText("Thank you for DailyAutoShare!")
 		QueueMoneyAttachment(amount)
+		ZO_MailSendBodyField:SetText("Thanks to |c0035FF@manavortex|r which is the initial creator of this addon, and Thanks to you, |c0035FF@HowlyBlood|r for keeping it update after he stoped the game. 
+
+I have a suggestion or I have a bug to report : 
+<your suggestion or bug report here>")
 		ZO_MailSendBodyField:TakeFocus()
+		
   end, 200)
 end
 function DAS.MinMaxButton()
