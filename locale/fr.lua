@@ -175,7 +175,7 @@ local strings  = {
 	DAS_BLACKWD_BLESS	=	"La bonne bénédiction",
 	DAS_BLACKWD_CHAIN	=	"Briser la chaîne",
 	DAS_BLACKWD_INSECT	=	"Sauvez les insectes!",
-	DAS_BLACKWD_CONFLICT	=	"Conflit d'interêts",
+	DAS_BLACKWD_CONFLICT	=	"Conflit d'intérêts",
 	DAS_QUEST_BW_DELVE	=	"Deetum-Jas", 
 }
 DAS_STRINGS_LOCALE.fr = strings
