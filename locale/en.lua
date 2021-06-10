@@ -277,6 +277,23 @@ local strings  = {
   DAS_QUEST_CC_IGMUND     = "Igmund",
   DAS_QUEST_W_GURUZUG     = "Guruzug",
   DAS_QUEST_W_ARZORAG     = "Arzorag",
+--Blackwood
+--Boss dailies : NPC = Brita Silanus
+DAS_BLACKWD_TOAD	=	"Goblin Research",
+DAS_BLACKWD_RITUAL	=	"Rites of the Sul-Xan",
+DAS_BLACKWD_EXCAV	=	"Legend of the Man-Bull",
+DAS_BLACKWD_FROG	=	"A Reign of Frogs",
+DAS_BLACKWD_XANMEER	=	"Call of the Ruinach",
+DAS_BLACKWD_LAGOON	=	"The Trophy-Taker",
+DAS_QUEST_BW_BOSS	=	"Britta Silanus",     
+--Delve dailies : NPC = Deetum-Jas
+DAS_BLACKWD_BLOODRUN	=	"Shadow Tactics",
+DAS_BLACKWD_BEAUTY	=	"Beauty Amid Danger",
+DAS_BLACKWD_BLESS	=	"A Proper Blessing",
+DAS_BLACKWD_CHAIN	=	"Breaking the Chain",
+DAS_BLACKWD_INSECT	=	"Insect Savior",
+DAS_BLACKWD_CONFLICT	=	"Conflict of Interest",
+DAS_QUEST_BW_DELVE	=	"Deetum-Jas", 
 }
 DailyAutoShare.EnglishQuestNames = strings
 DAS_STRINGS_LOCALE.en = strings

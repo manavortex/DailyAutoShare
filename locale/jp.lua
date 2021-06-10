@@ -20,6 +20,7 @@ local strings  = {
 	DAS_SI_SPAM_SINGLE	 	= "Spam",
 	DAS_SI_SETOPEN_TRUE	 	= "Toggle open",
 	DAS_SI_SETOPEN_FALSE	= "Toggle complete",
+	DAS_SI_ACTIVATE_IN      = " Activate in zone : ",
 	-- Clockwork City
 	DAS_CLOCK_IMP			 = "Inciting the Imperfect",
 	DAS_CLOCK_FOE			 = "A Fine-Feathered Foe",
@@ -131,6 +132,23 @@ local strings  = {
     DAS_QUEST_W_BIRKHU      = "Birkhu the Bold",
     DAS_QUEST_DB_ARVINA     = "Cleric Arvina",
     DAS_QUEST_DB_BOUNTY     = "Bounty Board",
+--Blackwood to be translated
+--Boss dailies : NPC = Brita Silanus
+DAS_BLACKWD_TOAD	=	"Goblin Research",
+DAS_BLACKWD_RITUAL	=	"Rites of the Sul-Xan",
+DAS_BLACKWD_EXCAV	=	"Legend of the Man-Bull",
+DAS_BLACKWD_FROG	=	"A Reign of Frogs",
+DAS_BLACKWD_XANMEER	=	"Call of the Ruinach",
+DAS_BLACKWD_LAGOON	=	"The Trophy-Taker",
+DAS_QUEST_BW_BOSS	=	"Britta Silanus",     
+--Delve dailies : NPC = Deetum-Jas
+DAS_BLACKWD_BLOODRUN	=	"Shadow Tactics",
+DAS_BLACKWD_BEAUTY	=	"Beauty Amid Danger",
+DAS_BLACKWD_BLESS	=	"A Proper Blessing",
+DAS_BLACKWD_CHAIN	=	"Breaking the Chain",
+DAS_BLACKWD_INSECT	=	"Insect Savior",
+DAS_BLACKWD_CONFLICT	=	"Conflict of Interest",
+DAS_QUEST_BW_DELVE	=	"Deetum-Jas", 
 }
 DAS_STRINGS_LOCALE.jp = strings
 for stringId, stringValue in pairs(strings) do

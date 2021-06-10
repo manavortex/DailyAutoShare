@@ -19,6 +19,7 @@ local strings  = {
 	DAS_SI_REFRESH	 		  ="Aktualisieren",
 	DAS_SI_SETOPEN_TRUE	 	= "Toggle open",
 	DAS_SI_SETOPEN_FALSE	= "Toggle complete",
+	DAS_SI_ACTIVATE_IN      = " Activate in zone : ",
   
   
   
@@ -188,6 +189,23 @@ DAS_QUEST_DB_BOUNTY     = "Bounty Board",
 DAS_QUEST_SS_TANO       = "Justiziar Tanorian",
 DAS_QUEST_SS_FARO       = "Justiziarin Farowel",
 DAS_QUEST_SS_TANE       = "Battlereeve Tanerline",
+--Blackwood to be translated
+--Boss dailies : NPC = Brita Silanus
+DAS_BLACKWD_TOAD	=	"Goblin Research",
+DAS_BLACKWD_RITUAL	=	"Rites of the Sul-Xan",
+DAS_BLACKWD_EXCAV	=	"Legend of the Man-Bull",
+DAS_BLACKWD_FROG	=	"A Reign of Frogs",
+DAS_BLACKWD_XANMEER	=	"Call of the Ruinach",
+DAS_BLACKWD_LAGOON	=	"The Trophy-Taker",
+DAS_QUEST_BW_BOSS	=	"Britta Silanus",     
+--Delve dailies : NPC = Deetum-Jas
+DAS_BLACKWD_BLOODRUN	=	"Shadow Tactics",
+DAS_BLACKWD_BEAUTY	=	"Beauty Amid Danger",
+DAS_BLACKWD_BLESS	=	"A Proper Blessing",
+DAS_BLACKWD_CHAIN	=	"Breaking the Chain",
+DAS_BLACKWD_INSECT	=	"Insect Savior",
+DAS_BLACKWD_CONFLICT	=	"Conflict of Interest",
+DAS_QUEST_BW_DELVE	=	"Deetum-Jas", 
 }
 DAS_STRINGS_LOCALE.de = strings
 for stringId, stringValue in pairs(strings) do
