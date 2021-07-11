@@ -1,3 +1,7 @@
+--[[ draft
+GetQuestName(0000), --
+]]
+
 DAS_STRINGS_LOCALE = DAS_STRINGS_LOCALE or {}
 local strings  = {
 	DAS_SI_INVITE_TRUE 		= "Invite is now on",
@@ -24,23 +28,23 @@ local strings  = {
 
 -- Elsweyr
   -- Nisuzi
-  DAS_KITTY_WIND          = "Wisdom in the Winds",
-  DAS_KITTY_FLAME         = "Dousing the Daedric Flame",
-  DAS_KITTY_RUINS         = "Rifling Through Ruins",
-  DAS_KITTY_STAMPEDE      = "The Serpent's Stampede",
-  DAS_KITTY_TEA           = "Хитросплетение чайных листьев",
+  DAS_KITTY_WIND          = GetQuestName(6359),
+  DAS_KITTY_FLAME         = GetQuestName(6356),
+  DAS_KITTY_RUINS         = GetQuestName(6360),
+  DAS_KITTY_STAMPEDE      = GetQuestName(6362),
+  DAS_KITTY_TEA           = GetQuestName(6363),
   
   -- Rihirr
-  DAS_KITTY_WILY          = "The Traders' Terror",
-  DAS_KITTY_HUNGRY        = "The Hungry Cat's Favor",
-  DAS_KITTY_DEATH         = "Another Day, Another Death",
-  DAS_KITTY_DUO           = "A Dastardly Duo",
-  DAS_KITTY_SWORD         = "Sword of the Serpent",
-  DAS_KITTY_SENCHE        = "The Senche of Decay",
-  DAS_KITTY_NIGHTMARE     = "Ходячий кошмар",
+  DAS_KITTY_WILY          = GetQuestName(6378),
+  DAS_KITTY_HUNGRY        = GetQuestName(6361),
+  DAS_KITTY_DEATH         = GetQuestName(6380),
+  DAS_KITTY_DUO           = GetQuestName(6381),
+  DAS_KITTY_SWORD         = GetQuestName(6377),
+  DAS_KITTY_SENCHE        = GetQuestName(6382),
+  DAS_KITTY_NIGHTMARE     = GetQuestName(6357),
 	  -- Battlereeve Tanerline
-	  DAS_QUEST_TANERLIN      = "Battlereeve Tanerline",
-	  DAS_KITTY_DRAGON        = "Охота на драконов",
+  DAS_QUEST_TANERLIN      = "Battlereeve Tanerline",
+  DAS_KITTY_DRAGON        = GetQuestName(6384),
 
 	-- Clockwork City
 	DAS_CLOCK_IMP			 = "Пробуждение Несовершенства",
@@ -64,13 +68,13 @@ local strings  = {
 	DAS_CLOCK_CROW_RESP		 = "Вопрос уважения",
 	DAS_CLOCK_CROW_LEIS		 = "Вопрос о свободном времени",
 	-- Morrowind dailies
-	DAS_M_REL_ASHAL =  "Реликвии из Ашалмавии",
-	DAS_M_REL_ASSAR =  "Реликвии из Ассарнатамата",
-	DAS_M_REL_ASHUR =  "Реликвии из Ассурнабиташпи",
-	DAS_M_REL_DUSHA =  "Реликвии из Душарирана",
-	DAS_M_REL_EBERN =  "Реликвии из Эбернанита",
-	DAS_M_REL_MAELK =  "Реликвии из Мелкашиши",
-	DAS_M_REL_YASAM =  "Реликвии из Ясаммидана",
+	DAS_M_REL_ASHAL =  GetQuestName(5930), --"Реликвии из Ашалмавии",
+	DAS_M_REL_ASSAR =  GetQuestName(5925), --"Реликвии из Ассарнатамата",
+	DAS_M_REL_ASHUR =  GetQuestName(5927), --"Реликвии из Ассурнабиташпи",
+	DAS_M_REL_DUSHA =  GetQuestName(5929), --"Реликвии из Душарирана",
+	DAS_M_REL_EBERN =  GetQuestName(5928), --"Реликвии из Эбернанита",
+	DAS_M_REL_MAELK =  GetQuestName(5926), --"Реликвии из Мелкашиши",
+	DAS_M_REL_YASAM =  GetQuestName(5924), --"Реликвии из Ясаммидана",
 	DAS_M_HUNT_EATER =  "Охота на Пеплоеда",
 	DAS_M_HUNT_ZEXXI =  "Охота на Великого Зексина",
 	DAS_M_HUNT_RAZOR =  "Охота на Короля Острый Клык",
@@ -188,43 +192,45 @@ local strings  = {
     DAS_QUEST_W_ARZORAG     = "Arzorag",
 --Blackwood to be translated
 --Boss dailies : NPC = Brita Silanus
-DAS_BLACKWD_TOAD	=	"Изучение гоблинов",
-DAS_BLACKWD_RITUAL	=	"Ритуалы сул-зан",
-DAS_BLACKWD_EXCAV	=	"Легенда о Человеке-Быке",
-DAS_BLACKWD_FROG	=	"Царство лягушек",
-DAS_BLACKWD_XANMEER	=	"Зов дестронаха",
-DAS_BLACKWD_LAGOON	=	"Собиратель Трофеев",
+DAS_BLACKWD_TOAD	=	GetQuestName(6649), --"Изучение гоблинов"
+DAS_BLACKWD_RITUAL	=	GetQuestName(6650), --"Ритуалы сул-зан"
+DAS_BLACKWD_EXCAV	=	GetQuestName(6645), --"Легенда о Человеке-Быке"
+DAS_BLACKWD_FROG	=	GetQuestName(6651), --"Царство лягушек",
+DAS_BLACKWD_XANMEER	=	GetQuestName(6653), --"Зов дестронаха",
+DAS_BLACKWD_LAGOON	=	GetQuestName(6652),--"Собиратель Трофеев",
 DAS_QUEST_BW_BOSS	=	"Бритта Силана",     
 --Delve dailies : NPC = Deetum-Jas
-DAS_BLACKWD_BLOODRUN	=	"Тайная операция",
-DAS_BLACKWD_BEAUTY	=	"Красота в опасности",
-DAS_BLACKWD_BLESS	=	"Настоящее благословение",
-DAS_BLACKWD_CHAIN	=	"Слабое звено",
-DAS_BLACKWD_INSECT	=	"Спасение насекомых",
-DAS_BLACKWD_CONFLICT	=	"Конфликт интересов",
+DAS_BLACKWD_BLOODRUN	=	GetQuestName(6665), --"Тайная операция",
+DAS_BLACKWD_BEAUTY	=	GetQuestName(6668), --"Красота в опасности",
+DAS_BLACKWD_BLESS	=	GetQuestName(6644), --"Настоящее благословение",
+DAS_BLACKWD_CHAIN	=	GetQuestName(6674), --"Слабое звено",
+DAS_BLACKWD_INSECT	=	GetQuestName(6675), --"Спасение насекомых",
+DAS_BLACKWD_CONFLICT	=	GetQuestName(6673), --"Конфликт интересов",
 DAS_QUEST_BW_DELVE	=	"Дитум-Джас", 
 --Guilds
-DAS_GUILD_ANCHORS       = "Dark Anchors in ",
-  DAS_GUILD_MADNESS       = "Безумие в... ",
-  DAS_UD_ALIKR            = "Molten Pearls of Alik'r Desert",
-  DAS_UD_AURID            = "Veiled Darkness in Auridon",
-  DAS_UD_BANGK            = "Ancient Armaments in Bangkorai",
-  DAS_UD_DESHA            = "Ancestor Wards in Deshaan",
-  DAS_UD_EASTM            = "Icy Intrigue in Eastmarch",
-  DAS_UD_GLENU            = "Red Rook Ransack in Glenumbra",
-  DAS_UD_GRAHT            = "Ayleid Trinkets in Grahtwood",
-  DAS_UD_GREEN            = "Culinary Justice in Greenshade",
-  DAS_UD_MALAB            = "The Spirit Trap in Malabal Tor",
-  DAS_UD_REAPE            = "Mascot Theft in Reaper's March",
-  DAS_UD_RIFT             = "Inflamed Pyres of the Rift",
-  DAS_UD_RIVEN            = "Darkness Blooms in Rivenspire",
-  DAS_UD_SHADO            = "Give and Take in Shadowfen",
-  DAS_UD_STONE            = "Dwarven Relics of Stonefalls",
-  DAS_UD_STORM            = "Cursed Baubles of Stormhaven",
+  DAS_GUILD_ANCHORS       = "Темные якоря в ",
+  DAS_GUILD_MADNESS       = "Безумие в ",
+  DAS_UD_ALIKR            = GetQuestName(5745),
+  DAS_UD_AURID            = GetQuestName(5798), --"Veiled Darkness in Auridon",
+  DAS_UD_BANGK            = GetQuestName(5733), --"Ancient Armaments in Bangkorai",
+  DAS_UD_DESHA            = GetQuestName(5735), --"Ancestor Wards in Deshaan",
+  DAS_UD_EASTM            = GetQuestName(5779),
+  DAS_UD_GLENU            = GetQuestName(5739), --"Red Rook Ransack in Glenumbra",
+  DAS_UD_GRAHT            = GetQuestName(5738), --"Ayleid Trinkets in Grahtwood",
+  DAS_UD_GREEN            = GetQuestName(5853), --"Culinary Justice in Greenshade",
+  DAS_UD_MALAB            = GetQuestName(5734), --"The Spirit Trap in Malabal Tor",
+  DAS_UD_REAPE            = GetQuestName(5744), --"Mascot Theft in Reaper's March",
+  DAS_UD_RIFT             = GetQuestName(5802), --"Inflamed Pyres of the Rift",
+  DAS_UD_RIVEN            = GetQuestName(5808), --"Darkness Blooms in Rivenspire",
+  DAS_UD_SHADO            = GetQuestName(5778),
+  DAS_UD_STONE            = GetQuestName(5737), --"Dwarven Relics of Stonefalls",
+  DAS_UD_STORM            = GetQuestName(5800), --"Cursed Baubles of Stormhaven",
+
 
 
 
 }
+
 DAS_STRINGS_LOCALE.ru = strings
 for stringId, stringValue in pairs(strings) do
 	ZO_CreateStringId(stringId, stringValue)
