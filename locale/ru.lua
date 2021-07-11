@@ -1,3 +1,7 @@
+--[[ draft
+GetQuestName(0000), --
+]]
+
 DAS_STRINGS_LOCALE = DAS_STRINGS_LOCALE or {}
 local strings  = {
 	DAS_SI_INVITE_TRUE 		= "Invite is now on",
@@ -20,104 +24,126 @@ local strings  = {
 	DAS_SI_SETOPEN_TRUE	 	= "Toggle open",
 	DAS_SI_SETOPEN_FALSE	= "Toggle complete",
 	DAS_SI_ACTIVATE_IN      = " Activate in zone : ",
+
+
+-- Elsweyr
+  -- Nisuzi
+  DAS_KITTY_WIND          = GetQuestName(6359),
+  DAS_KITTY_FLAME         = GetQuestName(6356),
+  DAS_KITTY_RUINS         = GetQuestName(6360),
+  DAS_KITTY_STAMPEDE      = GetQuestName(6362),
+  DAS_KITTY_TEA           = GetQuestName(6363),
+  
+  -- Rihirr
+  DAS_KITTY_WILY          = GetQuestName(6378),
+  DAS_KITTY_HUNGRY        = GetQuestName(6361),
+  DAS_KITTY_DEATH         = GetQuestName(6380),
+  DAS_KITTY_DUO           = GetQuestName(6381),
+  DAS_KITTY_SWORD         = GetQuestName(6377),
+  DAS_KITTY_SENCHE        = GetQuestName(6382),
+  DAS_KITTY_NIGHTMARE     = GetQuestName(6357),
+	  -- Battlereeve Tanerline
+  DAS_QUEST_TANERLIN      = "Battlereeve Tanerline",
+  DAS_KITTY_DRAGON        = GetQuestName(6384),
+
 	-- Clockwork City
-	DAS_CLOCK_IMP			 = "Пробуждение Несовершенства",
-	DAS_CLOCK_FOE			 = "Враг в прекрасном оперении",
-	DAS_CLOCK_CRAFT_CLOTH	 = "Свободные нити",
-	DAS_CLOCK_CRAFT_WATER	 = "Липкое решение",
-	DAS_CLOCK_CRAFT_RUNE	 = "Сбор зачарований",
-	DAS_CLOCK_CRAFT_SMITH	 = "Ежедневная молотилка",
-	DAS_CLOCK_CRAFT_ALCH	 = "Горькая пилюля",
-	DAS_CLOCK_CRAFT_WOOD	 = "Масло в огонь",
-	DAS_CLOCK_DELVE_FILT	 = "Замена фильтров",
-	DAS_CLOCK_DELVE_FANS	 = "Смазывание вентиляторов",
-	DAS_CLOCK_DELVE_COMM	 = "Замена преобразователей",
-	DAS_CLOCK_DELVE_MALF	 = "Сумрачная неисправность",
-	DAS_CLOCK_DELVE_MISP	 = "Пропавшая тень",
-	DAS_CLOCK_DELVE_AGAI	 = "Обратно в тень",
-	DAS_CLOCK_CROW_GLIT		 = "Шик и блеск",
-	DAS_CLOCK_CROW_TRIB		 = "Вопрос о подношениях",
-	DAS_CLOCK_CROW_NIBB		 = "Кусочки и частички",
-	DAS_CLOCK_CROW_MORS		 = "Лакомые кусочки",
-	DAS_CLOCK_CROW_RESP		 = "Вопрос уважения",
-	DAS_CLOCK_CROW_LEIS		 = "Вопрос о свободном времени",
+	DAS_CLOCK_IMP			 = GetQuestName(6076), --"Пробуждение Несовершенства",
+	DAS_CLOCK_FOE			 = GetQuestName(6077), --"Враг в прекрасном оперении",
+	DAS_CLOCK_CRAFT_CLOTH	 = GetQuestName(6039), --"Нити для пряжи",
+	DAS_CLOCK_CRAFT_WATER	 = GetQuestName(6040), --"Липкое решение",
+	DAS_CLOCK_CRAFT_RUNE	 = GetQuestName(6041), --"Сбор зачарований",
+	DAS_CLOCK_CRAFT_SMITH	 = GetQuestName(6038), --"Ежедневная молотилка",
+	DAS_CLOCK_CRAFT_ALCH	 = GetQuestName(6042), --"Горькая пилюля",
+	DAS_CLOCK_CRAFT_WOOD	 = GetQuestName(6037), --"Масло в огонь",
+	DAS_CLOCK_DELVE_FILT	 = GetQuestName(6088), --"Замена фильтров",
+	DAS_CLOCK_DELVE_FANS	 = GetQuestName(6081), --"Смазывание вентиляторов",
+	DAS_CLOCK_DELVE_COMM	 = GetQuestName(6089), --"Замена преобразователей",
+	DAS_CLOCK_DELVE_MALF	 = GetQuestName(6080), --"Сумрачная неисправность",
+	DAS_CLOCK_DELVE_MISP	 = GetQuestName(6073), --"Пропавшая тень",
+	DAS_CLOCK_DELVE_AGAI	 = GetQuestName(6079), --"Обратно в тень",
+	DAS_CLOCK_CROW_GLIT		 = GetQuestName(6110), --"Шик и блеск",
+	DAS_CLOCK_CROW_TRIB		 = GetQuestName(6106), --"Вопрос о подношениях",
+	DAS_CLOCK_CROW_NIBB		 = GetQuestName(6070), --"Кусочки и частички",
+	DAS_CLOCK_CROW_MORS		 = GetQuestName(6071), --"Лакомые кусочки",
+	DAS_CLOCK_CROW_RESP		 = GetQuestName(6072), --"Вопрос уважения",
+	DAS_CLOCK_CROW_LEIS		 = GetQuestName(6107), --"Вопрос о свободном времени",
 	-- Morrowind dailies
-	DAS_M_REL_ASHAL =  "Реликвии Ашалмавии",
-	DAS_M_REL_ASSAR =  "Реликвии Ассарнатамата",
-	DAS_M_REL_ASHUR =  "Реликвии Ассурнабиташпи",
-	DAS_M_REL_DUSHA =  "Реликвии Душарирана",
-	DAS_M_REL_EBERN =  "Реликвии Эбернанита",
-	DAS_M_REL_MAELK =  "Реликвии Мелкашиши",
-	DAS_M_REL_YASAM =  "Реликвии Ясаммидана",
-	DAS_M_HUNT_EATER =  "Охота на Пеплоеда",
-	DAS_M_HUNT_ZEXXI =  "Охота на Великого Зексина",
-	DAS_M_HUNT_RAZOR =  "Охота на Короля Острый Клык",
-	DAS_M_HUNT_JAGGE =  "Охота на Мать Зазубренная Клешня",
-	DAS_M_HUNT_STOMP =  "Охота на Старого Топотуна",
-	DAS_M_HUNT_TARRA =  "Охота на Тарра-Судж",
-	DAS_M_HUNT_SVEET =  "Охота на Извивающегося Свита",
+	DAS_M_REL_ASHAL =  GetQuestName(5930), --"Реликвии из Ашалмавии",
+	DAS_M_REL_ASSAR =  GetQuestName(5925), --"Реликвии из Ассарнатамата",
+	DAS_M_REL_ASHUR =  GetQuestName(5927), --"Реликвии из Ассурнабиташпи",
+	DAS_M_REL_DUSHA =  GetQuestName(5929), --"Реликвии из Душарирана",
+	DAS_M_REL_EBERN =  GetQuestName(5928), --"Реликвии из Эбернанита",
+	DAS_M_REL_MAELK =  GetQuestName(5926), --"Реликвии из Мелкашиши",
+	DAS_M_REL_YASAM =  GetQuestName(5924), --"Реликвии из Ясаммидана",
+	DAS_M_HUNT_EATER =  GetQuestName(5911), --"Охота на Пеплоеда",
+	DAS_M_HUNT_ZEXXI =  GetQuestName(5907), --"Охота на Великого Зексина",
+	DAS_M_HUNT_RAZOR =  GetQuestName(5913), --"Охота на Короля Острый Клык",
+	DAS_M_HUNT_JAGGE =  GetQuestName(5910), --"Охота на Зазубренную Клешню",
+	DAS_M_HUNT_STOMP =  GetQuestName(5912), --"Охота на Старого Топотуна",
+	DAS_M_HUNT_TARRA =  GetQuestName(5908), --"Охота на Тарру-Судж",
+	DAS_M_HUNT_SVEET =  GetQuestName(5909), --"Охота на Извивающегося Свита",
 	-- Cave dailies (Hall of Justice)
-	DAS_M_DELVE_DAEDR =  "Даэдрический срыв",
-	DAS_M_DELVE_KWAMA =  "Задачка с квама",
-	DAS_M_DELVE_MISIN =  "Насаждение дезинформации",
-	DAS_M_DELVE_TAXES =  "Налоговый вычет",
-	DAS_M_DELVE_TRIBA =  "Проблемы племени",
-	DAS_M_DELVE_SYNDI =  "Беспокойный синдикат",
+	DAS_M_DELVE_DAEDR =  GetQuestName(5956), --"Даэдрический срыв",
+	DAS_M_DELVE_KWAMA =  GetQuestName(5962), --"Задачка с квама",
+	DAS_M_DELVE_MISIN =  GetQuestName(5961), --"Подложная истина",
+	DAS_M_DELVE_TAXES =  GetQuestName(5934), --"Налоговый вычет",
+	DAS_M_DELVE_TRIBA =  GetQuestName(5915), --"Проблемы племени",
+	DAS_M_DELVE_SYNDI =  GetQuestName(5958), --"Беспокойный синдикат",
 	-- World boss dailies (Hall of Justice)
-	DAS_M_BOSS_WUYWU =  "Затаившийся алчущий",
-	DAS_M_BOSS_SWARM =  "Отбраковка колонии",
-	DAS_M_BOSS_NILTH =  "Волам здесь не место",
-	DAS_M_BOSS_SALOT =  "Проклятье Салотанов",
-	DAS_M_BOSS_SIREN =  "Песня сирены",
-	DAS_M_BOSS_APPRE =  "Обеспокоенная ученица",
+	DAS_M_BOSS_WUYWU =  GetQuestName(5918), --"Алчущий в засаде",
+	DAS_M_BOSS_SWARM =  GetQuestName(5865), --"Прополка колонии",
+	DAS_M_BOSS_NILTH =  GetQuestName(5866), --"Волам здесь не место",
+	DAS_M_BOSS_SALOT =  GetQuestName(5904), --"Проклятье Салотан",
+	DAS_M_BOSS_SIREN =  GetQuestName(5906), --"Песня сирены",
+	DAS_M_BOSS_APPRE =  GetQuestName(5916), --"Обеспокоенная ученица",
 	-- wrothgar dailies
-    DAS_W_POACHERS        = "Мясо в массы",
-    DAS_W_EDU             = "Запах нечестной игры",
-    DAS_W_NYZ             = "Снег и пар",
-    DAS_W_CORI            = "Щедрость природы",
-    DAS_W_DOLMEN          = "Ересь невежества",
-    DAS_W_OGRE            = "Спасение во имя знаний",
+    DAS_W_POACHERS        = GetQuestName(5518), --"Мясо в массы",
+    DAS_W_EDU             = GetQuestName(5524), --"Запах нечестной игры",
+    DAS_W_NYZ             = GetQuestName(5523), --"Снег и пар",
+    DAS_W_CORI            = GetQuestName(5521), --"Щедрость природы",
+    DAS_W_DOLMEN          = GetQuestName(5522), --"Ересь невежества",
+    DAS_W_OGRE            = GetQuestName(5519), --"Спасение во имя знаний",
 	-- wrothgar single
-	DAS_W_HARPIES 		 = "Завтрак чудака",
-	DAS_W_SPIRITS 		 = "Свободные духи",
-	DAS_W_DURZOGS 		 = "До отвала",
-	DAS_W_DWEMER 		 = "Части целого",
-	DAS_W_WEREWOLVES	 = "Торговля кожей",
-	DAS_W_THAT_OTHER	 = "Пожар во владении",
+	DAS_W_HARPIES 		 = GetQuestName(5507), --"Завтрак чудака",
+	DAS_W_SPIRITS 		 = GetQuestName(5515), --"Свободные духи",
+	DAS_W_DURZOGS 		 = GetQuestName(5514), --"До отвала",
+	DAS_W_DWEMER 		 = GetQuestName(5509), --"Части целого",
+	DAS_W_WEREWOLVES	 = GetQuestName(5504), --"Торговля кожей",
+	DAS_W_THAT_OTHER	 = GetQuestName(5505), --"Пожар во владении",
 	-- gold coast
-	DAS_DB_MINO			 = "Надвигающиеся тени",
-	DAS_DB_ARENA 		 = "Рев толпы",
-	DAS_DB_GOOD 		 = "Всеобщее благо",
-	DAS_DB_EVIL 		 = "Захороненное зло",
+	DAS_DB_MINO			 = GetQuestName(6505), --"Надвигающиеся тени",
+	DAS_DB_ARENA 		 = GetQuestName(5606), --"Рев толпы",
+	DAS_DB_GOOD 		 = GetQuestName(5604), --"Всеобщее благо",
+	DAS_DB_EVIL 		 = GetQuestName(5603), --"Захороненное зло",
 	-- new life
-	DAS_NL_STORMHAVEN	 = "Замковое состязание очарования",
-	DAS_NL_STONEFALLS	 = "Пляска лавовых ног",
-	DAS_NL_ALIKR		 = "Забег сигнальных огней",
-	DAS_NL_SHADOWFEN	 = "Пир рыбьего блага",
-	DAS_NL_GRAHTWOOD	 = "Пребывание сирот войны",
-	DAS_NL_REAPERSMARCH	 = "Испытание пятипалого коварства",
-	DAS_NL_BETNIKH		 = "Удар Каменного зуба",
-	DAS_NL_AURIDON		 = "Развлечение с комками грязи",
-	DAS_NL_EASTMARCH	 = "Ныряние снежного медведя",
+	DAS_NL_STORMHAVEN	 = GetQuestName(5845), --"Замковое состязание очарования",
+	DAS_NL_STONEFALLS	 = GetQuestName(5837), --"Пляска лавовых ног",
+	DAS_NL_ALIKR		 = GetQuestName(5839), --"Забег сигнальных огней",
+	DAS_NL_SHADOWFEN	 = GetQuestName(5855), --"Пир рыбьего блага",
+	DAS_NL_GRAHTWOOD	 = GetQuestName(5852), --"Пребывание сирот войны",
+	DAS_NL_REAPERSMARCH	 = GetQuestName(5834), --"Испытание пятипалого коварства",
+	DAS_NL_BETNIKH		 = GetQuestName(5856), --"Удар Каменного зуба",
+	DAS_NL_AURIDON		 = GetQuestName(5838), --"Развлечение с комками грязи",
+	DAS_NL_EASTMARCH	 = GetQuestName(5811), --"Ныряние снежного медведя",
 	-- craglorn
 	-- lower
-	DAS_CRAG_SARA 		 = "Критическая масса",
-	DAS_CRAG_SHADA 		 = "Павший город Шады",
-	DAS_CRAG_NEDE 		 = "Причина, по которой мы сражаемся",
-	DAS_CRAG_HERMY 		 = "Архив искателя",
-	DAS_CRAG_ELINHIR 	 = "Высшая сила",
-	DAS_CRAG_TUWHACCA 	 = "Испытания Рахни'За",
-	DAS_CRAG_NEREID 	 = "Испорченная вода",
+	DAS_CRAG_SARA 		 = GetQuestName(5108), --"Критическая масса",
+	DAS_CRAG_SHADA 		 = GetQuestName(5750), --"Павший город Шады",
+	DAS_CRAG_NEDE 		 = GetQuestName(5762), --"Причина, по которой мы сражаемся",
+	DAS_CRAG_HERMY 		 = GetQuestName(5749), --"Архив искателя",
+	DAS_CRAG_ELINHIR 	 = GetQuestName(5755), --"Высшая сила",
+	DAS_CRAG_TUWHACCA 	 = GetQuestName(5751), --"Испытания Рахни'За",
+	DAS_CRAG_NEREID 	 = GetQuestName(5754), --"Испорченная вода",
 	-- upper
-	DAS_CRAG_NIRNCRUX	 = "Кровь Нирна",
-	DAS_CRAG_WORLDTRIP 	 = "Серый проход",
-	DAS_CRAG_SCALES 	 = "Железо и чешуя",
-	DAS_CRAG_NECRO 		 = "Души преданных",
-	DAS_CRAG_KIDNAP 	 = "Живые пленники",
-	DAS_CRAG_HITMAN 	 = "Настоящие клыки",
-	DAS_CRAG_DUNGEON 	 = "Освобожденные",
+	DAS_CRAG_NIRNCRUX	 = GetQuestName(5767), --"Кровь Нирна",
+	DAS_CRAG_WORLDTRIP 	 = GetQuestName(5777), --"Серый проход",
+	DAS_CRAG_SCALES 	 = GetQuestName(5766), --"Железо и чешуя",
+	DAS_CRAG_NECRO 		 = GetQuestName(5770), --"Души преданных",
+	DAS_CRAG_KIDNAP 	 = GetQuestName(5765), --"Живые пленники",
+	DAS_CRAG_HITMAN 	 = GetQuestName(5764), --"Настоящие клыки",
+	DAS_CRAG_DUNGEON 	 = GetQuestName(5772), --"Освобожденные",
     -- Questgiver names --
-    DAS_QUEST_M_ASHLANDER   = "Huntmaster Sorim-Nakar",
+    DAS_QUEST_M_ASHLANDER   = "Мастер-охотник Сорим-Накар",
     DAS_QUEST_M_RIVYN       = "Battlemaster Rivyn",
     DAS_QUEST_CC_ROBOT      = "Clockwork Facilitator",
     DAS_QUEST_CC_CROW       = "Bursar of Tributes",
@@ -166,22 +192,75 @@ local strings  = {
     DAS_QUEST_W_ARZORAG     = "Arzorag",
 --Blackwood to be translated
 --Boss dailies : NPC = Brita Silanus
-DAS_BLACKWD_TOAD	=	"Goblin Research",
-DAS_BLACKWD_RITUAL	=	"Rites of the Sul-Xan",
-DAS_BLACKWD_EXCAV	=	"Legend of the Man-Bull",
-DAS_BLACKWD_FROG	=	"A Reign of Frogs",
-DAS_BLACKWD_XANMEER	=	"Call of the Ruinach",
-DAS_BLACKWD_LAGOON	=	"The Trophy-Taker",
-DAS_QUEST_BW_BOSS	=	"Britta Silanus",     
+DAS_BLACKWD_TOAD	=	GetQuestName(6649), --"Изучение гоблинов"
+DAS_BLACKWD_RITUAL	=	GetQuestName(6650), --"Ритуалы сул-зан"
+DAS_BLACKWD_EXCAV	=	GetQuestName(6645), --"Легенда о Человеке-Быке"
+DAS_BLACKWD_FROG	=	GetQuestName(6651), --"Царство лягушек",
+DAS_BLACKWD_XANMEER	=	GetQuestName(6653), --"Зов дестронаха",
+DAS_BLACKWD_LAGOON	=	GetQuestName(6652),--"Собиратель Трофеев",
+DAS_QUEST_BW_BOSS	=	"Бритта Силана",     
 --Delve dailies : NPC = Deetum-Jas
-DAS_BLACKWD_BLOODRUN	=	"Shadow Tactics",
-DAS_BLACKWD_BEAUTY	=	"Beauty Amid Danger",
-DAS_BLACKWD_BLESS	=	"A Proper Blessing",
-DAS_BLACKWD_CHAIN	=	"Breaking the Chain",
-DAS_BLACKWD_INSECT	=	"Insect Savior",
-DAS_BLACKWD_CONFLICT	=	"Conflict of Interest",
-DAS_QUEST_BW_DELVE	=	"Deetum-Jas", 
+DAS_BLACKWD_BLOODRUN	=	GetQuestName(6665), --"Тайная операция",
+DAS_BLACKWD_BEAUTY	=	GetQuestName(6668), --"Красота в опасности",
+DAS_BLACKWD_BLESS	=	GetQuestName(6644), --"Настоящее благословение",
+DAS_BLACKWD_CHAIN	=	GetQuestName(6674), --"Слабое звено",
+DAS_BLACKWD_INSECT	=	GetQuestName(6675), --"Спасение насекомых",
+DAS_BLACKWD_CONFLICT	=	GetQuestName(6673), --"Конфликт интересов",
+DAS_QUEST_BW_DELVE	=	"Дитум-Джас", 
+--Guilds
+  DAS_GUILD_ANCHORS       = "Темные якоря в ",
+  DAS_GUILD_MADNESS       = "Mage guild", --"Безумие в ",
+  DAS_UD_ALIKR            = GetQuestName(5745), --"Molten Pearls of Alik'r Desert"
+  DAS_UD_AURID            = GetQuestName(5798), --"Veiled Darkness in Auridon",
+  DAS_UD_BANGK            = GetQuestName(5733), --"Ancient Armaments in Bangkorai",
+  DAS_UD_DESHA            = GetQuestName(5735), --"Ancestor Wards in Deshaan",
+  DAS_UD_EASTM            = GetQuestName(5779), --"Icy Intrigue in Eastmarch"
+  DAS_UD_GLENU            = GetQuestName(5739), --"Red Rook Ransack in Glenumbra",
+  DAS_UD_GRAHT            = GetQuestName(5738), --"Ayleid Trinkets in Grahtwood",
+  DAS_UD_GREEN            = GetQuestName(5853), --"Culinary Justice in Greenshade",
+  DAS_UD_MALAB            = GetQuestName(5734), --"The Spirit Trap in Malabal Tor",
+  DAS_UD_REAPE            = GetQuestName(5744), --"Mascot Theft in Reaper's March",
+  DAS_UD_RIFT             = GetQuestName(5802), --"Inflamed Pyres of the Rift",
+  DAS_UD_RIVEN            = GetQuestName(5808), --"Darkness Blooms in Rivenspire",
+  DAS_UD_SHADO            = GetQuestName(5778), --"Give and Take in Shadowfen"
+  DAS_UD_STONE            = GetQuestName(5737), --"Dwarven Relics of Stonefalls",
+  DAS_UD_STORM            = GetQuestName(5800), --"Cursed Baubles of Stormhaven",
+
+  --Southern Elsweyr
+  DAS_QUEST_SE_BOSS			= "Bruccius Baenius",
+  DAS_QUEST_SE_DELVE		= "Guybert Flaubert",
+  DAS_QUEST_SE_DRAGONS		= "Chizbari the Chipper",
+  DAS_QUEST_SE_DELVE2		= "Dirge Truptor",
+ 
+  -- Bruccius Baenius
+  DAS_SE_RICE				= GetQuestName(6422), --	A Rogue and His Rice
+  DAS_SE_PARIAH				= GetQuestName(6376), --	Goutfang Pariah
+  DAS_SE_HEAL				= GetQuestName(6421), --	Helping the Healers
+  DAS_SE_DUST				= GetQuestName(6423), --	Dust Smote
+  DAS_SE_FLETCH				= GetQuestName(6425), --	Fletching Fetching
+  DAS_SE_SCHOL				= GetQuestName(6424), --	Scholarly Observations
+
+  -- Guybert Flaubert
+  DAS_SE_CANDLE				= GetQuestName(6432), --Solace By Candlelight
+  DAS_SE_SWORD				= GetQuestName(6431), --Sourcing the Ensorcelled
+  DAS_SE_LILY				= GetQuestName(6436), --Lilies for Remembrance
+  DAS_SE_BLOOD				= GetQuestName(6438), --An Answer in Blood
+  DAS_SE_TOMES				= GetQuestName(6419), --Tomes of the Tsaesci
+  DAS_SE_MUSH				= GetQuestName(6437), --Moonlit Mushrooms
+
+--Chizbari the Chipper
+DAS_SE_DRAGON1 				= GetQuestName(6444), -- Dawn of the Dragonguard
+DAS_SE_DRAGON2				= GetQuestName(6434), -- The Dragonguard's Quarry
+
+--Dirge Truptor
+DAS_SE_FILE					= GetQuestName(6430), --	File Under D
+DAS_SE_BONES				= GetQuestName(6428), --	Sticks and Bones
+DAS_SE_AWAK					= GetQuestName(6433), --	Rude Awakening
+DAS_SE_TUSK					= GetQuestName(6405), --	Taking Them to Tusk
+DAS_SE_GARD					= GetQuestName(6429), --	Digging Up the Garden
+DAS_SE_GRAVE				= GetQuestName(6406), --	A Lonely Grave
 }
+
 DAS_STRINGS_LOCALE.ru = strings
 for stringId, stringValue in pairs(strings) do
 	ZO_CreateStringId(stringId, stringValue)
