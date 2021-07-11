@@ -142,6 +142,7 @@ local defaults = {
 		[1011]  = true,     -- Summerset
 		[726]   = true,     -- Murkmire
 		[1086]  = true,     -- Elsweyr
+    [1133]  = true,     -- Southern Elsweyr
   },
   trackedLists = {
     newLife = false,

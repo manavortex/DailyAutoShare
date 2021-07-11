@@ -86,6 +86,13 @@ function DAS.CreateMenu(savedVars, defaults)
 							getFunc = function() return DAS.GetActiveIn(1086) end,
 							setFunc = function(value) DAS.SetActiveIn(1086, value) end
 						},
+						{ -- checkbox: Southern Elsweyr
+							type    = "checkbox",
+							tooltip = "Southern Elsweyr?",
+							name    = "Activate in Southern Elsweyr?",
+							getFunc = function() return DAS.GetActiveIn(1133) end,
+							setFunc = function(value) DAS.SetActiveIn(1133, value) end
+						},
 						{ -- checkbox: Murkmire
 							type    = "checkbox",
 							tooltip = "Murkmire?",

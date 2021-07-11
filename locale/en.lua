@@ -293,8 +293,42 @@ DAS_BLACKWD_BLESS	=	"A Proper Blessing",
 DAS_BLACKWD_CHAIN	=	"Breaking the Chain",
 DAS_BLACKWD_INSECT	=	"Insect Savior",
 DAS_BLACKWD_CONFLICT	=	"Conflict of Interest",
-DAS_QUEST_BW_DELVE	=	"Deetum-Jas", 
+DAS_QUEST_BW_DELVE	=	"Deetum-Jas",
+
+  --Southern Elsweyr
+  DAS_QUEST_SE_BOSS			= "Bruccius Baenius",
+  DAS_QUEST_SE_DELVE		= "Guybert Flaubert",
+  DAS_QUEST_SE_DRAGONS		= "Chizbari the Chipper",
+  DAS_QUEST_SE_DELVE2		= "Dirge Truptor",
+  -- Bruccius Baenius
+  DAS_SE_RICE				  = --[[GetQuestName(6422),]] "A Rogue and His Rice",
+  DAS_SE_PARIAH				= --[[GetQuestName(6376),]] 	"Goutfang Pariah",
+  DAS_SE_HEAL				  = --[[GetQuestName(6421),]] 	"Helping the Healers",
+  DAS_SE_DUST				  = --[[GetQuestName(6423),]] 	"Dust Smote",
+  DAS_SE_FLETCH				= --[[GetQuestName(6425),]] 	"Fletching Fetching",
+  DAS_SE_SCHOL				= --[[GetQuestName(6424),]] 	"Scholarly Observations",
+
+  -- Guybert Flaubert
+  DAS_SE_CANDLE				= --[[GetQuestName(6432),]] "Solace By Candlelight",
+  DAS_SE_SWORD				= --[[GetQuestName(6431),]] "Sourcing the Ensorcelled",
+  DAS_SE_LILY				  = --[[GetQuestName(6436),]] "Lilies for Remembrance",
+  DAS_SE_BLOOD				= --[[GetQuestName(6438),]] "An Answer in Blood",
+  DAS_SE_TOMES				= --[[GetQuestName(6419),]] "Tomes of the Tsaesci",
+  DAS_SE_MUSH				  = --[[GetQuestName(6437),]] "Moonlit Mushrooms",
+  
+--Chizbari the Chipper
+DAS_SE_DRAGON1 				= --[[GetQuestName(6444),]]  "Dawn of the Dragonguard",
+DAS_SE_DRAGON2				= --[[GetQuestName(6434),]]  "The Dragonguard's Quarry",
+
+--Dirge Truptor
+DAS_SE_FILE					= --[[GetQuestName(6430),]] 	"File Under D",
+DAS_SE_BONES				= --[[GetQuestName(6428),]] 	"Sticks and Bones",
+DAS_SE_AWAK					= --[[GetQuestName(6433),]] 	"Rude Awakening",
+DAS_SE_TUSK					= --[[GetQuestName(6405),]] 	"Taking Them to Tusk",
+DAS_SE_GARD					= --[[GetQuestName(6429),]] 	"Digging Up the Garden",
+DAS_SE_GRAVE				= --[[GetQuestName(6406),]] 	"A Lonely Grave",
 }
+
 DailyAutoShare.EnglishQuestNames = strings
 DAS_STRINGS_LOCALE.en = strings
 for stringId, stringValue in pairs(strings) do

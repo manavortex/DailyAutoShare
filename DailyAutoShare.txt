@@ -37,6 +37,7 @@ questData/Summerset.lua
 questData/Murkmire.lua
 questData/Elsweyr.lua
 questData/Blackwood.lua
+questData/SouthElsweyr.lua
 
 DASUserSettingsAdapter.lua
 DasChatMessage.lua
