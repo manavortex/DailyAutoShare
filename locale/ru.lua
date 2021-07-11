@@ -259,6 +259,44 @@ DAS_SE_AWAK					= GetQuestName(6433), --	Rude Awakening
 DAS_SE_TUSK					= GetQuestName(6405), --	Taking Them to Tusk
 DAS_SE_GARD					= GetQuestName(6429), --	Digging Up the Garden
 DAS_SE_GRAVE				= GetQuestName(6406), --	A Lonely Grave
+
+--Summerset
+  DAS_ELF_RELIC           = GetQuestName(6158), --"Relic Runaround",
+  DAS_ELF_PILGR           = GetQuestName(6152), --"Pilgrimage's End",
+  DAS_ELF_LIGHT           = GetQuestName(6156), --"Snuffing Out the Light",
+  DAS_ELF_SERPE           = GetQuestName(6159), --"Culling Serpents",
+  DAS_ELF_MEMO            = GetQuestName(6160), --"Struck from Memory",
+  DAS_ELF_ROSE            = GetQuestName(6157), --"A Rose's Beauty",
+  DAS_ELF_ALCHE           = GetQuestName(6084), --"The Abyssal Alchemist",
+  DAS_ELF_GRAVE           = GetQuestName(6086), --"Never Forgotten",
+  DAS_ELF_QUEEN           = GetQuestName(6082), --"The Sickening Sea",
+  DAS_ELF_GRIFFIN         = GetQuestName(6085), --"Birds of a Feather",
+  DAS_ELF_SNAKE           = GetQuestName(6087), --"Run Aground",
+  DAS_ELF_WILD            = GetQuestName(6083), --"Taming the Wild",
+  DAS_ELF_GEYSER          = GetQuestName(6166), --"Sinking Summerset",
+
+   -- Murkmire
+   DAS_SLAVES_QUEST1       = "Varo Hosidias",
+   DAS_SLAVES_QUEST2       = "Tuwul",
+   DAS_SLAVES_QUEST3       = "Erithel",
+
+   DAS_SLAVES_BOSS_1       = GetQuestName(6233), --"Grave Circumstances",
+   DAS_SLAVES_BOSS_2       = GetQuestName(6236), --"Grave Expectations",
+   DAS_SLAVES_BOSS_3       = GetQuestName(6235), --"Old Baubles",
+   DAS_SLAVES_BOSS_4       = GetQuestName(6238), --"Old Enemies",
+   DAS_SLAVES_BOSS_5       = GetQuestName(6234), --"Old Growth",
+   DAS_SLAVES_BOSS_6       = GetQuestName(6237), --"Grave Mementos",
+   DAS_SLAVES_DELVE_1      = GetQuestName(6253), --"Antique Armor",
+   DAS_SLAVES_DELVE_2      = GetQuestName(6268), --"Grave Subject Matter",
+   DAS_SLAVES_DELVE_3      = GetQuestName(6248), --"Old Scrolls",
+   DAS_SLAVES_DELVE_4      = GetQuestName(6264), --"Sacred Candles",
+   DAS_SLAVES_DELVE_5      = GetQuestName(6267), --"Tools of Slaughter",
+   DAS_SLAVES_DELVE_6      = GetQuestName(6247), --"The Weight of Words",
+   DAS_SLAVES_ROOT_1       = GetQuestName(6286), --"Aloe That Heals",
+   DAS_SLAVES_ROOT_2       = GetQuestName(6288), --"Envoys Who Cower",
+   DAS_SLAVES_ROOT_3       = GetQuestName(6290), --"Leather That Protects",
+   DAS_SLAVES_ROOT_4       = GetQuestName(6287), --"Mushrooms That Nourish",
+   DAS_SLAVES_ROOT_5       = GetQuestName(6289), --"Offerings That Hide",
 }
 
 DAS_STRINGS_LOCALE.ru = strings
