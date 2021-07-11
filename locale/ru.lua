@@ -20,6 +20,28 @@ local strings  = {
 	DAS_SI_SETOPEN_TRUE	 	= "Toggle open",
 	DAS_SI_SETOPEN_FALSE	= "Toggle complete",
 	DAS_SI_ACTIVATE_IN      = " Activate in zone : ",
+
+
+-- Elsweyr
+  -- Nisuzi
+  DAS_KITTY_WIND          = "Wisdom in the Winds",
+  DAS_KITTY_FLAME         = "Dousing the Daedric Flame",
+  DAS_KITTY_RUINS         = "Rifling Through Ruins",
+  DAS_KITTY_STAMPEDE      = "The Serpent's Stampede",
+  DAS_KITTY_TEA           = "Хитросплетение чайных листьев",
+  
+  -- Rihirr
+  DAS_KITTY_WILY          = "The Traders' Terror",
+  DAS_KITTY_HUNGRY        = "The Hungry Cat's Favor",
+  DAS_KITTY_DEATH         = "Another Day, Another Death",
+  DAS_KITTY_DUO           = "A Dastardly Duo",
+  DAS_KITTY_SWORD         = "Sword of the Serpent",
+  DAS_KITTY_SENCHE        = "The Senche of Decay",
+  DAS_KITTY_NIGHTMARE     = "Ходячий кошмар",
+	  -- Battlereeve Tanerline
+	  DAS_QUEST_TANERLIN      = "Battlereeve Tanerline",
+	  DAS_KITTY_DRAGON        = "Охота на драконов",
+
 	-- Clockwork City
 	DAS_CLOCK_IMP			 = "Пробуждение Несовершенства",
 	DAS_CLOCK_FOE			 = "Враг в прекрасном оперении",
@@ -42,32 +64,32 @@ local strings  = {
 	DAS_CLOCK_CROW_RESP		 = "Вопрос уважения",
 	DAS_CLOCK_CROW_LEIS		 = "Вопрос о свободном времени",
 	-- Morrowind dailies
-	DAS_M_REL_ASHAL =  "Реликвии Ашалмавии",
-	DAS_M_REL_ASSAR =  "Реликвии Ассарнатамата",
-	DAS_M_REL_ASHUR =  "Реликвии Ассурнабиташпи",
-	DAS_M_REL_DUSHA =  "Реликвии Душарирана",
-	DAS_M_REL_EBERN =  "Реликвии Эбернанита",
-	DAS_M_REL_MAELK =  "Реликвии Мелкашиши",
-	DAS_M_REL_YASAM =  "Реликвии Ясаммидана",
+	DAS_M_REL_ASHAL =  "Реликвии из Ашалмавии",
+	DAS_M_REL_ASSAR =  "Реликвии из Ассарнатамата",
+	DAS_M_REL_ASHUR =  "Реликвии из Ассурнабиташпи",
+	DAS_M_REL_DUSHA =  "Реликвии из Душарирана",
+	DAS_M_REL_EBERN =  "Реликвии из Эбернанита",
+	DAS_M_REL_MAELK =  "Реликвии из Мелкашиши",
+	DAS_M_REL_YASAM =  "Реликвии из Ясаммидана",
 	DAS_M_HUNT_EATER =  "Охота на Пеплоеда",
 	DAS_M_HUNT_ZEXXI =  "Охота на Великого Зексина",
 	DAS_M_HUNT_RAZOR =  "Охота на Короля Острый Клык",
-	DAS_M_HUNT_JAGGE =  "Охота на Мать Зазубренная Клешня",
+	DAS_M_HUNT_JAGGE =  "Охота на Зазубренную Клешню",
 	DAS_M_HUNT_STOMP =  "Охота на Старого Топотуна",
-	DAS_M_HUNT_TARRA =  "Охота на Тарра-Судж",
+	DAS_M_HUNT_TARRA =  "Охота на Тарру-Судж",
 	DAS_M_HUNT_SVEET =  "Охота на Извивающегося Свита",
 	-- Cave dailies (Hall of Justice)
 	DAS_M_DELVE_DAEDR =  "Даэдрический срыв",
 	DAS_M_DELVE_KWAMA =  "Задачка с квама",
-	DAS_M_DELVE_MISIN =  "Насаждение дезинформации",
+	DAS_M_DELVE_MISIN =  "Подложная истина",
 	DAS_M_DELVE_TAXES =  "Налоговый вычет",
 	DAS_M_DELVE_TRIBA =  "Проблемы племени",
 	DAS_M_DELVE_SYNDI =  "Беспокойный синдикат",
 	-- World boss dailies (Hall of Justice)
-	DAS_M_BOSS_WUYWU =  "Затаившийся алчущий",
-	DAS_M_BOSS_SWARM =  "Отбраковка колонии",
+	DAS_M_BOSS_WUYWU =  "Алчущий в засаде",
+	DAS_M_BOSS_SWARM =  "Прополка колонии",
 	DAS_M_BOSS_NILTH =  "Волам здесь не место",
-	DAS_M_BOSS_SALOT =  "Проклятье Салотанов",
+	DAS_M_BOSS_SALOT =  "Проклятье Салотан",
 	DAS_M_BOSS_SIREN =  "Песня сирены",
 	DAS_M_BOSS_APPRE =  "Обеспокоенная ученица",
 	-- wrothgar dailies
@@ -117,7 +139,7 @@ local strings  = {
 	DAS_CRAG_HITMAN 	 = "Настоящие клыки",
 	DAS_CRAG_DUNGEON 	 = "Освобожденные",
     -- Questgiver names --
-    DAS_QUEST_M_ASHLANDER   = "Huntmaster Sorim-Nakar",
+    DAS_QUEST_M_ASHLANDER   = "Мастер-охотник Сорим-Накар",
     DAS_QUEST_M_RIVYN       = "Battlemaster Rivyn",
     DAS_QUEST_CC_ROBOT      = "Clockwork Facilitator",
     DAS_QUEST_CC_CROW       = "Bursar of Tributes",
@@ -166,21 +188,42 @@ local strings  = {
     DAS_QUEST_W_ARZORAG     = "Arzorag",
 --Blackwood to be translated
 --Boss dailies : NPC = Brita Silanus
-DAS_BLACKWD_TOAD	=	"Goblin Research",
-DAS_BLACKWD_RITUAL	=	"Rites of the Sul-Xan",
-DAS_BLACKWD_EXCAV	=	"Legend of the Man-Bull",
-DAS_BLACKWD_FROG	=	"A Reign of Frogs",
-DAS_BLACKWD_XANMEER	=	"Call of the Ruinach",
-DAS_BLACKWD_LAGOON	=	"The Trophy-Taker",
-DAS_QUEST_BW_BOSS	=	"Britta Silanus",     
+DAS_BLACKWD_TOAD	=	"Изучение гоблинов",
+DAS_BLACKWD_RITUAL	=	"Ритуалы сул-зан",
+DAS_BLACKWD_EXCAV	=	"Легенда о Человеке-Быке",
+DAS_BLACKWD_FROG	=	"Царство лягушек",
+DAS_BLACKWD_XANMEER	=	"Зов дестронаха",
+DAS_BLACKWD_LAGOON	=	"Собиратель Трофеев",
+DAS_QUEST_BW_BOSS	=	"Бритта Силана",     
 --Delve dailies : NPC = Deetum-Jas
-DAS_BLACKWD_BLOODRUN	=	"Shadow Tactics",
-DAS_BLACKWD_BEAUTY	=	"Beauty Amid Danger",
-DAS_BLACKWD_BLESS	=	"A Proper Blessing",
-DAS_BLACKWD_CHAIN	=	"Breaking the Chain",
-DAS_BLACKWD_INSECT	=	"Insect Savior",
-DAS_BLACKWD_CONFLICT	=	"Conflict of Interest",
-DAS_QUEST_BW_DELVE	=	"Deetum-Jas", 
+DAS_BLACKWD_BLOODRUN	=	"Тайная операция",
+DAS_BLACKWD_BEAUTY	=	"Красота в опасности",
+DAS_BLACKWD_BLESS	=	"Настоящее благословение",
+DAS_BLACKWD_CHAIN	=	"Слабое звено",
+DAS_BLACKWD_INSECT	=	"Спасение насекомых",
+DAS_BLACKWD_CONFLICT	=	"Конфликт интересов",
+DAS_QUEST_BW_DELVE	=	"Дитум-Джас", 
+--Guilds
+DAS_GUILD_ANCHORS       = "Dark Anchors in ",
+  DAS_GUILD_MADNESS       = "Безумие в... ",
+  DAS_UD_ALIKR            = "Molten Pearls of Alik'r Desert",
+  DAS_UD_AURID            = "Veiled Darkness in Auridon",
+  DAS_UD_BANGK            = "Ancient Armaments in Bangkorai",
+  DAS_UD_DESHA            = "Ancestor Wards in Deshaan",
+  DAS_UD_EASTM            = "Icy Intrigue in Eastmarch",
+  DAS_UD_GLENU            = "Red Rook Ransack in Glenumbra",
+  DAS_UD_GRAHT            = "Ayleid Trinkets in Grahtwood",
+  DAS_UD_GREEN            = "Culinary Justice in Greenshade",
+  DAS_UD_MALAB            = "The Spirit Trap in Malabal Tor",
+  DAS_UD_REAPE            = "Mascot Theft in Reaper's March",
+  DAS_UD_RIFT             = "Inflamed Pyres of the Rift",
+  DAS_UD_RIVEN            = "Darkness Blooms in Rivenspire",
+  DAS_UD_SHADO            = "Give and Take in Shadowfen",
+  DAS_UD_STONE            = "Dwarven Relics of Stonefalls",
+  DAS_UD_STORM            = "Cursed Baubles of Stormhaven",
+
+
+
 }
 DAS_STRINGS_LOCALE.ru = strings
 for stringId, stringValue in pairs(strings) do
