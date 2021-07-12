@@ -199,9 +199,9 @@ local strings  = {
   DAS_CRAG_SARA 		      = "Critical Mass",
   DAS_CRAG_SHADA 		      = "The Fallen City of Shada",
   DAS_CRAG_NEDE 		      = "The Reason We Fight",
-  DAS_CRAG_HERMY 		      = "The Seeker’s Archive",
+  DAS_CRAG_HERMY 		      = "The Seeker's Archive",
   DAS_CRAG_ELINHIR 	      = "Supreme Power",
-  DAS_CRAG_TUWHACCA 	    = "The Trials of Rahni’Za",
+  DAS_CRAG_TUWHACCA 	    = "The Trials of Rahni'Za",
   DAS_CRAG_NEREID 	      = "Waters Run Foul",
   
   -- upper
