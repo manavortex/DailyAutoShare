@@ -143,6 +143,7 @@ local defaults = {
 		[726]   = true,     -- Murkmire
 		[1086]  = true,     -- Elsweyr
     [1133]  = true,     -- Southern Elsweyr
+    [888]   = true,     -- Craglorn
   },
   trackedLists = {
     newLife = false,

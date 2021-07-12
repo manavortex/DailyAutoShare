@@ -38,6 +38,7 @@ questData/Murkmire.lua
 questData/Elsweyr.lua
 questData/Blackwood.lua
 questData/SouthElsweyr.lua
+questData/Craglorn.lua
 
 DASUserSettingsAdapter.lua
 DasChatMessage.lua
