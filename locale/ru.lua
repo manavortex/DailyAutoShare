@@ -209,7 +209,7 @@ DAS_BLACKWD_CONFLICT	=	GetQuestName(6673), --"Конфликт интересо�
 DAS_QUEST_BW_DELVE	=	"Дитум-Джас", 
 --Guilds
   DAS_GUILD_ANCHORS       = "Темные якоря в ",
-  DAS_GUILD_MADNESS       = "Mage guild", --"Безумие в ",
+  DAS_GUILD_MADNESS       = "Безумие в ", --"Безумие в ",
   DAS_UD_ALIKR            = GetQuestName(5745), --"Molten Pearls of Alik'r Desert"
   DAS_UD_AURID            = GetQuestName(5798), --"Veiled Darkness in Auridon",
   DAS_UD_BANGK            = GetQuestName(5733), --"Ancient Armaments in Bangkorai",
