@@ -92,9 +92,8 @@ DAS.makeBingoTable(zoneId, tbl2)
 -- If there are subzones, you register them like this:
 DAS.subzones[1138] = 1133 -- Dragonhold
 DAS.subzones[1146] = 1133 -- Tideholm
--- DAS.subzones[zoneId+1] = zoneId
--- DAS.subzones[zoneId+2] = zoneId
--- DAS.subzones[zoneId+3] = zoneId
+DAS.subzones[1134] = 1133 -- Forsaken Citadel
+DAS.subzones[1135] = 1133 -- Moonlite Cove
 -- Quest lookup happens via
 local zoneId = DAS.GetZoneId()
 local quests = DAS.shareables[zoneId] or DAS.shareables[DAS.subzones[zoneId]] or {}
