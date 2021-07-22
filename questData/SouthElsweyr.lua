@@ -90,6 +90,8 @@ DAS.makeBingoTable(zoneId, tbl2)
   -- the active quest IDs. There's a lot of redundancy in this AddOn, since I've dropped dead, feel free to optimize.
 -- ]]
 -- If there are subzones, you register them like this:
+DAS.subzones[1138] = 1133 -- Dragonhold
+DAS.subzones[1146] = 1133 -- Tideholm
 -- DAS.subzones[zoneId+1] = zoneId
 -- DAS.subzones[zoneId+2] = zoneId
 -- DAS.subzones[zoneId+3] = zoneId
