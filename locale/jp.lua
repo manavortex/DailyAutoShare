@@ -182,6 +182,27 @@ local strings  = {
     DAS_QUEST_W_BIRKHU      = "Birkhu the Bold",
     DAS_QUEST_DB_ARVINA     = "Cleric Arvina",
     DAS_QUEST_DB_BOUNTY     = "Bounty Board",
+	-- quest npcs
+	DAS_QUEST_CRA_SARA      = "Sara Benele",
+	DAS_QUEST_CRA_GREBA     = "Greban",
+	DAS_QUEST_CRA_NHALA     = "Nhalan",
+	DAS_QUEST_CRA_RALAI     = "Ralai",
+	DAS_QUEST_CRA_IBRUL     = "Ibrula",
+	DAS_QUEST_CRA_FIGHT     = "Fights-With-Tail",
+	DAS_QUEST_CRA_FADA      = "Fada at-Glina",
+	DAS_QUEST_CRA_NENDI     = "Nendirume",
+	DAS_QUEST_CRA_GRAYP     = "The Gray Passage",
+	DAS_QUEST_CRA_LASHB     = "Lashburr Tooth-Breaker",
+	DAS_QUEST_CRA_CRUSA     = "Crusader Dalamar",
+	DAS_QUEST_CRA_SCATT     = "Scattered-Leaves",
+	DAS_QUEST_CRA_SAFA      = "Safa al-Satakalaam",
+	DAS_QUEST_CRA_MERED     = "Mederic Vyger",
+	DAS_QUEST_CRA_SALIM     = "Sali'ma",
+	DAS_QUEST_CRA_TISHI     = "Tishi",
+	DAS_QUEST_CRA_MINER     = "Minerva",
+	DAS_QUEST_CRA_MASTE     = "Master Timen",
+	DAS_QUEST_CRA_GRAYM     = "The Gray Menhir",
+	
 --Blackwood to be translated
 --Boss dailies : NPC = Brita Silanus
 DAS_BLACKWD_TOAD	=	"Goblin Research",
