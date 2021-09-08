@@ -43,7 +43,7 @@ local strings  = {
   DAS_KITTY_DUO           = "A Dastardly Duo",
   DAS_KITTY_SWORD         = "Sword of the Serpent",
   DAS_KITTY_SENCHE        = "The Senche of Decay",
-  DAS_KITTY_NIGHTMARE     = "A waking nightmare",
+  DAS_KITTY_NIGHTMARE     = "A Waking Nightmare",
   
   
   -- Battlereeve Tanerline

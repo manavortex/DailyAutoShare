@@ -90,9 +90,10 @@ DAS.makeBingoTable(zoneId, tbl2)
   -- the active quest IDs. There's a lot of redundancy in this AddOn, since I've dropped dead, feel free to optimize.
 -- ]]
 -- If there are subzones, you register them like this:
--- DAS.subzones[zoneId+1] = zoneId
--- DAS.subzones[zoneId+2] = zoneId
--- DAS.subzones[zoneId+3] = zoneId
+DAS.subzones[1138] = 1133 -- Dragonhold
+DAS.subzones[1146] = 1133 -- Tideholm
+DAS.subzones[1134] = 1133 -- Forsaken Citadel
+DAS.subzones[1135] = 1133 -- Moonlite Cove
 -- Quest lookup happens via
 local zoneId = DAS.GetZoneId()
 local quests = DAS.shareables[zoneId] or DAS.shareables[DAS.subzones[zoneId]] or {}

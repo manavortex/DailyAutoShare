@@ -111,7 +111,7 @@ local strings  = {
 	DAS_W_WEREWOLVES	 = GetQuestName(5504), --"Торговля кожей",
 	DAS_W_THAT_OTHER	 = GetQuestName(5505), --"Пожар во владении",
 	-- gold coast
-	DAS_DB_MINO			 = GetQuestName(6505), --"Надвигающиеся тени",
+	DAS_DB_MINO			 = GetQuestName(5605), --"Тени сгущаются",
 	DAS_DB_ARENA 		 = GetQuestName(5606), --"Рев толпы",
 	DAS_DB_GOOD 		 = GetQuestName(5604), --"Всеобщее благо",
 	DAS_DB_EVIL 		 = GetQuestName(5603), --"Захороненное зло",
