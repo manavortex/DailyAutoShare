@@ -278,7 +278,7 @@ DAS_SE_GRAVE				= GetQuestName(6406), --	A Lonely Grave
    -- Murkmire
    DAS_SLAVES_QUEST1       = "Varo Hosidias",
    DAS_SLAVES_QUEST2       = "Tuwul",
-   DAS_SLAVES_QUEST3       = "Erithel",
+   DAS_SLAVES_QUEST3       = "Bolu",
 
    DAS_SLAVES_BOSS_1       = GetQuestName(6233), --"Grave Circumstances",
    DAS_SLAVES_BOSS_2       = GetQuestName(6236), --"Grave Expectations",

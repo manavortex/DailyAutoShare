@@ -54,7 +54,7 @@ local strings  = {
   -- Murkmire
   DAS_SLAVES_QUEST1       = "Varo Hosidias",
   DAS_SLAVES_QUEST2       = "Tuwul",
-  DAS_SLAVES_QUEST3       = "Erithel",
+  DAS_SLAVES_QUEST3       = "Bolu",
   
   DAS_SLAVES_BOSS_1       = "Grave Circumstances",
   DAS_SLAVES_BOSS_2       = "Grave Expectations",
