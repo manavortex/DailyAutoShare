@@ -28,6 +28,7 @@ local strings  = {
 
 -- Elsweyr
   -- Nisuzi
+  DAS_QUEST_NE_DELVE      = "Nisuzi",
   DAS_KITTY_WIND          = GetQuestName(6359),
   DAS_KITTY_FLAME         = GetQuestName(6356),
   DAS_KITTY_RUINS         = GetQuestName(6360),
@@ -35,6 +36,7 @@ local strings  = {
   DAS_KITTY_TEA           = GetQuestName(6363),
   
   -- Rihirr
+  DAS_QUEST_NE_BOSS       = "Ri'hirr",
   DAS_KITTY_WILY          = GetQuestName(6378),
   DAS_KITTY_HUNGRY        = GetQuestName(6361),
   DAS_KITTY_DEATH         = GetQuestName(6380),

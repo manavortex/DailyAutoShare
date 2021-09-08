@@ -30,6 +30,7 @@ local strings  = {
   
   -- Elsweyr
   -- Nisuzi
+  DAS_QUEST_NE_DELVE      = "Nisuzi",
   DAS_KITTY_WIND          = "Wisdom in the Winds",
   DAS_KITTY_FLAME         = "Dousing the Daedric Flame",
   DAS_KITTY_RUINS         = "Rifling Through Ruins",
@@ -37,6 +38,7 @@ local strings  = {
   DAS_KITTY_TEA           = "Tangled Tea Leaves",
   
   -- Rihirr
+  DAS_QUEST_NE_BOSS       = "Ri'hirr",
   DAS_KITTY_WILY          = "The Traders' Terror",
   DAS_KITTY_HUNGRY        = "The Hungry Cat's Favor",
   DAS_KITTY_DEATH         = "Another Day, Another Death",
