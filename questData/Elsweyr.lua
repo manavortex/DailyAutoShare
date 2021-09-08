@@ -79,30 +79,27 @@ DAS.shareables[zoneId]  = tbl
 DAS.makeBingoTable(zoneId, tbl2)
 
 DAS.questStarter[zoneId] = {
-    ["Ri'hirr"] = true,
-    ["Nisuzi"] = true, 
+    [GetString(DAS_QUEST_NE_BOSS)] = true,
+    [GetString(DAS_QUEST_NE_DELVE)] = true, 
     [GetString(DAS_QUEST_TANERLIN)] = true, 
 }
 DAS.questFinisher[zoneId] = {
-    ["Ri'hirr"] = true,
-    ["Nisuzi"] = true, 
+    [GetString(DAS_QUEST_NE_BOSS)] = true,
+    [GetString(DAS_QUEST_NE_DELVE)] = true, 
     [GetString(DAS_QUEST_TANERLIN)] = true, 
 }
 DAS.questIds[zoneId] = {
-  
-  -- single
-	-- [5518]  = true, -- "Meat for the Masses",
-	-- [5519]  = true, -- "Scholarly Salvage",
-	-- [5520]  = true, -- "Flames of Forge and Fallen",
-	-- [5521]  = true, -- "Nature's Bounty",
-	-- [5522]  = true, -- "Heresy of Ignorance",
-	-- [5523]  = true, -- "Snow and Steam",
-	-- [5524]  = true, -- "Reeking of Foul Play",
-	-- Group
-	-- [5507]  = true, -- "Breakfast of the Bizarre",
-	-- [5515]  = true, -- "Free Spirits",
-	-- [5514]  = true, -- "Getting a Bellyful",
-	-- [5509]  = true, -- "Parts of the Whole",
-	-- [5504]  = true, -- "The Skin Trade",
-	-- [5505]  = true, -- "Fire in the Hold",
+    [6356] = true, -- "Dousing the Daedric Flame"		DELVE
+    [6360] = true, -- "Rifling Through Ruins"			DELVE
+    [6363] = true, -- "Tangled Tea Leaves"				DELVE
+    [6361] = true, -- "The Hungry Cat's Favor"			DELVE
+    [6362] = true, -- "The Serpent's Stampede"			DELVE
+    [6359] = true, -- "Wisdom in the Winds"				DELVE
+    [6381] = true, -- "A Dastardly Duo"					BOSS
+    [6379] = true, -- "A Waking Nightmare"				BOSS
+    [6380] = true, -- "Another Day, Another Death"		BOSS
+    [6377] = true, -- "Sword of the Serpent"			BOSS
+    [6382] = true, -- "The Senche of Decay"				BOSS
+    [6378] = true, -- "The Traders' Terror"				BOSS
+    [6357] = true, -- "Dragon Hunt"						EVENT
 }

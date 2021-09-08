@@ -26,6 +26,7 @@ local strings  = {
     
   -- Elsweyr
   -- Nisuzi
+  DAS_QUEST_NE_DELVE      = "Nisuzi",
   DAS_KITTY_WIND          = "Weisheit im Wind",
   DAS_KITTY_FLAME         = "Erlöschen der daedrischen Flammen",
   DAS_KITTY_RUINS         = "Das Durchstöbern von Ruinen",
@@ -33,6 +34,7 @@ local strings  = {
   DAS_KITTY_TEA           = "Widerspenstige Teeblätter",
   
   -- Rihirr
+  DAS_QUEST_NE_BOSS       = "Ri'hirr",
   DAS_KITTY_WILY          = "Der Schrecken der Händler",
   DAS_KITTY_HUNGRY        = "Der Gefallen der hungrigen Katze",
   DAS_KITTY_DEATH         = "Ein weiterer Tag, ein weiterer Tod",
