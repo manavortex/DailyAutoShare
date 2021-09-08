@@ -193,7 +193,7 @@ function DAS.SetSubLabels(questTable)
     label.dataQuestState    = DAS.GetQuestStatus(questName)
     label:SetHidden(false)
     if label.dataQuestState == DAS_STATUS_ACTIVE then
-      table.insert(activeZoneQuests, label.dataJournalIndex)
+      table.insert(DAS.activeZoneQuests, label.dataJournalIndex)
       status = label.dataQuestState
       elseif status ~= DAS_STATUS_ACTIVE and status ~= DAS_STATUS_OPEN then
       status = label.dataQuestState
