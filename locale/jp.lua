@@ -102,6 +102,56 @@ local strings  = {
 	DAS_NL_BETNIKH		 = "Stonetooth Bash",
 	DAS_NL_AURIDON		 = "Mud Ball Merriment",
 	DAS_NL_EASTMARCH	 = "Snow Bear Plunge",
+
+	-- guild
+	DAS_GUILD_ANCHORS       = "Dark Anchors in ",
+	DAS_GUILD_MADNESS       = "Madness in ",
+	DAS_FG_ALIKR            = "Dark Anchors in Alik'r Desert",    -- 5786
+	DAS_FG_AURID            = "Dark Anchors in Auridon",          -- 5793
+	DAS_FG_BANGK            = "Dark Anchors in Bangkorai",        -- 5787
+	DAS_FG_DESHA            = "Dark Anchors in Deshaan",          -- 5789
+	DAS_FG_EASTM            = "Dark Anchors in Eastmarch",        -- 5791
+	DAS_FG_GLENU            = "Dark Anchors in Glenumbra",        -- 5833
+	DAS_FG_GRAHT            = "Dark Anchors in Grahtwood",        -- 5794
+	DAS_FG_GREEN            = "Dark Anchors in Greenshade",       -- 5796
+	DAS_FG_MALAB            = "Dark Anchors in Malabal Tor",      -- 5795
+	DAS_FG_REAPE            = "Dark Anchors in Reaper's March",   -- 5797
+	DAS_FG_RIFT             = "Dark Anchors in the Rift",         -- 5792
+	DAS_FG_RIVEN            = "Dark Anchors in Rivenspire",       -- 5785
+	DAS_FG_SHADO            = "Dark Anchors in Shadowfen",        -- 5790
+	DAS_FG_STONE            = "Dark Anchors in Stonefalls",       -- 5788
+	DAS_FG_STORM            = "Dark Anchors in Stormhaven",       -- 5784
+	DAS_MG_ALIKR            = "Madness in Alik'r Desert",         -- 5814
+	DAS_MG_AURID            = "Madness in Auridon",               -- 5816
+	DAS_MG_BANGK            = "Madness in Bangkorai",             -- 5818
+	DAS_MG_DESHA            = "Madness in Deshaan",               -- 5819
+	DAS_MG_EASTM            = "Madness in Eastmarch",             -- 5820
+	DAS_MG_GLENU            = "Madness in Glenumbra",             -- 5822
+	DAS_MG_GRAHT            = "Madness in Grahtwood",             -- 5823
+	DAS_MG_GREEN            = "Madness in Greenshade",            -- 5824
+	DAS_MG_MALAB            = "Madness in Malabal Tor",           -- 5825
+	DAS_MG_REAPE            = "Madness in Reaper's March",        -- 5826
+	DAS_MG_RIFT             = "Madness in the Rift",              -- 5831
+	DAS_MG_RIVEN            = "Madness in Rivenspire",            -- 5827
+	DAS_MG_SHADO            = "Madness in Shadowfen",             -- 5828
+	DAS_MG_STONE            = "Madness in Stonefalls",            -- 5829
+	DAS_MG_STORM            = "Madness in Stormhaven",            -- 5830
+	DAS_UD_ALIKR            = "Molten Pearls of Alik'r Desert",   -- 5745
+	DAS_UD_AURID            = "Veiled Darkness in Auridon",       -- 5798
+	DAS_UD_BANGK            = "Ancient Armaments in Bangkorai",   -- 5733
+	DAS_UD_DESHA            = "Ancestor Wards in Deshaan",        -- 5735
+	DAS_UD_EASTM            = "Icy Intrigue in Eastmarch",        -- 5779
+	DAS_UD_GLENU            = "Red Rook Ransack in Glenumbra",    -- 5739
+	DAS_UD_GRAHT            = "Ayleid Trinkets in Grahtwood",     -- 5738
+	DAS_UD_GREEN            = "Culinary Justice in Greenshade",   -- 5853
+	DAS_UD_MALAB            = "The Spirit Trap in Malabal Tor",   -- 5734
+	DAS_UD_REAPE            = "Mascot Theft in Reaper's March",   -- 5744
+	DAS_UD_RIFT             = "Inflamed Pyres of the Rift",       -- 5802
+	DAS_UD_RIVEN            = "Darkness Blooms in Rivenspire",    -- 5808
+	DAS_UD_SHADO            = "Give and Take in Shadowfen",       -- 5778
+	DAS_UD_STONE            = "Dwarven Relics of Stonefalls",     -- 5737
+	DAS_UD_STORM            = "Cursed Baubles of Stormhaven",     -- 5800
+	
 	-- craglorn
 	-- lower
 	DAS_CRAG_SARA 		 = "Critical Mass",
