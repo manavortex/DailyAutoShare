@@ -113,6 +113,7 @@ DAS_QUEST_IDS  = {
 	-- craglorn
 	-- lower
 	[5108]  = true, -- "Critical Mass",
+	[5756]  = true, -- "Critical Mass",
 	[5749]  = true, -- "The Seeker's Archive",
 	[5750]  = true, -- "The Fallen City of Shada",
 	[5751]  = true, -- "The Trials of Rahni'Za",
