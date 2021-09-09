@@ -309,11 +309,10 @@ local function OnPlayerActivated(eventCode)
   DAS.guildInviteText = DAS.GetGuildInviteText()
   DAS.cacheChatterData()
 end
-local function OnUnitCreated(eventCode, unitTag)
-  local unitZone = GetZoneId(GetUnitZoneIndex(unitTag))
-  if not DAS.GetActiveIn(unitZone) then return end
-  if GetUnitDisplayName(unitTag) == cachedDisplayName then return end
-  DAS.TryShareActiveDaily(unitZone)
+local function OnGroupMemberJoined(_, _, _, isLocalPlayer)
+  if isLocalPlayer then return end
+  if not (DAS.GetAutoShare() and DAS.GetActiveIn()) then return end
+  DAS.TryShareActiveDaily()
 end
 local function OnQuestToolUpdate() 
   forceRefreshControl()
@@ -371,7 +370,7 @@ local function RegisterEventHooks()
 	em:RegisterForEvent(DAS.name, EVENT_QUEST_REMOVED, 			OnQuestRemoved)
 	em:RegisterForEvent(DAS.name, EVENT_QUEST_SHARED, 			OnQuestShared)
 	em:RegisterForEvent(DAS.name, EVENT_GROUP_TYPE_CHANGED,     OnGroupTypeChanged)
-	em:RegisterForEvent(DAS.name, EVENT_UNIT_CREATED,	 		OnUnitCreated)
+	em:RegisterForEvent(DAS.name, EVENT_GROUP_MEMBER_JOINED,	OnGroupMemberJoined)
 	em:RegisterForEvent(DAS.name, EVENT_UNIT_DESTROYED, 		OnGroupTypeChanged)
 	em:RegisterForEvent(DAS.name, EVENT_CHAT_MESSAGE_CHANNEL,   OnChatMessage)
 	-- DasControl:OnMoveStop
