@@ -170,10 +170,15 @@ function setLabelTable(questTable)
   return questName, status
 end
 local sep = "%s%w%w%s"
-local function makeSubLabelTitle(str, str2)
+local function makeSubLabelTitle(str, zoneId, listIndex)
+  if zoneId ~= nil and DAS.QuestListTitles[zoneId] ~= nil then
+    if DAS.QuestListTitles[zoneId][listIndex] ~= nil then
+        return DAS.QuestListTitles[zoneId][listIndex] .. "..."
+    end
+  end
   if not str then return end
   local idx = string.find(str, sep)
-  if nil == idx then return str end
+  if nil == idx then return str .. " ..." end
   return string.sub(str, 0, idx+3) .. "..."
 end
 function DAS.SetSubLabels(questTable)
@@ -214,7 +219,8 @@ function DAS.SetSubLabels(questTable)
 end
 local typeTable = "table"
 function DAS.setLabels(zoneQuests)
-  zoneQuests = zoneQuests or DAS.GetZoneQuests()
+  local zoneId = zoneId or DAS.GetZoneId()
+  zoneQuests = zoneQuests or DAS.GetZoneQuests(zoneId)
   labelTexts = {}
   -- p("DAS.setLabels")
   DAS.activeZoneQuests = {}
@@ -230,7 +236,7 @@ function DAS.setLabels(zoneQuests)
           label.dataQuestList 	          = ZO_DeepTableCopy(questNameOrTable, {})
           label.dataQuestName, status     = setLabelTable(questNameOrTable)
           label.dataQuestState            = status or DAS_STATUS_OPEN
-          label.dataTitle                 = makeSubLabelTitle(label.dataQuestList[1], label.dataQuestList[2]) or questName
+          label.dataTitle                 = makeSubLabelTitle(label.dataQuestList[1], zoneId, index) or questName
           else
           label.dataQuestList 	  = nil
           label.dataTitle         = questNameOrTable

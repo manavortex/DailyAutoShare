@@ -36,6 +36,13 @@ DAS.subLists.ud = DAS.subLists.guilds
 
 DAS.QuestLists[zoneId2]  = DAS.QuestLists[zoneId]
 DAS.QuestLists[zoneId3]  = DAS.QuestLists[zoneId]
+DAS.QuestListTitles = DAS.QuestListTitles or {}
+DAS.QuestListTitles[zoneId] = {
+	[1] = GetString(DAS_GUILD_ANCHORS),
+	[2] = GetString(DAS_GUILD_MADNESS),
+}
+DAS.QuestListTitles[zoneId2] = DAS.QuestListTitles[zoneId]
+DAS.QuestListTitles[zoneId3] = DAS.QuestListTitles[zoneId]
 local zoneIds = {
     [104] = {["fg"] = GetString(DAS_FG_ALIKR), ["mg"] = GetString(DAS_MG_ALIKR), ["ud"] = GetString(DAS_UD_ALIKR)}, -- Alik'r Desert
     [381] = {["fg"] = GetString(DAS_FG_AURID), ["mg"] = GetString(DAS_MG_AURID), ["ud"] = GetString(DAS_UD_AURID)}, -- Auridon

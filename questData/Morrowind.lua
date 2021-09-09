@@ -42,6 +42,10 @@ DAS.QuestLists[zoneId] = {
 		[6] = GetString(DAS_M_BOSS_APPRE),
   },
 }
+DAS.QuestListTitles = DAS.QuestListTitles or {}
+DAS.QuestListTitles[zoneId] = {
+	[1] = GetString(DAS_LIST_M_RELIC),
+}
 table.insert(tbl, DAS.QuestLists[zoneId].relic)
 table.insert(tbl2, "relic")
 table.insert(tbl, GetString(DAS_M_HUNT_EATER))

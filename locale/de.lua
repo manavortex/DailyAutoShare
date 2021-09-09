@@ -127,6 +127,7 @@ local strings  = {
 
 	-- Vvardenfell / Morrowind
 	-- Ashlander relic dailies : NPC = Numani-Rasi
+	DAS_LIST_M_RELIC        = "Die Relikte von ",
 	DAS_M_REL_YASAM         = "Die Relikte von Yasammidan",         -- 5924
 	DAS_M_REL_ASSAR         = "Die Relikte von Assarnatamat",       -- 5925
 	DAS_M_REL_MAELK         = "Die Relikte von Maelkashishi",       -- 5926
