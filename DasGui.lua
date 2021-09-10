@@ -27,6 +27,7 @@ function DAS.RefreshControl(refreshQuestCache)
 	DasHandle:SetHidden(  stateIsHidden)
 	DasControl:SetHidden( stateIsHidden)
 	DasList:SetHidden(    stateIsMinimised or stateIsHidden)
+	DasSubList:SetHidden(true)
   DAS.RefreshLabelsWithDelay()
 end
 local function SetAlpha(control, value)
@@ -78,10 +79,14 @@ local function setButtonStates()
 end
 DAS.SetButtonStates = setButtonStates
 function DAS.QuestLabelClicked(control, mouseButton)
-  DAS.SetSubLabels(control.dataQuestList)
   if mouseButton == MOUSE_BUTTON_INDEX_RIGHT then -- and isValidJournalIndex then
 		return DAS.OnRightClick(control)
   end
+	if (nil ~= control.dataQuestList and {} ~= control.dataQuestList) then
+		DAS.SetSubLabels(control.dataQuestList)
+		DasSubList:SetHidden(false)
+		DAS.setFontSize(DAS.sublabels)
+	end
 	local journalIndex          = control.dataJournalIndex or 99
 	if IsValidQuestIndex(journalIndex) then
     if journalIndex ~= DAS.trackedIndex then
@@ -182,8 +187,7 @@ local function makeSubLabelTitle(str, zoneId, listIndex)
   return string.sub(str, 0, idx+3) .. "..."
 end
 function DAS.SetSubLabels(questTable)
-  DasSubList:SetHidden(nil == questTable or {} == questTable)
-  if DasSubList:IsHidden() then return end
+  if (nil == questTable or {} == questTable) then return end
   local status = DAS_STATUS_COMPLETE
   local index = 1
   for idx, questName in pairs(questTable) do
@@ -214,6 +218,7 @@ function DAS.SetSubLabels(questTable)
     label:SetText("")
     label:SetHidden(true)
   end
+  DasSubList:SetHeight(0)
   DAS.SetLabelFontSize()
   return status
 end
