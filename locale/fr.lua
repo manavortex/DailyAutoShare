@@ -33,24 +33,24 @@ local strings  = {
 
 	-- Northern Elsweyr
 	-- Delve dailies : NPC = Nisuzi
-	DAS_QUEST_NE_DELVE      = "Nisuzi",                      -- 88072
-	DAS_KITTY_FLAME         = "Moucher la flamme daedrique", -- 6356
-	DAS_KITTY_WIND          = "La sagesse aux quatre vents", -- 6359
-	DAS_KITTY_RUINS         = "Fouilles dans les ruines",    -- 6360
-	DAS_KITTY_HUNGRY        = "La Faveur du Chat affamé",    -- 6361
-	DAS_KITTY_STAMPEDE      = "La cavalcade du Serpent",     -- 6362
-	DAS_KITTY_TEA           = "Feuilles de thé emmêlées",    -- 6363
+	DAS_QUEST_NE_DELVE      = "Nisuzi",                        -- 88072
+	DAS_KITTY_FLAME         = "Moucher la flamme daedrique",   -- 6356
+	DAS_KITTY_WIND          = "La sagesse aux quatre vents",   -- 6359
+	DAS_KITTY_RUINS         = "Fouilles dans les ruines",      -- 6360
+	DAS_KITTY_HUNGRY        = "La Faveur du Chat affamé",      -- 6361
+	DAS_KITTY_STAMPEDE      = "La cavalcade du Serpent",       -- 6362
+	DAS_KITTY_TEA           = "Feuilles de thé emmêlées",      -- 6363
 	-- World Boss dailies : NPC = Ri'hirr
-	DAS_QUEST_NE_BOSS       = "Ri'hirr",                     -- 88139
-	DAS_KITTY_SWORD         = "Le sourire du serpent",       -- 6377
-	DAS_KITTY_WILY          = "La terreur des travailleurs", -- 6378
-	DAS_KITTY_NIGHTMARE     = "Un cauchemar éveillé",        -- 6379
-	DAS_KITTY_DEATH         = "À chaque jour son cadavre",   -- 6380
-	DAS_KITTY_DUO           = "Un duo déterminé",            -- 6381
-	DAS_KITTY_SENCHE        = "Le senche des convenances",   -- 6382
+	DAS_QUEST_NE_BOSS       = "Ri'hirr",                       -- 88139
+	DAS_KITTY_SWORD         = "Le sourire du serpent",         -- 6377
+	DAS_KITTY_WILY          = "La terreur des travailleurs",   -- 6378
+	DAS_KITTY_NIGHTMARE     = "Un cauchemar éveillé",          -- 6379
+	DAS_KITTY_DEATH         = "À chaque jour son cadavre",     -- 6380
+	DAS_KITTY_DUO           = "Un duo déterminé",              -- 6381
+	DAS_KITTY_SENCHE        = "Le senche des convenances",     -- 6382
 	-- Dragon Hunt dailies : NPC = Battlereeve Tanerline
-	DAS_QUEST_TANERLIN      = "haut commissaire Tanerline",  -- 88741
-	DAS_KITTY_DRAGON        = "Chasse au dragon",            -- 6357
+	DAS_QUEST_TANERLIN      = "Le haut commissaire Tanerline", -- 88741
+	DAS_KITTY_DRAGON        = "Chasse au dragon",              -- 6357
 
 
 	-- Murkmire
@@ -198,7 +198,7 @@ local strings  = {
 	-- Quest NPCs
 	DAS_QUEST_NL_BREDA      = "Bréda",                               -- 73855
 	DAS_QUEST_NL_LIZARD     = "Cœur-Tendre",                         -- 74198
-	DAS_QUEST_NL_ORC        = "matronne Borbuga",                    -- 74207
+	DAS_QUEST_NL_ORC        = "La matronne Borbuga",                 -- 74207
 	DAS_QUEST_NL_CAT        = "Tumira",                              -- 74066
 
 
@@ -280,41 +280,41 @@ local strings  = {
 	DAS_QUEST_CRA_NENDI     = "Nendirumë",                -- 73118
 	DAS_QUEST_CRA_GRAYP     = "Passage gris",             -- 87370069-0-21018
 	DAS_QUEST_CRA_LASHB     = "Cingleronce Brise-dents",  -- 72963
-	DAS_QUEST_CRA_CRUSA     = "croisé Dalamar",           -- 73366
+	DAS_QUEST_CRA_CRUSA     = "Le croisé Dalamar",        -- 73366
 	DAS_QUEST_CRA_SCATT     = "Feuilles-au-Vent",         -- 72962
 	DAS_QUEST_CRA_SAFA      = "Safa al-Satakalaam",       -- 72961
 	DAS_QUEST_CRA_MERED     = "Médéric Vyger",            -- 73444
 	DAS_QUEST_CRA_SALIM     = "Sali'ma",                  -- 72541
 	DAS_QUEST_CRA_TISHI     = "Tishi",                    -- 72539
 	DAS_QUEST_CRA_MINER     = "Minerva Lauzon",           -- 72581
-	DAS_QUEST_CRA_MASTE     = "maître Timen",             -- 72267
+	DAS_QUEST_CRA_MASTE     = "Le maître Timen",          -- 72267
 	DAS_QUEST_CRA_GRAYM     = "Menhir gris",              -- 87370069-0-21024
 
 
 	-- Quest NPC names
-	DAS_QUEST_M_ASHLANDER   = "maître veneur Sorim-Nakar",             -- 76010
-	DAS_QUEST_M_RIVYN       = "maître de guerre Rivyn",                -- 76622
-	DAS_QUEST_CC_ROBOT      = "facilitatrice mécanique",               -- 79225
+	DAS_QUEST_M_ASHLANDER   = "Le maître veneur Sorim-Nakar",          -- 76010
+	DAS_QUEST_M_RIVYN       = "Le maître de guerre Rivyn",             -- 76622
+	DAS_QUEST_CC_ROBOT      = "Facilitatrice mécanique",               -- 79225
 	DAS_QUEST_CC_CROW       = "Boursier des tributs",                  -- 79171
-	DAS_QUEST_CC_NOVICE     = "novice Holli",                          -- 79220
+	DAS_QUEST_CC_NOVICE     = "La novice Holli",                       -- 79220
 	DAS_QUEST_CC_THISTLE    = "Enjambe-le-Chardon",                    -- 78637
-	DAS_QUEST_CC_DARO       = "adjoint Daro",                          -- 78653
-	DAS_QUEST_CC_TILELLE    = "initiée Tilelle",                       -- 79379
-	DAS_QUEST_W_OUFA        = "sergent Oufa",                          -- 59290
+	DAS_QUEST_CC_DARO       = "Le adjoint Daro",                       -- 78653
+	DAS_QUEST_CC_TILELLE    = "La initiée Tilelle",                    -- 79379
+	DAS_QUEST_W_OUFA        = "Le sergent Oufa",                       -- 59290
 	DAS_QUEST_W_USHANG      = "Ushang le sauvage",                     -- 67144
 	DAS_QUEST_W_BIRKHU      = "Birkhu l'audacieux",                    -- 67184
-	DAS_QUEST_DB_ARVINA     = "prêtre Arvina",                         -- 70157
-	DAS_QUEST_DB_BOUNTY     = "panneau des primes",                    -- 87370069-0-20444
+	DAS_QUEST_DB_ARVINA     = "Le prêtre Arvina",                      -- 70157
+	DAS_QUEST_DB_BOUNTY     = "Panneau des primes",                    -- 87370069-0-20444
 	DAS_QUEST_CAP_CARDEA    = "Cardea Gallus",                         -- 74040
 	DAS_QUEST_CAP_ALVUR     = "Alvur Baren",                           -- 73953
 	DAS_QUEST_CAP_BOLGRUL   = "Bolgrul",                               -- 71827
-	DAS_QUEST_SS_TANO       = "justiciar Tanorian",                    -- 82013
-	DAS_QUEST_SS_FARO       = "justiciar Farowël",                     -- 82121
-	DAS_QUEST_SS_TANE       = "haut commissaire Tanerline",            -- 82289
-	DAS_QUEST_CRY_BATTLE    = "tableau de missions de bataille",       -- 87370069-0-11718
-	DAS_QUEST_CRY_BOUNTY    = "tableau de missions à primes",          -- 87370069-0-11727
-	DAS_QUEST_CRY_SCOUT     = "tableau de missions de reconnaissance", -- 87370069-0-10045
-	DAS_QUEST_CRY_WARFR     = "tableau de missions du front",          -- 87370069-0-11719
+	DAS_QUEST_SS_TANO       = "Le justiciar Tanorian",                 -- 82013
+	DAS_QUEST_SS_FARO       = "La justiciar Farowël",                  -- 82121
+	DAS_QUEST_SS_TANE       = "Le haut commissaire Tanerline",         -- 82289
+	DAS_QUEST_CRY_BATTLE    = "Tableau de missions de bataille",       -- 87370069-0-11718
+	DAS_QUEST_CRY_BOUNTY    = "Tableau de missions à primes",          -- 87370069-0-11727
+	DAS_QUEST_CRY_SCOUT     = "Tableau de missions de reconnaissance", -- 87370069-0-10045
+	DAS_QUEST_CRY_WARFR     = "Tableau de missions du front",          -- 87370069-0-11719
 	DAS_QUEST_DB_LARONEN    = "Laronen",                               -- 70175
 	DAS_QUEST_DB_FINIA      = "Finia Sele",                            -- 70185
 	DAS_QUEST_DB_CODUS      = "Codus ap Dugal",                        -- 70197
