@@ -8,45 +8,53 @@ local tbl2 = {}
 DAS.QuestLists = DAS.QuestLists or {}
 DAS.QuestLists[zoneId] = {
 	["relic"] = {
-		[1] = GetString(DAS_M_REL_ASHAL),
-		[2] = GetString(DAS_M_REL_ASSAR),
-		[3] = GetString(DAS_M_REL_ASHUR),
-		[4] = GetString(DAS_M_REL_DUSHA),
-		[5] = GetString(DAS_M_REL_EBERN),
-		[6] = GetString(DAS_M_REL_MAELK),
-		[7] = GetString(DAS_M_REL_YASAM),
-  },
+		[GetString(DAS_M_REL_ASHAL)] = true,
+		[GetString(DAS_M_REL_ASSAR)] = true,
+		[GetString(DAS_M_REL_ASHUR)] = true,
+		[GetString(DAS_M_REL_DUSHA)] = true,
+		[GetString(DAS_M_REL_EBERN)] = true,
+		[GetString(DAS_M_REL_MAELK)] = true,
+		[GetString(DAS_M_REL_YASAM)] = true,
+	},
 	["hunt"] = {
-		[1] = GetString(DAS_M_HUNT_EATER),
-		[2] = GetString(DAS_M_HUNT_ZEXXI),
-		[3] = GetString(DAS_M_HUNT_RAZOR),
-		[4] = GetString(DAS_M_HUNT_JAGGE),
-		[5] = GetString(DAS_M_HUNT_STOMP),
-		[6] = GetString(DAS_M_HUNT_TARRA),
-		[7] = GetString(DAS_M_HUNT_SVEET),
-  },
+		[GetString(DAS_M_HUNT_EATER)] = true,
+		[GetString(DAS_M_HUNT_ZEXXI)] = true,
+		[GetString(DAS_M_HUNT_RAZOR)] = true,
+		[GetString(DAS_M_HUNT_JAGGE)] = true,
+		[GetString(DAS_M_HUNT_STOMP)] = true,
+		[GetString(DAS_M_HUNT_TARRA)] = true,
+		[GetString(DAS_M_HUNT_SVEET)] = true,
+	},
 	["delve"] = {
-		[1] = GetString(DAS_M_DELVE_DAEDR),
-		[2] = GetString(DAS_M_DELVE_KWAMA),
-		[3] = GetString(DAS_M_DELVE_MISIN),
-		[4] = GetString(DAS_M_DELVE_TAXES),
-		[5] = GetString(DAS_M_DELVE_TRIBA),
-		[6] = GetString(DAS_M_DELVE_SYNDI),
-  },
+		[GetString(DAS_M_DELVE_DAEDR)] = true,
+		[GetString(DAS_M_DELVE_KWAMA)] = true,
+		[GetString(DAS_M_DELVE_MISIN)] = true,
+		[GetString(DAS_M_DELVE_TAXES)] = true,
+		[GetString(DAS_M_DELVE_TRIBA)] = true,
+		[GetString(DAS_M_DELVE_SYNDI)] = true,
+	},
 	["boss"] = {
-		[1] = GetString(DAS_M_BOSS_WUYWU),
-		[2] = GetString(DAS_M_BOSS_SWARM),
-		[3] = GetString(DAS_M_BOSS_NILTH),
-		[4] = GetString(DAS_M_BOSS_SALOT),
-		[5] = GetString(DAS_M_BOSS_SIREN),
-		[6] = GetString(DAS_M_BOSS_APPRE),
-  },
+		[GetString(DAS_M_BOSS_WUYWU)] = true,
+		[GetString(DAS_M_BOSS_SWARM)] = true,
+		[GetString(DAS_M_BOSS_NILTH)] = true,
+		[GetString(DAS_M_BOSS_SALOT)] = true,
+		[GetString(DAS_M_BOSS_SIREN)] = true,
+		[GetString(DAS_M_BOSS_APPRE)] = true,
+	},
 }
 DAS.QuestListTitles = DAS.QuestListTitles or {}
 DAS.QuestListTitles[zoneId] = {
 	[1] = GetString(DAS_LIST_M_RELIC),
 }
-table.insert(tbl, DAS.QuestLists[zoneId].relic)
+table.insert(tbl, {
+	GetString(DAS_M_REL_ASHAL),
+	GetString(DAS_M_REL_ASSAR),
+	GetString(DAS_M_REL_ASHUR),
+	GetString(DAS_M_REL_DUSHA),
+	GetString(DAS_M_REL_EBERN),
+	GetString(DAS_M_REL_MAELK),
+	GetString(DAS_M_REL_YASAM),
+})
 table.insert(tbl2, "relic")
 table.insert(tbl, GetString(DAS_M_HUNT_EATER))
 table.insert(tbl2, "ash")
