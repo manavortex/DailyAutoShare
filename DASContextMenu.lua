@@ -48,8 +48,15 @@ local function toggleQuest()
     DAS.ToggleQuest(currentControl)
     DAS.RefreshLabelsWithDelay()
 end
-local function toggleSubList()
-    DasSubList:SetHidden(not DasSubList:IsHidden())
+local function toggleSubList(control)
+	local isHidden = DasSubList:IsHidden()
+	if (isHidden) then
+		DAS.SetSubLabels(control.dataQuestList)
+	end
+	DasSubList:SetHidden(not isHidden)
+	if (isHidden) then
+		DAS.setFontSize(DAS.sublabels)
+	end
 end
 function DAS.OnRightClick(control, verbose)
 	if nil == control then return end
@@ -63,9 +70,9 @@ function DAS.OnRightClick(control, verbose)
         SetMenuSpacing(3)
         SetMenuPad(10)
         SetMenuMinimumWidth(185)
-        if nil ~= control.dataQuestList then
+        if nil ~= control.dataQuestList and {} ~= control.dataQuestList then
             AddCustomMenuItem(GetString(DAS_TOGGLE_SUBLIST),
-				toggleSubList,
+				function() toggleSubList(control) end,
 				MENU_ADD_OPTION_LABEL
 			)
         else
