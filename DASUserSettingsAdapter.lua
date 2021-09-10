@@ -76,10 +76,10 @@ function DAS.SetGroupInviteDelay(value)
 	GetSettings().groupInviteDelay = value
 end
 function DAS.GetAutoAcceptInvite()
-	return DAS.settings.autoAcceptInvite
+	return DAS.GetSettings().autoAcceptInvite
 end
 function DAS.SetAutoAcceptInvite(value)
-	DAS.settings.autoAcceptInvite = value
+	DAS.GetSettings().autoAcceptInvite = value
   if value then
     EVENT_MANAGER:RegisterForEvent("DailyAutoshare", EVENT_GROUP_INVITE_RECEIVED, AcceptGroupInvite)
     else
@@ -90,16 +90,16 @@ function DAS.GetWhisperOnly()
   return GetSettings().whisperOnly
 end
 function DAS.GetMinimized()
-	return DAS.settings.minimised
+	return DAS.GetSettings().minimised
 end
 function DAS.SetMinimized(value)
-	DAS.settings.minimised = value
+	DAS.GetSettings().minimised = value
 end
 function DAS.GetAutoAcceptShared()
-	return DAS.settings.autoAcceptShared
+	return DAS.GetSettings().autoAcceptShared
 end
 function DAS.SetAutoAcceptShared(value)
-	DAS.settings.autoAcceptShared = value
+	DAS.GetSettings().autoAcceptShared = value
 	DAS.SetButtonStates()
 end
 function DAS.GetStopInviteOnDegroup()
@@ -158,10 +158,10 @@ function DAS.SetActiveFor(listName, value)
 end
 
 function DAS.GetAutoShare()
-	return DAS.settings.autoShare
+	return DAS.GetSettings().autoShare
 end
 function DAS.SetAutoShare(value)
-	DAS.settings.autoShare = value
+	DAS.GetSettings().autoShare = value
 end
 function DAS.GetAutoLeave()
 	return GetSettings().autoLeave
@@ -233,7 +233,9 @@ function DAS.GetGuildInviteNumber()
 end
 function DAS.SetGuildInviteNumber(value)
 	GetSettings().guildInviteNumber = value
-  DAS.channelTypes[value+11]      = true
+	if value ~= nil and value > 0 then
+		DAS.channelTypes[_G["CHAT_CHANNEL_GUILD_" .. value]] = true
+	end
 end
 function DAS.GetListenInGuilds()
 	return GetSettings().listenInGuilds
@@ -287,14 +289,14 @@ DAS.todaysCharacterLog      = nil
 
 function DAS.GetQuestListItem(zoneId, listName, listKey)
   if nil == zoneId or nil == listName or nil == listKey then return false end
-  if nil == DAS.settings[zoneId] or nil == DAS.settings[zoneId][listName] then return false end
-  return DAS.settings[zoneId][listName][listKey]
+  if nil == DAS.GetSettings()[zoneId] or nil == DAS.GetSettings()[zoneId][listName] then return false end
+  return DAS.GetSettings()[zoneId][listName][listKey]
 end
 
 function DAS.SetQuestListItem(zoneId, listName, listKey, value)
   if nil == zoneId or nil == listName or nil == listKey then return end
-  if nil == DAS.settings[zoneId] or nil == DAS.settings[zoneId][listName] then return end
-  DAS.settings[zoneId][listName][listKey] = value
+  if nil == DAS.GetSettings()[zoneId] or nil == DAS.GetSettings()[zoneId][listName] then return end
+  DAS.GetSettings()[zoneId][listName][listKey] = value
   zo_callLater(function() DAS.RefreshControl() end, 500)
 end
 function DAS.GetMarkerVisibility()
