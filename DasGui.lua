@@ -123,7 +123,7 @@ function DAS.MinMaxButton()
 	DAS.RefreshControl()
 end
 local function shouldHideLabel(questName, zoneId)
-  local questLists = DAS.GetZoneQuests(zoneId) or {}
+	local questLists = DAS.QuestLists[zoneId] or {}
 	-- d(zo_strformat("should <<1>> be hidden?", questName))
 	for questListName, questListData in pairs(questLists) do
 		if questListData[questName] then
@@ -248,7 +248,7 @@ function DAS.setLabels(zoneQuests)
           label.dataQuestName     = questNameOrTable
           label.dataQuestState    = DAS.GetQuestStatus(label.dataQuestName)
         end
-        local hideLabel = (hideCompleted and label.dataQuestState == DAS_STATUS_COMPLETE) or shouldHideLabel(label.dataQuestName, zoneId)
+        local hideLabel = (DAS.GetHideCompleted() and label.dataQuestState == DAS_STATUS_COMPLETE) or shouldHideLabel(label.dataQuestName, zoneId)
         -- d(zo_strformat("DAS: <<1>> state <<2>>", label.dataQuestName, label.dataQuestState))
         label:SetHidden(hideLabel)
         label.dataJournalIndex 	= DAS.GetLogIndex(label.dataQuestName)

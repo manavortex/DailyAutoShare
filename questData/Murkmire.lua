@@ -3,28 +3,28 @@ local tbl = {}
 local tbl2 = {}
 DAS.QuestLists[zoneId] = {
 	["root"] = {
-		[1] = GetString(DAS_SLAVES_ROOT_1),
-		[2] = GetString(DAS_SLAVES_ROOT_2),
-		[3] = GetString(DAS_SLAVES_ROOT_3),
-		[4] = GetString(DAS_SLAVES_ROOT_4),
-		[5] = GetString(DAS_SLAVES_ROOT_5),
-  },
+		[GetString(DAS_SLAVES_ROOT_1)] = true,
+		[GetString(DAS_SLAVES_ROOT_2)] = true,
+		[GetString(DAS_SLAVES_ROOT_3)] = true,
+		[GetString(DAS_SLAVES_ROOT_4)] = true,
+		[GetString(DAS_SLAVES_ROOT_5)] = true,
+	},
 	["delve"] = {
-		[1] = GetString(DAS_SLAVES_DELVE_1),
-		[2] = GetString(DAS_SLAVES_DELVE_2),
-		[3] = GetString(DAS_SLAVES_DELVE_3),
-		[4] = GetString(DAS_SLAVES_DELVE_4),
-		[5] = GetString(DAS_SLAVES_DELVE_5),
-		[6] = GetString(DAS_SLAVES_DELVE_6),
-  },
+		[GetString(DAS_SLAVES_DELVE_1)] = true,
+		[GetString(DAS_SLAVES_DELVE_2)] = true,
+		[GetString(DAS_SLAVES_DELVE_3)] = true,
+		[GetString(DAS_SLAVES_DELVE_4)] = true,
+		[GetString(DAS_SLAVES_DELVE_5)] = true,
+		[GetString(DAS_SLAVES_DELVE_6)] = true,
+	},
 	["boss"] = {
-		[1] = GetString(DAS_SLAVES_BOSS_1),
-		[2] = GetString(DAS_SLAVES_BOSS_2),
-		[3] = GetString(DAS_SLAVES_BOSS_3),
-		[4] = GetString(DAS_SLAVES_BOSS_4),
-		[5] = GetString(DAS_SLAVES_BOSS_5),
-		[5] = GetString(DAS_SLAVES_BOSS_6),
-  },
+		[GetString(DAS_SLAVES_BOSS_1)] = true,
+		[GetString(DAS_SLAVES_BOSS_2)] = true,
+		[GetString(DAS_SLAVES_BOSS_3)] = true,
+		[GetString(DAS_SLAVES_BOSS_4)] = true,
+		[GetString(DAS_SLAVES_BOSS_5)] = true,
+		[GetString(DAS_SLAVES_BOSS_6)] = true,
+	},
 }
 -- Grave Circumstances
 table.insert(tbl, GetString(DAS_SLAVES_BOSS_1))

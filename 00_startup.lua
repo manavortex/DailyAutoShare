@@ -103,10 +103,25 @@ local defaults = {
 			active = true,
     },
   },
+	-- Guilds
+	[57] = {
+		fg = {
+			invisible = false,
+			active = true,
+		},
+		mg = {
+			invisible = false,
+			active = true,
+		},
+		ud = {
+			invisible = false,
+			active = true,
+		},
+	},
   questShareString            = "I can give a DailyAutoShare for <<1>>, type <<2>> for an instant invite",
   whisperString               = "whisper + for an instant invite",
-	guildInviteText,
-	listenInGuilds,
+	guildInviteText = nil,
+	listenInGuilds = false,
   whisperOnly                 = false,
 	autoAcceptInvite 			      = false,
 	autoAcceptInviteInterval 	  = 5,

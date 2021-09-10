@@ -34,8 +34,6 @@ DAS.subLists.fg = DAS.subLists.guilds
 DAS.subLists.mg = DAS.subLists.guilds
 DAS.subLists.ud = DAS.subLists.guilds
 
-DAS.QuestLists[zoneId2]  = DAS.QuestLists[zoneId]
-DAS.QuestLists[zoneId3]  = DAS.QuestLists[zoneId]
 DAS.QuestListTitles = DAS.QuestListTitles or {}
 DAS.QuestListTitles[zoneId] = {
 	[1] = GetString(DAS_GUILD_ANCHORS),
@@ -44,48 +42,52 @@ DAS.QuestListTitles[zoneId] = {
 DAS.QuestListTitles[zoneId2] = DAS.QuestListTitles[zoneId]
 DAS.QuestListTitles[zoneId3] = DAS.QuestListTitles[zoneId]
 local zoneIds = {
-    [104] = {["fg"] = GetString(DAS_FG_ALIKR), ["mg"] = GetString(DAS_MG_ALIKR), ["ud"] = GetString(DAS_UD_ALIKR)}, -- Alik'r Desert
-    [381] = {["fg"] = GetString(DAS_FG_AURID), ["mg"] = GetString(DAS_MG_AURID), ["ud"] = GetString(DAS_UD_AURID)}, -- Auridon
-    [92 ] = {["fg"] = GetString(DAS_FG_BANGK), ["mg"] = GetString(DAS_MG_BANGK), ["ud"] = GetString(DAS_UD_BANGK)}, -- Bangkorai
-    [57 ] = {["fg"] = GetString(DAS_FG_DESHA), ["mg"] = GetString(DAS_MG_DESHA), ["ud"] = GetString(DAS_UD_DESHA)}, -- Deshaan
-    [101] = {["fg"] = GetString(DAS_FG_EASTM), ["mg"] = GetString(DAS_MG_EASTM), ["ud"] = GetString(DAS_UD_EASTM)}, -- Eastmarch
-    [3  ] = {["fg"] = GetString(DAS_FG_GLENU), ["mg"] = GetString(DAS_MG_GLENU), ["ud"] = GetString(DAS_UD_GLENU)}, -- Glenumbra
-    [383] = {["fg"] = GetString(DAS_FG_GRAHT), ["mg"] = GetString(DAS_MG_GRAHT), ["ud"] = GetString(DAS_UD_GRAHT)}, -- Grahtwood
-    [108] = {["fg"] = GetString(DAS_FG_GREEN), ["mg"] = GetString(DAS_MG_GREEN), ["ud"] = GetString(DAS_UD_GREEN)}, -- Greenshade
-    [58 ] = {["fg"] = GetString(DAS_FG_MALAB), ["mg"] = GetString(DAS_MG_MALAB), ["ud"] = GetString(DAS_UD_MALAB)}, -- Malabal Tor
-    [382] = {["fg"] = GetString(DAS_FG_REAPE), ["mg"] = GetString(DAS_MG_REAPE), ["ud"] = GetString(DAS_UD_REAPE)}, -- Reaper's March
-    [103] = {["fg"] = GetString(DAS_FG_RIFT),  ["mg"] = GetString(DAS_MG_RIFT),  ["ud"] = GetString(DAS_UD_RIFT)},  -- The Rift
-    [20 ] = {["fg"] = GetString(DAS_FG_RIVEN), ["mg"] = GetString(DAS_MG_RIVEN), ["ud"] = GetString(DAS_UD_RIVEN)}, -- Rivenspire
-    [117] = {["fg"] = GetString(DAS_FG_SHADO), ["mg"] = GetString(DAS_MG_SHADO), ["ud"] = GetString(DAS_UD_SHADO)}, -- Shadowfen
-    [41 ] = {["fg"] = GetString(DAS_FG_STONE), ["mg"] = GetString(DAS_MG_STONE), ["ud"] = GetString(DAS_UD_STONE)}, -- Stonefalls
-    [19 ] = {["fg"] = GetString(DAS_FG_STORM), ["mg"] = GetString(DAS_MG_STORM), ["ud"] = GetString(DAS_UD_STORM)}, -- Stormhaven
+	[104] = {["fg"] = GetString(DAS_FG_ALIKR), ["mg"] = GetString(DAS_MG_ALIKR), ["ud"] = GetString(DAS_UD_ALIKR)}, -- Alik'r Desert
+	[381] = {["fg"] = GetString(DAS_FG_AURID), ["mg"] = GetString(DAS_MG_AURID), ["ud"] = GetString(DAS_UD_AURID)}, -- Auridon
+	[92 ] = {["fg"] = GetString(DAS_FG_BANGK), ["mg"] = GetString(DAS_MG_BANGK), ["ud"] = GetString(DAS_UD_BANGK)}, -- Bangkorai
+	[57 ] = {["fg"] = GetString(DAS_FG_DESHA), ["mg"] = GetString(DAS_MG_DESHA), ["ud"] = GetString(DAS_UD_DESHA)}, -- Deshaan
+	[101] = {["fg"] = GetString(DAS_FG_EASTM), ["mg"] = GetString(DAS_MG_EASTM), ["ud"] = GetString(DAS_UD_EASTM)}, -- Eastmarch
+	[3  ] = {["fg"] = GetString(DAS_FG_GLENU), ["mg"] = GetString(DAS_MG_GLENU), ["ud"] = GetString(DAS_UD_GLENU)}, -- Glenumbra
+	[383] = {["fg"] = GetString(DAS_FG_GRAHT), ["mg"] = GetString(DAS_MG_GRAHT), ["ud"] = GetString(DAS_UD_GRAHT)}, -- Grahtwood
+	[108] = {["fg"] = GetString(DAS_FG_GREEN), ["mg"] = GetString(DAS_MG_GREEN), ["ud"] = GetString(DAS_UD_GREEN)}, -- Greenshade
+	[58 ] = {["fg"] = GetString(DAS_FG_MALAB), ["mg"] = GetString(DAS_MG_MALAB), ["ud"] = GetString(DAS_UD_MALAB)}, -- Malabal Tor
+	[382] = {["fg"] = GetString(DAS_FG_REAPE), ["mg"] = GetString(DAS_MG_REAPE), ["ud"] = GetString(DAS_UD_REAPE)}, -- Reaper's March
+	[103] = {["fg"] = GetString(DAS_FG_RIFT),  ["mg"] = GetString(DAS_MG_RIFT),  ["ud"] = GetString(DAS_UD_RIFT)},  -- The Rift
+	[20 ] = {["fg"] = GetString(DAS_FG_RIVEN), ["mg"] = GetString(DAS_MG_RIVEN), ["ud"] = GetString(DAS_UD_RIVEN)}, -- Rivenspire
+	[117] = {["fg"] = GetString(DAS_FG_SHADO), ["mg"] = GetString(DAS_MG_SHADO), ["ud"] = GetString(DAS_UD_SHADO)}, -- Shadowfen
+	[41 ] = {["fg"] = GetString(DAS_FG_STONE), ["mg"] = GetString(DAS_MG_STONE), ["ud"] = GetString(DAS_UD_STONE)}, -- Stonefalls
+	[19 ] = {["fg"] = GetString(DAS_FG_STORM), ["mg"] = GetString(DAS_MG_STORM), ["ud"] = GetString(DAS_UD_STORM)}, -- Stormhaven
 }
+
+local tbl_fg, tbl_mg, tbl_ud = {}, {}, {}
 for id, guildStrings in pairs(zoneIds) do
-    DAS.shareables[id]      = DAS.shareables[id]    or {}
-    DAS.QuestLists[id]      = DAS.QuestLists[id]    or {}
-    DAS.QuestLists[id].fg   = DAS.QuestLists[id].fg or {}
-    DAS.QuestLists[id].mg   = DAS.QuestLists[id].mg or {}
-    DAS.QuestLists[id].ud   = DAS.QuestLists[id].ud or {}
-    -- local bingoTable        = DAS.bingo[id]         or {}
-    table.insert(DAS.shareables[id],    guildStrings.fg)
-    -- table.insert(bingoTable,            fgBingo)
-    table.insert(DAS.shareables[id],    guildStrings.mg)
-    -- table.insert(bingoTable,            mgBingo)
-    table.insert(DAS.shareables[id],    guildStrings.ud)
-    -- table.insert(bingoTable,            udBingo)
-    -- DAS.makeBingoTable(id,              bingoTable)
-    table.insert(DAS.QuestLists[zoneId].fg, guildStrings.fg)
-    table.insert(DAS.QuestLists[zoneId].mg, guildStrings.mg)
-    table.insert(DAS.QuestLists[zoneId].ud, guildStrings.ud)
+	DAS.shareables[id] = DAS.shareables[id] or {}
+	local bingoTable        = DAS.bingo[id]         or {}
+	table.insert(DAS.shareables[id],    guildStrings.fg)
+	table.insert(bingoTable,            fgBingo)
+	table.insert(DAS.shareables[id],    guildStrings.mg)
+	table.insert(bingoTable,            mgBingo)
+	table.insert(DAS.shareables[id],    guildStrings.ud)
+	table.insert(bingoTable,            udBingo)
+	DAS.makeBingoTable(id,              bingoTable)
+	DAS.QuestLists[zoneId].fg[guildStrings.fg] = true
+	DAS.QuestLists[zoneId].mg[guildStrings.mg] = true
+	DAS.QuestLists[zoneId].ud[guildStrings.ud] = true
+	table.insert(tbl_fg, guildStrings.fg)
+	table.insert(tbl_mg, guildStrings.mg)
+	table.insert(tbl_ud, guildStrings.ud)
 end
+DAS.QuestLists[zoneId2] = DAS.QuestLists[zoneId]
+DAS.QuestLists[zoneId3] = DAS.QuestLists[zoneId]
 
-table.insert(tbl1, DAS.QuestLists[zoneId].fg)
--- table.insert(tbl2, fgBingo)
-table.insert(tbl1, DAS.QuestLists[zoneId].mg)
--- table.insert(tbl2, mgBingo)
+table.insert(tbl1, tbl_fg)
+table.insert(tbl2, fgBingo)
+table.insert(tbl1, tbl_mg)
+table.insert(tbl2, mgBingo)
 
-for idx, questName in pairs(DAS.QuestLists[zoneId].ud) do
+for _, questName in pairs(tbl_ud) do
     table.insert(tbl1, questName)
+    -- cannot assign the same bingo code to multiple quests like that
     -- table.insert(tbl2, udBingo)
 end
 
