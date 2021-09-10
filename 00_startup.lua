@@ -306,6 +306,11 @@ local function OnPlayerActivated(eventCode)
 	DAS.SetHidden(not active)
   DAS.SetAutoInvite(DAS.GetAutoInvite()) -- disables if we aren't group lead
   DAS.SetChatListenerStatus(DAS.autoInviting)
+	DAS.SetListenInGuilds(DAS.GetSettings().listenInGuilds)
+	local guildInviteNumber = DAS.GetSettings().guildInviteNumber
+	if guildInviteNumber then
+		DAS.SetGuildInviteNumber(guildInviteNumber)
+	end
   DAS.guildInviteText = DAS.GetGuildInviteText()
   DAS.cacheChatterData()
 end
