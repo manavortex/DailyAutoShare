@@ -1,7 +1,5 @@
--- local currentDate   = tonumber(GetDate())
-currentDate   = tonumber(GetDate())
-characterName = DAS.pdn or GetUnitName(UNITTAG_PLAYER)
--- local characterName = DAS.pdn or GetUnitName(UNITTAG_PLAYER)
+local currentDate = tonumber(GetDate())
+local characterName = DAS.pdn or GetUnitName(UNITTAG_PLAYER)
 local function getSettingsArray()
   currentDate   = currentDate or tonumber(GetDate())
   characterName = characterName or GetUnitName(UNITTAG_PLAYER)
@@ -25,7 +23,7 @@ function DAS.GetCompleted(questName)
 end
 function DAS.LogQuest(questName, completed)
   if not questName then return end
-  local timeStringNumber  = timeStringNumber or tonumber(GetTimeString():sub(1,2))
+  local timeStringNumber  = tonumber(GetTimeString():sub(1,2))
   local settings 	        = getSettingsArray()
   local afterEight 	= (timeStringNumber >= 8) -- 08:17:02 - reset is at 8
   local afterEightHasChanged = false

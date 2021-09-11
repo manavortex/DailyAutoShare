@@ -3,6 +3,19 @@ DAS.QuestIndexTable = {}
 DAS.QuestNameTable = {}
 local p = DAS.DebugOut
 local en = "en"
+local function getEnglishQuestName(localQuestName)
+	if localQuestName == nil or #localQuestName == 0 then return end
+	if DAS.locale == en or not DAS_STRINGS_LOCALE or not DAS.locale then
+		return localQuestName
+	end
+	for key, value in pairs(DAS_STRINGS_LOCALE[DAS.locale]) do
+		if value == localQuestName then
+			return DAS_STRINGS_LOCALE.en[key]
+		end
+	end
+	return localQuestName
+end
+DAS.GetEnglishQuestName = getEnglishQuestName
 local function getEnglishQuestNames(activeQuestNames)
 	activeQuestNames = activeQuestNames or DAS.GetZoneQuests()
 	if DAS.locale == en or not DAS_STRINGS_LOCALE or not DAS.locale then
@@ -31,7 +44,7 @@ local function askForQuest(questNames)
   return ret:sub(1, -3)
 end
 local function generateQuestSpam(questNames)
-  local ret = ""
+  local ret, bingoString = "", nil
   for _, questName in ipairs(questNames) do
     bingoString = DAS.GetBingoStringFromQuestName(questName)
     if not ret:find(bingoString) then
@@ -46,7 +59,7 @@ local space = " "
 local any = "+any"
 local eitherof = "either of "
 local function getQuestNames(activeQuestNames)
-  activeQuestNames = activeQuestNames or (questName and {[1] = questName,}) or DAS.GetActiveQuestNamesFromGui()
+  activeQuestNames = activeQuestNames or DAS.GetActiveQuestNamesFromGui()
   local questNames = empty
   for _, questName in pairs(activeQuestNames) do
     questNames = questNames .. questName .. comma
@@ -61,55 +74,52 @@ local function whisperify(qsString)
   end
   return qsString .. space .. varargTwo
 end
-local function GenerateBingoString(activeQuestNames)
-  activeQuestNames = activeQuestNames or (questName and {[1] = questName,}) or DAS.GetActiveQuestNamesFromGui()
+local function GenerateBingoString(activeQuestNames, customBingoString)
+	activeQuestNames = activeQuestNames or DAS.GetActiveQuestNamesFromGui()
 	activeQuestNames = DAS.getEnglishQuestNames(activeQuestNames)
-	local qsString = DAS.GetSettings().questShareString
-	local bingoCodes = {}
-  local bingo, questNames = empty, empty
-  local bingoString = (DAS.fullBingoString or empty):gsub(varargAny, empty)
+	local bingoString = customBingoString or (DAS.fullBingoString or empty):gsub(varargAny, empty)
 	if DAS.GetAutoInvite() then
-    local questNames = getQuestNames(activeQuestNames)
-    -- if we're listening for whisper only, adjust spam accordingly
-    if DAS.GetWhisperOnly() then
-      qsString = whisperify(qsString)
-      bingoString = DAS.GetSettings().whisperString
-      else
-      -- if we have more than one, insert either of
-      if #bingoString > 0 then
-        bingo = ((#activeQuestNames > 1 and eitherof) or empty) .. bingoString
-      end
-    end
-    return zo_strformat(qsString, questNames, bingoString)
-  end
+		local qsString = DAS.GetSettings().questShareString
+		local questNames = getQuestNames(activeQuestNames)
+		local bingo = empty
+		-- if we're listening for whisper only, adjust spam accordingly
+		if DAS.GetWhisperOnly() then
+			qsString = whisperify(qsString)
+			bingoString = DAS.GetSettings().whisperString
+		else
+			-- if we have more than one, insert either of
+			if #bingoString > 0 then
+				bingo = ((#activeQuestNames > 1 and eitherof) or empty) .. bingoString
+			end
+		end
+		return zo_strformat(qsString, questNames, bingo or bingoString)
+	end
 	if #bingoString > 0 then return bingoString end
-  if NonContiguousCount(DAS.GetShareableLog()) == 0 and #activeQuestNames == 0 then
-    return any
-  end
-  activeQuestNames = DAS.GetOpenQuestNamesFromGui()
-  return generateQuestSpam(activeQuestNames)
+	if NonContiguousCount(DAS.GetShareableLog()) == 0 and #activeQuestNames == 0 then
+		return any
+	end
+	activeQuestNames = DAS.GetOpenQuestNamesFromGui()
+	return generateQuestSpam(activeQuestNames)
 end
 DAS.GenerateBingoString = GenerateBingoString
-local function SpamChat(questName)
+local function SpamChat(questName, customBingoString)
 	if CHAT_SYSTEM.textEntry.editControl:HasFocus() then
 		CHAT_SYSTEM.textEntry.editControl:Clear()
   end
 	local activeQuestNames = (questName and {[1] = questName,}) or DAS.GetActiveQuestNamesFromGui()
 	if nil == questName then
 		activeQuestNames = DAS.GetActiveQuestNamesFromGui()
-    else
-		table.insert(activeQuestNames, questName)
-  end
+	end
 	if #activeQuestNames == 0 then
 		DAS.SetAutoInvite(false)
-  end
-	StartChatInput(DAS.GenerateBingoString(activeQuestNames), CHAT_CHANNEL_ZONE)
+	end
+	StartChatInput(DAS.GenerateBingoString(activeQuestNames, customBingoString), CHAT_CHANNEL_ZONE)
 end
 DAS.SpamChat = SpamChat
 function DAS.SpamForSingle(questName, bingoString)
 	if nil == questName and nil == bingoString then return end
 	questName	= questName		or DAS.GetQuestNameFromBingoString(bingoString)
-	bingoString = bingoString 	or GetBingoStringFromQuestName(questName)
+	bingoString = bingoString 	or DAS.GetBingoStringFromQuestName(questName)
 	local lftext = bingoString
 end
 -- called from XML
@@ -129,7 +139,7 @@ function DAS.ToggleQuest(control)
 	local newQuestState = (completed and DAS_STATUS_OPEN) or DAS_STATUS_COMPLETE
 	if not completed then
 		control.dataIsTracked = false
-  end
-  control.dataQuestState = newQuestState
-	DAS.LogQuest(questName, newQuestState)
+	end
+	control.dataQuestState = newQuestState
+	DAS.LogQuest(questName, not completed)
 end

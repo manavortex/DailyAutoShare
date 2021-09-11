@@ -1,7 +1,6 @@
 local DAS = DailyAutoShare
 local p   = DAS.DebugOut
 function DAS.GetZoneId()  return GetZoneId(GetUnitZoneIndex(UNITTAG_PLAYER)) or 0 end
-function PrintZoneId()    d(GetZoneId(GetUnitZoneIndex(UNITTAG_PLAYER))) end
 local typeTable   = "table"
 local typeString  = "string"
 local function evaluateNestedLists(tbl)
@@ -65,6 +64,15 @@ function DAS.IsQuestActive(questName)
 	end
 	return true
 end
+function DAS.GetBingoIndexFromMessage(messageText)
+	local bingoArray = DAS.bingo[DAS.GetZoneId()]
+	if nil == bingoArray then return end
+	for bingo, questindex in pairs(bingoArray) do
+		if messageText:match(bingo) then
+			return questindex
+		end
+	end
+end
 function DAS.GetBingoIndexFromQuestName(questName)
 	for questIndex, checkQuestName in pairs(DAS.GetZoneQuests()) do
 		if questName == checkQuestName then
@@ -113,7 +121,7 @@ function DAS.GetQuestNameFromIndex(bingoIndex)
 	return DAS.GetZoneQuests()[bingoIndex] 
 end
 function DAS.GetQuestNameFromBingoString(bingoString)
-	local bingoIndex = GetBingoIndexFromMessage(bingoString)
+	local bingoIndex = DAS.GetBingoIndexFromMessage(bingoString)
 	if nil == bingoIndex then return end
 	return DAS.GetQuestNameFromIndex(bingoIndex)
 end
