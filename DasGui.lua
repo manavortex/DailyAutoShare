@@ -83,9 +83,7 @@ function DAS.QuestLabelClicked(control, mouseButton)
 		return DAS.OnRightClick(control)
   end
 	if (nil ~= control.dataQuestList and {} ~= control.dataQuestList) then
-		DAS.SetSubLabels(control.dataQuestList)
-		DasSubList:SetHidden(false)
-		DAS.setFontSize(DAS.sublabels)
+		return DAS.RefreshSubLabels(control)
 	end
 	local journalIndex          = control.dataJournalIndex or 99
 	if IsValidQuestIndex(journalIndex) then
@@ -95,6 +93,12 @@ function DAS.QuestLabelClicked(control, mouseButton)
       ShareQuest(journalIndex)
     end
   end
+end
+function DAS.RefreshSubLabels(control)
+	DasSubList.dataCurrentList = control
+	DAS.SetSubLabels(control.dataQuestList)
+	DasSubList:SetHidden(false)
+	DAS.setFontSize(DAS.sublabels)
 end
 function DAS.Donate(control, mouseButton)
 	local amount = 2000
@@ -156,7 +160,7 @@ local function setControlText(label, hidden)
     label:SetState(BSTATE_NORMAL)
   end
 end
-function setLabelTable(questTable)
+local function setLabelTable(questTable)
   local status = DAS_STATUS_COMPLETE
   local index = 1
   local questName, tmpStatus = nil
@@ -233,7 +237,7 @@ function DAS.setLabels(zoneQuests)
   local questName
 	for index, questNameOrTable in pairs(zoneQuests) do
     if not labelTexts[questNameOrTable] then
-      label = DAS.labels[numLabels] -- despite the name these are actually buttons
+      local label = DAS.labels[numLabels] -- despite the name these are actually buttons
       if nil ~= label then
         local status                      = DAS_STATUS_OPEN
         visibleButtonIndex 			          = visibleButtonIndex +1
@@ -252,9 +256,7 @@ function DAS.setLabels(zoneQuests)
         -- d(zo_strformat("DAS: <<1>> state <<2>>", label.dataQuestName, label.dataQuestState))
         label:SetHidden(hideLabel)
         label.dataJournalIndex 	= DAS.GetLogIndex(label.dataQuestName)
-        bingoString, bingoIndex = DAS.GetBingoStringFromQuestName(label.dataQuestName)
-        label.dataBingoString 	= bingoString
-        label.dataBingoIndex 	= bingoIndex
+        label.dataBingoString, label.dataBingoIndex = DAS.GetBingoStringFromQuestName(label.dataQuestName)
         label.dataTitle         = label.dataTitle or ""
         if label.dataQuestState == DAS_STATUS_ACTIVE then
           table.insert(DAS.activeZoneQuests, label.dataJournalIndex)

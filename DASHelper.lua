@@ -16,7 +16,7 @@ end
 -- DAS_STATUS_ACTIVE 	= 2,
 -- DAS_STATUS_TRACKED 	= 3
 local refreshedRecently = false
-function refreshQuestLogs(forceOverride)
+local function refreshQuestLogs(forceOverride)
 	forceOverride 			= forceOverride or DAS.questCacheNeedsRefresh or DAS.QuestIndexTable == {} or DAS.QuestNameTable == {}
 	if forceOverride 		then refreshedRecently = false end
 	if refreshedRecently 	then return end
@@ -25,7 +25,7 @@ function refreshQuestLogs(forceOverride)
 	DAS.QuestNameTable		= {}
 	for i=1, 25 do
 		if IsValidQuestIndex(i) then
-			journalQuestName, _, _, _, _, _, tracked = GetJournalQuestInfo(i)
+			local journalQuestName, _, _, _, _, _, tracked = GetJournalQuestInfo(i)
 			journalQuestName = zo_strformat(journalQuestName)
 			DAS.QuestIndexTable[i] = journalQuestName
 			DAS.QuestNameTable[journalQuestName] = i
@@ -123,8 +123,8 @@ local function EscapeString(text)
 	return text or ""
  end
 function DAS.IsMatch(param1, param2)
-	string1 = EscapeString(tostring(param1):lower())
-	string2 = EscapeString(tostring(param2):lower())
+	local string1 = EscapeString(tostring(param1):lower())
+	local string2 = EscapeString(tostring(param2):lower())
 	if #string1 == 0 or #string2 == 0 then return false end
 	return string.match(string1, string2) or string.match(string2, string2) or string1 == string2
  end

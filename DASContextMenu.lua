@@ -1,6 +1,5 @@
 local guiHeight = GuiRoot:GetHeight()
 local guiWidth = GuiRoot:GetWidth()
-local questName, journalIndex, bingoString, currentControl
 local function getAnchorPos(control)
 	local menuWidth 	= ZO_Menu:GetWidth()
 	local menuHeight 	= ZO_Menu:GetWidth()
@@ -22,35 +21,38 @@ local function getAnchorPos(control)
 	return	TOPLEFT, TOPRIGHT
 end
 local function spamChat(questNameParam, bingoStringParam)
+    if DAS.GetAutoInvite() then
+        return DAS.SpamChat(questNameParam, bingoStringParam)
+    end
     if CHAT_SYSTEM.textEntry.editControl:HasFocus() then
 		CHAT_SYSTEM.textEntry.editControl:Clear()
 	end
-    local chatInputString = bingoStringParam or bingoString
-    if DAS.GetAutoInvite() then
-        chatInputString = zo_strformat(DAS.GetSettings().questShareString, questNames, bingoString)
-    end
-    StartChatInput(chatInputString, CHAT_CHANNEL_ZONE)
+    StartChatInput(bingoStringParam, CHAT_CHANNEL_ZONE)
 end
-local function forceAssist()
+local function forceAssist(journalIndex)
     if nil == FOCUSED_QUEST_TRACKER then return end
     FOCUSED_QUEST_TRACKER:ForceAssist(journalIndex)
 end
-local function shareQuest()
+local function shareQuest(journalIndex)
     ShareQuest(journalIndex)
 end
-local function abandonQuest()
+local function abandonQuest(journalIndex, questName)
     AbandonQuest(journalIndex)
     DAS.LogQuest(questName, false)
     DAS.questCacheNeedsRefresh = true
     DAS.RefreshLabelsWithDelay()
 end
-local function toggleQuest()
-    DAS.ToggleQuest(currentControl)
+local function toggleQuest(control)
+    DAS.ToggleQuest(control)
     DAS.RefreshLabelsWithDelay()
+    if control:IsChildOf(DasSubList) and DasSubList.dataCurrentList then
+        DAS.RefreshSubLabels(DasSubList.dataCurrentList)
+    end
 end
 local function toggleSubList(control)
 	local isHidden = DasSubList:IsHidden()
 	if (isHidden) then
+		DasSubList.dataCurrentList = control
 		DAS.SetSubLabels(control.dataQuestList)
 	end
 	DasSubList:SetHidden(not isHidden)
@@ -60,10 +62,6 @@ local function toggleSubList(control)
 end
 function DAS.OnRightClick(control, verbose)
 	if nil == control then return end
-	questName     = control.dataQuestName
-	journalIndex 	= control.dataJournalIndex
-	bingoString 	= control.dataBingoString
-	currentControl  = control
     local menuShowing = IsMenuVisible() and GetMenuOwner() == control
     ClearMenu()
     if not menuShowing then
@@ -78,27 +76,27 @@ function DAS.OnRightClick(control, verbose)
         else
             if control.dataQuestState ~= DAS_STATUS_COMPLETE then
                 AddCustomMenuItem(GetString(DAS_SI_SPAM_SINGLE),
-                    spamChat,
+                    function() spamChat(control.dataQuestName, control.dataBingoString) end,
                     MENU_ADD_OPTION_LABEL
                 )
             end
             if IsValidQuestIndex(control.dataJournalIndex) then
                 AddCustomMenuItem(GetString(DAS_SI_SHARE),
-                    shareQuest,
+                    function() shareQuest(control.dataJournalIndex) end,
                     MENU_ADD_OPTION_LABEL
                 )
                 AddCustomMenuItem("* Focus",
-                    forceAssist,
+                    function() forceAssist(control.dataJournalIndex) end,
                     MENU_ADD_OPTION_LABEL
                 )
                 AddCustomMenuItem(GetString(DAS_SI_ABANDON),
-                    abandonQuest,
+                    function() abandonQuest(control.dataJournalIndex, control.dataQuestName) end,
                     MENU_ADD_OPTION_LABEL
                 )
             else
                 local key = (control.dataQuestState == DAS_STATUS_OPEN and DAS_SI_SETOPEN_TRUE) or DAS_SI_SETOPEN_FALSE
                 AddCustomMenuItem(GetString(key),
-                    toggleQuest,
+                    function() toggleQuest(control) end,
                     MENU_ADD_OPTION_LABEL
                 )
             end
