@@ -146,8 +146,8 @@ function DAS.OpenDailyPresent()
 	local numCompleted 	= NonContiguousCount(DAS.GetShareableLog())
 	local numOpen 		= NonContiguousCount(DAS.GetZoneQuests())
 	if  (numCompleted < numOpen) then return true end
-	for entry, data in pairs(DAS.GetShareableLog()) do
-		if not data["completed"] then return true end
+	for _, data in pairs(DAS.GetShareableLog()) do
+		if not data then return true end
 	end
 	return false
 end
