@@ -336,27 +336,26 @@ end
 local function OnQuestToolUpdate() 
   forceRefreshControl()
 end
-local function OnQuestRemoved(eventCode, isCompleted, journalIndex, questName, zoneIndex, poiIndex, questId)
-  -- p("OnQuestRemoved called: <<1>> (journalIndex <<2>>, questId <<3>>)", questName, journalIndex, questId)
-  local zoneId = DAS.GetZoneId()
-  local zoneIds = DAS.questIds[zoneId] or {}
-  -- is it a daily quest, and are we logging?
-  if not ((zoneIds[questName] or DAS_QUEST_IDS[questId]) and DAS.GetActiveIn(zoneId)) then return end
+local function OnQuestRemoved(_, isCompleted, journalIndex, questName, zoneIndex, _, questId)
+	local zoneId = GetZoneId(zoneIndex)
+	local zoneIds = DAS.questIds[zoneId] or {}
+	-- is it a daily quest, and are we logging?
+	if not ((zoneIds[questId] or DAS_QUEST_IDS[questId]) and DAS.GetActiveIn(zoneId)) then return end
 	DAS.LogQuest(questName, isCompleted)
-  -- set auto invite off until the questlog has refreshed
+	-- set auto invite off until the questlog has refreshed
 	local autoInvite = DAS.GetAutoInvite()
-  DAS.SetAutoInvite(false)
-  local bingoIndex = DAS.GetBingoIndexFromQuestName(questName) or 0
-  DAS.activeBingoIndices[bingoIndex] = false
-  if DAS.trackedIndex == journalIndex then
-    DAS.trackedIndex = 99
-  end
-  zo_callLater(function()
-    DAS.SetAutoInvite(autoInvite)
-    forceRefreshControl()
-    DAS.questCacheNeedsRefresh = true
-    DAS.RefreshLabelsWithDelay()
-  end, 5000)
+	DAS.SetAutoInvite(false)
+	local bingoIndex = DAS.GetBingoIndexFromQuestName(questName) or 0
+	DAS.activeBingoIndices[bingoIndex] = false
+	if DAS.trackedIndex == journalIndex then
+		DAS.trackedIndex = 99
+	end
+	zo_callLater(function()
+		DAS.SetAutoInvite(autoInvite)
+		forceRefreshControl()
+		DAS.questCacheNeedsRefresh = true
+		DAS.RefreshLabelsWithDelay()
+	end, 5000)
 end
 local alreadyRefreshing = false
 local function questRefresh()
