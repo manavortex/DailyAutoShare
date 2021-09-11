@@ -260,15 +260,40 @@ end
 --==============================
 --======= Event hooks  =========
 --==============================
-local function OnGroupTypeChanged(eventCode, unitTag)
-	if IsUnitGrouped(UNITTAG_PLAYER) then
-    if not DAS.GetAutoShare() and DAS.GetResetAutoShareOnNewGroup() then
-      DAS.SetAutoShare(true)
-    end
-    return
-  end
-  if DAS.GetStopInviteOnDegroup() then DAS.SetAutoInvite(false) end
+local groupSize = 0
+local function HandleGroupResize()
+	if not (DAS.GetAutoShare() and DAS.GetActiveIn()) then return end
+	local newGroupSize = GetGroupSize()
+	if newGroupSize > groupSize then
+		p(zo_strformat("[DAS] Group size changed from <<1>> to <<2>>, sharing the dailies", groupSize, newGroupSize))
+		DAS.TryShareActiveDaily()
+	end
+	groupSize = newGroupSize
 end
+
+---EVENT_GROUP_UPDATE
+local function OnGroupUpdate()
+	HandleGroupResize()
+end
+
+---EVENT_GROUP_MEMBER_LEFT
+---@param _ any _eventCode_
+---@param _ string _memberCharacterName_
+---@param _ any _reason_
+---@param isLocalPlayer boolean _isLocalPlayer_
+---@param _ boolean _isLeader_
+---@param _ string _memberDisplayName_
+---@param _ boolean _actionRequiredVote_
+local function OnGroupMemberLeft(_, _, _, isLocalPlayer)
+	if isLocalPlayer then
+		groupSize = 0
+		if not DAS.GetAutoShare() and DAS.GetResetAutoShareOnNewGroup() then
+			DAS.SetAutoShare(true)
+		end
+		if DAS.GetStopInviteOnDegroup() then DAS.SetAutoInvite(false) end
+	end
+end
+
 local function forceRefreshControl() DAS.RefreshControl(true) end
 local function OnQuestAdded(eventCode, journalIndex, questName, objectiveName)
 	local zoneId = DAS.GetZoneId()
@@ -314,24 +339,19 @@ end
 local function OnChatMessage(...)
    DAS.OnChatMessage(...)
 end
-local function OnPlayerActivated(eventCode)
-	local active 		= DAS.GetActiveIn()
+local function OnPlayerActivated()
+	local active = DAS.GetActiveIn()
 	DAS.SetHidden(not active)
-  DAS.SetAutoInvite(DAS.GetAutoInvite()) -- disables if we aren't group lead
-  DAS.SetChatListenerStatus(DAS.autoInviting)
+	DAS.SetAutoInvite(DAS.GetAutoInvite()) -- disables if we aren't group lead
+	DAS.SetChatListenerStatus(DAS.autoInviting)
 	DAS.SetListenInGuilds(DAS.GetSettings().listenInGuilds)
 	local guildInviteNumber = DAS.GetSettings().guildInviteNumber
 	if guildInviteNumber then
 		DAS.SetGuildInviteNumber(guildInviteNumber)
 	end
-  DAS.guildInviteText = DAS.GetGuildInviteText()
-  DAS.cacheChatterData()
-end
-local function OnUnitCreated(eventCode, unitTag)
-  local unitZone = GetZoneId(GetUnitZoneIndex(unitTag))
-  if not DAS.GetActiveIn(unitZone) then return end
-  if GetUnitDisplayName(unitTag) == cachedDisplayName then return end
-  DAS.TryShareActiveDaily(unitZone)
+	DAS.guildInviteText = DAS.GetGuildInviteText()
+	DAS.cacheChatterData()
+	HandleGroupResize()
 end
 local function OnQuestToolUpdate() 
   forceRefreshControl()
@@ -387,9 +407,8 @@ local function RegisterEventHooks()
 	em:RegisterForEvent(DAS.name, EVENT_QUEST_ADDED, 			OnQuestAdded)
 	em:RegisterForEvent(DAS.name, EVENT_QUEST_REMOVED, 			OnQuestRemoved)
 	em:RegisterForEvent(DAS.name, EVENT_QUEST_SHARED, 			OnQuestShared)
-	em:RegisterForEvent(DAS.name, EVENT_GROUP_TYPE_CHANGED,     OnGroupTypeChanged)
-	em:RegisterForEvent(DAS.name, EVENT_UNIT_CREATED,	 		OnUnitCreated)
-	em:RegisterForEvent(DAS.name, EVENT_UNIT_DESTROYED, 		OnGroupTypeChanged)
+	em:RegisterForEvent(DAS.name, EVENT_GROUP_UPDATE,			OnGroupUpdate)
+	em:RegisterForEvent(DAS.name, EVENT_GROUP_MEMBER_LEFT, 		OnGroupMemberLeft)
 	em:RegisterForEvent(DAS.name, EVENT_CHAT_MESSAGE_CHANNEL,   OnChatMessage)
 	-- DasControl:OnMoveStop
 	-- DailyAutoShare.SaveControlLocation(self)
