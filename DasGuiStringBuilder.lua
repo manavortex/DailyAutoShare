@@ -135,11 +135,11 @@ function DAS.SettingsButton(control, mouseButton)
 end
 function DAS.ToggleQuest(control)
 	local questName = control["dataQuestName"] or control:GetText()
-	local completed = DAS.GetCompleted(questName)
-	local newQuestState = (completed and DAS_STATUS_OPEN) or DAS_STATUS_COMPLETE
-	if not completed then
+	local isDone = DAS.IsQuestDone(questName)
+	local newQuestState = (isDone and DAS_STATUS_OPEN) or DAS_STATUS_COMPLETE
+	if not isDone then
 		control.dataIsTracked = false
 	end
 	control.dataQuestState = newQuestState
-	DAS.LogQuest(questName, not completed)
+	DAS.LogQuest(questName, not isDone)
 end
