@@ -13,13 +13,13 @@ end
 function DAS.GetShareableLog()
 	day = getToday()
 	local settings = DAS.globalSettings.completionLog or {}
-	-- initialize if empty
-	settings[characterName] = settings[characterName] or {}
 	-- purge the old entries
 	if settings._day ~= day then
 		settings = {}
 		settings._day = day
 	end
+	-- initialize if empty
+	settings[characterName] = settings[characterName] or {}
 	-- make sure it's set
 	DAS.globalSettings.completionLog = settings
 	DAS.todaysLog          = DAS.globalSettings.completionLog
