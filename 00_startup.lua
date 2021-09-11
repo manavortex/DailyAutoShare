@@ -300,18 +300,16 @@ local function acceptQuestLoop()
   questLoopInterval = questLoopInterval + questLoopInterval*0.5
   zo_callLater(acceptQuestLoop, questLoopInterval)
 end
-local function OnQuestShared(eventCode, questId)
-  if not (DAS.GetActiveIn()) and DAS.settings.autoAcceptShared  then return end
-  local questName     =  GetOfferedQuestShareInfo(questId)
-  p(zo_strformat("<<1>> \t <<2>>", questId, questName))
+local function OnQuestShared(_, questId)
+	if not (DAS.GetActiveIn()) and DAS.settings.autoAcceptShared  then return end
+	local questName     =  GetOfferedQuestShareInfo(questId)
+	p(zo_strformat("<<1>> \t <<2>>", questId, questName))
 	local zoneQuestIds  = DAS.questIds[DAS.GetZoneId()] or {}
 	local zoneQuests    = DAS.GetZoneQuests() or {}
-	if not (zoneQuestIds[questName] or DAS_QUEST_IDS[questId] or ZO_IsElementInNumericallyIndexedTable(zoneQuests, questName)) then return end
-	if zoneQuestIds[questId] then
-    AcceptSharedQuest(questId)
-    em:RegisterForEvent(DAS.name, EVENT_QUEST_ADDED, stopAcceptQuestLoop)
-    zo_callLater(forceRefreshControl, 500)
-  end
+	if not (zoneQuestIds[questId] or DAS_QUEST_IDS[questId] or ZO_IsElementInNumericallyIndexedTable(zoneQuests, questName)) then return end
+	AcceptSharedQuest(questId)
+	em:RegisterForEvent(DAS.name, EVENT_QUEST_ADDED, stopAcceptQuestLoop)
+	zo_callLater(forceRefreshControl, 500)
 end
 local function OnChatMessage(...)
    DAS.OnChatMessage(...)
