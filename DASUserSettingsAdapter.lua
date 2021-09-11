@@ -162,6 +162,7 @@ function DAS.GetAutoShare()
 end
 function DAS.SetAutoShare(value)
 	DAS.GetSettings().autoShare = value
+	DAS.SetButtonStates()
 end
 function DAS.GetAutoLeave()
 	return GetSettings().autoLeave
