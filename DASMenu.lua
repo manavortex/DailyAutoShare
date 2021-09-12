@@ -640,6 +640,13 @@ function DAS.CreateMenu(savedVars, defaults)
 		},
 		{
 			type    = "checkbox",
+			tooltip = "Reactivate quest auto-sharing when you leave the group?",
+			name    = "re-enable auto-share when the group disbands",
+			getFunc = function() return DAS.GetResetAutoShareOnNewGroup() end,
+			setFunc = function(value) DAS.SetResetAutoShareOnNewGroup(value) end
+		},
+		{
+			type    = "checkbox",
 			tooltip = "Automatically leave the group when you're searching while still grouped?",
 			name    = "groupleave on a new search",
 			getFunc = function() return DAS.GetAutoLeave() end,
