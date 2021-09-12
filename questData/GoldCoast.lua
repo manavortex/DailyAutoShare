@@ -1,37 +1,52 @@
-DAS.shareables 	    = DAS.shareables    or {}
-DAS.bingo 		    = DAS.bingo 	    or {}
-local zoneId	= 823
-local zoneId2	= 825 -- Hrota Cave
-local zoneId3	= 826 -- Garlas Agea
-local tbl = {}
-table.insert(tbl, GetString(DAS_DB_MINO))
-table.insert(tbl, GetString(DAS_DB_ARENA))
-table.insert(tbl, GetString(DAS_DB_GOOD))
-table.insert(tbl, GetString(DAS_DB_EVIL))
-DAS.shareables[zoneId] = tbl
-DAS.shareables[zoneId2] = DAS.shareables[zoneId]
-DAS.shareables[zoneId3] = DAS.shareables[zoneId]
-local tbl2 = {}
-table.insert(tbl2, {[1] = "mino", [2] = "m"})
-table.insert(tbl2, {[1] = "arena",[2] = "a"})
-table.insert(tbl2, {[1] = "good", [2] = "common", [3] = "cg"})
-table.insert(tbl2, {[1] = "evil", [2] = "buried", [3] = "be"})
-DAS.makeBingoTable(zoneId, tbl2)
-DAS.bingo[zoneId2] = DAS.bingo[zoneId]
-DAS.bingo[zoneId3] = DAS.bingo[zoneId]
+local zoneId  = 823
+local zoneId2 = 824 -- Hrota Cave
+local zoneId3 = 825 -- Garlas Agea
+
+DAS.subzones[zoneId2] = zoneId
+DAS.subzones[zoneId3] = zoneId
+
+DAS.shareables[zoneId] = {
+	-- World Boss dailies
+	GetString(DAS_DB_MINO),
+	GetString(DAS_DB_ARENA),
+	-- Delve dailies
+	GetString(DAS_DB_GOOD),
+	GetString(DAS_DB_EVIL)
+}
+DAS.makeBingoTable(zoneId, {
+	-- World Boss dailies
+	{[1] = "mino", [2] = "m"},
+	{[1] = "arena",[2] = "a"},
+	-- Delve dailies
+	{[1] = "good", [2] = "common", [3] = "cg"},
+	{[1] = "evil", [2] = "buried", [3] = "be"}
+})
+
 DAS.questStarter[zoneId] = {
-    [GetString(DAS_QUEST_DB_BOUNTY)]    = true,
+	[GetString(DAS_QUEST_DB_BOUNTY)] = true,
 }
+
 DAS.questFinisher[zoneId] = {
-    [GetString(DAS_QUEST_DB_ARVINA)]    = true,
-    [GetString(DAS_QUEST_DB_LARONEN)]   = true,
-    [GetString(DAS_QUEST_DB_FINIA)]     = true,
-    [GetString(DAS_QUEST_DB_CODUS)]     = true,
+	[GetString(DAS_QUEST_DB_ARVINA )] = true,
+	[GetString(DAS_QUEST_DB_LARONEN)] = true,
+	[GetString(DAS_QUEST_DB_FINIA  )] = true,
+	[GetString(DAS_QUEST_DB_CODUS  )] = true,
 }
-DAS.questIds[zoneId] = {
-	-- gold coast
-	[5603]  = true, -- "Buried Evil",
-	[5604]  = true, -- "The Common Good",
-	[5605]  = true, -- "Looming Shadows",
-	[5606]  = true, -- "The Roar of the Crowds",
+
+local questIds = {
+	-- World Boss dailies
+	[5603] = true, -- "Buried Evil",
+	[5604] = true, -- "The Common Good",
+	-- Delve dailies
+	[5605] = true, -- "Looming Shadows",
+	[5606] = true, -- "The Roar of the Crowds",
 }
+
+DAS.questIds[zoneId] = questIds
+
+for id, _ in pairs(questIds) do
+	DAS_QUEST_IDS[id] = true
+end
+
+DAS.zoneHasAdditionalId(zoneId2, zoneId)
+DAS.zoneHasAdditionalId(zoneId3, zoneId)

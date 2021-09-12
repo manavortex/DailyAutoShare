@@ -1,5 +1,6 @@
 DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
+DAS_QUEST_IDS               = {}
 DAS.name                    = "DailyAutoShare"
 DAS.version                 = "3.91"
 DAS.author                  = "manavortex"
@@ -17,7 +18,7 @@ DAS.activeBingoIndices      = {}
 DAS.prequests               = {}
 DAS.subLists           = {}
 DAS.QuestLists              = {}
-DAS.festivals               = {}
+DAS.QuestListTitles         = {}
 DAS.channelTypes 	          = {
   [CHAT_CHANNEL_PARTY]    = true,
   [CHAT_CHANNEL_SAY ]     = false,
@@ -170,67 +171,17 @@ local defaults = {
   }
 }
 local function pointerUpSubzones()
-  local settings = DAS.GetSettings()
-  -- Summerset
-  settings[1012]                      = settings[1011]
-  settings[1013]                      = settings[1011]
-  settings[1014]                      = settings[1011]
-  settings[1015]                      = settings[1011]
-  settings[1016]                      = settings[1011]
-  settings[1017]                      = settings[1011]
-  settings[1018]                      = settings[1011]
-  settings[1019]                      = settings[1011]
-  settings.tracked[1012]              = settings.tracked[1011]
-  settings.tracked[1013]              = settings.tracked[1011]
-  settings.tracked[1014]              = settings.tracked[1011]
-  settings.tracked[1015]              = settings.tracked[1011]
-  settings.tracked[1016]              = settings.tracked[1011]
-  settings.tracked[1017]              = settings.tracked[1011]
-  settings.tracked[1018]              = settings.tracked[1011]
-  settings.tracked[1019]              = settings.tracked[1011]
-  -- Gold Coast
-  settings[825]                       = settings[823]
-  settings[826]                       = settings[823]
-  settings.tracked[825]               = settings.tracked[823]
-  settings.tracked[826]               = settings.tracked[823]
-  -- Capitals
-  settings[19]                       = settings[57]
-  settings[383]                      = settings[57]
-  settings.tracked[19]               = settings.tracked[57]
-  settings.tracked[383]              = settings.tracked[57]
-  -- Clockwork City
-  settings[981]                       = settings[980]
-  settings[981]                       = settings[980]
-  settings[982]                       = settings[980]
-  settings.tracked[982]               = settings.tracked[980]
-  settings.tracked[983]               = settings.tracked[980]
-  settings.tracked[983]               = settings.tracked[980]
-  -- Morrowind
-  settings[921]                       = settings[849]
-  settings[922]                       = settings[849]
-  settings[923]                       = settings[849]
-  settings[924]                       = settings[849]
-  settings[925]                       = settings[849]
-  settings[961]                       = settings[849]
-  settings.tracked[921]               = settings.tracked[849]
-  settings.tracked[922]               = settings.tracked[849]
-  settings.tracked[923]               = settings.tracked[849]
-  settings.tracked[924]               = settings.tracked[849]
-  settings.tracked[925]               = settings.tracked[849]
-  settings.tracked[961]               = settings.tracked[849]
-  -- Wrothgar
-  settings[689]                       = settings[684]
-  settings[690]                       = settings[684]
-  settings[691]                       = settings[684]
-  settings[692]                       = settings[684]
-  settings[693]                       = settings[684]
-  settings[694]                       = settings[684]
-  settings.tracked[689]               = settings.tracked[684]
-  settings.tracked[690]               = settings.tracked[684]
-  settings.tracked[691]               = settings.tracked[684]
-  settings.tracked[692]               = settings.tracked[684]
-  settings.tracked[693]               = settings.tracked[684]
-  settings.tracked[694]               = settings.tracked[684]
+	local settings = DAS.GetSettings()
+	-- Capitals
+	settings[19]          = settings[57]
+	settings[383]         = settings[57]
+	settings.tracked[19]  = settings.tracked[57]
+	settings.tracked[383] = settings.tracked[57]
+	-- Clockwork City
+	settings[981]         = settings[980]
+	settings[983]         = settings[980]
+	settings.tracked[981] = settings.tracked[980]
+	settings.tracked[983] = settings.tracked[980]
 end
 local characterName     = zo_strformat(GetUnitName(UNITTAG_PLAYER))
 local em = EVENT_MANAGER
