@@ -96,7 +96,7 @@ local strings  = {
 	DAS_ELF_GRAVE           = "Never Forgotten",        -- 6086
 	DAS_ELF_SNAKE           = "Run Aground",            -- 6087
 	-- Geyser dailies : NPC = Battlereeve Tanerline
-	DAS_ELF_GEYSER          = "Sinking Summerset",      -- 6166
+	DAS_ELF_GEYSER          = "Sinking Summerset",      -- 6166 & 6202
 
 
 	-- Clockwork City
@@ -390,7 +390,7 @@ local strings  = {
 	DAS_SE_BLOOD            = "An Answer in Blood",       -- 6438
 	-- Dragon Hunt dailies : NPC = Chizbari the Chipper
 	DAS_QUEST_SE_DRAGONS    = "Chizbari the Chipper",     -- 91289
-	DAS_SE_DRAGON2          = "The Dragonguard's Quarry", -- 6434
+	DAS_SE_DRAGON2          = "The Dragonguard's Quarry", -- 6434 & 6435
 	DAS_SE_DRAGON1          = "Dawn of the Dragonguard",  -- 6444
 	-- Dragonguard dailies : NPC = Dirge Truptor
 	DAS_QUEST_SE_DELVE2     = "Dirge Truptor",            -- 91226

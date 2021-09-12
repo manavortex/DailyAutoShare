@@ -6,13 +6,10 @@
 ## DependsOn: LibAddonMenu-2.0 LibCustomMenu
 ## OptionalDependsOn: pchat rChat
 
-libs\LibCustomTitles.lua
+libs/LibCustomTitles.lua
 
 xml/VirtualButtons.xml
 DAS_xml.xml
-
-questData/00_ids.lua
-questData/01_subzones.lua
 
 locale/en.lua
 locale/$(language).lua
@@ -24,21 +21,20 @@ xml/Bindings.xml
 DASHelper.lua
 DASData.lua
 
-questData/BingoClean.lua
-questData/GuildQuests.lua
-questData/Festival.lua
-questData/Wrothgar.lua
-questData/Morrowind.lua
-questData/HewsBane.lua
-questData/GoldCoast.lua
-questData/Cyrodiil.lua
-questData/ClockworkCity.lua
-questData/Summerset.lua
-questData/Murkmire.lua
-questData/Elsweyr.lua
+questData/Activity_guilds.lua
+questData/Activity_newLife.lua
 questData/Blackwood.lua
-questData/SouthElsweyr.lua
+questData/ClockworkCity.lua
 questData/Craglorn.lua
+questData/Cyrodiil.lua
+questData/GoldCoast.lua
+questData/HewsBane.lua
+questData/Murkmire.lua
+questData/NorthElsweyr.lua
+questData/SouthElsweyr.lua
+questData/Summerset.lua
+questData/Vvardenfell.lua
+questData/Wrothgar.lua
 
 DASUserSettingsAdapter.lua
 DasChatMessage.lua

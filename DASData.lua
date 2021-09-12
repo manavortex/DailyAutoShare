@@ -1,6 +1,10 @@
 local DAS = DailyAutoShare
 local p   = DAS.DebugOut
-function DAS.GetZoneId()  return GetZoneId(GetUnitZoneIndex(UNITTAG_PLAYER)) or 0 end
+function DAS.GetZoneId()
+	local ret = GetZoneId(GetUnitZoneIndex(UNITTAG_PLAYER))
+	if not ret then return 0 end
+	return DAS.subzones[ret] or ret
+end
 local typeTable   = "table"
 local typeString  = "string"
 local function evaluateNestedLists(tbl)
@@ -99,6 +103,20 @@ function DAS.GetBingoStringFromQuestName(questName)
 	end
 	return ret, index
 end
+
+---@param zoneId number
+---@param subList string subList code
+---@param questName string
+---@param bingo string|nil _(optional)_ custom bingo code for this quest
+function DAS.makeNestedZoneTable(zoneId, subList, questName, bingo)
+	DAS.shareables[zoneId]          = DAS.shareables[zoneId]          or {}
+	DAS.shareables[zoneId][subList] = DAS.shareables[zoneId][subList] or {}
+	table.insert(DAS.shareables[zoneId][subList], questName)
+
+	DAS.bingo[zoneId]            = DAS.bingo[zoneId] or {}
+	DAS.bingo[zoneId][subList]   = bingo or subList
+end
+
 local zoneCloneDebug = "Couldn't copy zone <<1>> to zone <<2>>, one of the IDs was nil"
 function DAS.zoneHasAdditionalId(zoneId2, zoneId) 
   

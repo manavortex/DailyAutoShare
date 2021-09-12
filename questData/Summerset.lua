@@ -1,65 +1,84 @@
-local zoneId = 1011
-local zoneId2 = 1012
-local tbl = {}
-local tbl2 = {}
-table.insert(tbl, GetString(DAS_ELF_ALCHE))
-table.insert(tbl2, {[1] = "korgen",  [2] = "b'korgen", [3] = "korg", [4] = "corgi"})
-table.insert(tbl, GetString(DAS_ELF_GRAVE))
-table.insert(tbl2, {[1] = "graveld",  [2] = "grave",  [3] = "grav"})
-table.insert(tbl, GetString(DAS_ELF_QUEEN))
-table.insert(tbl2, {[1] = "queen"})
-table.insert(tbl, GetString(DAS_ELF_GRIFFIN))
-table.insert(tbl2, {[1] = "griffon", [2] = "griffin", [3] = "gryphon", [4] = "gryffon"})
-table.insert(tbl, GetString(DAS_ELF_SNAKE))
-table.insert(tbl2, {[1] = "keel", [2] = "snake"})
-table.insert(tbl, GetString(DAS_ELF_WILD))
-table.insert(tbl2, {[1] = "caan", [2] = "indrik", [3] = "wild",  [4] = "ward"})
-table.insert(tbl, GetString(DAS_ELF_RELIC))
-table.insert(tbl2, {[1] = "relics"})
-table.insert(tbl, GetString(DAS_ELF_PILGR))
-table.insert(tbl2, {[1] = "pilgrim"})
-table.insert(tbl, GetString(DAS_ELF_LIGHT))
-table.insert(tbl2, {[1] = "light"})
-table.insert(tbl, GetString(DAS_ELF_SERPE))
-table.insert(tbl2, {[1] = "serpents"})
-table.insert(tbl, GetString(DAS_ELF_MEMO ))
-table.insert(tbl2, {[1] = "memory"})
-table.insert(tbl, GetString(DAS_ELF_ROSE ))
-table.insert(tbl2, {[1] = "rose"})
-table.insert(tbl, GetString(DAS_ELF_GEYSER ))
-table.insert(tbl2, {[1] = "geyser"})
-DAS.shareables[zoneId] = tbl
-DAS.shareables[zoneId2] = DAS.shareables[zoneId]
-DAS.makeBingoTable(zoneId, tbl2)
-DAS.bingo[zoneId2] = DAS.bingo[zoneId]
-for i=1012, 1019 do
-  DAS.shareables[i]  = DAS.shareables[zoneId]
-  DAS.bingo[i]       = DAS.bingo[zoneId]
-  DAS.subzones[i]    = zoneId
-end
+local zoneId  = 1011 -- Summerset
+
+DAS.subzones[1014] = zoneId -- Tor-Hame-Khard
+DAS.subzones[1015] = zoneId -- Eton Nir Grotto
+DAS.subzones[1016] = zoneId -- Traitor's Vault
+DAS.subzones[1017] = zoneId -- Archon's Grove
+DAS.subzones[1018] = zoneId -- King's Haven Pass
+DAS.subzones[1019] = zoneId -- Wasten Coraldale
+DAS.subzones[1027] = zoneId -- Artaeum
+
+DAS.shareables[zoneId] = {
+	-- World Boss dailies
+	GetString(DAS_ELF_ALCHE),
+	GetString(DAS_ELF_GRAVE),
+	GetString(DAS_ELF_QUEEN),
+	GetString(DAS_ELF_GRIFFIN),
+	GetString(DAS_ELF_SNAKE),
+	GetString(DAS_ELF_WILD),
+	-- Delve dailies
+	GetString(DAS_ELF_RELIC),
+	GetString(DAS_ELF_PILGR),
+	GetString(DAS_ELF_LIGHT),
+	GetString(DAS_ELF_SERPE),
+	GetString(DAS_ELF_MEMO),
+	GetString(DAS_ELF_ROSE),
+	-- Geyser dailies
+	GetString(DAS_ELF_GEYSER),
+}
+DAS.makeBingoTable(zoneId, {
+	{"korgen", "b'korgen", "korg", "corgi"},
+	{"graveld", "grave", "grav"},
+	{"queen"},
+	{"griffon", "griffin", "gryphon", "gryffon"},
+	{"keel", "snake"},
+	{"caan", "indrik", "wild", "ward"},
+	{"relics"},
+	{"pilgrim"},
+	{"light"},
+	{"serpents"},
+	{"memory"},
+	{"rose"},
+	{"geyser"},
+})
+
 DAS.questStarter[zoneId] = {
-  [GetString(DAS_QUEST_SS_TANO)]    = true,
-  [GetString(DAS_QUEST_SS_FARO)]    = true,
-  [GetString(DAS_QUEST_SS_TANE)]    = true,
+	[GetString(DAS_QUEST_SS_TANO)] = true,
+	[GetString(DAS_QUEST_SS_FARO)] = true,
+	[GetString(DAS_QUEST_SS_TANE)] = true,
 }
-DAS.questFinisher[zoneId] = {
-  [GetString(DAS_QUEST_SS_TANO)]    = true,
-  [GetString(DAS_QUEST_SS_FARO)]    = true,
-  [GetString(DAS_QUEST_SS_TANE)]    = true,
+
+DAS.questFinisher[zoneId] = DAS.questStarter[zoneId] 
+
+local questIds = {
+	-- World Boss dailies
+	[6082] = true, -- The Sickening Sea
+	[6083] = true, -- Taming the Wild
+	[6084] = true, -- The Abyssal Alchemist
+	[6085] = true, -- Birds of a Feather
+	[6086] = true, -- Never Forgotten
+	[6087] = true, -- Run Aground
+	-- Delve dailies
+	[6152] = true, -- Pilgrimage's End
+	[6156] = true, -- Snuffing Out the Light
+	[6157] = true, -- A Rose's Beauty
+	[6158] = true, -- Relic Runaround
+	[6159] = true, -- Culling Serpents
+	[6160] = true, -- Struck from Memory
+	-- Geyser dailies
+	[6166] = true, -- Sinking Summerset
+	[6202] = true, -- Sinking Summerset
 }
-DAS.questIds[zoneId] = {
-}
-for i=6082, 6087 do
-  DAS.questIds[zoneId][i] = true
-  DAS_QUEST_IDS[i] = true
+
+DAS.questIds[zoneId] = questIds
+
+for id, _ in pairs(questIds) do
+	DAS_QUEST_IDS[id] = true
 end
-for i=6152, 6160 do
-  DAS.questIds[zoneId][i] = true
-  DAS_QUEST_IDS[i] = true
-end
-DAS.questIds[zoneId][6202] = true
-DAS_QUEST_IDS[6202] = true
+
 DAS.prequests[GetString(DAS_ELF_GEYSER)] = { -- Sinking Summerset
-  prequestName = "The Abyssal Cabal",
-  prequestId = 6165,
+	prequestName = GetQuestName(6165), -- The Abyssal Cabal
+	prequestId   = 6165,
 }
+
+DAS.zoneHasAdditionalId(zoneId2, zoneId)
