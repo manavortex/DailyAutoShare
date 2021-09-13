@@ -392,10 +392,11 @@ function DAS.CreateMenu(savedVars, defaults)
 					name    = "Guild activities:"
 				},
 				{
-					type    = "checkbox",
-					name    = "Fighters / Mages Guilds & Undaunted",
-					getFunc = function() return DAS.GetActiveIn("guilds") end,
-					setFunc = function(value) DAS.SetActiveFor("guilds", value) end
+					type           = "checkbox",
+					name           = "Fighters / Mages Guilds & Undaunted",
+					getFunc        = function() return DAS.GetActiveIn("guilds") end,
+					setFunc        = function(value) DAS.SetActiveFor("guilds", value) end,
+					requiresReload = true,
 				},
 				{ -- Submenu : Guild Dailies
 					type        = "submenu",
@@ -443,11 +444,12 @@ function DAS.CreateMenu(savedVars, defaults)
 					name    = "Festivals:"
 				},
 				{
-					type    = "checkbox",
-					name    = "New Life",
-					tooltip = "Enable New Life festival",
-					getFunc = function() return DAS.GetActiveIn("newLife") end,
-					setFunc = function(value) DAS.SetActiveFor("newLife", value) end
+					type           = "checkbox",
+					name           = "New Life",
+					tooltip        = "Enable New Life festival",
+					getFunc        = function() return DAS.GetActiveIn("newLife") end,
+					setFunc        = function(value) DAS.SetActiveFor("newLife", value) end,
+					requiresReload = true,
 				},
 			}, -- end of activate menu
 		},
