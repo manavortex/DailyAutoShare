@@ -1,11 +1,24 @@
 # DailyAutoShare ChangeLog
 
-## master - unreleased
+## 4.1.0 - released 2021-09-14, @mychaelo & @vortex9
 - Added Southern Elsweyr daily quests (#2, @vortex9)
 - Added Craglorn daily quests (#4, @vortex9)
 - Fixed Bolu name for Murkmire (#10, @mychaelo)
 - Cleaned up and added quest IDs to Northern Elsweyr (#11, @mychaelo)
 - Reformatted, annotated & synced localisations (#12, @mychaelo)
+- Restored the button textures that got garbled a couple years ago (#15, @mychaelo)
+- Fixed quest lists (#18, @mychaelo)
+- Added LibCustomMenu (which was always required anyway) to DependsOn (#19, @mychaelo)
+- Reworked the settings panel layout (#24, @mychaelo)
+- Removed several stray GLOBALs (#25, @mychaelo)
+- Reworked the completion logs to make them usable outside Europe (#26, @mychaelo)
+- Switched to GROUP_UPDATE listeners instead of UNIT_CREATED/DESTROYED (#31, @mychaelo)
+- Enabled DAS in Blackwood by default (#33, @mychaelo)
+- Refactored, restored and expanded the quest data (#34, @mychaelo)
+- Added Hew's Bane daily quests (#35, @mychaelo)
+- Renovated the quest tooltips, showing prerequisite quests when those are not completed (#37, @mychaelo)
+- The feedback button now routes to the add-on's GitHub page (#38, @mychaelo)
+- Made UI fully localisable, provided full Russian translation for the settings panel (#42, @mychaelo)
 
 ## 4.0 - released 2021-06-19, @HowlyBlood
 - Added Blackwood daily quests
