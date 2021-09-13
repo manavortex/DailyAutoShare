@@ -16,7 +16,9 @@
 						<Button name="DasButtonLock" >
 							<Dimensions x="16" y="16" />
 							<Anchor point="TOPLEFT" relativeTo="DasHandle" relativePoint="TOPLEFT" offsetX="15" offsetY="15"/>
-							<OnMouseUp> DailyAutoShare.SetLocked(not DailyAutoShare.GetLocked()) </OnMouseUp>
+							<OnMouseEnter>	DailyAutoShare.CreateControlTooltip(self)					</OnMouseEnter>
+							<OnMouseExit>	DailyAutoShare.HideTooltip(self)							</OnMouseExit>
+							<OnMouseUp>		DailyAutoShare.SetLocked(not DailyAutoShare.GetLocked())	</OnMouseUp>
 							<Textures
 								normal		="esoui/art/miscellaneous/locked_up.dds"
                                 pressed		="esoui/art/miscellaneous/locked_down.dds"
@@ -31,7 +33,9 @@
                                 pressed		="/esoui/art/buttons/decline_down.dds"
                                 mouseOver	="/esoui/art/buttons/decline_over.dds"
 							 />
-							<OnMouseUp>	 DasControl:SetHidden(true) </OnMouseUp>
+							<OnMouseEnter>	DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
+							<OnMouseExit>	DailyAutoShare.HideTooltip(self)			</OnMouseExit>
+							<OnMouseUp>		DasControl:SetHidden(true)					</OnMouseUp>
 						</Button>
 						<Button name="DasButtonMinmax" >
 							<Dimensions x="16" y="16" />
@@ -41,7 +45,9 @@
                                 pressed		="/esoui/art/buttons/minus_down.dds"
                                 mouseOver	="/esoui/art/buttons/minus_over.dds"
                             />
-							<OnMouseUp>DailyAutoShare.MinMaxButton()</OnMouseUp>
+							<OnMouseEnter>	DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
+							<OnMouseExit>	DailyAutoShare.HideTooltip(self)			</OnMouseExit>
+							<OnMouseUp>		DailyAutoShare.MinMaxButton()				</OnMouseUp>
 						</Button>
 						<Button name="DasButtonRefresh">
                             <Anchor point="RIGHT" relativeTo="DasHandle" relativePoint="RIGHT" offsetX="-40" offsetY="1"/>
