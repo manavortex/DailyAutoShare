@@ -185,6 +185,25 @@ local strings  = {
 	DAS_DB_ARENA            = "Le hurlement des foules", -- 5606
 
 
+	-- Hew's Bane / Thieves Guild
+	-- Heists
+	DAS_HEWS_HDEAD          = "Casse : Salles du Sépulcre",     -- 5536
+	DAS_HEWS_HHIDE          = "Casse : la Cachette",            -- 5572
+	DAS_HEWS_HUNDE          = "Casse : sépulcre souterrain",    -- 5573
+	DAS_HEWS_HGLIT          = "Casse : la grotte scintillante", -- 5575
+	DAS_HEWS_HSECL          = "Casse : égouts reculés",         -- 5577
+	-- World Boss dailies
+	DAS_HEWS_KOEST          = "Les perles disparues",           -- 5586
+	DAS_HEWS_THRAL          = "Crique des esclaves",            -- 5587
+	-- Delve dailies
+	DAS_HEWS_BAHRA          = "Souvenirs d'enfance",            -- 5588
+	DAS_HEWS_SHARK          = "La pipe de marin",               -- 5589
+	DAS_QUEST_TG_HEIST      = "Affichage des casses",           -- 87370069-0-20019
+	DAS_QUEST_TG_REACQ      = "Tableau de réacquisition",       -- 87370069-0-20116
+	DAS_QUEST_TG_FAREN      = "Fa'ren-dar",                     -- 69599
+	DAS_QUEST_TG_SPENC      = "Spencer Rye",                    -- 69854
+
+
 	-- New Life Festival
 	DAS_NL_EASTMARCH        = "Le plongeon de l'ours des neiges",    -- 5811
 	DAS_NL_REAPERSMARCH     = "L'Épreuve de la Ruse à cinq griffes", -- 5834

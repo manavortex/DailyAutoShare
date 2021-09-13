@@ -155,6 +155,7 @@ local defaults = {
 		[888]  = true, -- Craglorn
 		[181]  = true, -- Cyrodiil
 		[823]  = true, -- Gold Coast
+		[816]  = true, -- Hew's Bane
 		[726]  = true, -- Murkmire
 		[1086] = true, -- Northern Elsweyr
 		[1133] = true, -- Southern Elsweyr

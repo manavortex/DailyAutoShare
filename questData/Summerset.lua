@@ -80,5 +80,3 @@ DAS.prequests[GetString(DAS_ELF_GEYSER)] = { -- Sinking Summerset
 	prequestName = GetQuestName(6165), -- The Abyssal Cabal
 	prequestId   = 6165,
 }
-
-DAS.zoneHasAdditionalId(zoneId2, zoneId)

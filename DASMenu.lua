@@ -177,6 +177,13 @@ function DAS.CreateMenu(savedVars, defaults)
 				},
 				{
 					type    = "checkbox",
+					tooltip = "Thieves Guild DLC",
+					name    = "Hew's Bane",
+					getFunc = function() return DAS.GetActiveIn(816) end,
+					setFunc = function(value) DAS.SetActiveIn(816, value) end
+				},
+				{
+					type    = "checkbox",
 					tooltip = "Murkmire DLC",
 					name    = "Murkmire",
 					getFunc = function() return DAS.GetActiveIn(726) end,

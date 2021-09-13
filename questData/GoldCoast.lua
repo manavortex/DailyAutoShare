@@ -1,9 +1,7 @@
-local zoneId  = 823
-local zoneId2 = 824 -- Hrota Cave
-local zoneId3 = 825 -- Garlas Agea
+local zoneId = 823 -- Gold Coast
 
-DAS.subzones[zoneId2] = zoneId
-DAS.subzones[zoneId3] = zoneId
+DAS.subzones[824] = zoneId -- Hrota Cave
+DAS.subzones[825] = zoneId -- Garlas Agea
 
 DAS.shareables[zoneId] = {
 	-- World Boss dailies
@@ -11,15 +9,15 @@ DAS.shareables[zoneId] = {
 	GetString(DAS_DB_ARENA),
 	-- Delve dailies
 	GetString(DAS_DB_GOOD),
-	GetString(DAS_DB_EVIL)
+	GetString(DAS_DB_EVIL),
 }
 DAS.makeBingoTable(zoneId, {
 	-- World Boss dailies
-	{[1] = "mino", [2] = "m"},
-	{[1] = "arena",[2] = "a"},
+	{"mino", "m"},
+	{"arena","a"},
 	-- Delve dailies
-	{[1] = "good", [2] = "common", [3] = "cg"},
-	{[1] = "evil", [2] = "buried", [3] = "be"}
+	{"good", "common", "cg"},
+	{"evil", "buried", "be"},
 })
 
 DAS.questStarter[zoneId] = {
@@ -47,6 +45,3 @@ DAS.questIds[zoneId] = questIds
 for id, _ in pairs(questIds) do
 	DAS_QUEST_IDS[id] = true
 end
-
-DAS.zoneHasAdditionalId(zoneId2, zoneId)
-DAS.zoneHasAdditionalId(zoneId3, zoneId)

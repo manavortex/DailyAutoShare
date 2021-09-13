@@ -185,6 +185,25 @@ local strings  = {
 	DAS_DB_ARENA            = "Рев толпы",        -- 5606
 
 
+	-- Hew's Bane / Thieves Guild
+	-- Heists
+	DAS_HEWS_HDEAD          = "Ограбление: залы Мертвой Пустоты", -- 5536
+	DAS_HEWS_HHIDE          = "Ограбление: Укрытие",              -- 5572
+	DAS_HEWS_HUNDE          = "Ограбление: подземная гробница",   -- 5573
+	DAS_HEWS_HGLIT          = "Ограбление: Сверкающий грот",      -- 5575
+	DAS_HEWS_HSECL          = "Ограбление: закрытая канализация", -- 5577
+	-- World Boss dailies
+	DAS_HEWS_KOEST          = "Потерянные жемчужины",             -- 5586
+	DAS_HEWS_THRAL          = "Бухта Рабов",                      -- 5587
+	-- Delve dailies
+	DAS_HEWS_BAHRA          = "Воспоминания о молодости",         -- 5588
+	DAS_HEWS_SHARK          = "Трубка моряка",                    -- 5589
+	DAS_QUEST_TG_HEIST      = "Доска ограблений",                 -- 87370069-0-20019
+	DAS_QUEST_TG_REACQ      = "Доска объявлений о кражах",        -- 87370069-0-20116
+	DAS_QUEST_TG_FAREN      = "Фа'рен-дар",                       -- 69599
+	DAS_QUEST_TG_SPENC      = "Спенсер Рай",                      -- 69854
+
+
 	-- New Life Festival
 	DAS_NL_EASTMARCH        = "Ныряние снежного медведя",       -- 5811
 	DAS_NL_REAPERSMARCH     = "Испытание когтистого коварства", -- 5834
