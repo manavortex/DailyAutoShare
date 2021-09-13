@@ -17,6 +17,8 @@ end
 local function cacheVisibilityStatus(forceOverride)
 	stateIsHidden				= isHidden()
 	stateIsMinimised			= isMinimised()
+	DasControl.stateIsHidden	= stateIsHidden
+	DasControl.stateIsMinimised	= stateIsMinimised
 end
 function DAS.RefreshControl(refreshQuestCache)
   -- p("DAS.RefreshControl(" .. tostring(refreshQuestCache).. ")")
