@@ -100,24 +100,10 @@ function DAS.RefreshSubLabels(control)
 	DasSubList:SetHidden(false)
 	DAS.setFontSize(DAS.sublabels)
 end
-function DAS.Donate(control, mouseButton)
-	local amount = 2000
-	if mouseButton == 2 then
-		amount = 1000
-    elseif mouseButton == 3 then
-		amount = 25000
-  end
-	SCENE_MANAGER:Show('mailSend')
-	zo_callLater(function()
-		ZO_MailSendToField:SetText("@HowlyBlood")
-		ZO_MailSendSubjectField:SetText("Thank you for DailyAutoShare!")
-		QueueMoneyAttachment(amount)
-		ZO_MailSendBodyField:SetText("Thanks to |c0035FF@manavortex|r which is the initial creator of this addon, and Thanks to you, |c0035FF@HowlyBlood|r for keeping it update after he stoped the game. \n"
-.."I have a suggestion or I have a bug to report :\n" 
-.."<your suggestion or bug report here>")
-		ZO_MailSendBodyField:TakeFocus()
-		
-  end, 200)
+function DAS.Donate(_, mouseButton)
+	if mouseButton == MOUSE_BUTTON_INDEX_LEFT then
+		RequestOpenUnsafeURL("https://github.com/manavortex/DailyAutoShare/issues")
+	end
 end
 function DAS.MinMaxButton()
 	local newMinimisedValue = not (isMinimised())
