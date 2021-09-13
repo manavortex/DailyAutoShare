@@ -69,32 +69,32 @@ function DAS.OnRightClick(control, verbose)
         SetMenuPad(10)
         SetMenuMinimumWidth(185)
         if nil ~= control.dataQuestList and {} ~= control.dataQuestList then
-            AddCustomMenuItem(GetString(DAS_TOGGLE_SUBLIST),
+            AddCustomMenuItem(GetString(DAS_GUI_CTX_SUBLIST),
 				function() toggleSubList(control) end,
 				MENU_ADD_OPTION_LABEL
 			)
         else
             if control.dataQuestState ~= DAS_STATUS_COMPLETE then
-                AddCustomMenuItem(GetString(DAS_SI_SPAM_SINGLE),
+                AddCustomMenuItem(GetString(DAS_GUI_CTX_SPAM),
                     function() spamChat(control.dataQuestName, control.dataBingoString) end,
                     MENU_ADD_OPTION_LABEL
                 )
             end
             if IsValidQuestIndex(control.dataJournalIndex) then
-                AddCustomMenuItem(GetString(DAS_SI_SHARE),
+                AddCustomMenuItem(GetString(DAS_GUI_CTX_SHARE),
                     function() shareQuest(control.dataJournalIndex) end,
                     MENU_ADD_OPTION_LABEL
                 )
-                AddCustomMenuItem("* Focus",
+                AddCustomMenuItem(GetString(DAS_GUI_CTX_TRACK),
                     function() forceAssist(control.dataJournalIndex) end,
                     MENU_ADD_OPTION_LABEL
                 )
-                AddCustomMenuItem(GetString(DAS_SI_ABANDON),
+                AddCustomMenuItem(GetString(DAS_GUI_CTX_ABANDON),
                     function() abandonQuest(control.dataJournalIndex, control.dataQuestName) end,
                     MENU_ADD_OPTION_LABEL
                 )
             else
-                local key = (control.dataQuestState == DAS_STATUS_OPEN and DAS_SI_SETOPEN_TRUE) or DAS_SI_SETOPEN_FALSE
+                local key = (control.dataQuestState == DAS_STATUS_OPEN and DAS_GUI_CTX_OPEN_TRUE) or DAS_GUI_CTX_OPEN_FALSE
                 AddCustomMenuItem(GetString(key),
                     function() toggleQuest(control) end,
                     MENU_ADD_OPTION_LABEL
