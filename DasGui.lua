@@ -132,7 +132,7 @@ end
 local function setControlText(label, hidden)
   local state = label.dataQuestState
   if label.dataJournalIndex == DAS.trackedIndex then
-    label:SetText("* " .. label.dataTitle)
+    label:SetText("→ " .. label.dataTitle)
     elseif hideLabel then
     label:SetText("")
     label:SetVisible(false)

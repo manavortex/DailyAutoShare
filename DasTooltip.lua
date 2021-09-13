@@ -1,15 +1,15 @@
 local DAS = DailyAutoShare
 local function GenerateTooltipText(control)
 	local key = control:GetName()
-	if     string.match(key, "Invite")	then return GetString((DAS.GetAutoInvite() and DAS_SI_INVITE_TRUE) or DAS_SI_INVITE_FALSE)
-	elseif string.match(key, "Accept")	then return GetString((DAS.GetAutoAcceptShared() and DAS_SI_ACCEPT_TRUE) or DAS_SI_ACCEPT_FALSE)
-	elseif string.match(key, "Share")	then return GetString((DAS.GetAutoShare() and DAS_SI_SHARE_TRUE) or DAS_SI_SHARE_FALSE)
-	elseif string.match(key, "Spam")	then return GetString(DAS_SI_SPAM)
-	elseif string.match(key, "Donate")	then return GetString(DAS_SI_DONATE)
-	elseif string.match(key, "Refresh")	then return GetString(DAS_SI_REFRESH)
-	elseif string.match(key, "Lock")	then return DailyAutoShare.GetLocked() and "Unlock Window" or "Lock Window"
-	elseif string.match(key, "Hide")	then return "Close Window"
-	elseif string.match(key, "Minmax")	then return (DasControl.stateIsMinimised and "Maximise Window") or "Minimise Window"
+	if     string.match(key, "Invite")	then return GetString((DAS.GetAutoInvite() and DAS_GUI_INVITE_TRUE) or DAS_GUI_INVITE_FALSE)
+	elseif string.match(key, "Accept")	then return GetString((DAS.GetAutoAcceptShared() and DAS_GUI_ACCEPT_TRUE) or DAS_GUI_ACCEPT_FALSE)
+	elseif string.match(key, "Share")	then return GetString((DAS.GetAutoShare() and DAS_GUI_SHARE_TRUE) or DAS_GUI_SHARE_FALSE)
+	elseif string.match(key, "Spam")	then return GetString((DAS.GetAutoInvite() and DAS_GUI_BTN_SPAM) or DAS_GUI_BTN_SPAM_ASK)
+	elseif string.match(key, "Donate")	then return GetString(DAS_GUI_BTN_DONATE)
+	elseif string.match(key, "Refresh")	then return GetString(DAS_GUI_BTN_REFRESH)
+	elseif string.match(key, "Lock")	then return GetString((DAS.GetLocked() and DAS_GUI_BTN_UNLOCK) or DAS_GUI_BTN_LOCK)
+	elseif string.match(key, "Hide")	then return GetString(DAS_GUI_BTN_HIDE)
+	elseif string.match(key, "Minmax")	then return GetString((DasControl.stateIsMinimised and DAS_GUI_BTN_MAXIMISE) or DAS_GUI_BTN_MINIMISE)
 	end
 end
 local function SetTooltipText(control)
@@ -40,39 +40,40 @@ function DAS.CreateTooltip(control)
 	SetTooltipText(control, isButton)
 end
 local questStateColors = {
-	[DAS_STATUS_ACTIVE]   = "FFFFFF",
-	[DAS_STATUS_OPEN]     = "FFFFFF",
 	[DAS_STATUS_COMPLETE] = "89FFE3",
+	[DAS_STATUS_OPEN]     = "FFFFFF",
+	[DAS_STATUS_ACTIVE]   = "FFFFFF",
 }
 local dotDotDot = "%.%.%."
 local questStates = {
-	[DAS_STATUS_COMPLETE] = "completed today",
-	[DAS_STATUS_ACTIVE]   = "is active",
-	[DAS_STATUS_OPEN]     = "still open",
+	[DAS_STATUS_COMPLETE] = GetString(DAS_GUI_Q_IS_DONE),
+	[DAS_STATUS_OPEN]     = GetString(DAS_GUI_Q_IS_OPEN),
+	[DAS_STATUS_ACTIVE]   = GetString(DAS_GUI_Q_IS_ACTIVE),
 }
-local prequestString = GetString(DAS_SI_PREQUEST)
+local prequestTipTemplate = GetString(DAS_GUI_Q_PREREQ)
 local function getPrequestTooltipData(questName)
     local prequestData = DAS.prequests[questName]
     if not prequestData or DAS.questCompleted(prequestData.prequestId) then return end
-    return zo_strformat(prequestString, prequestData.prequestName, "DF6C00")
+    return zo_strformat(prequestTipTemplate, prequestData.prequestName, "DF6C00")
 end
-local bingoCodeIs = GetString(DAS_BINGO_CODE_IS)
+local bingoTipTemplate = GetString(DAS_GUI_Q_BINGO)
+local questTipTemplate = GetString(DAS_GUI_Q_TIP)
 function DAS.CreateLabelTooltip(control)
 	setTooltipOffset(control)
 	local tooltipText = ""
 	local questName = control.dataTitle or control.dataQuestName
 	if nil == questName then return end
 	if nil ~= questName:find(dotDotDot) then
-		tooltipText = GetString(DAS_TOGGLE_SUBLIST)
+		tooltipText = GetString(DAS_GUI_SUBLIST_OPEN)
 	else
 		local bingoString = control.dataBingoString or ""
 		if "" ~= bingoString then
-			bingoString = bingoCodeIs .. bingoString
+			bingoString = zo_strformat(bingoTipTemplate, bingoString)
 		end
 
 		local questState = control.dataQuestState
 		if questStates[questState] then
-			tooltipText = zo_strformat("<<1>> |c<<2>><<3>>|r<<4>>", questName, questStateColors[questState] or "FFFFFF", questStates[questState], bingoString)
+			tooltipText = zo_strformat(questTipTemplate, questName, questStateColors[questState] or "FFFFFF", questStates[questState], bingoString)
 		else
 			DailyAutoShare_Tooltip:SetHidden(true)
 			return

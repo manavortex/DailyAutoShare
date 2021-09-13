@@ -1,34 +1,176 @@
 DAS_STRINGS_LOCALE = DAS_STRINGS_LOCALE or {}
 local strings  = {
-	-- User Interface
-	DAS_SI_INVITE_TRUE      = "Автоприглашения включены",
-	DAS_SI_INVITE_FALSE     = "Автоприглашения отключены",
-	DAS_SI_ACCEPT_TRUE      = "Автоприём чужих ежедневных заданий включён",
-	DAS_SI_ACCEPT_FALSE     = "Ежедневные задания не принимаются автоматически",
-	DAS_SI_SHARE_TRUE       = "Автораздача активного ежедневного задания при вступлении кого-то в группу или по слову «share» в чате группы (Щелкните ПКМ для раздачи активной ежедневки)",
-	DAS_SI_SHARE_FALSE      = "Автораздача активного ежедневного задания ОТКЛЮЧЕНА, скорее всего, на вас кто-то наорал (ПКМ для принудительной раздачи)",
-	DAS_SI_SPAM             = "Нажмите для рекламы в зончат",
-	DAS_SI_SPAM_VERBOSE     = "Нажмите для выпрашивания заданий",
-	DAS_TOGGLE_SUBLIST      = "Нажмите для раскрытия списка заданий",
-	DAS_MENU_ACTIV_EXPLAIN  = "Включить или отключить для указанных зон.",
-	DAS_SI_HIDE             = "Скрыть DailyAutoShare",
-	DAS_SI_TOGGLE           = "Скрыть/показать окно",
-	DAS_SI_MINIMISE         = "Свернуть/развернуть",
-	DAS_SI_REFRESH          = "Обновить",
-	DAS_SI_DONATE           = "Нажмите, чтобы отблагодарить автора:\nЛКМ: 2k\nПКМ: 10k\nСКМ: 25k\nВаши отзывы и пожертвования всегда востребованы!",
-	DAS_SI_SHARE            = "Раздать",
-	DAS_SI_TRACK            = "* Track",
-	DAS_SI_ABANDON          = "|cFF0000Отказаться|r",
-	DAS_SI_SPAM_SINGLE      = "Реклама в чат",
-	DAS_SI_SETOPEN_TRUE     = "Сделать доступным",
-	DAS_SI_SETOPEN_FALSE    = "Сделать завершённым",
-	DAS_BINGO_CODE_IS       = "\nКод раздачи ",
-	DAS_SI_PREQUEST         = "\nОткрывающее задание <<1>>: <<2>>",
-	DAS_SI_COMPLETED        = "завершено",
-	DAS_SI_OPEN             = "не сделано",
+	-- Key bindings
+	DAS_SI_TOGGLE			= "Скрыть/показать",
+	DAS_SI_MINIMISE			= "Свернуть/развернуть",
+
+	-- GUI
+	-- Drag bar button tooltips
+	DAS_GUI_BTN_LOCK		= "Закрепить окно",
+	DAS_GUI_BTN_UNLOCK		= "Открепить окно",
+	DAS_GUI_BTN_HIDE		= "Скрыть DailyAutoShare",
+	DAS_GUI_BTN_REFRESH		= "Обновить",
+	DAS_GUI_BTN_MINIMISE	= "Свернуть окно",
+	DAS_GUI_BTN_MAXIMISE	= "Развернуть окно",
+
+	-- QuestList button tooltips
+	DAS_GUI_INVITE_TRUE		= "Автоприглашения |c89FFE3включены|r",
+	DAS_GUI_INVITE_FALSE	= "Автоприглашения |cDF6C00отключены|r",
+	DAS_GUI_ACCEPT_TRUE		= "Автоприём ежедневных заданий |c89FFE3включён|r",
+	DAS_GUI_ACCEPT_FALSE	= "Ежедневные задания |cDF6C00не принимаются автоматически|r",
+	DAS_GUI_SHARE_TRUE		= "|c89FFE3Автораздача взятых ежедневных заданий|r при вступлении кого-то в группу или по слову «share» в чате группы.\n\nЩелкните ПКМ для раздачи взятых ежедневок",
+	DAS_GUI_SHARE_FALSE		= "Автораздача взятых ежедневных заданий |cDF6C00ОТКЛЮЧЕНА|r.\n\nПКМ для принудительной раздачи",
+	DAS_GUI_BTN_SPAM		= "Нажмите для рекламы в зончат",
+	DAS_GUI_BTN_SPAM_ASK	= "Нажмите для выпрашивания заданий в чате",
+	DAS_GUI_BTN_DONATE		= "Посетить страничку на GitHub, чтобы сообщить об ошибке или отблагодарить\n|c89FFE3— <3 manavortex и команда|r",
+
+	-- Quest tooltips
+	DAS_GUI_SUBLIST_OPEN	= "Нажмите для раскрытия списка заданий",
+	DAS_GUI_Q_IS_DONE		= "завершено сегодня", -- quest state 0
+	DAS_GUI_Q_IS_OPEN		= "не сделано", -- quest state 1
+	DAS_GUI_Q_IS_ACTIVE		= "взято", -- quest state 2
+	DAS_GUI_Q_BINGO			= "\nКод раздачи: <<1>>", -- 1 is the bingo code
+	DAS_GUI_Q_TIP			= "«<<1>>» |c<<2>><<3>>|r<<4>>", -- 1 is Quest Name, 2 is colour, 3 is the quest state, 4 is either DAS_GUI_Q_BINGO or nothing
+	DAS_GUI_Q_PREREQ		= "|c<<2>>Вам надо выполнить задание-пролог:|r\n• <<1>>", -- 1 is Quest Name, 2 is colour
+
+	-- Quest context menu
+	DAS_GUI_CTX_SUBLIST		= "Показать/скрыть список заданий",
+	DAS_GUI_CTX_SPAM		= "Рекламу или код в чат",
+	DAS_GUI_CTX_SHARE		= "Раздать",
+	DAS_GUI_CTX_TRACK		= "→ Выбрать",
+	DAS_GUI_CTX_ABANDON		= "|cFF0000Отказаться|r",
+	DAS_GUI_CTX_OPEN_TRUE	= "Пометить как завершённое",
+	DAS_GUI_CTX_OPEN_FALSE	= "Пометить как доступное",
+
+	-- Settings panel
+	DAS_MENU_URI_LOC		= "https://github.com/manavortex/DailyAutoShare/issues/41",
+	DAS_MENU_H_GENERAL		= "Основные параметры",
+	DAS_MENU_CB_GLOBAL		= "Глобальные настройки",
+	DAS_MENU_CB_GLOBAL_TIP	= "Использовать общие для всех персонажей настройки?",
+	DAS_MENU_CB_HIDE		= "Скрыть окно",
+	DAS_MENU_CB_HIDE_NA		= "Скрывать в неактивных зонах",
+	DAS_MENU_CB_HIDE_NA_TIP	= "Если отключено, в окне будут показываться выполненные ежедневки. Если включено, окно будет полностью скрыто.",
+	-- activate menu
+	DAS_MENU_CB_SUB_ENABLE	= "Включить",
+	DAS_MENU_CB_SUB_HIDE	= "Спрятать",
+	DAS_MENU_CB_SUB_HIDE_T	= "Убрать задания из списка, но продолжить их принимать и раздавать",
+	DAS_MENU_SM_ACT			= "Включать DailyAutoShare в...",
+	DAS_MENU_SM_ACT_TIP		= "Нажмите, чтобы настроить активацию мода для определённых областей и категорий.",
+	DAS_MENU_H_ZONES		= "Области:",
+	DAS_MENU_CB_BWOOD		= "Blackwood / Чёрный Лес",
+	DAS_MENU_CB_CCITY		= "Clockwork City / Заводной город",
+	DAS_MENU_SM_CCITY		= "Настройки Заводного города",
+	DAS_MENU_CB_CC_DELV		= "Латунная крепость: логова",
+	DAS_MENU_CB_CC_DELV_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в латунной крепости\nТребуется пройти хотя бы одно из этих заданий:\n• <<2>>\n• <<3>>", -- 1 is DAS_QUEST_CC_NOVICE
+	DAS_MENU_CB_CC_BOSS		= "Латунная крепость: мировые боссы",
+	DAS_MENU_CB_CC_BOSS_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в латунной крепости", -- 1 is DAS_QUEST_CC_ROBOT
+	DAS_MENU_CB_CC_SLAG		= "Шлаковый район: задания на сбор",
+	DAS_MENU_CB_CC_SLAG_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в латунной крепости", -- 1 is DAS_QUEST_CC_ORC
+	DAS_MENU_CB_CC_CROW		= "Шлаковый район: Чернопёрый двор",
+	DAS_MENU_CB_CC_CROW_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в латунной крепости\nТребуется пройти сюжет области дальше этого задания:\n• <<2>>", -- 1 is DAS_QUEST_CC_CROW
+	DAS_MENU_CB_CRAG		= "Craglorn / Краглорн",
+	DAS_MENU_CB_CYRO		= "Cyrodiil / Сиродил — штаб альянса",
+	DAS_MENU_CB_CYRO_TIP	= "Поддерживается только пропуск диалогов при взятии и сдаче",
+	DAS_MENU_CB_DARKB		= "Gold Coast / Золотой берег",
+	DAS_MENU_CB_THGLD		= "Hew's Bane / Проклятие Хью",
+	DAS_MENU_CB_MURK		= "Murkmire / Мрачные трясины",
+	DAS_MENU_SM_MURK		= "Настройки мрачных трясин",
+	DAS_MENU_CB_MM_DELV		= "Лилмот: логова",
+	DAS_MENU_CB_MM_DELV_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в Лилмоте\nТребуется пройти задание-пролог:\n• <<2>>", -- 1 is DAS_SLAVES_QUEST1
+	DAS_MENU_CB_MM_BOSS		= "Лилмот: мировые боссы",
+	DAS_MENU_CB_MM_BOSS_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в Лилмоте\nТребуется пройти задание-пролог:\n• <<2>>", -- 1 is DAS_SLAVES_QUEST3
+	DAS_MENU_CB_MM_ROOT		= "Деревня шёпота-корня",
+	DAS_MENU_CB_MM_ROOT_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в деревне шёпота-корня\nТребуется полностью пройти сюжет области", -- 1 is DAS_SLAVES_QUEST2
+	DAS_MENU_CB_NELWR		= "Northern Elsweyr / Северный Эльсвейр",
+	DAS_MENU_CB_SELWR		= "Southern Elsweyr / Южный Эльсвейр",
+	DAS_MENU_CB_ELVES		= "Summerset / Саммерсет",
+	DAS_MENU_CB_MWIND		= "Vvardenfell / Вварденфелл",
+	DAS_MENU_SM_MWIND		= "Настройки Вварденфелла",
+	DAS_MENU_CB_M_RELC		= "Эшлендеры: реликвии",
+	DAS_MENU_CB_M_RELC_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в Альд’руне\nТребуется пройти оба указанных задания:\n• <<2>>\n• <<3>>", -- 1 is DAS_QUEST_M_NUMANI
+	DAS_MENU_CB_M_HUNT		= "Эшлендеры: охота",
+	DAS_MENU_CB_M_HUNT_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в Альд’руне\nТребуется пройти оба указанных задания:\n• <<2>>\n• <<3>>", -- 1 is DAS_QUEST_M_ASHLANDER
+	DAS_MENU_CB_M_DELV		= "Вивек: логова",
+	DAS_MENU_CB_M_DELV_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в Зале справедливости Вивека\nТребуется пройти задание-пролог:\n• <<2>>", -- 1 is DAS_QUEST_M_TRAYLAN
+	DAS_MENU_CB_M_BOSS		= "Вивек: мировые боссы",
+	DAS_MENU_CB_M_BOSS_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в Зале справедливости Вивека\nТребуется пройти задание-пролог:\n• <<2>>", -- 1 is DAS_QUEST_M_BELERU
+	DAS_MENU_CB_ORCS		= "Wrothgar / Ротгар",
+	DAS_MENU_H_GUILDS		= "Ежедневки от гильдий:",
+	DAS_MENU_CB_GUILD		= "Гильдии бойцов и магов, и Неустрашимые",
+	DAS_MENU_SM_GUILD		= "Настройки гильдий",
+	DAS_MENU_CB_G_FG_HIDE	= "Скрывать задания гильдии бойцов в столицах",
+	DAS_MENU_CB_G_MG_HIDE	= "Скрывать задания гильдии магов в столицах",
+	DAS_MENU_CB_G_UD_HIDE	= "Скрывать задания Неустрашимых в столицах",
+	DAS_MENU_H_EVENTS		= "Праздники:",
+	DAS_MENU_CB_E_NL		= "Новая жизнь",
+	DAS_MENU_CB_E_NL_TIP	= "Включить ежедневки фестиваля новой жизни",
+	-- invite menu
+	DAS_MENU_SM_INVITE		= "Текст и поведение приглашений",
+	DAS_MENU_TB_QST			= "Текст рекламы раздачи",
+	DAS_MENU_TB_QST_TIP		= "Текст, который будет собираться модом в рекламу для рассылки в зончат.\n<<1>> заменится на названия заданий, а <<2>> — на коды для автоприглашения.\nУберите любой из параметров, чтобы он не учитывался.",
+	DAS_MENU_BTN_QSTRST		= "Сбросить",
+	DAS_MENU_BTN_QSTRST_TIP	= "Сбросить текст рекламы на стандартный",
+	DAS_MENU_CB_WOMOD		= "Режим «приём только в шёпот»",
+	DAS_MENU_CB_WOMOD_TIP	= "Если включено, будет игнорировать коды в зончате!",
+	DAS_MENU_TB_WOT			= "Текст рекламы в режиме шёпота",
+	DAS_MENU_TB_WOT_TIP		= "Заменит собой всё, что после <<1>> в тексте рекламы раздачи выше",
+	DAS_MENU_H_GLDAUTOINV	= "Авто-приглашения для гильдчатов",
+	DAS_MENU_DD_GAI			= "Авто-приглашать по коду в гильд-чат...",
+	DAS_MENU_DD_GAI_TIP		= "Чат какой гильдии необходимо прослушивать?",
+	DAS_MENU_DD_GAI_NONE	= "(не выбрано)",
+	DAS_MENU_TB_GAICODE		= "Код автоприглашения",
+	DAS_MENU_TB_GAICODE_TIP	= "Оставьте пустым, чтобы отключить.\nЗадайте как |cFFFFFFblah|r для автоприглашения по |cFFFFFF+blah|r в чат и т. п.",
+	DAS_MENU_CB_GCHAT		= "Прослушивать все гильд-чаты для кодов раздач",
+	-- gui menu
+	DAS_MENU_H_GUI			= "Внешний вид окошка DAS",
+	DAS_MENU_CB_GUILOCK		= "Закрепить положение окна",
+	DAS_MENU_CB_TTRIGHT		= "Рисовать подсказки и подменю справа",
+	DAS_MENU_CB_TTRIGHT_TIP	= "Отключите, чтобы подсказки и подменю показывались слева",
+	DAS_MENU_CB_GUIUP		= "Наращивать размер снизу вверх",
+	DAS_MENU_CB_GUIUP_TIP	= "Включите, чтобы список заданий вырастал наверх над панелью мода, а не вниз под нею",
+	DAS_MENU_CB_GUISM		= "Барби-сайз при запуске",
+	DAS_MENU_CB_GUISM_TIP	= "При входе в игру показывать окно свёрнутым",
+	DAS_MENU_CB_HIDE_CQ		= "Скрывать окно при выполнении всех ежедневок",
+	DAS_MENU_CB_HIDE_CQ_TIP	= "Включите, чтобы окно DAS скрывалось после завершения всех заданий в этой зоне",
+	DAS_MENU_CB_MINI_CQ		= "Сворачивать окно при выполнении всех ежедневок",
+	DAS_MENU_CB_MINI_CQ_TIP	= "Включите, чтобы окно DAS сворачивалось после завершения всех заданий в этой зоне. Гасится автоскрытием.",
+	DAS_MENU_CB_DEL_CQ		= "Скрывать выполненные задания",
+	DAS_MENU_CB_DEL_CQ_TIP	= "Если отключено, выполненные задания продолжают висеть в списке. Включите, чтобы скрывать их.",
+	DAS_MENU_CB_FSIZE		= "Размер шрифта",
+	DAS_MENU_CB_FSIZE_TIP	= "Настроить масштаб для текста. 80 — годная отправная точка для таких областей как Вварденфелл.",
+	-- automation options
+	DAS_MENU_H_AUTOM		= "Автоматически...",
+	DAS_MENU_CB_ACCEPT		= "принимать раздаваемые задания",
+	DAS_MENU_CB_ACCEPT_TIP	= "Включить автоприём ежедневных заданий при их раздаче?",
+	DAS_MENU_CB_DSKIP		= "пропускать диалоги у ежедневок",
+	DAS_MENU_CB_DSKIP_TIP	= "Прощёлкивать все диалоги при получении и сдаче ежедневных заданий?",
+	DAS_MENU_CB_INVITE		= "принимать по кодам в зончате",
+	DAS_MENU_CB_INVITE_TIP	= "Любите организованные походы? Включите для автоприглашения людей, отправляющих коды взятых вами заданий\nТо же самое, что и кнопка «Автоприглашения» в окне DAS",
+	DAS_MENU_CB_GLAIOFF		= "отключать автоприём при выходе из группы",
+	DAS_MENU_CB_GLAIOFF_TIP	= "Отключать автоприём, если вы покинули группу?",
+	DAS_MENU_CB_GLASHON		= "включать автораздачу при выходе из группы",
+	DAS_MENU_CB_GLASHON_TIP	= "Включать автораздачу обратно, если вы покинули группу?",
+	DAS_MENU_CB_AGLSPAM		= "выходить из группы при поиске задания",
+	DAS_MENU_CB_AGLSPAM_TIP = "Автоматически покидать группу, если вы скинули в зончат код невзятого задания?",
+	DAS_MENU_SL_AJBINGO		= "вступать в группу ... сек. после +кода в зончат",
+	DAS_MENU_SL_AJBINGO_TIP	= "Как долго мод должен автопринимать приглашения в группу после отправления вами в зончат кода раздачи?\nУстановите в 0, чтобы отключить",
+	-- throttling options
+	DAS_MENU_H_POLITE		= "Замедлить рассылку приглашений и заданий",
+	DAS_MENU_SL_INVTIME		= "Задержка для приглашений в группу (мс)",
+	DAS_MENU_SL_INVTIME_TIP	= "Настройте, если вас выкидывает на вход при попытке собрать группу.\n1000 мс = 1 секунда.",
+	DAS_MENU_CB_SHRTIME		= "Задержка для автораздачи заданий (мс)",
+	DAS_MENU_CB_SHRTIME_TIP	= "Настройте, если вас выкидывает на вход при добавлении людей в группу.\n1000 мс = 1 секунда.",
+	-- misc options
+	DAS_MENU_CB_H_STUFF		= "Разное",
+	DAS_MENU_CB_DEBUG		= "Режим отладки",
+
+
+	-- QUEST DATA
 
 	-- Quest names are located in the table 52420949-0 of RU.lang
 	-- NPC names are located in the table 8290981-0 of RU.lang
+	-- Specify NPC names with all dynamic grammar pre-applied,
+	-- e.g. "La justiciar Farowël", not "justiciar Farowël^fd"
 
 
 	-- Northern Elsweyr
