@@ -185,6 +185,25 @@ local strings  = {
 	DAS_DB_ARENA            = "群衆のどよめき", -- 5606
 
 
+	-- Hew's Bane / Thieves Guild
+	-- Heists
+	DAS_HEWS_HDEAD          = "強奪: 虚空の広間", -- 5536
+	DAS_HEWS_HHIDE          = "強奪: 隠れ場所", -- 5572
+	DAS_HEWS_HUNDE          = "強奪: 地下墓地", -- 5573
+	DAS_HEWS_HGLIT          = "強奪: グリタリング洞窟", -- 5575
+	DAS_HEWS_HSECL          = "強奪: 僻地の下水道", -- 5577
+	-- World Boss dailies
+	DAS_HEWS_KOEST          = "失われた真珠", -- 5586
+	DAS_HEWS_THRAL          = "虜囚の入り江", -- 5587
+	-- Delve dailies
+	DAS_HEWS_BAHRA          = "青春の記憶", -- 5588
+	DAS_HEWS_SHARK          = "船乗りのキセル", -- 5589
+	DAS_QUEST_TG_HEIST      = "強奪ボード", -- 87370069-0-20019
+	DAS_QUEST_TG_REACQ      = "再取得掲示板", -- 87370069-0-20116
+	DAS_QUEST_TG_FAREN      = "ファレン・ダー", -- 69599
+	DAS_QUEST_TG_SPENC      = "スペンサー・ライ", -- 69854
+
+
 	-- New Life Festival
 	DAS_NL_EASTMARCH        = "雪熊の飛び込み", -- 5811
 	DAS_NL_REAPERSMARCH     = "五つ爪の策略の試練", -- 5834

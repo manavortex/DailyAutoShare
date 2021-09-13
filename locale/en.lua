@@ -186,6 +186,25 @@ local strings  = {
 	DAS_DB_ARENA            = "The Roar of the Crowds", -- 5606
 
 
+	-- Hew's Bane / Thieves Guild
+	-- Heists
+	DAS_HEWS_HDEAD          = "Heist: Deadhollow Halls",      -- 5536
+	DAS_HEWS_HHIDE          = "Heist: The Hideaway",          -- 5572
+	DAS_HEWS_HUNDE          = "Heist: Underground Sepulcher", -- 5573
+	DAS_HEWS_HGLIT          = "Heist: Glittering Grotto",     -- 5575
+	DAS_HEWS_HSECL          = "Heist: Secluded Sewers",       -- 5577
+	-- World Boss dailies
+	DAS_HEWS_KOEST          = "The Lost Pearls",              -- 5586
+	DAS_HEWS_THRAL          = "Thrall Cove",                  -- 5587
+	-- Delve dailies
+	DAS_HEWS_BAHRA          = "Memories of Youth",            -- 5588
+	DAS_HEWS_SHARK          = "The Sailor's Pipe",            -- 5589
+	DAS_QUEST_TG_HEIST      = "Heist Board",                  -- 87370069-0-20019
+	DAS_QUEST_TG_REACQ      = "Reacquisition Board",          -- 87370069-0-20116
+	DAS_QUEST_TG_FAREN      = "Fa'ren-dar",                   -- 69599
+	DAS_QUEST_TG_SPENC      = "Spencer Rye",                  -- 69854
+
+
 	-- New Life Festival
 	DAS_NL_EASTMARCH        = "Snow Bear Plunge",               -- 5811
 	DAS_NL_REAPERSMARCH     = "The Trial of Five-Clawed Guile", -- 5834

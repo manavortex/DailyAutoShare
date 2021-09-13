@@ -185,6 +185,25 @@ local strings  = {
 	DAS_DB_ARENA            = "Das Jubeln der Menge",    -- 5606
 
 
+	-- Hew's Bane / Thieves Guild
+	-- Heists
+	DAS_HEWS_HDEAD          = "Beutezug der Todkuhlenhallen",           -- 5536
+	DAS_HEWS_HHIDE          = "Beutezug des Verstecks",                 -- 5572
+	DAS_HEWS_HUNDE          = "Beutezug der unterirdischen Grabstätte", -- 5573
+	DAS_HEWS_HGLIT          = "Beutezug der funkelnden Grotte",         -- 5575
+	DAS_HEWS_HSECL          = "Beutezug der abgelegenen Kanalisation",  -- 5577
+	-- World Boss dailies
+	DAS_HEWS_KOEST          = "Die verschwundenen Perlen",              -- 5586
+	DAS_HEWS_THRAL          = "Sklavenbucht",                           -- 5587
+	-- Delve dailies
+	DAS_HEWS_BAHRA          = "Erinnerungen an die Jugend",             -- 5588
+	DAS_HEWS_SHARK          = "Die Seemannspfeife",                     -- 5589
+	DAS_QUEST_TG_HEIST      = "Brett für Beutezüge",                    -- 87370069-0-20019
+	DAS_QUEST_TG_REACQ      = "Brett für Rückbeschaffungen",            -- 87370069-0-20116
+	DAS_QUEST_TG_FAREN      = "Fa'ren-dar",                             -- 69599
+	DAS_QUEST_TG_SPENC      = "Spencer Rye",                            -- 69854
+
+
 	-- New Life Festival
 	DAS_NL_EASTMARCH        = "Der Schneebärensprung",               -- 5811
 	DAS_NL_REAPERSMARCH     = "Die Prüfung der Fünfkrallenlist",     -- 5834
