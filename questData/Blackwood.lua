@@ -29,7 +29,7 @@ DAS.makeBingoTable(zoneId, {
 	{"ritual", "rites", "sulxan"},
 	{"excav", "excavation", "bull"},
 	{"frog", "deathwart"},
-	{"ruinach", "xanmeer", "ruinark"},
+	{"xanmeer", "ruinach", "ruinark"},
 	{"lagoon", "xeemhok", "trophy"},
 	-- Delve dailies : NPC = Deetum-Jas
 	{"ru", "bloodrun", "tactics"},
