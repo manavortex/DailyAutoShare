@@ -359,6 +359,7 @@ local function RegisterEventHooks()
 	em:RegisterForEvent(DAS.name, EVENT_QUEST_REMOVED, 			OnQuestRemoved)
 	em:RegisterForEvent(DAS.name, EVENT_QUEST_SHARED, 			OnQuestShared)
 	em:RegisterForEvent(DAS.name, EVENT_GROUP_UPDATE,			OnGroupUpdate)
+	em:RegisterForEvent(DAS.name, EVENT_GROUP_MEMBER_JOINED, 	OnGroupUpdate)
 	em:RegisterForEvent(DAS.name, EVENT_GROUP_MEMBER_LEFT, 		OnGroupMemberLeft)
 	em:RegisterForEvent(DAS.name, EVENT_CHAT_MESSAGE_CHANNEL,   OnChatMessage)
 	-- DasControl:OnMoveStop
