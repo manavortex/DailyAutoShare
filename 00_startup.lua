@@ -252,10 +252,10 @@ local function OnQuestAdded(eventCode, journalIndex, questName, objectiveName)
 	local zoneId = DAS.GetZoneId()
 	if not DAS.GetActiveIn(zoneId) 			then return end
 	if not GetIsQuestSharable(journalIndex) then return end
-  local shareables = DAS.shareables[zoneId] or {}
-  local bingoIndex = DAS.GetBingoIndexFromQuestName(questName) or 0
-  DAS.activeBingoIndices[bingoIndex] = true
-  if nil ~= shareables[questName] then
+	local shareables = DAS.shareables[zoneId] or {}
+	local bingoIndex = DAS.GetBingoIndexFromQuestName(questName) or 0
+	DAS.activeBingoIndices[bingoIndex] = true
+	if nil ~= shareables[questName] then
 		DAS.LogQuest(questName, false)
 		zo_callLater(forceRefreshControl, 700)
   end
@@ -293,8 +293,7 @@ local function OnChatMessage(...)
    DAS.OnChatMessage(...)
 end
 local function OnPlayerActivated()
-	local active = DAS.GetActiveIn()
-	DAS.SetHidden(not active)
+	DAS.SetHidden(not DAS.GetActiveIn())
 	DAS.SetAutoInvite(DAS.GetAutoInvite()) -- disables if we aren't group lead
 	DAS.SetChatListenerStatus(DAS.autoInviting)
 	DAS.SetListenInGuilds(DAS.GetSettings().listenInGuilds)
@@ -306,7 +305,7 @@ local function OnPlayerActivated()
 	DAS.cacheChatterData()
 	HandleGroupResize()
 end
-local function OnQuestToolUpdate() 
+local function OnQuestToolUpdate()
   forceRefreshControl()
 end
 local function OnQuestRemoved(_, isCompleted, journalIndex, questName, zoneIndex, _, questId)
@@ -325,9 +324,8 @@ local function OnQuestRemoved(_, isCompleted, journalIndex, questName, zoneIndex
 	end
 	zo_callLater(function()
 		DAS.SetAutoInvite(autoInvite)
-		forceRefreshControl()
 		DAS.questCacheNeedsRefresh = true
-		DAS.RefreshLabelsWithDelay()
+		forceRefreshControl()
 	end, 5000)
 end
 local alreadyRefreshing = false
@@ -366,32 +364,31 @@ local function RegisterEventHooks()
 	-- DasControl:OnMoveStop
 	-- DailyAutoShare.SaveControlLocation(self)
 end
--- has to be a local var, lua error if not
--- Keep outside of function namespace so we can overwrite it for debugging
-local afterEight = tonumber(GetTimeString():sub(0, 2)) >= 08
-local function minimiseOnStartup()
-  DAS.SetMinimized(DAS.GetSettings().startupMinimized)
-end
 --==============================
 --===== Rise, my minion!  ======
 --==============================
 function DailyAutoShare_Initialize(eventCode, addonName)
-  if addonName ~= DAS.name then return end
-  DAS.settings        = ZO_SavedVars:New(             "DAS_Settings", 2, "DAS_Settings", defaults)
-  DAS.globalSettings  = ZO_SavedVars:NewAccountWide(  "DAS_Globals",  2, "DAS_Globals",  defaults)
-  DAS.globalSettings.completionLog = DAS.globalSettings.completionLog or {}
-  DAS.pdn = GetUnitDisplayName(UNITTAG_PLAYER)
-  pointerUpSubzones()
-  RegisterEventHooks()
-  DAS.CreateMenu(DAS.settings, defaults)
-  DAS.CreateGui()
-  -- local timetoreset = (GetTimeStamp() - 60*60*7)%86400
-  -- zo_callLater(resetQuests, timetoreset)
-  DAS.handleLog()
-  zo_callLater(OnPlayerActivated, 5000)
-  zo_callLater(minimiseOnStartup, 5500)
-  DAS.CreateMapMarkers()
-  EVENT_MANAGER:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
+	if addonName ~= DAS.name then return end
+	DAS.settings        = ZO_SavedVars:New(             "DAS_Settings", 2, "DAS_Settings", defaults)
+	DAS.globalSettings  = ZO_SavedVars:NewAccountWide(  "DAS_Globals",  2, "DAS_Globals",  defaults)
+	DAS.globalSettings.completionLog = DAS.globalSettings.completionLog or {}
+	DAS.pdn = GetUnitDisplayName(UNITTAG_PLAYER)
+
+	pointerUpSubzones()
+
+	RegisterEventHooks()
+
+	DAS.CreateMenu(DAS.settings, defaults)
+	DAS.SetMinimised(DAS.GetSettings().startupMinimized)
+	DAS.CreateGui()
+
+	DAS.handleLog()
+
+	zo_callLater(function() DailyAutoShare.RefreshLabels(false, true) end, 5000)
+
+	DAS.CreateMapMarkers()	
+
+	EVENT_MANAGER:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
 end
 ZO_CreateStringId("SI_BINDING_NAME_TOGGLE_DAS_GUI",  GetString(DAS_SI_TOGGLE))
 ZO_CreateStringId("SI_BINDING_NAME_TOGGLE_DAS_LIST", GetString(DAS_SI_MINIMISE))

@@ -12,7 +12,7 @@ local function isHidden()
 	return (not DAS.GetActiveIn()) or DAS.GetHidden() or (DAS.GetAutoHide() and (not DAS.OpenDailyPresent()))
 end
 local function isMinimised()
-	return DAS.GetUserMinimised() or (not isHidden()) and (DAS.GetAutoMinimize() and (not DAS.OpenDailyPresent()))
+	return DAS.GetMinimised() or (not isHidden()) and (DAS.GetAutoMinimize() and (not DAS.OpenDailyPresent()))
 end
 local function cacheVisibilityStatus(forceOverride)
 	stateIsHidden				= isHidden()
@@ -108,10 +108,9 @@ function DAS.Donate(_, mouseButton)
 	end
 end
 function DAS.MinMaxButton()
-	local newMinimisedValue = not (isMinimised())
+	local newMinimisedValue = not (stateIsMinimised)
 	SetMinimizedButton(newMinimisedValue)
-	DAS.SetUserMinimised(newMinimisedValue)
-	local stateIsMinimised = newMinimisedValue
+	DAS.SetMinimised(newMinimisedValue)
 	DAS.RefreshControl()
 end
 local function shouldHideLabel(questName, zoneId)
@@ -257,7 +256,7 @@ function DAS.setLabels(zoneQuests)
   end -- for loop end
   return numLabels
 end 
-function DAS.RefreshLabelsWithDelay() zo_callLater(DAS.RefreshLabels, 500) end
+function DAS.RefreshLabelsWithDelay() zo_callLater(function() DAS.RefreshLabels() end, 500) end
 function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
   forceQuestRefresh = forceQuestRefresh or DAS.questCacheNeedsRefresh
   p("DAS.RefreshLabels(" .. tostring(forceQuestRefresh) .. ", " .. tostring(forceSkipQuestRefresh) .. ")")
@@ -285,19 +284,20 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
 	DAS.RefreshFullBingoString()
 	DAS.SetLabelFontSize()
 end
-function DAS.RefreshGui(hidden)
+function DAS.RefreshGui(hidden, skipLabelsRefresh)
   -- p("DAS.RefreshGui")
   if not DAS.GetActiveIn() then
     DasControl:SetHidden(true)
     return
   end
 	hidden = hidden or (DAS.GetHidden() or (DAS.GetAutoHide() and not DAS.OpenDailyPresent()) or #DAS.GetZoneQuests(zoneId) == 0)
-	local minmaxed = stateIsMinimised
-	SetMinimizedButton(minmaxed)
-	DasList:SetHidden(minmaxed)
+	SetMinimizedButton(stateIsMinimised)
+	DasList:SetHidden(stateIsMinimised)
 	DasControl:SetHidden(hidden)
 	DasHandle:SetMovable(not DAS.GetLocked())
-  DAS.RefreshLabelsWithDelay()
+	if nil ~= skipLabelsRefresh then
+		DAS.RefreshLabelsWithDelay()
+	end
 end
 function DAS.AnchorList()
   DasList:ClearAnchors()
@@ -375,11 +375,9 @@ function DAS.CreateGui()
     spacer:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, offsetY)
     DAS.SetLabelFontSize()
   end
-  setupGuiLabels()
-  DAS.LoadControlLocation(DasControl)
-  -- DAS.LoadControlLocation(DasButton)
-  DAS.AnchorList()
-  SetMinimizedButton(DAS.GetMinimized())
-  DAS.RefreshGui()
-  zo_callLater(function() DAS.SetLabelFontSize() end, 2000)
+	setupGuiLabels()
+	DAS.LoadControlLocation(DasControl)
+	DAS.AnchorList()
+	cacheVisibilityStatus()
+	DAS.RefreshGui(nil, true)
 end
