@@ -89,10 +89,10 @@ end
 function DAS.GetWhisperOnly()
   return GetSettings().whisperOnly
 end
-function DAS.GetMinimized()
+function DAS.GetMinimised()
 	return DAS.GetSettings().minimised
 end
-function DAS.SetMinimized(value)
+function DAS.SetMinimised(value)
 	DAS.GetSettings().minimised = value
 end
 function DAS.GetAutoAcceptShared()
@@ -277,16 +277,6 @@ end
 function DAS.SetHideCompleted(value)
 	GetSettings().hideCompleted = value
 end
-function DAS.GetUserMinimised()
-	return GetSettings().userMinimised
-end
-function DAS.SetUserMinimised(value)
-	GetSettings().userMinimised = value
-end
-local characterName         = GetUnitName(UNITTAG_PLAYER)
-local dateNumber            = tonumber(GetDate())
-local timeStringNumber      = tonumber(GetTimeString():sub(1,2))
-DAS.todaysCharacterLog      = nil
 
 function DAS.GetQuestListItem(zoneId, listName, listKey)
   if nil == zoneId or nil == listName or nil == listKey then return false end
@@ -298,7 +288,7 @@ function DAS.SetQuestListItem(zoneId, listName, listKey, value)
   if nil == zoneId or nil == listName or nil == listKey then return end
   if nil == DAS.GetSettings()[zoneId] or nil == DAS.GetSettings()[zoneId][listName] then return end
   DAS.GetSettings()[zoneId][listName][listKey] = value
-  zo_callLater(function() DAS.RefreshControl() end, 500)
+  zo_callLater(function() DAS.RefreshControl(true) end, 500)
 end
 function DAS.GetMarkerVisibility()
   return GetSettings().mapMarkersVisible
