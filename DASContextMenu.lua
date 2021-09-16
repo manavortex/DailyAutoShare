@@ -68,7 +68,7 @@ function DAS.OnRightClick(control, verbose)
         SetMenuSpacing(3)
         SetMenuPad(10)
         SetMenuMinimumWidth(185)
-        if nil ~= control.dataQuestList and {} ~= control.dataQuestList then
+        if control.dataIsSubList then
             AddCustomMenuItem(GetString(DAS_GUI_CTX_SUBLIST),
 				function() toggleSubList(control) end,
 				MENU_ADD_OPTION_LABEL
