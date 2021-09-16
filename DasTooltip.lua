@@ -58,12 +58,13 @@ local function getPrequestTooltipData(questName)
 end
 local bingoTipTemplate = GetString(DAS_GUI_Q_BINGO)
 local questTipTemplate = GetString(DAS_GUI_Q_TIP)
+local rightclickTip = "|c9E948B" .. GetString(DAS_GUI_Q_RMB_TIP) .. "|r"
 function DAS.CreateLabelTooltip(control)
 	setTooltipOffset(control)
-	local tooltipText = ""
 	local questName = control.dataTitle or control.dataQuestName
 	if nil == questName then return end
-	if nil ~= questName:find(dotDotDot) then
+	local tooltipText = ""
+	if control.dataIsSubList then
 		tooltipText = GetString(DAS_GUI_SUBLIST_OPEN)
 	else
 		local bingoString = control.dataBingoString or ""
@@ -80,9 +81,12 @@ function DAS.CreateLabelTooltip(control)
 		end
 	end
 	DailyAutoShare_Tooltip:AddLine(tooltipText)
-	local prequestText = getPrequestTooltipData(questName)
-	if prequestText then
-		DailyAutoShare_Tooltip:AddLine(prequestText)
+	if not control.dataIsSubList then
+		local prequestText = getPrequestTooltipData(questName)
+		if prequestText then
+			DailyAutoShare_Tooltip:AddLine(prequestText)
+		end
+		DailyAutoShare_Tooltip:AddLine(rightclickTip)
 	end
 	DailyAutoShare_Tooltip:SetHidden(false)
  end

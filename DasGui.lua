@@ -214,48 +214,52 @@ function DAS.SetSubLabels(questTable)
   return status
 end
 local typeTable = "table"
-function DAS.setLabels(zoneQuests)
-  local zoneId = zoneId or DAS.GetZoneId()
-  zoneQuests = zoneQuests or DAS.GetZoneQuests(zoneId)
-  labelTexts = {}
-  -- p("DAS.setLabels")
-  DAS.activeZoneQuests = {}
-  numLabels = 1
-  local questName
-	for index, questNameOrTable in pairs(zoneQuests) do
-    if not labelTexts[questNameOrTable] then
-      local label = DAS.labels[numLabels] -- despite the name these are actually buttons
-      if nil ~= label then
-        local status                      = DAS_STATUS_OPEN
-        visibleButtonIndex 			          = visibleButtonIndex +1
-        if type(questNameOrTable) == typeTable then
-          label.dataQuestList 	          = ZO_DeepTableCopy(questNameOrTable, {})
-          label.dataQuestName, status     = setLabelTable(questNameOrTable)
-          label.dataQuestState            = status or DAS_STATUS_OPEN
-          label.dataTitle                 = makeSubLabelTitle(label.dataQuestList[1], zoneId, index) or questName
-          else
-          label.dataQuestList 	  = nil
-          label.dataTitle         = questNameOrTable
-          label.dataQuestName     = questNameOrTable
-          label.dataQuestState    = DAS.GetQuestStatus(label.dataQuestName)
-        end
-        local hideLabel = (DAS.GetHideCompleted() and label.dataQuestState == DAS_STATUS_COMPLETE) or shouldHideLabel(label.dataQuestName, zoneId)
-        -- d(zo_strformat("DAS: <<1>> state <<2>>", label.dataQuestName, label.dataQuestState))
-        label:SetHidden(hideLabel)
-        label.dataJournalIndex 	= DAS.GetLogIndex(label.dataQuestName)
-        label.dataBingoString, label.dataBingoIndex = DAS.GetBingoStringFromQuestName(label.dataQuestName)
-        label.dataTitle         = label.dataTitle or ""
-        if label.dataQuestState == DAS_STATUS_ACTIVE then
-          table.insert(DAS.activeZoneQuests, label.dataJournalIndex)
-        end
-        labelTexts[label.dataQuestName] = true
-        setControlText(label, hideLabel)
-        numLabels = numLabels + 1
-      end -- nil check end
-    end
-  end -- for loop end
-  return numLabels
-end 
+function DAS.setLabels(zoneQuests, zoneId)
+	zoneId = zoneId or DAS.GetZoneId()
+	zoneQuests = zoneQuests or DAS.GetZoneQuests(zoneId)
+	labelTexts = {}
+	-- p("DAS.setLabels")
+	DAS.activeZoneQuests = {}
+	numLabels = 1
+	local questName
+		for index, questNameOrTable in pairs(zoneQuests) do
+		if not labelTexts[questNameOrTable] then
+		local label = DAS.labels[numLabels] -- despite the name these are actually buttons
+			if nil ~= label then
+				local status		= DAS_STATUS_OPEN
+				visibleButtonIndex	= visibleButtonIndex +1
+				label.dataIsSubList	= false
+				if type(questNameOrTable) == typeTable then
+					label.dataQuestList				= ZO_DeepTableCopy(questNameOrTable, {})
+					if label.dataQuestList ~= {} then
+						label.dataIsSubList			= true
+					end
+					label.dataQuestName, status		= setLabelTable(questNameOrTable)
+					label.dataQuestState			= status or DAS_STATUS_OPEN
+					label.dataTitle					= makeSubLabelTitle(label.dataQuestList[1], zoneId, index) or questName
+				else
+					label.dataQuestList		= nil
+					label.dataTitle			= questNameOrTable
+					label.dataQuestName		= questNameOrTable
+					label.dataQuestState	= DAS.GetQuestStatus(label.dataQuestName)
+				end
+				local hideLabel = (DAS.GetHideCompleted() and label.dataQuestState == DAS_STATUS_COMPLETE) or shouldHideLabel(label.dataQuestName, zoneId)
+				-- d(zo_strformat("DAS: <<1>> state <<2>>", label.dataQuestName, label.dataQuestState))
+				label:SetHidden(hideLabel)
+				label.dataJournalIndex 	= DAS.GetLogIndex(label.dataQuestName)
+				label.dataBingoString, label.dataBingoIndex = DAS.GetBingoStringFromQuestName(label.dataQuestName)
+				label.dataTitle         = label.dataTitle or ""
+				if label.dataQuestState == DAS_STATUS_ACTIVE then
+					table.insert(DAS.activeZoneQuests, label.dataJournalIndex)
+				end
+				labelTexts[label.dataQuestName] = true
+				setControlText(label, hideLabel)
+				numLabels = numLabels + 1
+			end -- nil check end
+		end
+	end -- for loop end
+	return numLabels
+end
 function DAS.RefreshLabelsWithDelay() zo_callLater(function() DAS.RefreshLabels() end, 500) end
 function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
   forceQuestRefresh = forceQuestRefresh or DAS.questCacheNeedsRefresh
@@ -272,9 +276,9 @@ function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
       DAS.trackedIndex = FOCUSED_QUEST_TRACKER.assistedData.arg1
     end
   end
-	local questList = DAS.QuestLists[DAS.GetZoneId()]
-  local zoneQuests = DAS.GetZoneQuests()
-  DAS.setLabels(zoneQuests)
+	local zoneId = DAS.GetZoneId()
+  local zoneQuests = DAS.GetZoneQuests(zoneId)
+  DAS.setLabels(zoneQuests, zoneId)
 	for bIndex=#DAS.GetZoneQuests()+1, #DAS.labels do
 		if DAS.labels[bIndex] then
 			DAS.labels[bIndex]:SetHidden(true)
