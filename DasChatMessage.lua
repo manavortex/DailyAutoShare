@@ -40,7 +40,7 @@ local function HandleChatMessage(messageText, fromDisplayName, calledRecursively
     -- lower case regex
     local _, bingoCode = pcall(string.match, messageText, "[%+/]+%s*(%w+)%s?[%+/]?")
     if not found and not bingoCode then return end
-    local bingoIndex = DAS.bingo[DAS.GetZoneId()][bingoCode]
+    local bingoIndex = (DAS.bingo[DAS.GetZoneId()] or {})[bingoCode]
     found = found or DAS.activeBingoIndices[bingoIndex]
     if not found then return HandleChatMessage(messageText:gsub(bingoCode, ""), fromDisplayName, true) end
     if found and not table.contains(inviteQueue, fromDisplayName) then
