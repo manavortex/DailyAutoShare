@@ -1,5 +1,13 @@
 # DailyAutoShare ChangeLog
 
+## 4.1.1 - released 2021-09-16, @mychaelo
+- Fixed the "Start up minimised" mode (#46, @mychaelo)
+- Added an EVENT_GROUP_MEMBER_JOINED listener for autoshare (#47, @mychaelo)
+- Made `xanmeer` the default code for "Call of the Ruinach" in Blackwood (#48, @mychaelo)
+- Safeguarded an edge-case `nil` index for bingo checker (#49, @mychaelo)
+- Updated localisations with placeholder translations (#50, @mychaelo)
+- Added a "Right-click for options" hint to the quest tooltips (#50, @mychaelo)
+
 ## 4.1.0 - released 2021-09-14, @mychaelo & @vortex9
 - Added Southern Elsweyr daily quests (#2, @vortex9)
 - Added Craglorn daily quests (#4, @vortex9)
