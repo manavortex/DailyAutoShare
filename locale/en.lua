@@ -19,7 +19,7 @@ local strings  = {
 	DAS_GUI_INVITE_FALSE	= "Auto-invite is now |cDF6C00Off|r",
 	DAS_GUI_ACCEPT_TRUE		= "|c89FFE3Automatically accepting|r quest shares for dailies",
 	DAS_GUI_ACCEPT_FALSE	= "|cDF6C00Not automatically accepting|r dailies",
-	DAS_GUI_SHARE_TRUE		= "|c89FFE3Automatically sharing|r your active dailies on group member join or 'share' in group chat.\n\nRight-click to share your focused quest",
+	DAS_GUI_SHARE_TRUE		= "|c89FFE3Automatically sharing|r your active dailies on group member join or 'share' in group chat.\n\nRight-click to share your active quests now",
 	DAS_GUI_SHARE_FALSE		= "|cDF6C00Not automatically sharing|r your active dailies.\n\nRight-click to share anyway",
 	DAS_GUI_BTN_SPAM		= "Click to spam in zone chat",
 	DAS_GUI_BTN_SPAM_ASK	= "Click to ask for your open or active dailies",
@@ -33,6 +33,7 @@ local strings  = {
 	DAS_GUI_Q_BINGO			= "\nThe bingo code is <<1>>", -- 1 is the bingo code
 	DAS_GUI_Q_TIP			= "<<1>> |c<<2>><<3>>|r<<4>>", -- 1 is Quest Name, 2 is colour, 3 is the quest state, 4 is either DAS_GUI_Q_BINGO or nothing
 	DAS_GUI_Q_PREREQ		= "|c<<2>>You need a prerequisite quest:|r\n• <<1>>", -- 1 is Quest Name, 2 is colour
+	DAS_GUI_Q_RMB_TIP		= "Right-click for options",
 
 	-- Quest context menu
 	DAS_GUI_CTX_SUBLIST		= "Toggle the quest list",
@@ -130,7 +131,7 @@ local strings  = {
 	DAS_MENU_CB_GUIUP		= "DropUp instead of DropDown",
 	DAS_MENU_CB_GUIUP_TIP	= "Check this if you want the questList to appear above the drag bar instead of below",
 	DAS_MENU_CB_GUISM		= "Start up minimised",
-	DAS_MENU_CB_GUISM_TIP		= "Always minimise the DAS Window on first startup",
+	DAS_MENU_CB_GUISM_TIP	= "Always minimise the DAS Window on first startup",
 	DAS_MENU_CB_HIDE_CQ		= "Auto-hide if all dailies are complete",
 	DAS_MENU_CB_HIDE_CQ_TIP	= "Check this if you want the DAS Window to be hidden when you're done",
 	DAS_MENU_CB_MINI_CQ		= "Auto-minimise if all dailies are complete",

@@ -6,104 +6,105 @@ local strings  = {
 
 	-- GUI
 	-- Drag bar button tooltips
-	DAS_GUI_BTN_LOCK		= "Lock Window", --TRANSLATEME
-	DAS_GUI_BTN_UNLOCK		= "Unlock Window", --TRANSLATEME
+	DAS_GUI_BTN_LOCK		= "Verrouiller la fenêtre", --TRANSLATEME
+	DAS_GUI_BTN_UNLOCK		= "Déverrouiller la fenêtre", --TRANSLATEME
 	DAS_GUI_BTN_HIDE		= "Cacher DailyAutoShare",
 	DAS_GUI_BTN_REFRESH		= "Mettre a jour",
-	DAS_GUI_BTN_MINIMISE	= "Minimise Window", --TRANSLATEME
-	DAS_GUI_BTN_MAXIMISE	= "Maximise Window", --TRANSLATEME
+	DAS_GUI_BTN_MINIMISE	= "Réduire la fenêtre", --TRANSLATEME
+	DAS_GUI_BTN_MAXIMISE	= "Agrandir la fenêtre", --TRANSLATEME
 
 	-- QuestList button tooltips
 	DAS_GUI_INVITE_TRUE		= "Invite auto |c89FFE3activé|r",
 	DAS_GUI_INVITE_FALSE	= "Invite auto |cDF6C00désactivé|r",
 	DAS_GUI_ACCEPT_TRUE		= "|c89FFE3Accepte automatiquement|r les quêtes quotidienne partagées",
 	DAS_GUI_ACCEPT_FALSE	= "|cDF6C00N'accepte pas automatiquement|r les quêtes",
-	DAS_GUI_SHARE_TRUE		= "|c89FFE3Partager automatiquement|r votre quête quotidienne active avec le groupe ou »share« dans le chat de groupe.\n\nClic droit pour partager votre quête active",
+	DAS_GUI_SHARE_TRUE		= "|c89FFE3Partager automatiquement|r votre quête quotidienne active avec le groupe ou « share » ou « quest » dans le chat de groupe.\n\nClic droit pour partager votre quête active",
 	DAS_GUI_SHARE_FALSE		= "|cDF6C00Ne partage pas|r votre quête active.\n\nClic droit pour partager",
 	DAS_GUI_BTN_SPAM		= "Clic pour spam dans le chat de zone",
 	DAS_GUI_BTN_SPAM_ASK	= "Clic pour demander poliment une quête dans le chat de zone",
 	DAS_GUI_BTN_DONATE		= "Visit the GitHub page to voice your concerns, wishes and thanks!\n|c89FFE3— <3 manavortex and the team|r", --TRANSLATEME
 
 	-- Quest tooltips
-	DAS_GUI_SUBLIST_OPEN	= "Click to open the quest list", --TRANSLATEME
-	DAS_GUI_Q_IS_DONE		= "was completed today", -- quest state 0 --TRANSLATEME
-	DAS_GUI_Q_IS_OPEN		= "is still open", -- quest state 1 --TRANSLATEME
-	DAS_GUI_Q_IS_ACTIVE		= "is active", -- quest state 2 --TRANSLATEME
+	DAS_GUI_SUBLIST_OPEN	= "Cliquez pour ouvrir la liste des quêtes", --TRANSLATEME
+	DAS_GUI_Q_IS_DONE		= "accomplie aujourd'hui", -- quest state 0 --TRANSLATEME
+	DAS_GUI_Q_IS_OPEN		= "n'est toujours pas tenté", -- quest state 1 --TRANSLATEME
+	DAS_GUI_Q_IS_ACTIVE		= "acceptée", -- quest state 2 --TRANSLATEME
 	DAS_GUI_Q_BINGO			= "\nThe bingo code is <<1>>", -- 1 is the bingo code --TRANSLATEME
-	DAS_GUI_Q_TIP			= "<<1>> |c<<2>><<3>>|r<<4>>", -- 1 is Quest Name, 2 is colour, 3 is the quest state, 4 is either DAS_GUI_Q_BINGO or nothing --TRANSLATEME
-	DAS_GUI_Q_PREREQ		= "|c<<2>>You need a prerequisite quest:|r\n• <<1>>", -- 1 is Quest Name, 2 is colour --TRANSLATEME
+	DAS_GUI_Q_TIP			= "« <<1>> » |c<<2>><<3>>|r<<4>>", -- 1 is Quest Name, 2 is colour, 3 is the quest state, 4 is either DAS_GUI_Q_BINGO or nothing --TRANSLATEME
+	DAS_GUI_Q_PREREQ		= "|c<<2>>Le quête préalable est requise :|r\n• <<1>>", -- 1 is Quest Name, 2 is colour --TRANSLATEME
+	DAS_GUI_Q_RMB_TIP		= "Clic droit pour les options", --TRANSLATEME
 
 	-- Quest context menu
-	DAS_GUI_CTX_SUBLIST		= "Toggle the quest list", --TRANSLATEME
+	DAS_GUI_CTX_SUBLIST		= "Afficher/masquer la liste des quêtes", --TRANSLATEME
 	DAS_GUI_CTX_SPAM		= "Spam", --TRANSLATEME
-	DAS_GUI_CTX_SHARE		= "Share", --TRANSLATEME
-	DAS_GUI_CTX_TRACK		= "→ Focus", --TRANSLATEME
-	DAS_GUI_CTX_ABANDON		= "|cFF0000Abandon|r", --TRANSLATEME
+	DAS_GUI_CTX_SHARE		= "Partager", --TRANSLATEME
+	DAS_GUI_CTX_TRACK		= "→ Traquer", --TRANSLATEME
+	DAS_GUI_CTX_ABANDON		= "|cFF0000Abandonner|r", --TRANSLATEME
 	DAS_GUI_CTX_OPEN_TRUE	= "Set as completed", --TRANSLATEME
 	DAS_GUI_CTX_OPEN_FALSE	= "Set as open", --TRANSLATEME
 
 	-- Settings panel
 	DAS_MENU_URI_LOC		= "https://github.com/manavortex/DailyAutoShare/issues/40",
-	DAS_MENU_H_GENERAL		= "General Settings",
-	DAS_MENU_CB_GLOBAL		= "Account-wide Settings",
-	DAS_MENU_CB_GLOBAL_TIP	= "Use the same settings for all characters?",
-	DAS_MENU_CB_HIDE		= "Hide UI window",
-	DAS_MENU_CB_HIDE_NA		= "Hide in non-active zones",
+	DAS_MENU_H_GENERAL		= "Paramètres généraux",
+	DAS_MENU_CB_GLOBAL		= "Réglages à l'échelle du compte",
+	DAS_MENU_CB_GLOBAL_TIP	= "Utiliser les mêmes réglages pour tous les personnages ?",
+	DAS_MENU_CB_HIDE		= "Cacher la fenêtre IU",
+	DAS_MENU_CB_HIDE_NA		= "Cacher dans les zones non actives",
 	DAS_MENU_CB_HIDE_NA_TIP	= "Usually the completed dailies will be shown in the list. Check this to make them vanish.",
 	-- activate menu
-	DAS_MENU_CB_SUB_ENABLE	= "Enable",
-	DAS_MENU_CB_SUB_HIDE	= "Hide",
+	DAS_MENU_CB_SUB_ENABLE	= "Activer",
+	DAS_MENU_CB_SUB_HIDE	= "Dissimuler",
 	DAS_MENU_CB_SUB_HIDE_T	= "Hide the quests from UI List but keep sharing them",
-	DAS_MENU_SM_ACT			= "Activate DailyAutoShare in...",
+	DAS_MENU_SM_ACT			= "Activer la DailyAutoShare dans…",
 	DAS_MENU_SM_ACT_TIP		= "Activate or deactivate the add-on for the listed zones and activities.",
-	DAS_MENU_H_ZONES		= "Zones:",
+	DAS_MENU_H_ZONES		= "les zones :",
 	DAS_MENU_CB_BWOOD		= "Blackwood / Le Bois noir",
 	DAS_MENU_CB_CCITY		= "Clockwork City / La Cité mécanique",
 	DAS_MENU_SM_CCITY		= "Clockwork City Options",
-	DAS_MENU_CB_CC_DELV		= "Brass Fortress: Delves",
+	DAS_MENU_CB_CC_DELV		= "La Forteresse d'airain : les antres",
 	DAS_MENU_CB_CC_DELV_TIP	= "Quest giver is |cFFFFFF<<1>>|r in the Brass Fortress\nRequires completing the following prerequisite quests (either of):\n• <<2>>\n• <<3>>", -- 1 is DAS_QUEST_CC_NOVICE
-	DAS_MENU_CB_CC_BOSS		= "Brass Fortress: World Bosses",
+	DAS_MENU_CB_CC_BOSS		= "La Forteresse d'airain : boss sauvages",
 	DAS_MENU_CB_CC_BOSS_TIP	= "Quest giver is |cFFFFFF<<1>>|r in the Brass Fortress", -- 1 is DAS_QUEST_CC_ROBOT
-	DAS_MENU_CB_CC_SLAG		= "Slag Town: Gathering dailies",
+	DAS_MENU_CB_CC_SLAG		= "La Ferraille : Gathering dailies",
 	DAS_MENU_CB_CC_SLAG_TIP	= "Quest giver is |cFFFFFF<<1>>|r in the Brass Fortress", -- 1 is DAS_QUEST_CC_ORC
-	DAS_MENU_CB_CC_CROW		= "Slag Town: Blackfeather Court",
+	DAS_MENU_CB_CC_CROW		= "La Ferraille : la cour de Noireplume",
 	DAS_MENU_CB_CC_CROW_TIP	= "Quest giver is |cFFFFFF<<1>>|r in the Brass Fortress\nRequires progressing the zone story past the following quest:\n• <<2>>", -- 1 is DAS_QUEST_CC_CROW
 	DAS_MENU_CB_CRAG		= "Craglorn / Raidelorn",
-	DAS_MENU_CB_CYRO		= "Cyrodiil Alliance Base",
+	DAS_MENU_CB_CYRO		= "Cyrodiil — la base de l'alliance",
 	DAS_MENU_CB_CYRO_TIP	= "Auto-accept and turn-in support only",
 	DAS_MENU_CB_DARKB		= "Gold Coast / La Côte d'or",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Le Trépas des Cognées",
 	DAS_MENU_CB_MURK		= "Murkmire / Tourbevase",
 	DAS_MENU_SM_MURK		= "Murkmire Options",
-	DAS_MENU_CB_MM_DELV		= "Lilmoth: Delves",
+	DAS_MENU_CB_MM_DELV		= "Lilmoth : les antres",
 	DAS_MENU_CB_MM_DELV_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Lilmoth\nRequires completing the following prerequisite quest:\n• <<2>>", -- 1 is DAS_SLAVES_QUEST1
-	DAS_MENU_CB_MM_BOSS		= "Lilmoth: World Bosses",
+	DAS_MENU_CB_MM_BOSS		= "Lilmoth : boss sauvages",
 	DAS_MENU_CB_MM_BOSS_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Lilmoth\nRequires completing the following prerequisite quest:\n• <<2>>", -- 1 is DAS_SLAVES_QUEST3
-	DAS_MENU_CB_MM_ROOT		= "Root-Whisper Village",
+	DAS_MENU_CB_MM_ROOT		= "Le village de Murmure-racine",
 	DAS_MENU_CB_MM_ROOT_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Root-Whisper Village\nRequires completing the zone story", -- 1 is DAS_SLAVES_QUEST2
 	DAS_MENU_CB_NELWR		= "Northern Elsweyr / Le Nord d'Elsweyr",
 	DAS_MENU_CB_SELWR		= "Southern Elsweyr / Le Sud d'Elsweyr",
 	DAS_MENU_CB_ELVES		= "Summerset / Le Couchant",
 	DAS_MENU_CB_MWIND		= "Vvardenfell",
 	DAS_MENU_SM_MWIND		= "Vvardenfell Options",
-	DAS_MENU_CB_M_RELC		= "Ashlander: Relics",
+	DAS_MENU_CB_M_RELC		= "Cendrais : les reliques",
 	DAS_MENU_CB_M_RELC_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Ald'ruhn\nRequires completing the following prerequisite quests:\n• <<2>>\n• <<3>>", -- 1 is DAS_QUEST_M_NUMANI
-	DAS_MENU_CB_M_HUNT		= "Ashlander: Hunt",
+	DAS_MENU_CB_M_HUNT		= "Cendrais : la chasse",
 	DAS_MENU_CB_M_HUNT_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Ald'ruhn\nRequires completing the following prerequisite quests:\n• <<2>>\n• <<3>>", -- 1 is DAS_QUEST_M_ASHLANDER
-	DAS_MENU_CB_M_DELV		= "Vivec: Delves",
+	DAS_MENU_CB_M_DELV		= "Vivec : les antres",
 	DAS_MENU_CB_M_DELV_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice\nRequires completing the following prerequisite quest:\n• <<2>>", -- 1 is DAS_QUEST_M_TRAYLAN
-	DAS_MENU_CB_M_BOSS		= "Vivec: World Bosses",
+	DAS_MENU_CB_M_BOSS		= "Vivec : boss sauvages",
 	DAS_MENU_CB_M_BOSS_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice\nRequires completing the following prerequisite quest:\n• <<2>>", -- 1 is DAS_QUEST_M_BELERU
 	DAS_MENU_CB_ORCS		= "Wrothgar",
-	DAS_MENU_H_GUILDS		= "Guild activities:",
-	DAS_MENU_CB_GUILD		= "Fighters / Mages Guilds & Undaunted",
+	DAS_MENU_H_GUILDS		= "les activités des guildes :",
+	DAS_MENU_CB_GUILD		= "Les guildes des mages / guerriers & Indomptables",
 	DAS_MENU_SM_GUILD		= "Guild dailies options",
 	DAS_MENU_CB_G_FG_HIDE	= "Hide Fighters Guild dailies in Capitals",
 	DAS_MENU_CB_G_MG_HIDE	= "Hide Mages Guild dailies in Capitals",
 	DAS_MENU_CB_G_UD_HIDE	= "Hide Undaunted dailies in Capitals",
-	DAS_MENU_H_EVENTS		= "Festivals:",
+	DAS_MENU_H_EVENTS		= "les festivals :",
 	DAS_MENU_CB_E_NL		= "Nouvelle vie",
-	DAS_MENU_CB_E_NL_TIP	= "Enable New Life festival",
+	DAS_MENU_CB_E_NL_TIP	= "Activer le Festival de la Nouvelle vie",
 	-- invite menu
 	DAS_MENU_SM_INVITE		= "Invitation text & behaviour",
 	DAS_MENU_TB_QST			= "Quest Share text",
@@ -129,7 +130,7 @@ local strings  = {
 	DAS_MENU_CB_GUIUP		= "DropUp instead of DropDown",
 	DAS_MENU_CB_GUIUP_TIP	= "Check this if you want the questList to appear above the drag bar instead of below",
 	DAS_MENU_CB_GUISM		= "Start up minimised",
-	DAS_MENU_CB_GUISM_TIP		= "Always minimise the DAS Window on first startup",
+	DAS_MENU_CB_GUISM_TIP	= "Always minimise the DAS Window on first startup",
 	DAS_MENU_CB_HIDE_CQ		= "Auto-hide if all dailies are complete",
 	DAS_MENU_CB_HIDE_CQ_TIP	= "Check this if you want the DAS Window to be hidden when you're done",
 	DAS_MENU_CB_MINI_CQ		= "Auto-minimise if all dailies are complete",
@@ -155,14 +156,14 @@ local strings  = {
 	DAS_MENU_SL_AJBINGO		= "Accept auto-invite after +bingo in zone for ... seconds",
 	DAS_MENU_SL_AJBINGO_TIP	= "After you've been looking for quest share, how long do you want to automatically accept group-invites?\nSet to 0 to disable",
 	-- throttling options
-	DAS_MENU_H_POLITE		= "Throttle",
+	DAS_MENU_H_POLITE		= "Paramètres de limitation",
 	DAS_MENU_SL_INVTIME		= "Group invite delay (in ms)",
 	DAS_MENU_SL_INVTIME_TIP	= "Adjust this if you encounter disconnects when trying to create a group.\n1000 ms are one second.",
 	DAS_MENU_CB_SHRTIME		= "Quest share delay (in ms)",
 	DAS_MENU_CB_SHRTIME_TIP	= "Adjust this if you encounter disconnects when new group members join.\n1000 ms are one second.",
 	-- misc options
-	DAS_MENU_CB_H_STUFF		= "Miscellaneous",
-	DAS_MENU_CB_DEBUG		= "Debug Mode",
+	DAS_MENU_CB_H_STUFF		= "Divers",
+	DAS_MENU_CB_DEBUG		= "Mode débogage",
 
 
 	-- QUEST DATA

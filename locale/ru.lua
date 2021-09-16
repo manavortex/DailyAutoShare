@@ -32,6 +32,7 @@ local strings  = {
 	DAS_GUI_Q_BINGO			= "\nКод раздачи: <<1>>", -- 1 is the bingo code
 	DAS_GUI_Q_TIP			= "«<<1>>» |c<<2>><<3>>|r<<4>>", -- 1 is Quest Name, 2 is colour, 3 is the quest state, 4 is either DAS_GUI_Q_BINGO or nothing
 	DAS_GUI_Q_PREREQ		= "|c<<2>>Вам надо выполнить задание-пролог:|r\n• <<1>>", -- 1 is Quest Name, 2 is colour
+	DAS_GUI_Q_RMB_TIP		= "ПКМ для меню с действиями",
 
 	-- Quest context menu
 	DAS_GUI_CTX_SUBLIST		= "Показать/скрыть список заданий",
