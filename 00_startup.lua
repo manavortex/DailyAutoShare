@@ -340,7 +340,8 @@ local function queueQuestRefresh()
 end
 local function hookQuestTracker()
   if FOCUSED_QUEST_TRACKER and FOCUSED_QUEST_TRACKER.ForceAssist then
-    ZO_PreHook(FOCUSED_QUEST_TRACKER, "ForceAssist", queueQuestRefresh)
+	SecurePostHook(FOCUSED_QUEST_TRACKER, "ForceAssist", queueQuestRefresh)
+	SecurePostHook(FOCUSED_QUEST_TRACKER, "AssistNext", queueQuestRefresh)
   end
 end
 --==============================
@@ -370,6 +371,7 @@ end
 --==============================
 function DailyAutoShare_Initialize(eventCode, addonName)
 	if addonName ~= DAS.name then return end
+	em:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
 	DAS.settings        = ZO_SavedVars:New(             "DAS_Settings", 2, "DAS_Settings", defaults)
 	DAS.globalSettings  = ZO_SavedVars:NewAccountWide(  "DAS_Globals",  2, "DAS_Globals",  defaults)
 	DAS.globalSettings.completionLog = DAS.globalSettings.completionLog or {}
@@ -385,11 +387,7 @@ function DailyAutoShare_Initialize(eventCode, addonName)
 
 	DAS.handleLog()
 
-	zo_callLater(function() DailyAutoShare.RefreshLabels(false, true) end, 5000)
-
-	DAS.CreateMapMarkers()	
-
-	EVENT_MANAGER:UnregisterForEvent("DailyAutoShare", EVENT_ADD_ON_LOADED)
+	DAS.CreateMapMarkers()
 end
 ZO_CreateStringId("SI_BINDING_NAME_TOGGLE_DAS_GUI",  GetString(DAS_SI_TOGGLE))
 ZO_CreateStringId("SI_BINDING_NAME_TOGGLE_DAS_LIST", GetString(DAS_SI_MINIMISE))
