@@ -35,7 +35,7 @@
 							 />
 							<OnMouseEnter>	DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
 							<OnMouseExit>	DailyAutoShare.HideTooltip(self)			</OnMouseExit>
-							<OnMouseUp>		DasControl:SetHidden(true)					</OnMouseUp>
+							<OnMouseUp>		DAS.SetHidden(true)					</OnMouseUp>
 						</Button>
 						<Button name="DasButtonMinmax" >
 							<Dimensions x="16" y="16" />
@@ -68,14 +68,16 @@
 						</Label>
 					</Controls>
 				</Control>
-				<Tooltip name="DailyAutoShare_Tooltip" inherits="ZO_BaseTooltip" tier="1">
+				<Tooltip name="DailyAutoShare_Tooltip" inherits="ZO_BaseTooltip" tier="HIGH" level="ZO_HIGH_TIER_TOOLTIPS">
 					<Anchor point="TOPLEFT" relativeTo="DasList" relativePoint="TOPLEFT" offsetX="0" offsetY="-50"/>
 				</Tooltip>
-				<Control name="DasList" resizeToFitDescendents="true" >
+				<Control name="DasList" hidden="true" resizeToFitDescendents="true" >
+					<ResizeToFitPadding width="20" height="20" />
 					<Dimensions x="330" />
+					<DimensionConstraints minX="330" maxX="330" />
 					<Anchor point="TOPLEFT" relativeTo="DasHandle" relativePoint="BOTTOMLEFT" offsetX="0" offsetY="0" />
 					<Controls>
-						<Backdrop name="$(parent)_BG" inherits="ZO_DefaultBackdrop"><AnchorFill/></Backdrop>
+						<Backdrop name="$(parent)_BG" inherits="ZO_DefaultBackdrop" excludeFromResizeToFitExtents="true"><AnchorFill/></Backdrop>
 						<Control name="DasHeader">
 							<Anchor point="TOPLEFT" relativeTo="DasList_Backdrop" relativePoint="TOPLEFT"		offsetX="20" offsetY="15"/>
 							<Anchor point="BOTTOMRIGHT" relativeTo="DasList_Backdrop" relativePoint="TOPLEFT" 	offsetX="310" offsetY="30" />
@@ -143,16 +145,17 @@
 							</Controls>
 						</Control>
                         <Control name="DasInvisibleFooterSpacer" mouseEnabled="false" >
-                            <Dimensions y="15" />
+                            <Dimensions y="10" />
                         </Control>
                     </Controls>
 				</Control>
                 <Control name="DasSubList" hidden="true" resizeToFitDescendents="true">
                     <Dimensions x="310" />
+					<ResizeToFitPadding width="10" height="10" />
 					<Anchor point="LEFT" relativeTo="DasList" relativePoint="RIGHT" offsetX="10" offsetY="10" />
                     <Controls>
-                        <Backdrop name="$(parent)_BG" inherits="ZO_DefaultBackdrop"><AnchorFill/></Backdrop>
-                        <Button name="DasButtonHideSublist" >
+                        <Backdrop name="$(parent)_BG" inherits="ZO_DefaultBackdrop" excludeFromResizeToFitExtents="true"><AnchorFill/></Backdrop>
+                        <Button name="DasButtonHideSublist" tier="MEDIUM" >
 							<Dimensions x="20" y="20" />
 							<Anchor point="TOPRIGHT" relativeTo="DasSubList" relativePoint="TOPRIGHT" offsetX="-8"  offsetY="5"/>
 							<Textures
@@ -166,17 +169,22 @@
                 </Control>
             </Controls>
 		</TopLevelControl>
-		<Button name="Das_Label" font="ZoFontChat" text="" wrapMode="TRUNCATE"
+		<Button name="Das_Label"
 			verticalAlignment="CENTER" horizontalAlignment="LEFT" alpha="0.85" hidden="true"
-			disabled="true" virtual="true"
-            drawLayer="1">
-			<Dimensions x="350" y="30" />
+			disabled="true" virtual="true">
+			<Dimensions x="290" y="30" />
+			<DimensionConstraints minX="290" maxX="290" />
             <FontColors
                 normalColor="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_NORMAL"
                 pressedColor="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_SELECTED"
                 mouseOverColor="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_HIGHLIGHT"
                 disabledColor="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_DISABLED"
             />
+			<Controls>
+				<Label name="$(parent)_Caption" font="ZoFontChat" horizontalAlignment="LEFT" wrapMode="ELLIPSIS" verticalAlignment="CENTER">
+					<AnchorFill/>
+				</Label>
+			</Controls>
 			<OnMouseEnter>DailyAutoShare.CreateLabelTooltip(self)</OnMouseEnter>
 			<OnMouseExit>DailyAutoShare.HideTooltip(self)</OnMouseExit>
 			<OnMouseUp>DailyAutoShare.QuestLabelClicked(self, button)</OnMouseUp>
