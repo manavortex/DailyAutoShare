@@ -8,8 +8,18 @@ DAS.labels = {}
 local numLabels             = 0
 local labelTexts = {}
 local p = DAS.DebugOut
+local typeTable = "table"
+local sep = "%s%w%w%s"
+local alreadyUpdatingLabels = false
+
+local questTextColors = {
+	[DAS_STATUS_COMPLETE] = INTERFACE_TEXT_COLOR_DISABLED,
+	[DAS_STATUS_OPEN] = INTERFACE_TEXT_COLOR_NORMAL,
+	[DAS_STATUS_ACTIVE] = INTERFACE_TEXT_COLOR_SELECTED,
+}
+
 local function isHidden()
-	return (not DAS.GetActiveIn()) or DAS.GetHidden() or (DAS.GetAutoHide() and (not DAS.OpenDailyPresent()))
+	return (not DAS.GetActiveIn()) or DAS.GetHidden() or (DAS.GetAutoHide() and (not DAS.OpenDailyPresent()) or #DAS.GetZoneQuests() == 0)
 end
 local function isMinimised()
 	return DAS.GetMinimised() or (not isHidden()) and (DAS.GetAutoMinimize() and (not DAS.OpenDailyPresent()))
@@ -74,7 +84,6 @@ local function SetMinimizedButton(value)
 end
 local function setButtonStates()
 	SetAutoInviteButton(DAS.GetAutoInvite())
-	SetLockedButton(DAS.GetLocked())
 	SetAlpha(DasButtonAccept, DAS.GetAutoAcceptShared())
 	SetAlpha(DasButtonShare, DAS.GetAutoShare())
 	DasButtonSpam:SetAlpha(0.7)
@@ -84,7 +93,7 @@ function DAS.QuestLabelClicked(control, mouseButton)
   if mouseButton == MOUSE_BUTTON_INDEX_RIGHT then -- and isValidJournalIndex then
 		return DAS.OnRightClick(control)
   end
-	if (nil ~= control.dataQuestList and {} ~= control.dataQuestList) then
+	if control.dataIsSubList then
 		return DAS.RefreshSubLabels(control)
 	end
 	local journalIndex          = control.dataJournalIndex or 99
@@ -95,12 +104,6 @@ function DAS.QuestLabelClicked(control, mouseButton)
       ShareQuest(journalIndex)
     end
   end
-end
-function DAS.RefreshSubLabels(control)
-	DasSubList.dataCurrentList = control
-	DAS.SetSubLabels(control.dataQuestList)
-	DasSubList:SetHidden(false)
-	DAS.setFontSize(DAS.sublabels)
 end
 function DAS.Donate(_, mouseButton)
 	if mouseButton == MOUSE_BUTTON_INDEX_LEFT then
@@ -128,24 +131,21 @@ local function shouldHideLabel(questName, zoneId)
   end
 	return false
 end
+
 local function setControlText(label, hidden)
-  local state = label.dataQuestState
-  if label.dataJournalIndex == DAS.trackedIndex then
-    label:SetText("→ " .. label.dataTitle)
-    elseif hideLabel then
-    label:SetText("")
-    label:SetVisible(false)
-    return
-    else
-    label:SetText(label.dataTitle)
-  end
-  if label.dataQuestState == DAS_STATUS_COMPLETE then
-    label:SetState(BSTATE_DISABLED)
-    elseif label.dataQuestState == DAS_STATUS_ACTIVE then
-    label:SetState(BSTATE_PRESSED)
-    else --if label.dataQuestState == DAS_STATUS_OPEN then
-    label:SetState(BSTATE_NORMAL)
-  end
+	local caption = GetControl(label, "_Caption") or nil
+	if not caption then return end
+
+	if label.dataJournalIndex == DAS.trackedIndex then
+		caption:SetText(string.format("→ %s", label.dataTitle))
+	elseif hidden then
+		label:SetHidden(true)
+		return
+	else
+		caption:SetText(label.dataTitle)
+	end
+	caption:SetColor(GetInterfaceColor(INTERFACE_COLOR_TYPE_TEXT_COLORS, questTextColors[label.dataQuestState or DAS_STATUS_OPEN]))
+	label:SetHidden(false)
 end
 local function setLabelTable(questTable)
   local status = DAS_STATUS_COMPLETE
@@ -165,55 +165,52 @@ local function setLabelTable(questTable)
   questName = questName or ""
   return questName, status
 end
-local sep = "%s%w%w%s"
 local function makeSubLabelTitle(str, zoneId, listIndex)
   if zoneId ~= nil and DAS.QuestListTitles[zoneId] ~= nil then
     if DAS.QuestListTitles[zoneId][listIndex] ~= nil then
-        return DAS.QuestListTitles[zoneId][listIndex] .. "..."
+        return string.format("%s...", DAS.QuestListTitles[zoneId][listIndex])
     end
   end
   if not str then return end
   local idx = string.find(str, sep)
-  if nil == idx then return str .. " ..." end
-  return string.sub(str, 0, idx+3) .. "..."
+  if nil == idx then return string.format("%s...") end
+  return string.format("%s...", string.sub(str, 0, idx+3))
 end
 function DAS.SetSubLabels(questTable)
-  if (nil == questTable or {} == questTable) then return end
-  local status = DAS_STATUS_COMPLETE
-  local index = 1
-  for idx, questName in pairs(questTable) do
-    index = idx
-    local label = DAS.sublabels[idx]
-    label.dataJournalIndex 	= DAS.GetLogIndex(questName)
-    local bingoString, bingoIndex = DAS.GetBingoStringFromQuestName(questName)
-    label.dataBingoString 	= bingoString
-    label.dataBingoIndex 	  = bingoIndex
-    label.dataQuestName		  = questName
-    label.dataTitle         = questName
-    label.dataQuestState    = DAS.GetQuestStatus(questName)
-    label:SetHidden(false)
-    if label.dataQuestState == DAS_STATUS_ACTIVE then
-      table.insert(DAS.activeZoneQuests, label.dataJournalIndex)
-      status = label.dataQuestState
-      elseif status ~= DAS_STATUS_ACTIVE and status ~= DAS_STATUS_OPEN then
-      status = label.dataQuestState
-    end
-    setControlText(label)
-  end
-  for idx=index, #DAS.sublabels do
-    local label = DAS.sublabels[idx]
-    label.dataJournalIndex 	= nil
-    label.dataBingoString 	= nil
-    label.dataQuestName		= nil
-    label.dataQuestState   = DAS_STATUS_OPEN
-    label:SetText("")
-    label:SetHidden(true)
-  end
-  DasSubList:SetHeight(0)
-  DAS.SetLabelFontSize()
-  return status
+	if (nil == questTable or {} == questTable) then return end
+	local status = DAS_STATUS_COMPLETE
+	local index = 1
+	for idx, questName in pairs(questTable) do
+		index = idx
+		local label = DAS.sublabels[idx]
+		label.dataJournalIndex 	= DAS.GetLogIndex(questName)
+		local bingoString, bingoIndex = DAS.GetBingoStringFromQuestName(questName)
+		label.dataBingoString 	= bingoString
+		label.dataBingoIndex 	  = bingoIndex
+		label.dataQuestName		  = questName
+		label.dataTitle         = questName
+		label.dataQuestState    = DAS.GetQuestStatus(questName)
+		label:SetHidden(false)
+		if label.dataQuestState == DAS_STATUS_ACTIVE then
+			table.insert(DAS.activeZoneQuests, label.dataJournalIndex)
+			status = label.dataQuestState
+		elseif status ~= DAS_STATUS_ACTIVE and status ~= DAS_STATUS_OPEN then
+			status = label.dataQuestState
+		end
+		setControlText(label)
+	end
+	for idx=index, #DAS.sublabels do
+		local label = DAS.sublabels[idx]
+		label.dataJournalIndex 	= nil
+		label.dataBingoString 	= nil
+		label.dataQuestName		= nil
+		label.dataQuestState	= DAS_STATUS_OPEN
+		label:SetHidden(true)
+	end
+	DAS.setFontSize(DAS.sublabels)
+	return status
 end
-local typeTable = "table"
+
 function DAS.setLabels(zoneQuests, zoneId)
 	zoneId = zoneId or DAS.GetZoneId()
 	zoneQuests = zoneQuests or DAS.GetZoneQuests(zoneId)
@@ -222,7 +219,7 @@ function DAS.setLabels(zoneQuests, zoneId)
 	DAS.activeZoneQuests = {}
 	numLabels = 1
 	local questName
-		for index, questNameOrTable in pairs(zoneQuests) do
+	for index, questNameOrTable in pairs(zoneQuests) do
 		if not labelTexts[questNameOrTable] then
 		local label = DAS.labels[numLabels] -- despite the name these are actually buttons
 			if nil ~= label then
@@ -260,46 +257,51 @@ function DAS.setLabels(zoneQuests, zoneId)
 	end -- for loop end
 	return numLabels
 end
+function DAS.RefreshSubLabels(control)
+	DasSubList.dataCurrentList = control
+	DasSubList:SetHidden(false)
+	DAS.SetSubLabels(control.dataQuestList)
+end
 function DAS.RefreshLabelsWithDelay() zo_callLater(function() DAS.RefreshLabels() end, 500) end
 function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
-  forceQuestRefresh = forceQuestRefresh or DAS.questCacheNeedsRefresh
-  p("DAS.RefreshLabels(" .. tostring(forceQuestRefresh) .. ", " .. tostring(forceSkipQuestRefresh) .. ")")
-  -- error("RefreshLabels called")
-	cacheVisibilityStatus()
+	if stateIsMinimised or stateIsHidden then return end
+	forceQuestRefresh = forceQuestRefresh or DAS.questCacheNeedsRefresh
+	--p(string.format("DAS.RefreshLabels(%s, %s)", tostring(forceQuestRefresh), tostring(forceSkipQuestRefresh)))
 	setButtonStates()
 	local hideCompleted = DAS.GetHideCompleted()
-	local hidden 		= DasList:IsHidden()
-	local label, questIndex, tracked
 	if not forceSkipQuestRefresh then
 		DAS.RefreshQuestLogs(forceQuestRefresh)
-    if FOCUSED_QUEST_TRACKER and FOCUSED_QUEST_TRACKER.assistedData then
-      DAS.trackedIndex = FOCUSED_QUEST_TRACKER.assistedData.arg1
-    end
-  end
+		if FOCUSED_QUEST_TRACKER and FOCUSED_QUEST_TRACKER.assistedData then
+			DAS.trackedIndex = FOCUSED_QUEST_TRACKER.assistedData.arg1
+		end
+	end
 	local zoneId = DAS.GetZoneId()
-  local zoneQuests = DAS.GetZoneQuests(zoneId)
-  DAS.setLabels(zoneQuests, zoneId)
+	local zoneQuests = DAS.GetZoneQuests(zoneId)
+	DAS.setLabels(zoneQuests, zoneId)
 	for bIndex=#DAS.GetZoneQuests()+1, #DAS.labels do
 		if DAS.labels[bIndex] then
 			DAS.labels[bIndex]:SetHidden(true)
-      DAS.labels[bIndex]:SetText("")
-    end
-  end
+		end
+	end
 	DAS.RefreshFullBingoString()
 	DAS.SetLabelFontSize()
 end
 function DAS.RefreshGui(hidden, skipLabelsRefresh)
-  -- p("DAS.RefreshGui")
-  if not DAS.GetActiveIn() then
-    DasControl:SetHidden(true)
-    return
-  end
-	hidden = hidden or (DAS.GetHidden() or (DAS.GetAutoHide() and not DAS.OpenDailyPresent()) or #DAS.GetZoneQuests(zoneId) == 0)
-	SetMinimizedButton(stateIsMinimised)
+	--p(string.format("DAS.RefreshGui(%s, %s)",tostring(hidden),tostring(skipLabelsRefresh)))
+	hidden = hidden or stateIsHidden
+	if hidden then
+		DasControl:SetHidden(hidden)
+		return
+	end
+
+	local locked = DAS.GetLocked()
+	DasHandle:SetMovable(not locked)
+	SetLockedButton(locked)
+
 	DasList:SetHidden(stateIsMinimised)
-	DasControl:SetHidden(hidden)
-	DasHandle:SetMovable(not DAS.GetLocked())
-	if nil ~= skipLabelsRefresh then
+	SetMinimizedButton(stateIsMinimised)
+
+	if nil == skipLabelsRefresh and not stateIsMinimised then
 		DAS.RefreshLabelsWithDelay()
 	end
 end
@@ -318,70 +320,64 @@ function DAS.AnchorList()
   end
 end
 local function setFontSize(labelList)
-  local labelHeight 	= 30
-  local fontScale 	= DAS.GetFontSize()
-  local totalHeight 	= 0
-  local hidden		= false
-  local parent        = nil
-  local maxWidth      = DasHandle:GetWidth()
-  for index, control in pairs(labelList) do
-    parent = parent or control:GetParent()
-    maxWidth = math.max(maxWidth, control:GetWidth())
-    control:SetScale(fontScale)
-    if control:IsHidden() then
-      control:SetHeight(0)
-      else
-      control:SetHeight(labelHeight)
-      control:SetScale(fontScale)
-    end
-  end
-  parent:SetWidth(maxWidth)
+	local labelHeight 	= 30
+	local fontScale 	= DAS.GetFontSize()
+	for _, control in pairs(labelList) do
+		if control:IsHidden() then
+			control:SetHeight(0)
+		else
+			control:SetHeight(labelHeight)
+			control:SetScale(fontScale)
+		end
+	end
 end
 DAS.setFontSize = setFontSize
-local function setGuiHeight()
-  local buttonIndex = numLabels or 0
-  local listHeight = DasHeader:GetHeight() + buttonIndex*(DAS.labels[1]:GetHeight() + 2)
-  DasList:SetHeight(listHeight)
-  DasControl:SetHeight(listHeight + DasHandle:GetHeight())
-end
-DAS.SetGuiHeight = setGuiHeight
 function DAS.SetLabelFontSize()
   setFontSize(DAS.labels)
   setFontSize(DAS.sublabels)
-  DAS.SetGuiHeight()
 end
 function DAS.CreateGui()
-  local function setupGuiLabels()
-    local predecessor 	    = DasHeader
-    local offsetX, offsetY  = 10, 10
-    for i=1, 28 do
-      local button 	= WINDOW_MANAGER:CreateControlFromVirtual("Das_Label_"..tostring(i), DasList, "Das_Label")
-      button:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, offsetY)
-      predecessor 	= button
-      offsetY 		= 0
-      table.insert(DAS.labels, button)
-    end
-    local spacer = WINDOW_MANAGER:CreateControlFromVirtual("Das_Spacer_1", DasList, "DasInvisibleFooterSpacer")
-    spacer:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, offsetY)
-    predecessor 	    = DasSubList
-    offsetY 		    = 10
-    local anchor        = TOPLEFT
-    for i=1, 15 do
-      local button 	= WINDOW_MANAGER:CreateControlFromVirtual("Das_Sublabel_"..tostring(i), DasSubList, "Das_Label")
-      button:SetAnchor(TOPLEFT, predecessor, anchor, offsetX, offsetY)
-      predecessor 	= button
-      offsetY 		= 0
-      offsetX 		= 0
-      anchor 		    = BOTTOMLEFT
-      table.insert(DAS.sublabels, button)
-    end
-    local spacer = WINDOW_MANAGER:CreateControlFromVirtual("Das_Spacer_2", DasSubList, "DasInvisibleFooterSpacer")
-    spacer:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, offsetY)
-    DAS.SetLabelFontSize()
-  end
-	setupGuiLabels()
+	do
+		local predecessor		= DasHeader
+		local offsetX, offsetY	= 10, 10
+		for i=1, 28 do
+			local button 	= WINDOW_MANAGER:CreateControlFromVirtual(string.format("Das_Label%d",i), DasList, "Das_Label")
+			button:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, offsetY)
+			predecessor 	= button
+			offsetY 		= 0
+			table.insert(DAS.labels, button)
+		end
+		local spacer = WINDOW_MANAGER:CreateControlFromVirtual("Das_Spacer1", DasList, "DasInvisibleFooterSpacer")
+		spacer:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, 0)
+
+		predecessor 	    = DasSubList
+		offsetY 		    = 10
+		local anchor        = TOPLEFT
+		for i=1, 15 do
+			local button 	= WINDOW_MANAGER:CreateControlFromVirtual(string.format("Das_Sublabel%d",i), DasSubList, "Das_Label")
+			button:SetAnchor(TOPLEFT, predecessor, anchor, offsetX, offsetY)
+			predecessor	= button
+			offsetY		= 0
+			offsetX		= 0
+			anchor		= BOTTOMLEFT
+			table.insert(DAS.sublabels, button)
+		end
+		spacer = WINDOW_MANAGER:CreateControlFromVirtual("Das_Spacer2", DasSubList, "DasInvisibleFooterSpacer")
+		spacer:SetAnchor(TOPLEFT, predecessor, BOTTOMLEFT, 0, 0)
+
+		DAS.SetLabelFontSize()
+	end
 	DAS.LoadControlLocation(DasControl)
 	DAS.AnchorList()
 	cacheVisibilityStatus()
 	DAS.RefreshGui(nil, true)
+	SCENE_MANAGER:GetScene("hud"):RegisterCallback("StateChange", function(oldState, newState)
+		if newState == SCENE_SHOWING then
+			if alreadyUpdatingLabels then return end
+			zo_callLater(function()
+				if not stateIsHidden and not stateIsMinimised then setFontSize(DAS.labels) end
+				alreadyUpdatingLabels = false
+			end, 500)
+		end
+	end)
 end
