@@ -395,8 +395,12 @@ function DAS.CreateMenu(savedVars, defaults)
 					type           = "checkbox",
 					name           = GetString(DAS_MENU_CB_GUILD),
 					getFunc        = function() return DAS.GetActiveIn("guilds") end,
-					setFunc        = function(value) DAS.SetActiveFor("guilds", value) end,
-					requiresReload = true,
+					setFunc        = function(value)
+						DAS.SetActiveFor("guilds", value)
+						DAS.SetActiveFor("fg", value)
+						DAS.SetActiveFor("mg", value)
+						DAS.SetActiveFor("ud", value)
+					end,
 				},
 				{ -- Submenu : Guild Dailies
 					type        = "submenu",
@@ -405,9 +409,23 @@ function DAS.CreateMenu(savedVars, defaults)
 					controls    =
 					{
 						{
+							type    = "header",
+							name    = GetString(DAS_MENU_CB_G_FG)
+						},
+						{
+							type    = "checkbox",
+							name    = GetString(DAS_MENU_CB_SUB_ENABLE),
+							tooltip = zo_strformat(GetString(DAS_MENU_CB_G_FG_TIP), GetString(DAS_QUEST_CAP_CARDEA)),
+							width   = "half",
+							getFunc = function() return DAS.GetActiveIn("fg") end,
+							setFunc = function(value) DAS.SetActiveFor("fg", value) end
+						},
+						{
 							type     = "checkbox",
-							tooltip  = GetString(DAS_MENU_CB_SUB_HIDE_T),
 							name     = GetString(DAS_MENU_CB_G_FG_HIDE),
+							tooltip  = GetString(DAS_MENU_CB_SUB_HIDE_T),
+							width   = "half",
+							disabled = function() return not DAS.GetActiveIn("fg") end,
 							getFunc  = function() return DAS.GetQuestListItem(57, "fg", "invisible") end,
 							setFunc  = function(value)
 								DAS.SetQuestListItem(57, "fg", "invisible", value)
@@ -416,9 +434,23 @@ function DAS.CreateMenu(savedVars, defaults)
 							end
 						},
 						{
+							type    = "header",
+							name    = GetString(DAS_MENU_CB_G_MG)
+						},
+						{
+							type    = "checkbox",
+							name    = GetString(DAS_MENU_CB_SUB_ENABLE),
+							tooltip = zo_strformat(GetString(DAS_MENU_CB_G_MG_TIP), GetString(DAS_QUEST_CAP_ALVUR)),
+							width   = "half",
+							getFunc = function() return DAS.GetActiveIn("mg") end,
+							setFunc = function(value) DAS.SetActiveFor("mg", value) end
+						},
+						{
 							type     = "checkbox",
-							tooltip  = GetString(DAS_MENU_CB_SUB_HIDE_T),
 							name     = GetString(DAS_MENU_CB_G_MG_HIDE),
+							tooltip  = GetString(DAS_MENU_CB_SUB_HIDE_T),
+							width    = "half",
+							disabled = function() return not DAS.GetActiveIn("mg") end,
 							getFunc  = function() return DAS.GetQuestListItem(57, "mg", "invisible") end,
 							setFunc  = function(value)
 								DAS.SetQuestListItem(57, "mg", "invisible", value)
@@ -427,9 +459,23 @@ function DAS.CreateMenu(savedVars, defaults)
 							end
 						},
 						{
+							type    = "header",
+							name    = GetString(DAS_MENU_CB_G_UD)
+						},
+						{
+							type    = "checkbox",
+							name    = GetString(DAS_MENU_CB_SUB_ENABLE),
+							tooltip = zo_strformat(GetString(DAS_MENU_CB_G_UD_TIP), GetString(DAS_QUEST_CAP_BOLGRUL)),
+							width   = "half",
+							getFunc = function() return DAS.GetActiveIn("ud") end,
+							setFunc = function(value) DAS.SetActiveFor("ud", value) end
+						},
+						{
 							type     = "checkbox",
-							tooltip  = GetString(DAS_MENU_CB_SUB_HIDE_T),
 							name     = GetString(DAS_MENU_CB_G_UD_HIDE),
+							tooltip  = GetString(DAS_MENU_CB_SUB_HIDE_T),
+							width    = "half",
+							disabled = function() return not DAS.GetActiveIn("ud") end,
 							getFunc  = function() return DAS.GetQuestListItem(57, "ud", "invisible") end,
 							setFunc  = function(value)
 								DAS.SetQuestListItem(57, "ud", "invisible", value)
@@ -449,7 +495,6 @@ function DAS.CreateMenu(savedVars, defaults)
 					tooltip        = GetString(DAS_MENU_CB_E_NL_TIP),
 					getFunc        = function() return DAS.GetActiveIn("newLife") end,
 					setFunc        = function(value) DAS.SetActiveFor("newLife", value) end,
-					requiresReload = true,
 				},
 			}, -- end of activate menu
 		},
