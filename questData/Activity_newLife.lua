@@ -2,15 +2,15 @@ local zoneId = 101 -- Eastmarch
 local NL     = "newLife"
 
 DAS.subLists[NL] = {
-	19 , -- Stormhaven
-	41 , -- Stonefalls
-	101, -- Eastmarch
-	104, -- Alik'r
-	117, -- Shadowfen
-	381, -- Auridon
-	382, -- Reaper's March
-	383, -- Grahtwood
-	535, -- Betnikh
+	[19 ] = true, -- Stormhaven
+	[41 ] = true, -- Stonefalls
+	[101] = true, -- Eastmarch
+	[104] = true, -- Alik'r
+	[117] = true, -- Shadowfen
+	[381] = true, -- Auridon
+	[382] = true, -- Reaper's March
+	[383] = true, -- Grahtwood
+	[535] = true, -- Betnikh
 }
 
 DAS.shareables[zoneId]     = DAS.shareables[zoneId] or {}
@@ -25,7 +25,7 @@ DAS.shareables[zoneId][NL] = {
 	GetString(DAS_NL_AURIDON),
 	GetString(DAS_NL_EASTMARCH)
 }
-
+--[[
 DAS.QuestLists[zoneId] = DAS.QuestLists[zoneId] or {}
 DAS.QuestLists[zoneId][NL] = {
 	[GetString(DAS_NL_STORMHAVEN)]    = true,
@@ -38,7 +38,7 @@ DAS.QuestLists[zoneId][NL] = {
 	[GetString(DAS_NL_AURIDON)]       = true,
 	[GetString(DAS_NL_EASTMARCH)]     = true,
 }
-
+]]--
 DAS.makeNestedZoneTable(19 , NL, GetString(DAS_NL_STORMHAVEN))   -- Stormhaven
 DAS.makeNestedZoneTable(41 , NL, GetString(DAS_NL_STONEFALLS))   -- Stonefalls
 DAS.makeNestedZoneTable(117, NL, GetString(DAS_NL_SHADOWFEN))    -- Shadowfen
