@@ -17,6 +17,7 @@ DAS.questIds                = {}
 DAS.activeBingoIndices      = {}
 DAS.prequests               = {}
 DAS.subLists           = {}
+DAS.trackedListZones		= {}
 DAS.QuestLists              = {}
 DAS.QuestListTitles         = {}
 DAS.channelTypes 	          = {
@@ -165,9 +166,9 @@ local defaults = {
 	},
   trackedLists = {
     newLife = false,
-    guilds  = false,
-    fg      = false,
-    mg      = false,
+    guilds  = true,
+    fg      = true,
+    mg      = true,
     ud      = false,
   }
 }
@@ -378,6 +379,8 @@ function DailyAutoShare_Initialize(eventCode, addonName)
 	DAS.pdn = GetUnitDisplayName(UNITTAG_PLAYER)
 
 	pointerUpSubzones()
+
+	DAS.CacheTrackedQuestLists()
 
 	RegisterEventHooks()
 

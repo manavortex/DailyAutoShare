@@ -126,35 +126,27 @@ function DAS.SetAutoInvite(value)
 end
 -- called from settings and from internal helper
 function DAS.GetActiveIn(zoneIndex)
-  zoneIndex = zoneIndex or DAS.GetZoneId()
-  if not zoneIndex then return end
+	zoneIndex = zoneIndex or DAS.GetZoneId()
+	if not zoneIndex then return end
 	zoneIndex = DAS.subzones[zoneIndex] or zoneIndex
-  if type(zoneIndex) == typeString then
-    return GetSettings().trackedLists[zoneIndex]
-  end
-	return GetSettings().tracked[zoneIndex]
+	if type(zoneIndex) == typeString then
+		return GetSettings().trackedLists[zoneIndex]
+	end
+	return GetSettings().tracked[zoneIndex] or DAS.trackedListZones[zoneIndex]
 end
 DAS.IsActiveIn = DAS.GetActiveIn    -- have alias because I keep fucking this up
 function DAS.SetActiveIn(zoneIndex, value)
   zoneIndex = zoneIndex or DAS.GetZoneId()
   if not zoneIndex then return end
   GetSettings().tracked[zoneIndex] = value
-	zo_callLater(function() DailyAutoShare.RefreshGui(not DAS.GetActiveIn()) end, 200)
+	zo_callLater(function() DAS.RefreshGui(not DAS.GetActiveIn()) end, 200)
 end
 
-local typeTable = "table"
 function DAS.SetActiveFor(listName, value)
-  if not listName then return end
-  for index, zoneId in pairs(DAS.subLists[listName]) do
-    if type(zoneId) == typeTable then 
-      for _, id in pairs(zoneId) do
-        DAS.SetActiveIn(id, value)
-      end      
-    else
-      DAS.SetActiveIn(zoneId, value)
-    end
-  end
-  GetSettings().trackedLists[listName] = value
+	if not listName then return end
+	GetSettings().trackedLists[listName] = value
+	DAS.CacheTrackedQuestLists()
+	zo_callLater(function() DAS.RefreshGui(not DAS.GetActiveIn()) end, 200)
 end
 
 function DAS.GetAutoShare()
