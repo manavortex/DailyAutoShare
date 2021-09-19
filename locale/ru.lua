@@ -83,6 +83,7 @@ local strings  = {
 	DAS_MENU_CB_MM_ROOT		= "Деревня шёпота-корня",
 	DAS_MENU_CB_MM_ROOT_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в деревне шёпота-корня\nТребуется полностью пройти сюжет области", -- 1 is DAS_SLAVES_QUEST2
 	DAS_MENU_CB_NELWR		= "Northern Elsweyr / Северный Эльсвейр",
+	DAS_MENU_CB_PIKEYS		= "The Reach / Предел",
 	DAS_MENU_CB_SELWR		= "Southern Elsweyr / Южный Эльсвейр",
 	DAS_MENU_CB_ELVES		= "Summerset / Саммерсет",
 	DAS_MENU_CB_MWIND		= "Vvardenfell / Вварденфелл",
@@ -536,6 +537,37 @@ local strings  = {
 	DAS_BLACKWD_CONFLICT    = "Конфликт интересов",      -- 6673
 	DAS_BLACKWD_CHAIN       = "Слабое звено",            -- 6674
 	DAS_BLACKWD_INSECT      = "Спасение насекомых",      -- 6675
+
+
+	-- The Reach, aye
+	-- World Boss dailies : NPC = Gwenyfe, aye
+	DAS_QUEST_MK_BOSS		= "Гвенифе",						-- 97856
+	DAS_PIKEYS_NAMIR		= "Извращения Намиры",				-- 6556
+	DAS_PIKEYS_NOTES		= "Заметки о Пустоте",				-- 6581
+	DAS_PIKEYS_RUPTU		= "Разрывы в Пределе",				-- 6582
+	DAS_PIKEYS_SCHOL		= "Просьба ученого",				-- 6583
+	DAS_PIKEYS_GUIDE		= "След, ведущий во тьму",			-- 6584
+	DAS_PIKEYS_TREAS		= "Разбросанные сокровища",			-- 6585
+	-- Delve dailies : NPC = Bralthahawn, aye
+	DAS_QUEST_MK_DELVE		= "Бралтахон",						-- 97855
+	DAS_PIKEYS_TALIS		= "Дикие амулеты",					-- 6557
+	DAS_PIKEYS_TAINT		= "Оскверненное вересковое сердце",	-- 6567
+	DAS_PIKEYS_WITCH		= "Власть ворожеи",					-- 6569
+	DAS_PIKEYS_MAGIC		= "Магическое грибоведение",		-- 6571
+	DAS_PIKEYS_CONTA		= "Странное заражение",				-- 6572
+	DAS_PIKEYS_MENAC		= "Враг в скорлупе",				-- 6573
+	-- Wayward Guardians dailies : NPC = Ardanir, aye
+	DAS_QUEST_MK_COURIER	= "Арданир",						-- 99601
+	DAS_PIKEYS_REMNA		= "Следы глубинного народа",		-- 6600
+	DAS_PIKEYS_BURNA		= "Выжечь зло дотла",				-- 6601
+	DAS_PIKEYS_LIGHT		= "Светоч Арктзанда",				-- 6602
+	DAS_PIKEYS_ALONE		= "Одни во тьме",					-- 6603
+	DAS_PIKEYS_DEFEN		= "Защитники Предела",				-- 6604
+	DAS_PIKEYS_NIGHT		= "Язык ночи",						-- 6605
+	DAS_PIKEYS_SHRIN		= "Потерянное святилище",			-- 6606
+	-- Harrowstorm dailies : NPC = Nelldena, aye
+	DAS_QUEST_MK_HRWSTMS	= "Нельдена",						-- 97901
+	DAS_PIKEYS_STORM		= "Борьба с мрачными бурями",		-- 6558 & 6559
 
 
 	-- Southern Elsweyr

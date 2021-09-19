@@ -269,6 +269,13 @@ function DAS.CreateMenu(savedVars, defaults)
 				},
 				{
 					type    = "checkbox",
+					tooltip = "Markarth DLC",
+					name    = GetString(DAS_MENU_CB_PIKEYS),
+					getFunc = function() return DAS.GetActiveIn(1207) end,
+					setFunc = function(value) DAS.SetActiveIn(1207, value) end
+				},
+				{
+					type    = "checkbox",
 					tooltip = "Dragonhold DLC",
 					name    = GetString(DAS_MENU_CB_SELWR),
 					getFunc = function() return DAS.GetActiveIn(1133) end,

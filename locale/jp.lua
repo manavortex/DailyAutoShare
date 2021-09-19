@@ -83,6 +83,7 @@ local strings  = {
 	DAS_MENU_CB_MM_ROOT		= "ルートウィスパー村",
 	DAS_MENU_CB_MM_ROOT_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Root-Whisper Village\nRequires completing the zone story", -- 1 is DAS_SLAVES_QUEST2
 	DAS_MENU_CB_NELWR		= "Northern Elsweyr / 北エルスウェア",
+	DAS_MENU_CB_PIKEYS		= "The Reach / リーチ",
 	DAS_MENU_CB_SELWR		= "Southern Elsweyr / 南エルスウェア",
 	DAS_MENU_CB_ELVES		= "Summerset / サマーセット",
 	DAS_MENU_CB_MWIND		= "Vvardenfell / ヴァーデンフェル",
@@ -536,6 +537,37 @@ local strings  = {
 	DAS_BLACKWD_CONFLICT    = "利害の衝突", -- 6673
 	DAS_BLACKWD_CHAIN       = "束縛からの解放", -- 6674
 	DAS_BLACKWD_INSECT      = "虫の救い主", -- 6675
+
+
+	-- The Reach, aye
+	-- World Boss dailies : NPC = Gwenyfe, aye
+	DAS_QUEST_MK_BOSS		= "グウェニフェ", -- 97856
+	DAS_PIKEYS_NAMIR		= "ナミラの倒錯", -- 6556
+	DAS_PIKEYS_NOTES		= "虚無のメモ", -- 6581
+	DAS_PIKEYS_RUPTU		= "リーチの裂け目", -- 6582
+	DAS_PIKEYS_SCHOL		= "学者の要請", -- 6583
+	DAS_PIKEYS_GUIDE		= "深淵への導き", -- 6584
+	DAS_PIKEYS_TREAS		= "捨てられた宝", -- 6585
+	-- Delve dailies : NPC = Bralthahawn, aye
+	DAS_QUEST_MK_DELVE		= "ブラルサハウン", -- 97855
+	DAS_PIKEYS_TALIS		= "ウィルドの護符", -- 6557
+	DAS_PIKEYS_TAINT		= "穢されたブライア・ハート", -- 6567
+	DAS_PIKEYS_WITCH		= "彼女のものは俺のもの", -- 6569
+	DAS_PIKEYS_MAGIC		= "魔法の真菌学", -- 6571
+	DAS_PIKEYS_CONTA		= "奇妙な汚染", -- 6572
+	DAS_PIKEYS_MENAC		= "孵化していない脅威", -- 6573
+	-- Wayward Guardians dailies : NPC = Ardanir, aye
+	DAS_QUEST_MK_COURIER	= "アーダニル", -- 99601
+	DAS_PIKEYS_REMNA		= "深き民の名残", -- 6600
+	DAS_PIKEYS_BURNA		= "悪を打ち払うため", -- 6601
+	DAS_PIKEYS_LIGHT		= "アークスザンドの光", -- 6602
+	DAS_PIKEYS_ALONE		= "闇の中の孤独", -- 6603
+	DAS_PIKEYS_DEFEN		= "リーチの防衛者", -- 6604
+	DAS_PIKEYS_NIGHT		= "夜の言語", -- 6605
+	DAS_PIKEYS_SHRIN		= "失われし祠", -- 6606
+	-- Harrowstorm dailies : NPC = Nelldena, aye
+	DAS_QUEST_MK_HRWSTMS	= "ネルデナ", -- 97901
+	DAS_PIKEYS_STORM		= "喪心の嵐の阻止", -- 6558 & 6559
 
 
 	-- Southern Elsweyr

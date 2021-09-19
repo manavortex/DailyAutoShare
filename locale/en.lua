@@ -84,6 +84,7 @@ local strings  = {
 	DAS_MENU_CB_MM_ROOT		= "Root-Whisper Village",
 	DAS_MENU_CB_MM_ROOT_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Root-Whisper Village\nRequires completing the zone story", -- 1 is DAS_SLAVES_QUEST2
 	DAS_MENU_CB_NELWR		= "Northern Elsweyr",
+	DAS_MENU_CB_PIKEYS		= "The Reach",
 	DAS_MENU_CB_SELWR		= "Southern Elsweyr",
 	DAS_MENU_CB_ELVES		= "Summerset",
 	DAS_MENU_CB_MWIND		= "Vvardenfell",
@@ -537,6 +538,37 @@ local strings  = {
 	DAS_BLACKWD_CONFLICT    = "Conflict of Interest",   -- 6673
 	DAS_BLACKWD_CHAIN       = "Breaking the Chain",     -- 6674
 	DAS_BLACKWD_INSECT      = "Insect Savior",          -- 6675
+
+
+	-- The Reach, aye
+	-- World Boss dailies : NPC = Gwenyfe, aye
+	DAS_QUEST_MK_BOSS		= "Gwenyfe",					-- 97856
+	DAS_PIKEYS_NAMIR		= "Namira's Perversions",		-- 6556
+	DAS_PIKEYS_NOTES		= "Notes of the Void",			-- 6581
+	DAS_PIKEYS_RUPTU		= "Ruptures in the Reach",		-- 6582
+	DAS_PIKEYS_SCHOL		= "The Scholar's Request",		-- 6583
+	DAS_PIKEYS_GUIDE		= "Guides to the Deep",			-- 6584
+	DAS_PIKEYS_TREAS		= "Discarded Treasures",		-- 6585
+	-- Delve dailies : NPC = Bralthahawn, aye
+	DAS_QUEST_MK_DELVE		= "Bralthahawn",				-- 97855
+	DAS_PIKEYS_TALIS		= "Wild Talismans",				-- 6557
+	DAS_PIKEYS_TAINT		= "The Tainted Briarheart",		-- 6567
+	DAS_PIKEYS_WITCH		= "What's Hers is Ours",		-- 6569
+	DAS_PIKEYS_MAGIC		= "Magic Mycology",				-- 6571
+	DAS_PIKEYS_CONTA		= "Strange Contamination",		-- 6572
+	DAS_PIKEYS_MENAC		= "Unhatched Menace",			-- 6573
+	-- Wayward Guardians dailies : NPC = Ardanir, aye
+	DAS_QUEST_MK_COURIER	= "Ardanir",					-- 99601
+	DAS_PIKEYS_REMNA		= "Remnants of the Deep",		-- 6600
+	DAS_PIKEYS_BURNA		= "To Burn Away Evil",			-- 6601
+	DAS_PIKEYS_LIGHT		= "The Light of Arkthzand",		-- 6602
+	DAS_PIKEYS_ALONE		= "Alone in the Dark",			-- 6603
+	DAS_PIKEYS_DEFEN		= "Defenders of the Reach",		-- 6604
+	DAS_PIKEYS_NIGHT		= "The Language of the Night",	-- 6605
+	DAS_PIKEYS_SHRIN		= "The Lost Shrine",			-- 6606
+	-- Harrowstorm dailies : NPC = Nelldena, aye
+	DAS_QUEST_MK_HRWSTMS	= "Nelldena",					-- 97901
+	DAS_PIKEYS_STORM		= "Halt the Harrowstorms",		-- 6558 & 6559
 
 
 	-- Southern Elsweyr

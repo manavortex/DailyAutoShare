@@ -83,6 +83,7 @@ local strings  = {
 	DAS_MENU_CB_MM_ROOT		= "Le village de Murmure-racine",
 	DAS_MENU_CB_MM_ROOT_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Root-Whisper Village\nRequires completing the zone story", -- 1 is DAS_SLAVES_QUEST2
 	DAS_MENU_CB_NELWR		= "Northern Elsweyr / Le Nord d'Elsweyr",
+	DAS_MENU_CB_PIKEYS		= "The Reach / La Crevasse",
 	DAS_MENU_CB_SELWR		= "Southern Elsweyr / Le Sud d'Elsweyr",
 	DAS_MENU_CB_ELVES		= "Summerset / Le Couchant",
 	DAS_MENU_CB_MWIND		= "Vvardenfell",
@@ -536,6 +537,37 @@ local strings  = {
 	DAS_BLACKWD_CONFLICT    = "Conflit d'intérêts",             -- 6673
 	DAS_BLACKWD_CHAIN       = "Briser la chaîne",               -- 6674
 	DAS_BLACKWD_INSECT      = "Sauvez les insectes !",          -- 6675
+
+
+	-- The Reach, aye
+	-- World Boss dailies : NPC = Gwenyfe, aye
+	DAS_QUEST_MK_BOSS		= "Gwenyfë",						-- 97856
+	DAS_PIKEYS_NAMIR		= "Les perversions de Namira",		-- 6556
+	DAS_PIKEYS_NOTES		= "Les Notes du Vide",				-- 6581
+	DAS_PIKEYS_RUPTU		= "Crevasse et fissures",			-- 6582
+	DAS_PIKEYS_SCHOL		= "La demande d'un érudit",			-- 6583
+	DAS_PIKEYS_GUIDE		= "Les guides des profondeurs",		-- 6584
+	DAS_PIKEYS_TREAS		= "Trésors abandonnés",				-- 6585
+	-- Delve dailies : NPC = Bralthahawn, aye
+	DAS_QUEST_MK_DELVE		= "Bralthahawn",					-- 97855
+	DAS_PIKEYS_TALIS		= "Les talismans sauvages",			-- 6557
+	DAS_PIKEYS_TAINT		= "Le Roncecœur souillé",			-- 6567
+	DAS_PIKEYS_WITCH		= "Ce qui est à elle est à nous",	-- 6569
+	DAS_PIKEYS_MAGIC		= "Mycologie magique",				-- 6571
+	DAS_PIKEYS_CONTA		= "Contamination étrange",			-- 6572
+	DAS_PIKEYS_MENAC		= "Menace à étouffer dans l'œuf",	-- 6573
+	-- Wayward Guardians dailies : NPC = Ardanir, aye
+	DAS_QUEST_MK_COURIER	= "Ardanir",						-- 99601
+	DAS_PIKEYS_REMNA		= "Vestiges des Elfes profonds",	-- 6600
+	DAS_PIKEYS_BURNA		= "Brûler le mal",					-- 6601
+	DAS_PIKEYS_LIGHT		= "La Lumière d'Arkthzand",			-- 6602
+	DAS_PIKEYS_ALONE		= "Perdus dans les ténèbres",		-- 6603
+	DAS_PIKEYS_DEFEN		= "Défenseurs de la Crevasse",		-- 6604
+	DAS_PIKEYS_NIGHT		= "Le langage de la nuit",			-- 6605
+	DAS_PIKEYS_SHRIN		= "L'Autel perdu",					-- 6606
+	-- Harrowstorm dailies : NPC = Nelldena, aye
+	DAS_QUEST_MK_HRWSTMS	= "Nelldena",						-- 97901
+	DAS_PIKEYS_STORM		= "Halte aux tempêtes",				-- 6558 & 6559
 
 
 	-- Southern Elsweyr
