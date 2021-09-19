@@ -19,7 +19,7 @@ local questTextColors = {
 }
 
 local function isHidden()
-	return (not DAS.GetActiveIn()) or DAS.GetHidden() or (DAS.GetAutoHide() and (not DAS.OpenDailyPresent()) or #DAS.GetZoneQuests() == 0)
+	return (not DAS.GetActiveIn()) or DAS.GetHidden() or (DAS.GetAutoHide() and (not DAS.OpenDailyPresent()))
 end
 local function isMinimised()
 	return DAS.GetMinimised() or (not isHidden()) and (DAS.GetAutoMinimize() and (not DAS.OpenDailyPresent()))
@@ -40,7 +40,7 @@ function DAS.RefreshControl(refreshQuestCache)
 	DasControl:SetHidden( stateIsHidden)
 	DasList:SetHidden(    stateIsMinimised or stateIsHidden)
 	DasSubList:SetHidden(true)
-  DAS.RefreshLabelsWithDelay()
+	DAS.RefreshLabelsWithDelay(refreshQuestCache)
 end
 local function SetAlpha(control, value)
 	if not control then return end
@@ -173,14 +173,14 @@ local function makeSubLabelTitle(str, zoneId, listIndex)
   end
   if not str then return end
   local idx = string.find(str, sep)
-  if nil == idx then return string.format("%s...") end
+  if nil == idx then return string.format("%s...", str) end
   return string.format("%s...", string.sub(str, 0, idx+3))
 end
 function DAS.SetSubLabels(questTable)
 	if (nil == questTable or {} == questTable) then return end
 	local status = DAS_STATUS_COMPLETE
 	local index = 1
-	for idx, questName in pairs(questTable) do
+	for idx, questName in ipairs(questTable) do
 		index = idx
 		local label = DAS.sublabels[idx]
 		label.dataJournalIndex 	= DAS.GetLogIndex(questName)
@@ -219,7 +219,7 @@ function DAS.setLabels(zoneQuests, zoneId)
 	DAS.activeZoneQuests = {}
 	numLabels = 1
 	local questName
-	for index, questNameOrTable in pairs(zoneQuests) do
+	for index, questNameOrTable in ipairs(zoneQuests) do
 		if not labelTexts[questNameOrTable] then
 		local label = DAS.labels[numLabels] -- despite the name these are actually buttons
 			if nil ~= label then
@@ -233,7 +233,7 @@ function DAS.setLabels(zoneQuests, zoneId)
 					end
 					label.dataQuestName, status		= setLabelTable(questNameOrTable)
 					label.dataQuestState			= status or DAS_STATUS_OPEN
-					label.dataTitle					= makeSubLabelTitle(label.dataQuestList[1], zoneId, index) or questName
+					label.dataTitle					= makeSubLabelTitle(label.dataQuestList[1], zoneId, label.dataQuestList._key or index) or questName
 				else
 					label.dataQuestList		= nil
 					label.dataTitle			= questNameOrTable
@@ -262,7 +262,7 @@ function DAS.RefreshSubLabels(control)
 	DasSubList:SetHidden(false)
 	DAS.SetSubLabels(control.dataQuestList)
 end
-function DAS.RefreshLabelsWithDelay() zo_callLater(function() DAS.RefreshLabels() end, 500) end
+function DAS.RefreshLabelsWithDelay(refreshQuestCache) zo_callLater(function() DAS.RefreshLabels(refreshQuestCache) end, 500) end
 function DAS.RefreshLabels(forceQuestRefresh, forceSkipQuestRefresh)
 	if stateIsMinimised or stateIsHidden then return end
 	forceQuestRefresh = forceQuestRefresh or DAS.questCacheNeedsRefresh
@@ -289,8 +289,8 @@ end
 function DAS.RefreshGui(hidden, skipLabelsRefresh)
 	--p(string.format("DAS.RefreshGui(%s, %s)",tostring(hidden),tostring(skipLabelsRefresh)))
 	hidden = hidden or stateIsHidden
+	DasControl:SetHidden(hidden)
 	if hidden then
-		DasControl:SetHidden(hidden)
 		return
 	end
 

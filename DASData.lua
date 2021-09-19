@@ -7,30 +7,34 @@ function DAS.GetZoneId()
 end
 local typeTable   = "table"
 local typeString  = "string"
-local function evaluateNestedLists(tbl)
-  
-  if not tbl or {} == tbl then return tbl end
-  
-  local addToRet = {}
-  for key, value in pairs(tbl) do
-  -- unpack sublists with string keys, because those are festival lists or so
-    if type(value) == typeTable and typeString == type(key) then
-      if DAS.GetActiveIn(key) then
-        for _, questName in pairs(value) do
-          table.insert(addToRet, questName)
-        end
-      end
-    else
-       table.insert(addToRet, value)
-    end
-  end
-  
-  local ret = {}
-  
-  for _, questName in pairs(addToRet) do
-    table.insert(ret, questName)    
-  end
-  return ret
+local function evaluateNestedLists(tbl, zoneId)
+	if not tbl or {} == tbl then return tbl end
+
+	local addToRet = {}
+	for key, value in pairs(tbl) do
+		-- unpack sublists with string keys, because those are festival lists or so
+		if type(value) == typeTable and typeString == type(key) then
+			if DAS.GetActiveIn(key) then
+				if (DAS.QuestListTitles[zoneId] or {})[key] then
+					value._key = key
+					table.insert(addToRet, value)
+				else
+					for _, questName in pairs(value) do
+						table.insert(addToRet, questName)
+					end
+				end
+			end
+		else
+			table.insert(addToRet, value)
+		end
+	end
+
+	local ret = {}
+
+	for _, questName in pairs(addToRet) do
+		table.insert(ret, questName)
+	end
+	return ret
 end
 function DAS.GetZoneQuests(zoneId)
   -- check if we have an ID
@@ -38,7 +42,7 @@ function DAS.GetZoneQuests(zoneId)
   
   -- check if we're someone's subzone
   zoneId = DAS.subzones[zoneId] or zoneId
-  return evaluateNestedLists(DAS.shareables[zoneId] or {})
+  return evaluateNestedLists(DAS.shareables[zoneId] or {}, zoneId)
   
 end
 function DAS.questCompleted(id) 
@@ -168,4 +172,15 @@ function DAS.GetOpenQuestNamesFromGui()
 		end
 	end
 	return ret
+end
+
+function DAS.CacheTrackedQuestLists()
+	DAS.trackedListZones = {}
+	for listName, isActive in pairs(DAS.GetSettings().trackedLists) do
+		if isActive then
+			for k, v in pairs(DAS.subLists[listName] or {}) do
+				DAS.trackedListZones[k] = v
+			end
+		end
+	end
 end

@@ -6,32 +6,40 @@ local mgBingo = {"mg", "mages",     "alvur"}
 local udBingo = {"ud", "undaunted", "bolgrul"}
 
 DAS.subLists.guilds = {
-  104, -- Alik'r
-  381, -- Auridon
-  92,  -- Bangkorai
-  57,  -- Deshaan
-  101, -- Eastmarch
-  3,   -- Glenumbra
-  383, -- Grahtwood
-  108, -- Greenshade
-  58,  -- Malabal Tor
-  382, -- Reaper's March
-  103, -- The Rift
-  20,  -- Rivenspire
-  117, -- Shadowfen
-  41,  -- Stonefalls
-  19,  -- Stormhaven
+	[104] = true, -- Alik'r
+	[381] = true, -- Auridon
+	[92 ] = true, -- Bangkorai
+	[57 ] = true, -- Deshaan
+	[101] = true, -- Eastmarch
+	[3  ] = true, -- Glenumbra
+	[383] = true, -- Grahtwood
+	[108] = true, -- Greenshade
+	[58 ] = true, -- Malabal Tor
+	[382] = true, -- Reaper's March
+	[103] = true, -- The Rift
+	[20 ] = true, -- Rivenspire
+	[117] = true, -- Shadowfen
+	[41 ] = true, -- Stonefalls
+	[19 ] = true, -- Stormhaven
 }
 DAS.subLists.fg = DAS.subLists.guilds
 DAS.subLists.mg = DAS.subLists.guilds
 DAS.subLists.ud = DAS.subLists.guilds
 
-DAS.QuestListTitles[zoneId] = {
-	[1] = GetString(DAS_GUILD_ANCHORS),
-	[2] = GetString(DAS_GUILD_MADNESS),
+DAS.QuestListTitles = {
+	[zoneId] = {
+		["fg"] = GetString(DAS_GUILD_ANCHORS),
+		["mg"] = GetString(DAS_GUILD_MADNESS),
+	},
+	[zoneId2] = {
+		["fg"] = GetString(DAS_GUILD_ANCHORS),
+		["mg"] = GetString(DAS_GUILD_MADNESS),
+	},
+	[zoneId3] = {
+		["fg"] = GetString(DAS_GUILD_ANCHORS),
+		["mg"] = GetString(DAS_GUILD_MADNESS),
+	},
 }
-DAS.QuestListTitles[zoneId2] = DAS.QuestListTitles[zoneId]
-DAS.QuestListTitles[zoneId3] = DAS.QuestListTitles[zoneId]
 
 local zones = {
 	[104] = {["fg"] = GetString(DAS_FG_ALIKR), ["mg"] = GetString(DAS_MG_ALIKR), ["ud"] = GetString(DAS_UD_ALIKR)}, -- Alik'r Desert
@@ -51,27 +59,33 @@ local zones = {
 	[19 ] = {["fg"] = GetString(DAS_FG_STORM), ["mg"] = GetString(DAS_MG_STORM), ["ud"] = GetString(DAS_UD_STORM)}, -- Stormhaven
 }
 
-local tbl_fg, tbl_mg, tbl_ud = {}, {}, {}
+local tbl = {
+	["fg"] = {},
+	["mg"] = {},
+	["ud"] = {}
+}
 DAS.QuestLists[zoneId] = DAS.QuestLists[zoneId] or {}
 DAS.QuestLists[zoneId].fg = {}
 DAS.QuestLists[zoneId].mg = {}
 DAS.QuestLists[zoneId].ud = {}
 for id, guildStrings in pairs(zones) do
 	DAS.shareables[id] = DAS.shareables[id] or {}
-	local bingoTable   = DAS.bingo[id]      or {}
-	table.insert(DAS.shareables[id],    guildStrings.fg)
-	table.insert(bingoTable,            fgBingo)
-	table.insert(DAS.shareables[id],    guildStrings.mg)
-	table.insert(bingoTable,            mgBingo)
-	table.insert(DAS.shareables[id],    guildStrings.ud)
-	table.insert(bingoTable,            udBingo)
-	DAS.makeBingoTable(id,              bingoTable)
+	DAS.shareables[id].fg = DAS.shareables[id].fg or {}
+	DAS.shareables[id].mg = DAS.shareables[id].mg or {}
+	DAS.shareables[id].ud = DAS.shareables[id].ud or {}
+	table.insert(DAS.shareables[id].fg, guildStrings.fg)
+	table.insert(DAS.shareables[id].mg, guildStrings.mg)
+	table.insert(DAS.shareables[id].ud, guildStrings.ud)
+	DAS.bingo[id]       = DAS.bingo[id] or {}
+	DAS.bingo[id]["fg"] = "fg"
+	DAS.bingo[id]["mg"] = "mg"
+	DAS.bingo[id]["ud"] = "ud"
 	DAS.QuestLists[zoneId].fg[guildStrings.fg] = true
 	DAS.QuestLists[zoneId].mg[guildStrings.mg] = true
 	DAS.QuestLists[zoneId].ud[guildStrings.ud] = true
-	table.insert(tbl_fg, guildStrings.fg)
-	table.insert(tbl_mg, guildStrings.mg)
-	table.insert(tbl_ud, guildStrings.ud)
+	table.insert(tbl.fg, guildStrings.fg)
+	table.insert(tbl.mg, guildStrings.mg)
+	table.insert(tbl.ud, guildStrings.ud)
 end
 DAS.QuestLists[zoneId2]    = DAS.QuestLists[zoneId2] or {}
 DAS.QuestLists[zoneId2].fg = DAS.QuestLists[zoneId].fg
@@ -82,25 +96,21 @@ DAS.QuestLists[zoneId3].fg = DAS.QuestLists[zoneId].fg
 DAS.QuestLists[zoneId3].mg = DAS.QuestLists[zoneId].mg
 DAS.QuestLists[zoneId3].ud = DAS.QuestLists[zoneId].ud
 
-DAS.shareables[zoneId ] = {tbl_fg}
-DAS.shareables[zoneId2] = {tbl_fg}
-DAS.shareables[zoneId3] = {tbl_fg}
-
-table.insert(DAS.shareables[zoneId ], tbl_mg)
-table.insert(DAS.shareables[zoneId2], tbl_mg)
-table.insert(DAS.shareables[zoneId3], tbl_mg)
-
-for _, questName in pairs(tbl_ud) do
-	table.insert(DAS.shareables[zoneId ], questName)
-	table.insert(DAS.shareables[zoneId2], questName)
-	table.insert(DAS.shareables[zoneId3], questName)
-    -- cannot assign the same bingo code to multiple quests like that
-    -- table.insert(DAS.bingo[zoneId], udBingo)
-end
-
-DAS.bingo[zoneId]  = DAS.makeBingoTable(zoneId, DAS.bingo[zoneId ])
-DAS.bingo[zoneId2] = DAS.makeBingoTable(zoneId, DAS.bingo[zoneId2])
-DAS.bingo[zoneId3] = DAS.makeBingoTable(zoneId, DAS.bingo[zoneId3])
+DAS.shareables[zoneId ] = {
+	["fg"] = tbl.fg,
+	["mg"] = tbl.mg,
+	["ud"] = tbl.ud,
+}
+DAS.shareables[zoneId2] = {
+	["fg"] = tbl.fg,
+	["mg"] = tbl.mg,
+	["ud"] = tbl.ud,
+}
+DAS.shareables[zoneId3] = {
+	["fg"] = tbl.fg,
+	["mg"] = tbl.mg,
+	["ud"] = tbl.ud,
+}
 
 DAS.questStarter[zoneId] = {
     [GetString(DAS_QUEST_CAP_CARDEA) ] = true, -- Cardea Gallus, FG
