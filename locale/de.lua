@@ -83,6 +83,7 @@ local strings  = {
 	DAS_MENU_CB_MM_ROOT		= "Wurzelflüsterdorf",
 	DAS_MENU_CB_MM_ROOT_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Root-Whisper Village\nRequires completing the zone story", -- 1 is DAS_SLAVES_QUEST2
 	DAS_MENU_CB_NELWR		= "Northern Elsweyr / Nördliches Elsweyr",
+	DAS_MENU_CB_PIKEYS		= "The Reach / Das Reik",
 	DAS_MENU_CB_SELWR		= "Southern Elsweyr / Südliches Elsweyr",
 	DAS_MENU_CB_ELVES		= "Summerset / Sommersend",
 	DAS_MENU_CB_MWIND		= "Vvardenfell",
@@ -536,6 +537,37 @@ local strings  = {
 	DAS_BLACKWD_CONFLICT    = "Interessenkonflikt",            -- 6673
 	DAS_BLACKWD_CHAIN       = "Das Sprengen der Kette",        -- 6674
 	DAS_BLACKWD_INSECT      = "Insektenrettung",               -- 6675
+
+
+	-- The Reach, aye
+	-- World Boss dailies : NPC = Gwenyfe, aye
+	DAS_QUEST_MK_BOSS		= "Gwenyfe",						-- 97856
+	DAS_PIKEYS_NAMIR		= "Namiras Perversionen",			-- 6556
+	DAS_PIKEYS_NOTES		= "Notizen der Leere",				-- 6581
+	DAS_PIKEYS_RUPTU		= "Risse im Reik",					-- 6582
+	DAS_PIKEYS_SCHOL		= "Die Gelehrtenbitte",				-- 6583
+	DAS_PIKEYS_GUIDE		= "Führer durch die Tiefe",			-- 6584
+	DAS_PIKEYS_TREAS		= "Weggeworfene Schätze",			-- 6585
+	-- Delve dailies : NPC = Bralthahawn, aye
+	DAS_QUEST_MK_DELVE		= "Bralthahan",						-- 97855
+	DAS_PIKEYS_TALIS		= "Wilde Talismane",				-- 6557
+	DAS_PIKEYS_TAINT		= "Das verdorbene Dornenherz",		-- 6567
+	DAS_PIKEYS_WITCH		= "Was ihres ist, ist unser",		-- 6569
+	DAS_PIKEYS_MAGIC		= "Magische Mykologie",				-- 6571
+	DAS_PIKEYS_CONTA		= "Sonderbare Verseuchung",			-- 6572
+	DAS_PIKEYS_MENAC		= "Eine ungeschlüpfte Bedrohung",	-- 6573
+	-- Wayward Guardians dailies : NPC = Ardanir, aye
+	DAS_QUEST_MK_COURIER	= "Ardanir",						-- 99601
+	DAS_PIKEYS_REMNA		= "Überbleibsel des Tiefenvolkes",	-- 6600
+	DAS_PIKEYS_BURNA		= "Das Böse ausbrennen",			-- 6601
+	DAS_PIKEYS_LIGHT		= "Das Licht von Arkthzand",		-- 6602
+	DAS_PIKEYS_ALONE		= "Allein in der Dunkelheit",		-- 6603
+	DAS_PIKEYS_DEFEN		= "Verteidiger des Reik",			-- 6604
+	DAS_PIKEYS_NIGHT		= "Die Sprache der Nacht",			-- 6605
+	DAS_PIKEYS_SHRIN		= "Der verlorene Schrein",			-- 6606
+	-- Harrowstorm dailies : NPC = Nelldena, aye
+	DAS_QUEST_MK_HRWSTMS	= "Nelldena",						-- 97901
+	DAS_PIKEYS_STORM		= "Gramstürmen zum Trotz",			-- 6558 & 6559
 
 
 	-- Southern Elsweyr

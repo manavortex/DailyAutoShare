@@ -159,6 +159,7 @@ local defaults = {
 		[816]  = true, -- Hew's Bane
 		[726]  = true, -- Murkmire
 		[1086] = true, -- Northern Elsweyr
+		[1207] = true, -- The Reach
 		[1133] = true, -- Southern Elsweyr
 		[1011] = true, -- Summerset
 		[849]  = true, -- Vvardenfell
