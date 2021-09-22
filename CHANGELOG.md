@@ -1,5 +1,12 @@
 # DailyAutoShare ChangeLog
 
+## 4.1.2 - released 2021-09-19, @mychaelo
+- Added The Reach daily quests, aye (#54, @mychaelo)
+- Fixed and duct-taped a handful of GUI glitches with quest lists display (#52, @mychaelo)
+- Hooked onto AssistNext() of the Quest Tracker (#52, @mychaelo)
+- Fixed the guild quests hiding in the New Life zones if the New Life festival is not active (#53, @mychaelo)
+- Expanded the guild quests settings to make them togglable individually (#53, @mychaelo)
+
 ## 4.1.1 - released 2021-09-16, @mychaelo
 - Fixed the "Start up minimised" mode (#46, @mychaelo)
 - Added an EVENT_GROUP_MEMBER_JOINED listener for autoshare (#47, @mychaelo)
