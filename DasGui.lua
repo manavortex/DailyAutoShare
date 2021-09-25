@@ -10,7 +10,6 @@ local labelTexts = {}
 local p = DAS.DebugOut
 local typeTable = "table"
 local sep = "%s%w%w%s"
-local alreadyUpdatingLabels = false
 
 local questTextColors = {
 	[DAS_STATUS_COMPLETE] = INTERFACE_TEXT_COLOR_DISABLED,
@@ -34,7 +33,11 @@ function DAS.RefreshControl(refreshQuestCache)
   -- p("DAS.RefreshControl(" .. tostring(refreshQuestCache).. ")")
 	if not DAS.HasActiveDaily() then
 		DAS.SetAutoInvite(false)
-  end
+	end
+	if DAS.Fragment:IsHidden() then
+		DAS.isDirty = true
+		return
+	end
 	cacheVisibilityStatus()
 	DasHandle:SetHidden(  stateIsHidden)
 	DasControl:SetHidden( stateIsHidden)
@@ -371,13 +374,13 @@ function DAS.CreateGui()
 	DAS.AnchorList()
 	cacheVisibilityStatus()
 	DAS.RefreshGui(nil, true)
-	SCENE_MANAGER:GetScene("hud"):RegisterCallback("StateChange", function(oldState, newState)
-		if newState == SCENE_SHOWING then
-			if alreadyUpdatingLabels then return end
-			zo_callLater(function()
-				if not stateIsHidden and not stateIsMinimised then setFontSize(DAS.labels) end
-				alreadyUpdatingLabels = false
-			end, 500)
+	DAS.Fragment:RegisterCallback("StateChange", function(oldState, newState)
+		if newState == SCENE_FRAGMENT_SHOWN then
+			if DAS.isDirty then
+				DAS.RefreshControl(true)
+				DAS.isDirty = false
+			end
+			if not stateIsHidden and not stateIsMinimised then setFontSize(DAS.labels) end
 		end
 	end)
 end
