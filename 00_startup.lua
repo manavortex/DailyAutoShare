@@ -30,6 +30,7 @@ DAS.channelTypes 	          = {
 DAS.locale 			            = GetCVar("language.2")
 DAS.autoInviting            = false
 DAS.guildInviteText         = nil
+DAS.isDirty					= false
 DAS_STATUS_COMPLETE 	      = 0
 DAS_STATUS_OPEN 		        = 1
 DAS_STATUS_ACTIVE		        = 2
