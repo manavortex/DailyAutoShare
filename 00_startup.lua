@@ -164,6 +164,7 @@ local defaults = {
 		[1133] = true, -- Southern Elsweyr
 		[1011] = true, -- Summerset
 		[849]  = true, -- Vvardenfell
+		[1160] = true, -- Western Skyrim
 		[684]  = true, -- Wrothgar
 	},
   trackedLists = {

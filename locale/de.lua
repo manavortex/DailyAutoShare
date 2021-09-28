@@ -93,9 +93,10 @@ local strings  = {
 	DAS_MENU_CB_M_HUNT		= "Aschländer: Jagd",
 	DAS_MENU_CB_M_HUNT_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Ald'ruhn\nRequires completing the following prerequisite quests:\n• <<2>>\n• <<3>>", -- 1 is DAS_QUEST_M_ASHLANDER
 	DAS_MENU_CB_M_DELV		= "Vivec: Gewölbe",
-	DAS_MENU_CB_M_DELV_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice\nRequires completing the following prerequisite quest:\n• <<2>>", -- 1 is DAS_QUEST_M_TRAYLAN
+	DAS_MENU_CB_M_DELV_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice", -- 1 is DAS_QUEST_M_TRAYLAN
 	DAS_MENU_CB_M_BOSS		= "Vivec: Anführer in der offenen Welt",
-	DAS_MENU_CB_M_BOSS_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice\nRequires completing the following prerequisite quest:\n• <<2>>", -- 1 is DAS_QUEST_M_BELERU
+	DAS_MENU_CB_M_BOSS_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice", -- 1 is DAS_QUEST_M_BELERU
+	DAS_MENU_CB_GOTHS		= "Western Skyrim / Westliches Himmelsrand",
 	DAS_MENU_CB_ORCS		= "Wrothgar",
 	DAS_MENU_H_GUILDS		= "Gildenaktivitäten:",
 	DAS_MENU_CB_GUILD		= "Die Krieger-/Magiergilde und Unerschrockenen",
@@ -568,6 +569,28 @@ local strings  = {
 	-- Harrowstorm dailies : NPC = Nelldena, aye
 	DAS_QUEST_MK_HRWSTMS	= "Nelldena",						-- 97901
 	DAS_PIKEYS_STORM		= "Gramstürmen zum Trotz",			-- 6558 & 6559
+
+
+	-- Western Skyrim
+	-- World Boss dailies : NPC = Hidaver
+	DAS_QUEST_WS_BOSS		= "Hidaver",					-- 94736
+	DAS_GOTHS_LOSTA			= "Verloren am Strand",			-- 6509
+	DAS_GOTHS_MOONL			= "Entführung bei Mondlicht",	-- 6517
+	DAS_GOTHS_CIRCL			= "Der Kreis der Schummler",	-- 6518
+	DAS_GOTHS_MOTHE			= "Die Mutter der Schatten",	-- 6519
+	DAS_GOTHS_FEAST			= "Finsterer Fraß",				-- 6526
+	DAS_GOTHS_PROBL			= "Wachsende Probleme",			-- 6527
+	-- Delve dailies : NPC = Tinzen
+	DAS_QUEST_WS_DELVE		= "Tinzen",						-- 94414
+	DAS_GOTHS_STREN			= "Die Stärke von Riesen",		-- 6493
+	DAS_GOTHS_TRAIL			= "Eine kalt gewordene Spur",	-- 6494
+	DAS_GOTHS_PRESE			= "Die Bewahrung des Lebens",	-- 6495
+	DAS_GOTHS_PRECI			= "Kostbare Rinde",				-- 6520
+	DAS_GOTHS_DWEME			= "Dwemer-Demontage",			-- 6523
+	DAS_GOTHS_SPIRI			= "Geistige Befreiung",			-- 6524
+	-- Harrowstorm dailies : NPC = Swordthane Jylta
+	DAS_QUEST_WS_HRWSTMS	= "Schwertthane Jylta",			-- 95442
+	DAS_GOTHS_STORM			= "Gramstürmen zum Trotz",		-- 6512 & 6528
 
 
 	-- Southern Elsweyr

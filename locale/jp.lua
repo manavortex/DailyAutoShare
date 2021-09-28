@@ -93,9 +93,10 @@ local strings  = {
 	DAS_MENU_CB_M_HUNT		= "アッシュランダー: 狩り",
 	DAS_MENU_CB_M_HUNT_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Ald'ruhn\nRequires completing the following prerequisite quests:\n• <<2>>\n• <<3>>", -- 1 is DAS_QUEST_M_ASHLANDER
 	DAS_MENU_CB_M_DELV		= "ヴィベク: 洞窟",
-	DAS_MENU_CB_M_DELV_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice\nRequires completing the following prerequisite quest:\n• <<2>>", -- 1 is DAS_QUEST_M_TRAYLAN
+	DAS_MENU_CB_M_DELV_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice", -- 1 is DAS_QUEST_M_TRAYLAN
 	DAS_MENU_CB_M_BOSS		= "ヴィベク: ワールドボス",
-	DAS_MENU_CB_M_BOSS_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice\nRequires completing the following prerequisite quest:\n• <<2>>", -- 1 is DAS_QUEST_M_BELERU
+	DAS_MENU_CB_M_BOSS_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice", -- 1 is DAS_QUEST_M_BELERU
+	DAS_MENU_CB_GOTHS		= "Western Skyrim / 西スカイリム",
 	DAS_MENU_CB_ORCS		= "Wrothgar / ロスガー",
 	DAS_MENU_H_GUILDS		= "Guild activities:",
 	DAS_MENU_CB_GUILD		= "Fighters / Mages Guilds & Undaunted",
@@ -568,6 +569,28 @@ local strings  = {
 	-- Harrowstorm dailies : NPC = Nelldena, aye
 	DAS_QUEST_MK_HRWSTMS	= "ネルデナ", -- 97901
 	DAS_PIKEYS_STORM		= "喪心の嵐の阻止", -- 6558 & 6559
+
+
+	-- Western Skyrim
+	-- World Boss dailies : NPC = Hidaver
+	DAS_QUEST_WS_BOSS		= "ヒダヴァー", -- 94736
+	DAS_GOTHS_LOSTA			= "岸で失われたもの", -- 6509
+	DAS_GOTHS_MOONL			= "月光の下の誘拐", -- 6517
+	DAS_GOTHS_CIRCL			= "不正のサークル", -- 6518
+	DAS_GOTHS_MOTHE			= "影の母", -- 6519
+	DAS_GOTHS_FEAST			= "闇の宴", -- 6526
+	DAS_GOTHS_PROBL			= "成長の問題", -- 6527
+	-- Delve dailies : NPC = Tinzen
+	DAS_QUEST_WS_DELVE		= "ティンゼン", -- 94414
+	DAS_GOTHS_STREN			= "巨人の力", -- 6493
+	DAS_GOTHS_TRAIL			= "冷たい痕跡", -- 6494
+	DAS_GOTHS_PRESE			= "生命の保全", -- 6495
+	DAS_GOTHS_PRECI			= "貴重な皮", -- 6520
+	DAS_GOTHS_DWEME			= "ドゥエマーの分解", -- 6523
+	DAS_GOTHS_SPIRI			= "魂の解放", -- 6524
+	-- Harrowstorm dailies : NPC = Swordthane Jylta
+	DAS_QUEST_WS_HRWSTMS	= "剣の従士ジルタ", -- 95442
+	DAS_GOTHS_STORM			= "喪心の嵐の阻止", -- 6512 & 6528
 
 
 	-- Southern Elsweyr
