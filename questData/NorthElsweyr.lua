@@ -73,12 +73,3 @@ DAS.questIds[zoneId] = questIds
 for id, _ in pairs(questIds) do
 	DAS_QUEST_IDS[id] = true
 end
-
--- Rimmen dailies prerequisite
-local prequestName = GetQuestName(6348)
-for _, questName in pairs(DAS.shareables[zoneId]) do
-	DAS.prequests[questName] = {
-		prequestName = prequestName, -- In Defense of Elsweyr
-		prequestId   = 6348,
-	}
-end

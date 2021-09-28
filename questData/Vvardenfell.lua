@@ -214,18 +214,3 @@ for questName, _ in pairs(DAS.QuestLists[zoneId].hunt) do
 		prequestId   = 6008,
 	}
 end
-
--- Hall of Justice dailies prerequisite
-prequestName = GetQuestName(6007)
-for questName, _ in pairs(DAS.QuestLists[zoneId].boss) do
-	DAS.prequests[questName] = {
-		prequestName = prequestName, -- A Call For Aid
-		prequestId   = 6007,
-	}
-end
-for questName, _ in pairs(DAS.QuestLists[zoneId].delve) do
-	DAS.prequests[questName] = {
-		prequestName = prequestName, -- A Call For Aid
-		prequestId   = 6007,
-	}
-end
