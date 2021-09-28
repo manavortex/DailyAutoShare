@@ -1,5 +1,12 @@
 # DailyAutoShare ChangeLog
 
+## 4.1.3 - released 2021-09-25, @mychaelo
+- Added Western Skyrim daily quests (#58, @mychaelo)
+- Fixed the DAS window popping in front of inventory and other UI screens (#56, @mychaelo)
+- Removed the prerequisite warnings for Vivec, Rimmen, and Senchal dailies (#57, @mychaelo)
+- Changed the default bingo codes for Blackwood again, making them briefer (#59, @mychaelo)
+- Swapped a couple of quests in Blackwood so that the delve dailies mirror their WB pairs (#59, @mychaelo)
+
 ## 4.1.2 - released 2021-09-19, @mychaelo
 - Added The Reach daily quests, aye (#54, @mychaelo)
 - Fixed and duct-taped a handful of GUI glitches with quest lists display (#52, @mychaelo)
