@@ -350,7 +350,7 @@ function DAS.CreateMenu(savedVars, defaults)
 						{
 							type    = "checkbox",
 							name    = GetString(DAS_MENU_CB_SUB_ENABLE),
-							tooltip = zo_strformat(GetString(DAS_MENU_CB_M_DELV_TIP), GetString(DAS_QUEST_M_TRAYLAN), GetQuestName(6007)),
+							tooltip = zo_strformat(GetString(DAS_MENU_CB_M_DELV_TIP), GetString(DAS_QUEST_M_TRAYLAN)),
 							width   = "half",
 							getFunc = function() return DAS.GetQuestListItem(849, "delve", "active") end,
 							setFunc = function(value) DAS.SetQuestListItem(849, "delve", "active", value) end
@@ -371,7 +371,7 @@ function DAS.CreateMenu(savedVars, defaults)
 						{
 							type    = "checkbox",
 							name    = GetString(DAS_MENU_CB_SUB_ENABLE),
-							tooltip = zo_strformat(GetString(DAS_MENU_CB_M_BOSS_TIP), GetString(DAS_QUEST_M_BELERU), GetQuestName(6007)),
+							tooltip = zo_strformat(GetString(DAS_MENU_CB_M_BOSS_TIP), GetString(DAS_QUEST_M_BELERU)),
 							width   = "half",
 							getFunc = function() return DAS.GetQuestListItem(849, "boss", "active") end,
 							setFunc = function(value) DAS.SetQuestListItem(849, "boss", "active", value) end
@@ -387,6 +387,13 @@ function DAS.CreateMenu(savedVars, defaults)
 						},
 					},
 				}, -- end of submenu : Morrowind
+				{
+					type    = "checkbox",
+					tooltip = "Greymoor DLC",
+					name    = GetString(DAS_MENU_CB_GOTHS),
+					getFunc = function() return DAS.GetActiveIn(1160) end,
+					setFunc = function(value) DAS.SetActiveIn(1160, value) end
+				},
 				{
 					type    = "checkbox",
 					tooltip = "Orsinium DLC",

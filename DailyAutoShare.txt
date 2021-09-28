@@ -35,6 +35,7 @@ questData/Reach.lua
 questData/SouthElsweyr.lua
 questData/Summerset.lua
 questData/Vvardenfell.lua
+questData/WestSkyrim.lua
 questData/Wrothgar.lua
 
 DASUserSettingsAdapter.lua

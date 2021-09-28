@@ -93,9 +93,10 @@ local strings  = {
 	DAS_MENU_CB_M_HUNT		= "Cendrais : la chasse",
 	DAS_MENU_CB_M_HUNT_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Ald'ruhn\nRequires completing the following prerequisite quests:\n• <<2>>\n• <<3>>", -- 1 is DAS_QUEST_M_ASHLANDER
 	DAS_MENU_CB_M_DELV		= "Vivec : les antres",
-	DAS_MENU_CB_M_DELV_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice\nRequires completing the following prerequisite quest:\n• <<2>>", -- 1 is DAS_QUEST_M_TRAYLAN
+	DAS_MENU_CB_M_DELV_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice", -- 1 is DAS_QUEST_M_TRAYLAN
 	DAS_MENU_CB_M_BOSS		= "Vivec : boss sauvages",
-	DAS_MENU_CB_M_BOSS_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice\nRequires completing the following prerequisite quest:\n• <<2>>", -- 1 is DAS_QUEST_M_BELERU
+	DAS_MENU_CB_M_BOSS_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Vivec's Hall of Justice", -- 1 is DAS_QUEST_M_BELERU
+	DAS_MENU_CB_GOTHS		= "Western Skyrim / Bordeciel occidental",
 	DAS_MENU_CB_ORCS		= "Wrothgar",
 	DAS_MENU_H_GUILDS		= "les activités des guildes :",
 	DAS_MENU_CB_GUILD		= "Les guildes des guerriers / mages & Indomptables",
@@ -568,6 +569,28 @@ local strings  = {
 	-- Harrowstorm dailies : NPC = Nelldena, aye
 	DAS_QUEST_MK_HRWSTMS	= "Nelldena",						-- 97901
 	DAS_PIKEYS_STORM		= "Halte aux tempêtes",				-- 6558 & 6559
+
+
+	-- Western Skyrim
+	-- World Boss dailies : NPC = Hidaver
+	DAS_QUEST_WS_BOSS		= "Hidaver",	-- 94736
+	DAS_GOTHS_LOSTA			= "Perdus le long du rivage",	-- 6509
+	DAS_GOTHS_MOONL			= "Enlèvement au clair de lune",	-- 6517
+	DAS_GOTHS_CIRCL			= "Le cercle des tricheurs",	-- 6518
+	DAS_GOTHS_MOTHE			= "La Mère d'Ombre",	-- 6519
+	DAS_GOTHS_FEAST			= "Festin dans les ombres",	-- 6526
+	DAS_GOTHS_PROBL			= "Croissance problématique",	-- 6527
+	-- Delve dailies : NPC = Tinzen
+	DAS_QUEST_WS_DELVE		= "Tinzen",	-- 94414
+	DAS_GOTHS_STREN			= "La force des géants",	-- 6493
+	DAS_GOTHS_TRAIL			= "Une piste qui refroidit",	-- 6494
+	DAS_GOTHS_PRESE			= "La préservation de la vie",	-- 6495
+	DAS_GOTHS_PRECI			= "Écorce Précieuse",	-- 6520
+	DAS_GOTHS_DWEME			= "Désassemblage dwemer",	-- 6523
+	DAS_GOTHS_SPIRI			= "Libération spirituelle",	-- 6524
+	-- Harrowstorm dailies : NPC = Swordthane Jylta
+	DAS_QUEST_WS_HRWSTMS	= "La thane-épée Jylta",	-- 95442
+	DAS_GOTHS_STORM			= "Halte aux tempêtes",	-- 6512 & 6528
 
 
 	-- Southern Elsweyr

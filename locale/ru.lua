@@ -93,9 +93,10 @@ local strings  = {
 	DAS_MENU_CB_M_HUNT		= "Эшлендеры: охота",
 	DAS_MENU_CB_M_HUNT_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в Альд’руне\nТребуется пройти оба указанных задания:\n• <<2>>\n• <<3>>", -- 1 is DAS_QUEST_M_ASHLANDER
 	DAS_MENU_CB_M_DELV		= "Вивек: логова",
-	DAS_MENU_CB_M_DELV_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в Зале справедливости Вивека\nТребуется пройти задание-пролог:\n• <<2>>", -- 1 is DAS_QUEST_M_TRAYLAN
+	DAS_MENU_CB_M_DELV_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в Зале справедливости Вивека", -- 1 is DAS_QUEST_M_TRAYLAN
 	DAS_MENU_CB_M_BOSS		= "Вивек: мировые боссы",
-	DAS_MENU_CB_M_BOSS_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в Зале справедливости Вивека\nТребуется пройти задание-пролог:\n• <<2>>", -- 1 is DAS_QUEST_M_BELERU
+	DAS_MENU_CB_M_BOSS_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в Зале справедливости Вивека", -- 1 is DAS_QUEST_M_BELERU
+	DAS_MENU_CB_GOTHS		= "Western Skyrim / Западный Скайрим",
 	DAS_MENU_CB_ORCS		= "Wrothgar / Ротгар",
 	DAS_MENU_H_GUILDS		= "Ежедневки от гильдий:",
 	DAS_MENU_CB_GUILD		= "Гильдии бойцов и магов, и Неустрашимые",
@@ -568,6 +569,28 @@ local strings  = {
 	-- Harrowstorm dailies : NPC = Nelldena, aye
 	DAS_QUEST_MK_HRWSTMS	= "Нельдена",						-- 97901
 	DAS_PIKEYS_STORM		= "Борьба с мрачными бурями",		-- 6558 & 6559
+
+
+	-- Western Skyrim
+	-- World Boss dailies : NPC = Hidaver
+	DAS_QUEST_WS_BOSS		= "Хидавер",					-- 94736
+	DAS_GOTHS_LOSTA			= "Заблудший мореход",			-- 6509
+	DAS_GOTHS_MOONL			= "Похищение при лунном свете",	-- 6517
+	DAS_GOTHS_CIRCL			= "Круг мошенников",			-- 6518
+	DAS_GOTHS_MOTHE			= "Мать Тьмы",					-- 6519
+	DAS_GOTHS_FEAST			= "Пиршество во тьме",			-- 6526
+	DAS_GOTHS_PROBL			= "Растущая проблема",			-- 6527
+	-- Delve dailies : NPC = Tinzen
+	DAS_QUEST_WS_DELVE		= "Тинзен",						-- 94414
+	DAS_GOTHS_STREN			= "Великанья сила",				-- 6493
+	DAS_GOTHS_TRAIL			= "И след простыл",				-- 6494
+	DAS_GOTHS_PRESE			= "Сохранение жизни",			-- 6495
+	DAS_GOTHS_PRECI			= "Ценная кора",				-- 6520
+	DAS_GOTHS_DWEME			= "Двемерская разборка",		-- 6523
+	DAS_GOTHS_SPIRI			= "Духовное освобождение",		-- 6524
+	-- Harrowstorm dailies : NPC = Swordthane Jylta
+	DAS_QUEST_WS_HRWSTMS	= "Тан-воительница Илта",		-- 95442
+	DAS_GOTHS_STORM			= "Борьба с мрачными бурями",	-- 6512 & 6528
 
 
 	-- Southern Elsweyr
