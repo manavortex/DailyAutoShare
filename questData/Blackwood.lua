@@ -12,32 +12,32 @@ DAS.shareables[zoneId] = {
 	GetString(DAS_BLACKWD_TOAD   ), -- Goblin Research
 	GetString(DAS_BLACKWD_RITUAL ), -- Rites of the Sul-Xan
 	GetString(DAS_BLACKWD_EXCAV  ), -- Legend of the Man-Bull
-	GetString(DAS_BLACKWD_FROG   ), -- A Reign of Frogs
 	GetString(DAS_BLACKWD_XANMEER), -- Call of the Ruinach
 	GetString(DAS_BLACKWD_LAGOON ), -- The Trophy-Taker
+	GetString(DAS_BLACKWD_FROG   ), -- A Reign of Frogs
 	-- Delve dailies : NPC = Deetum-Jas
 	GetString(DAS_BLACKWD_BLOODRUN), -- Shadow Tactics
 	GetString(DAS_BLACKWD_BEAUTY  ), -- Beauty Amid Danger
 	GetString(DAS_BLACKWD_BLESS   ), -- A Proper Blessing
-	GetString(DAS_BLACKWD_CHAIN   ), -- Breaking the Chain
 	GetString(DAS_BLACKWD_INSECT  ), -- Insect Savior
+	GetString(DAS_BLACKWD_CHAIN   ), -- Breaking the Chain
 	GetString(DAS_BLACKWD_CONFLICT), -- Conflict of Interest
 }
 DAS.makeBingoTable(zoneId, {
 	-- World Boss dailies : NPC = Brita Silanus
-	{"toad", "tongue", "goblin"},
-	{"ritual", "rites", "sulxan"},
-	{"excav", "excavation", "bull"},
+	{"zath", "toad", "goblin", "zathmoz"},
+	{"sul", "ritual", "rites", "sulxan"},
+	{"mino", "excav", "excavation", "bull"},
+	{"ruin", "xanmeer", "ruinach", "ruinark", "ghemvas"},
+	{"xeem", "lagoon", "xeemhok", "trophy"},
 	{"frog", "deathwart"},
-	{"xanmeer", "ruinach", "ruinark"},
-	{"lagoon", "xeemhok", "trophy"},
 	-- Delve dailies : NPC = Deetum-Jas
-	{"ru", "bloodrun", "tactics"},
-	{"beauty", "danger"},
-	{"bless", "blessing"},
-	{"chain", "break"},
-	{"insect", "savior"},
-	{"conflict", "interest"},
+	{"bc", "ru", "bloodrun", "tactics"},
+	{"dp", "beauty", "danger"},
+	{"vu", "bless", "blessing"},
+	{"uc", "insect"},
+	{"xt", "chain"},
+	{"ar", "conflict"},
 })
 
 DAS.questStarter[zoneId] = {
