@@ -225,7 +225,7 @@ function DAS.GetGuildInviteNumber()
 	return (tonumber(GetSettings().guildInviteNumber) or 0)
 end
 function DAS.SetGuildInviteNumber(value)
-	GetSettings().guildInviteNumber = value
+	GetSettings().guildInviteNumber = tonumber(value) or 0
 	if value ~= nil and value > 0 then
 		DAS.channelTypes[_G["CHAT_CHANNEL_GUILD_" .. value]] = true
 	end
