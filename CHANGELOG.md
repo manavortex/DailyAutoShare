@@ -1,5 +1,9 @@
 # DailyAutoShare ChangeLog
 
+## 4.1.4 - released 2021-09-30, @mychaelo
+- Added a submenu to toggle quests in Southern Elsweyr (#62, @mychaelo)
+- Safeguarded SetGuildInviteNumber() from invalid input (#61, @mychaelo)
+
 ## 4.1.3 - released 2021-09-25, @mychaelo
 - Added Western Skyrim daily quests (#58, @mychaelo)
 - Fixed the DAS window popping in front of inventory and other UI screens (#56, @mychaelo)
