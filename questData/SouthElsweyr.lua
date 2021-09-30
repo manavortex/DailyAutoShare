@@ -56,6 +56,33 @@ DAS.makeBingoTable(zoneId, {
 	"grave",
 })
 
+DAS.QuestLists[zoneId] = {
+	["boss"] = {
+		[GetString(DAS_SE_RICE	)] = true,
+		[GetString(DAS_SE_PARIAH)] = true,
+		[GetString(DAS_SE_HEAL	)] = true,
+		[GetString(DAS_SE_DUST	)] = true,
+		[GetString(DAS_SE_FLETCH)] = true,
+		[GetString(DAS_SE_SCHOL	)] = true,
+	},
+	["delve"] = {
+		[GetString(DAS_SE_CANDLE)] = true,
+		[GetString(DAS_SE_SWORD	)] = true,
+		[GetString(DAS_SE_LILY	)] = true,
+		[GetString(DAS_SE_BLOOD	)] = true,
+		[GetString(DAS_SE_TOMES	)] = true,
+		[GetString(DAS_SE_MUSH	)] = true,
+	},
+	["newmoon"] = {
+		[GetString(DAS_SE_FILE	)] = true,
+		[GetString(DAS_SE_BONES	)] = true,
+		[GetString(DAS_SE_AWAK	)] = true,
+		[GetString(DAS_SE_TUSK	)] = true,
+		[GetString(DAS_SE_GARD	)] = true,
+		[GetString(DAS_SE_GRAVE	)] = true,
+	},
+}
+
 DAS.questStarter[zoneId] = {
 	[GetString(DAS_QUEST_SE_BOSS   )] = true,
 	[GetString(DAS_QUEST_SE_DELVE  )] = true,

@@ -281,6 +281,77 @@ function DAS.CreateMenu(savedVars, defaults)
 					getFunc = function() return DAS.GetActiveIn(1133) end,
 					setFunc = function(value) DAS.SetActiveIn(1133, value) end
 				},
+				{ -- submenu: Southern Elsweyr
+					type     = "submenu",
+					name     = GetString(DAS_MENU_SM_SELWR),
+					disabled = function() return (not DAS.GetActiveIn(1133)) end,
+					controls =
+					{
+						{
+							type    = "header",
+							name    = GetString(DAS_MENU_CB_SE_DELV)
+						},
+						{
+							type    = "checkbox",
+							name    = GetString(DAS_MENU_CB_SUB_ENABLE),
+							tooltip = zo_strformat(GetString(DAS_MENU_CB_SE_DELV_TIP), GetString(DAS_QUEST_SE_DELVE)),
+							width   = "half",
+							getFunc = function() return DAS.GetQuestListItem(1133, "delve", "active") end,
+							setFunc = function(value) DAS.SetQuestListItem(1133,   "delve", "active", value) end
+						},
+						{
+							type     = "checkbox",
+							name     = GetString(DAS_MENU_CB_SUB_HIDE),
+							tooltip  = GetString(DAS_MENU_CB_SUB_HIDE_T),
+							width    = "half",
+							disabled = function() return not DAS.GetQuestListItem(1133, "delve", "active") end,
+							getFunc  = function() return DAS.GetQuestListItem(1133, "delve", "invisible") end,
+							setFunc  = function(value) DAS.SetQuestListItem(1133,   "delve", "invisible", value) end
+						},
+						{
+							type    = "header",
+							name    = GetString(DAS_MENU_CB_SE_BOSS)
+						},
+						{
+							type    = "checkbox",
+							name    = GetString(DAS_MENU_CB_SUB_ENABLE),
+							tooltip = zo_strformat(GetString(DAS_MENU_CB_SE_BOSS_TIP), GetString(DAS_QUEST_SE_BOSS)),
+							width   = "half",
+							getFunc = function() return DAS.GetQuestListItem(1133, "boss", "active") end,
+							setFunc = function(value)   DAS.SetQuestListItem(1133, "boss", "active", value) end
+						},
+						{
+							type     = "checkbox",
+							name     = GetString(DAS_MENU_CB_SUB_HIDE),
+							tooltip  = GetString(DAS_MENU_CB_SUB_HIDE_T),
+							width    = "half",
+							disabled = function() return not DAS.GetQuestListItem(1133, "boss", "active") end,
+							getFunc  = function() return DAS.GetQuestListItem(1133, "boss", "invisible") end,
+							setFunc  = function(value) DAS.SetQuestListItem(1133,   "boss", "invisible", value) end
+						},
+						{
+							type    = "header",
+							name    = GetString(DAS_MENU_CB_SE_MOON)
+						},
+						{
+							type    = "checkbox",
+							name    = GetString(DAS_MENU_CB_SUB_ENABLE),
+							tooltip = zo_strformat(GetString(DAS_MENU_CB_SE_MOON_TIP), GetString(DAS_QUEST_SE_DELVE2), GetQuestName(6409)),
+							width   = "half",
+							getFunc = function() return DAS.GetQuestListItem(1133, "newmoon", "active") end,
+							setFunc = function(value) DAS.SetQuestListItem(1133,   "newmoon", "active", value) end
+						},
+						{
+							type     = "checkbox",
+							name     = GetString(DAS_MENU_CB_SUB_HIDE),
+							tooltip  = GetString(DAS_MENU_CB_SUB_HIDE_T),
+							width    = "half",
+							disabled = function() return not DAS.GetQuestListItem(1133, "newmoon", "active") end,
+							getFunc  = function() return DAS.GetQuestListItem(1133, "newmoon", "invisible") end,
+							setFunc  = function(value) DAS.SetQuestListItem(1133,   "newmoon", "invisible", value) end
+						},
+					},
+				},-- end of submenu Southern Elsweyr
 				{
 					type    = "checkbox",
 					tooltip = "Summerset DLC",

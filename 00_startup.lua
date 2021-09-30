@@ -106,6 +106,21 @@ local defaults = {
 			active = true,
     },
   },
+	-- Southern Elsweyr
+	[1133] = {
+		newmoon = {
+			invisible = false,
+			active = true,
+		},
+		delve = {
+			invisible = false,
+			active = true,
+		},
+		boss = {
+			invisible = false,
+			active = true,
+		},
+	},
 	-- Guilds
 	[57] = {
 		fg = {
