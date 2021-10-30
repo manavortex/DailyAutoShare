@@ -72,6 +72,7 @@ local strings  = {
 	DAS_MENU_CB_CRAG		= "Craglorn / Kargstein",
 	DAS_MENU_CB_CYRO		= "Cyrodiil — Stützpunkt der Allianz",
 	DAS_MENU_CB_CYRO_TIP	= "Auto-accept and turn-in support only",
+	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / Ferngrab & Totenländer",
 	DAS_MENU_CB_DARKB		= "Gold Coast / Goldküste",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Hews Fluch",
 	DAS_MENU_CB_MURK		= "Murkmire / Trübmoor",
@@ -526,6 +527,25 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Igmund",                    -- 78905
 	DAS_QUEST_W_GURUZUG     = "Guruzug",                   -- 67019
 	DAS_QUEST_W_ARZORAG     = "Arzorag",                   -- 67018
+
+
+	-- Fargrave
+	-- World Boss dailies, NPC = Vaveli Indavel
+	DAS_QUEST_DL_BOSS		= "Vaveli Indavel",							-- 104381
+	DAS_MDAG_DANGE			= "Gefährliche Geschäfte",					-- 6716
+	DAS_MDAG_MINDS			= "Das geistige Auge",						-- 6717
+	DAS_MDAG_UNMAK			= "Hort des Entschaffers",					-- 6718
+	DAS_MDAG_CAREL			= "Achtlose Verschmutzung",					-- 6719
+	DAS_MDAG_RETRI			= "Fehlgeschlagene Bergung",				-- 6720
+	DAS_MDAG_PARAL			= "Eine lähmende Lektion",					-- 6721
+	-- Exploration dailies, NPC = Luna Beriel
+	DAS_QUEST_DL_EXPL		= "Luna Beriel",							-- 104378
+	DAS_MDAG_PROPA			= "Unterdrückte Propaganda",				-- 6710
+	DAS_MDAG_BRAND			= "Relikte des Brandmal-Reformatoriums",	-- 6711
+	DAS_MDAG_FORGO			= "Vergessene Grabbeigaben",				-- 6712
+	DAS_MDAG_FLOWE			= "Blumen in der Torheit",					-- 6713
+	DAS_MDAG_CLAND			= "Heimliche Mitteilungen",					-- 6714
+	DAS_MDAG_DISCR			= "Diskrete Abholungen",					-- 6715
 
 
 	-- Blackwood

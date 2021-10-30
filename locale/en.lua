@@ -73,6 +73,7 @@ local strings  = {
 	DAS_MENU_CB_CRAG		= "Craglorn",
 	DAS_MENU_CB_CYRO		= "Cyrodiil Alliance Base",
 	DAS_MENU_CB_CYRO_TIP	= "Auto-accept and turn-in support only",
+	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands",
 	DAS_MENU_CB_DARKB		= "Gold Coast",
 	DAS_MENU_CB_THGLD		= "Hew's Bane",
 	DAS_MENU_CB_MURK		= "Murkmire",
@@ -527,6 +528,25 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Igmund",                 -- 78905
 	DAS_QUEST_W_GURUZUG     = "Guruzug",                -- 67019
 	DAS_QUEST_W_ARZORAG     = "Arzorag",                -- 67018
+
+
+	-- Fargrave
+	-- World Boss dailies, NPC = Vaveli Indavel
+	DAS_QUEST_DL_BOSS		= "Vaveli Indavel",					-- 104381
+	DAS_MDAG_DANGE			= "Dangerous Business",				-- 6716
+	DAS_MDAG_MINDS			= "The Mind's Eye",					-- 6717
+	DAS_MDAG_UNMAK			= "Unmaker's Hoard",				-- 6718
+	DAS_MDAG_CAREL			= "Careless Contamination",			-- 6719
+	DAS_MDAG_RETRI			= "Retrieval Gone Awry",			-- 6720
+	DAS_MDAG_PARAL			= "A Paralyzing Lesson",			-- 6721
+	-- Exploration dailies, NPC = Luna Beriel
+	DAS_QUEST_DL_EXPL		= "Luna Beriel",					-- 104378
+	DAS_MDAG_PROPA			= "Propaganda Suppressed",			-- 6710
+	DAS_MDAG_BRAND			= "Brandfire Reformatory Relics",	-- 6711
+	DAS_MDAG_FORGO			= "Forgotten Grave Goods",			-- 6712
+	DAS_MDAG_FLOWE			= "Flowers in the Folly",			-- 6713
+	DAS_MDAG_CLAND			= "Clandestine Communications",		-- 6714
+	DAS_MDAG_DISCR			= "A Discreet Pickup",				-- 6715
 
 
 	-- Blackwood

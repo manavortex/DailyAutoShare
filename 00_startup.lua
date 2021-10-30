@@ -171,6 +171,7 @@ local defaults = {
 		[980]  = true, -- Clockwork City
 		[888]  = true, -- Craglorn
 		[181]  = true, -- Cyrodiil
+		[1282] = true, -- Fargrave
 		[823]  = true, -- Gold Coast
 		[816]  = true, -- Hew's Bane
 		[726]  = true, -- Murkmire

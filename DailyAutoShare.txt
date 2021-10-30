@@ -27,6 +27,7 @@ questData/Blackwood.lua
 questData/ClockworkCity.lua
 questData/Craglorn.lua
 questData/Cyrodiil.lua
+questData/Fargrave.lua
 questData/GoldCoast.lua
 questData/HewsBane.lua
 questData/Murkmire.lua

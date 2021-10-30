@@ -170,6 +170,13 @@ function DAS.CreateMenu(savedVars, defaults)
 				},
 				{
 					type    = "checkbox",
+					tooltip = "Deadlands DLC",
+					name    = GetString(DAS_MENU_CB_DEADL),
+					getFunc = function() return DAS.GetActiveIn(1282) end,
+					setFunc = function(value) DAS.SetActiveIn(1282, value) end
+				},
+				{
+					type    = "checkbox",
 					tooltip = "Dark Brotherhood DLC",
 					name    = GetString(DAS_MENU_CB_DARKB),
 					getFunc = function() return DAS.GetActiveIn(823) end,

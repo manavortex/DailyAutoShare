@@ -72,6 +72,7 @@ local strings  = {
 	DAS_MENU_CB_CRAG		= "Craglorn / クラグローン",
 	DAS_MENU_CB_CYRO		= "Cyrodiil / シロディール Alliance Base",
 	DAS_MENU_CB_CYRO_TIP	= "Auto-accept and turn-in support only",
+	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / ファーグレイブとデッドランド",
 	DAS_MENU_CB_DARKB		= "Gold Coast / ゴールドコースト",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / ヒューズベイン",
 	DAS_MENU_CB_MURK		= "Murkmire / マークマイア",
@@ -526,6 +527,25 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "イグムンド", -- 78905
 	DAS_QUEST_W_GURUZUG     = "グルズグ", -- 67019
 	DAS_QUEST_W_ARZORAG     = "アルゾラグ", -- 67018
+
+
+	-- Fargrave
+	-- World Boss dailies, NPC = Vaveli Indavel
+	DAS_QUEST_DL_BOSS		= "ヴァヴェリ・インダヴェル", -- 104381
+	DAS_MDAG_DANGE			= "危ない商売", -- 6716
+	DAS_MDAG_MINDS			= "心の目", -- 6717
+	DAS_MDAG_UNMAK			= "破壊者の貯蔵庫", -- 6718
+	DAS_MDAG_CAREL			= "不注意な汚染", -- 6719
+	DAS_MDAG_RETRI			= "取り返せないもの", -- 6720
+	DAS_MDAG_PARAL			= "身がすくむ教訓", -- 6721
+	-- Exploration dailies, NPC = Luna Beriel
+	DAS_QUEST_DL_EXPL		= "ルナ・ベリエル", -- 104378
+	DAS_MDAG_PROPA			= "封じられたビラ", -- 6710
+	DAS_MDAG_BRAND			= "ブランドファイア矯正施設の遺物", -- 6711
+	DAS_MDAG_FORGO			= "忘れ去られた墓の品", -- 6712
+	DAS_MDAG_FLOWE			= "偽殉死者のフォリーの花", -- 6713
+	DAS_MDAG_CLAND			= "秘密の手紙", -- 6714
+	DAS_MDAG_DISCR			= "慎重な集荷", -- 6715
 
 
 	-- Blackwood
