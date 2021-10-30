@@ -72,6 +72,7 @@ local strings  = {
 	DAS_MENU_CB_CRAG		= "Craglorn / Краглорн",
 	DAS_MENU_CB_CYRO		= "Cyrodiil / Сиродил — штаб альянса",
 	DAS_MENU_CB_CYRO_TIP	= "Поддерживается только пропуск диалогов при взятии и сдаче",
+	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / Фаргрейв и Мёртвые Земли",
 	DAS_MENU_CB_DARKB		= "Gold Coast / Золотой берег",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Проклятие Хью",
 	DAS_MENU_CB_MURK		= "Murkmire / Мрачные трясины",
@@ -526,6 +527,25 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Игмен",                              -- 78905
 	DAS_QUEST_W_GURUZUG     = "Гурузуг",                            -- 67019
 	DAS_QUEST_W_ARZORAG     = "Арзораг",                            -- 67018
+
+
+	-- Fargrave
+	-- World Boss dailies, NPC = Vaveli Indavel
+	DAS_QUEST_DL_BOSS		= "Вавели Индавел",							-- 104381
+	DAS_MDAG_DANGE			= "Опасное дело",							-- 6716
+	DAS_MDAG_MINDS			= "Внутренний взор",						-- 6717
+	DAS_MDAG_UNMAK			= "Сокровищница Разрушителя",				-- 6718
+	DAS_MDAG_CAREL			= "Неосторожное заражение",					-- 6719
+	DAS_MDAG_RETRI			= "Неудавшиеся поиски",						-- 6720
+	DAS_MDAG_PARAL			= "Вразумляющий паралич",					-- 6721
+	-- Exploration dailies, NPC = Luna Beriel
+	DAS_QUEST_DL_EXPL		= "Луна Бериэль",							-- 104378
+	DAS_MDAG_PROPA			= "Никакой пропаганды",						-- 6710
+	DAS_MDAG_BRAND			= "Реликвии реформатория Огненного Клейма",	-- 6711
+	DAS_MDAG_FORGO			= "Сокровища забытых могил",				-- 6712
+	DAS_MDAG_FLOWE			= "Цветы в Безумстве",						-- 6713
+	DAS_MDAG_CLAND			= "Тайная переписка",						-- 6714
+	DAS_MDAG_DISCR			= "Незаметный обход",						-- 6715
 
 
 	-- Blackwood

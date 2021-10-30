@@ -72,6 +72,7 @@ local strings  = {
 	DAS_MENU_CB_CRAG		= "Craglorn / Raidelorn",
 	DAS_MENU_CB_CYRO		= "Cyrodiil — la base de l'alliance",
 	DAS_MENU_CB_CYRO_TIP	= "Auto-accept and turn-in support only",
+	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / La Tombe du Fin fond + le Terres mortes",
 	DAS_MENU_CB_DARKB		= "Gold Coast / La Côte d'or",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Le Trépas des Cognées",
 	DAS_MENU_CB_MURK		= "Murkmire / Tourbevase",
@@ -526,6 +527,25 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Igmund",                                -- 78905
 	DAS_QUEST_W_GURUZUG     = "Guruzug",                               -- 67019
 	DAS_QUEST_W_ARZORAG     = "Arzorag",                               -- 67018
+
+
+	-- Fargrave
+	-- World Boss dailies, NPC = Vaveli Indavel
+	DAS_QUEST_DL_BOSS		= "Vaveli Indavël",									-- 104381
+	DAS_MDAG_DANGE			= "Affaires dangereuses",							-- 6716
+	DAS_MDAG_MINDS			= "L'œil de l'esprit",								-- 6717
+	DAS_MDAG_UNMAK			= "Le trésor du Défaiseur",							-- 6718
+	DAS_MDAG_CAREL			= "Contamination par inadvertance",					-- 6719
+	DAS_MDAG_RETRI			= "Une récupération qui se passe mal",				-- 6720
+	DAS_MDAG_PARAL			= "Une leçon tétanisante",							-- 6721
+	-- Exploration dailies, NPC = Luna Beriel
+	DAS_QUEST_DL_EXPL		= "Luna Beriel",									-- 104378
+	DAS_MDAG_PROPA			= "Propagande étouffée",							-- 6710
+	DAS_MDAG_BRAND			= "Reliques du Pensionnat correction de Marquefeu",	-- 6711
+	DAS_MDAG_FORGO			= "Biens inhumés",									-- 6712
+	DAS_MDAG_FLOWE			= "Des fleurs dans la folie",						-- 6713
+	DAS_MDAG_CLAND			= "Communications clandestines",					-- 6714
+	DAS_MDAG_DISCR			= "Une collecte discrète",							-- 6715
 
 
 	-- Blackwood
