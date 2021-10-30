@@ -1,5 +1,8 @@
 # DailyAutoShare ChangeLog
 
+## 4.2.0 - released 2021-10-30, @mychaelo
+- Added Fargrave (Deadlands DLC) daily quests (#64, @mychaelo)
+
 ## 4.1.4 - released 2021-09-30, @mychaelo
 - Added a submenu to toggle quests in Southern Elsweyr (#62, @mychaelo)
 - Safeguarded SetGuildInviteNumber() from invalid input (#61, @mychaelo)
