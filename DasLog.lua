@@ -1,5 +1,5 @@
 local day
-local characterName = DAS.pdn or GetUnitName(UNITTAG_PLAYER)
+local characterId = GetCurrentCharacterId()
 local typeString = "string"
 
 ---Returns days since 2020-01-01 06:00 UTC rounded down to the nearest whole number
@@ -19,12 +19,12 @@ function DAS.GetShareableLog()
 		settings._day = day
 	end
 	-- initialize if empty
-	settings[characterName] = settings[characterName] or {}
+	settings[characterId] = settings[characterId] or {}
 	-- make sure it's set
 	DAS.globalSettings.completionLog = settings
 	DAS.todaysLog          = DAS.globalSettings.completionLog
-	DAS.todaysCharacterLog = DAS.globalSettings.completionLog[characterName]
-	return DAS.globalSettings.completionLog[characterName]
+	DAS.todaysCharacterLog = DAS.globalSettings.completionLog[characterId]
+	return DAS.globalSettings.completionLog[characterId]
 end
 
 ---Get completion status (true or false) for the given quest
