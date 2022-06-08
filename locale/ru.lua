@@ -75,6 +75,7 @@ local strings  = {
 	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / Фаргрейв и Мёртвые Земли",
 	DAS_MENU_CB_DARKB		= "Gold Coast / Золотой берег",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Проклятие Хью",
+	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Высокий остров и Аменос",
 	DAS_MENU_CB_MURK		= "Murkmire / Мрачные трясины",
 	DAS_MENU_SM_MURK		= "Настройки мрачных трясин",
 	DAS_MENU_CB_MM_DELV		= "Лилмот: логова",
@@ -527,6 +528,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Игмен",                              -- 78905
 	DAS_QUEST_W_GURUZUG     = "Гурузуг",                            -- 67019
 	DAS_QUEST_W_ARZORAG     = "Арзораг",                            -- 67018
+
+
+	-- High Isle
+	-- World Boss dailies, NPC = Parisse Plouff
+	DAS_QUEST_HI_BOSS		= "Парис Плуфф",					-- 106878
+	DAS_IBIZA_AVARI			= "Алчность Старшего Течения",		-- 6803
+	DAS_IBIZA_SABLE			= "Мрачный Рыцарь",					-- 6807
+	DAS_IBIZA_WILDH			= "Ярость Дикого Рога",				-- 6808
+	DAS_IBIZA_SERPE			= "Призывательница змей",			-- 6816
+	DAS_IBIZA_ASCEN			= "Тени Расцвета",					-- 6821
+	DAS_IBIZA_SPECI			= "Особый реагент",					-- 6822
+	-- Exploration dailies, NPC = Wayllod
+	DAS_QUEST_HI_EXPL		= "Вейллод",						-- 106879
+	DAS_IBIZA_ARCAN			= "Магические изыскания",			-- 6809
+	DAS_IBIZA_FINAL			= "Долгожданный покой",				-- 6805
+	DAS_IBIZA_SEEKA			= "Найти и уничтожить",				-- 6815
+	DAS_IBIZA_PRISO			= "Неприятности с заключенными",	-- 6818
+	DAS_IBIZA_PIRAT			= "Неприятности с пиратами",		-- 6825
+	DAS_IBIZA_DRUID			= "Исследования друидов",			-- 6826
+	-- Volcanic Vent dailies : NPC = Druid Peeska
+	DAS_QUEST_HI_VENT		= "Друид Биска",					-- 108335
+	DAS_IBIZA_VENTS			= "Избавление от опасности",		-- 6812 & 6813
 
 
 	-- Fargrave

@@ -75,6 +75,7 @@ local strings  = {
 	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / Ferngrab & Totenländer",
 	DAS_MENU_CB_DARKB		= "Gold Coast / Goldküste",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Hews Fluch",
+	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Hochinsel & Amenos",
 	DAS_MENU_CB_MURK		= "Murkmire / Trübmoor",
 	DAS_MENU_SM_MURK		= "Murkmire Options",
 	DAS_MENU_CB_MM_DELV		= "Lilmoth: Gewölbe",
@@ -527,6 +528,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Igmund",                    -- 78905
 	DAS_QUEST_W_GURUZUG     = "Guruzug",                   -- 67019
 	DAS_QUEST_W_ARZORAG     = "Arzorag",                   -- 67018
+
+
+	-- High Isle
+	-- World Boss dailies, NPC = Parisse Plouff
+	DAS_QUEST_HI_BOSS		= "Parisse Plouff",				-- 106878
+	DAS_IBIZA_AVARI			= "Habgier der Ahngezeiten",	-- 6803
+	DAS_IBIZA_SABLE			= "Der Zobelritter",			-- 6807
+	DAS_IBIZA_WILDH			= "Wildhorns Zorn",				-- 6808
+	DAS_IBIZA_SERPE			= "Die Schlangenruferin",		-- 6816
+	DAS_IBIZA_ASCEN			= "Emporstrebende Schatten",	-- 6821
+	DAS_IBIZA_SPECI			= "Ein besonderes Reagenz",		-- 6822
+	-- Exploration dailies, NPC = Wayllod
+	DAS_QUEST_HI_EXPL		= "Wayllod",					-- 106879
+	DAS_IBIZA_ARCAN			= "Arkane Forschung",			-- 6809
+	DAS_IBIZA_FINAL			= "Endlich Frieden",			-- 6805
+	DAS_IBIZA_SEEKA			= "Suchen und Zerstören",		-- 6815
+	DAS_IBIZA_PRISO			= "Gefängnisprobleme",			-- 6818
+	DAS_IBIZA_PIRAT			= "Piratenprobleme",			-- 6825
+	DAS_IBIZA_DRUID			= "Druidenforschung",			-- 6826
+	-- Volcanic Vent dailies : NPC = Druid Peeska
+	DAS_QUEST_HI_VENT		= "Druidin Peeska",				-- 108335
+	DAS_IBIZA_VENTS			= "Das Ablassen der Bedrohung",	-- 6812 & 6813
 
 
 	-- Fargrave

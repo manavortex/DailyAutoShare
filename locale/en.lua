@@ -76,6 +76,7 @@ local strings  = {
 	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands",
 	DAS_MENU_CB_DARKB		= "Gold Coast",
 	DAS_MENU_CB_THGLD		= "Hew's Bane",
+	DAS_MENU_CB_HIILE		= "High Isle & Amenos",
 	DAS_MENU_CB_MURK		= "Murkmire",
 	DAS_MENU_SM_MURK		= "Murkmire Options",
 	DAS_MENU_CB_MM_DELV		= "Lilmoth: Delves",
@@ -528,6 +529,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Igmund",                 -- 78905
 	DAS_QUEST_W_GURUZUG     = "Guruzug",                -- 67019
 	DAS_QUEST_W_ARZORAG     = "Arzorag",                -- 67018
+
+
+	-- High Isle
+	-- World Boss dailies, NPC = Parisse Plouff
+	DAS_QUEST_HI_BOSS		= "Parisse Plouff",				-- 106878
+	DAS_IBIZA_AVARI			= "Avarice of the Eldertide",	-- 6803
+	DAS_IBIZA_SABLE			= "The Sable Knight",			-- 6807
+	DAS_IBIZA_WILDH			= "Wildhorn's Wrath",			-- 6808
+	DAS_IBIZA_SERPE			= "The Serpent Caller",			-- 6816
+	DAS_IBIZA_ASCEN			= "Ascendant Shadows",			-- 6821
+	DAS_IBIZA_SPECI			= "A Special Reagent",			-- 6822
+	-- Exploration dailies, NPC = Wayllod
+	DAS_QUEST_HI_EXPL		= "Wayllod",					-- 106879
+	DAS_IBIZA_ARCAN			= "Arcane Research",			-- 6809
+	DAS_IBIZA_FINAL			= "A Final Peace",				-- 6805
+	DAS_IBIZA_SEEKA			= "Seek and Destroy",			-- 6815
+	DAS_IBIZA_PRISO			= "Prison Problems",			-- 6818
+	DAS_IBIZA_PIRAT			= "Pirate Problems",			-- 6825
+	DAS_IBIZA_DRUID			= "Druidic Research",			-- 6826
+	-- Volcanic Vent dailies : NPC = Druid Peeska
+	DAS_QUEST_HI_VENT		= "Druid Peeska",				-- 108335
+	DAS_IBIZA_VENTS			= "Venting the Threat",			-- 6812 & 6813
 
 
 	-- Fargrave

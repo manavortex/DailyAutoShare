@@ -75,6 +75,7 @@ local strings  = {
 	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / La Tombe du Fin fond + le Terres mortes",
 	DAS_MENU_CB_DARKB		= "Gold Coast / La Côte d'or",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Le Trépas des Cognées",
+	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Île-Haute + Amenos",
 	DAS_MENU_CB_MURK		= "Murkmire / Tourbevase",
 	DAS_MENU_SM_MURK		= "Murkmire Options",
 	DAS_MENU_CB_MM_DELV		= "Lilmoth : les antres",
@@ -527,6 +528,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Igmund",                                -- 78905
 	DAS_QUEST_W_GURUZUG     = "Guruzug",                               -- 67019
 	DAS_QUEST_W_ARZORAG     = "Arzorag",                               -- 67018
+
+
+	-- High Isle
+	-- World Boss dailies, NPC = Parisse Plouff
+	DAS_QUEST_HI_BOSS		= "Parisse Plouff",					-- 106878
+	DAS_IBIZA_AVARI			= "L'avarice de la Marée aînée",	-- 6803
+	DAS_IBIZA_SABLE			= "Le Chevalier de Sable",			-- 6807
+	DAS_IBIZA_WILDH			= "Courroux de Cornesauvage",		-- 6808
+	DAS_IBIZA_SERPE			= "L'appel du Serpent",				-- 6816
+	DAS_IBIZA_ASCEN			= "Ombres Ascendantes",				-- 6821
+	DAS_IBIZA_SPECI			= "Un réactif spécial",				-- 6822
+	-- Exploration dailies, NPC = Wayllod
+	DAS_QUEST_HI_EXPL		= "Wayllod",						-- 106879
+	DAS_IBIZA_ARCAN			= "Recherches arcaniques",			-- 6809
+	DAS_IBIZA_FINAL			= "Enfin, la paix",					-- 6805
+	DAS_IBIZA_SEEKA			= "Traque et éradication",			-- 6815
+	DAS_IBIZA_PRISO			= "Problèmes pénitentiaires",		-- 6818
+	DAS_IBIZA_PIRAT			= "Problèmes de pirates",			-- 6825
+	DAS_IBIZA_DRUID			= "Recherches druidiques",			-- 6826
+	-- Volcanic Vent dailies : NPC = Druid Peeska
+	DAS_QUEST_HI_VENT		= "La druidesse Peeska",			-- 108335
+	DAS_IBIZA_VENTS			= "Dissiper la menace",				-- 6812 & 6813
 
 
 	-- Fargrave

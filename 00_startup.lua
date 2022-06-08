@@ -174,6 +174,7 @@ local defaults = {
 		[1282] = true, -- Fargrave
 		[823]  = true, -- Gold Coast
 		[816]  = true, -- Hew's Bane
+		[1318] = true, -- High Isle
 		[726]  = true, -- Murkmire
 		[1086] = true, -- Northern Elsweyr
 		[1207] = true, -- The Reach

@@ -30,6 +30,7 @@ questData/Cyrodiil.lua
 questData/Fargrave.lua
 questData/GoldCoast.lua
 questData/HewsBane.lua
+questData/HighIsle.lua
 questData/Murkmire.lua
 questData/NorthElsweyr.lua
 questData/Reach.lua
