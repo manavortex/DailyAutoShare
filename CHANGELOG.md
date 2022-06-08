@@ -1,5 +1,10 @@
 # DailyAutoShare ChangeLog
 
+## 4.3.0 - released 2022-06-08, @mychaelo
+- Added High Isle daily quests (#67, @mychaelo)
+- Modified quest logger to use character IDs instead of names (#66, @mychaelo)
+- Added spanish localisation with a placeholder UI translation (#68, @mychaelo)
+
 ## 4.2.0 - released 2021-10-30, @mychaelo
 - Added Fargrave (Deadlands DLC) daily quests (#64, @mychaelo)
 
