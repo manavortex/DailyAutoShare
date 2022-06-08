@@ -75,6 +75,7 @@ local strings  = {
 	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / ファーグレイブとデッドランド",
 	DAS_MENU_CB_DARKB		= "Gold Coast / ゴールドコースト",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / ヒューズベイン",
+	DAS_MENU_CB_HIILE		= "High Isle & Amenos / ハイ・アイルとアメノス",
 	DAS_MENU_CB_MURK		= "Murkmire / マークマイア",
 	DAS_MENU_SM_MURK		= "Murkmire Options",
 	DAS_MENU_CB_MM_DELV		= "リルモス: 洞窟",
@@ -527,6 +528,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "イグムンド", -- 78905
 	DAS_QUEST_W_GURUZUG     = "グルズグ", -- 67019
 	DAS_QUEST_W_ARZORAG     = "アルゾラグ", -- 67018
+
+
+	-- High Isle
+	-- World Boss dailies, NPC = Parisse Plouff
+	DAS_QUEST_HI_BOSS		= "パリッセ・プロフ", -- 106878
+	DAS_IBIZA_AVARI			= "エルダータイドの強欲", -- 6803
+	DAS_IBIZA_SABLE			= "サーベルナイト", -- 6807
+	DAS_IBIZA_WILDH			= "ワイルドホーンの怒り", -- 6808
+	DAS_IBIZA_SERPE			= "大蛇の召喚者", -- 6816
+	DAS_IBIZA_ASCEN			= "超越の影", -- 6821
+	DAS_IBIZA_SPECI			= "特別な試料", -- 6822
+	-- Exploration dailies, NPC = Wayllod
+	DAS_QUEST_HI_EXPL		= "ウェイロッド", -- 106879
+	DAS_IBIZA_ARCAN			= "アルケインの研究", -- 6809
+	DAS_IBIZA_FINAL			= "最後の安息", -- 6805
+	DAS_IBIZA_SEEKA			= "捜索と破壊", -- 6815
+	DAS_IBIZA_PRISO			= "監獄の問題", -- 6818
+	DAS_IBIZA_PIRAT			= "海賊問題", -- 6825
+	DAS_IBIZA_DRUID			= "ドルイドの研究", -- 6826
+	-- Volcanic Vent dailies : NPC = Druid Peeska
+	DAS_QUEST_HI_VENT		= "ドルイド・ピースカ", -- 108335
+	DAS_IBIZA_VENTS			= "脅威の回避", -- 6812 & 6813
 
 
 	-- Fargrave

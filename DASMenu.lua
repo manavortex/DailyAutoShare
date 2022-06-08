@@ -47,7 +47,7 @@ function DAS.CreateMenu(savedVars, defaults)
 				},
 				{
 					type    = "checkbox",
-					tooltip = "Blackwood Chapter",
+					tooltip = "Blackwood DLC",
 					name    = GetString(DAS_MENU_CB_BWOOD),
 					getFunc = function() return DAS.GetActiveIn(1261) end,
 					setFunc = function(value) DAS.SetActiveIn(1261, value) end
@@ -188,6 +188,13 @@ function DAS.CreateMenu(savedVars, defaults)
 					name    = GetString(DAS_MENU_CB_THGLD),
 					getFunc = function() return DAS.GetActiveIn(816) end,
 					setFunc = function(value) DAS.SetActiveIn(816, value) end
+				},
+				{
+					type    = "checkbox",
+					tooltip = "High Isle Chapter",
+					name    = GetString(DAS_MENU_CB_HIILE),
+					getFunc = function() return DAS.GetActiveIn(1318) end,
+					setFunc = function(value) DAS.SetActiveIn(1318, value) end
 				},
 				{
 					type    = "checkbox",
