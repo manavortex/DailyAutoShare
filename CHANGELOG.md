@@ -1,5 +1,8 @@
 # DailyAutoShare ChangeLog
 
+## 4.4.1 - released 2022-10-29, @mychaelo
+- Make DAS restore itself again when not hidden manually (#73, @mychaelo)
+
 ## 4.4.0 - released 2022-10-29, @mychaelo
 - Added Galen daily quests (#71, @mychaelo)
 - DAS Window now actually stays hidden (#71, @mychaelo)
