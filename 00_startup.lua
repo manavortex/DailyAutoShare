@@ -172,6 +172,7 @@ local defaults = {
 		[888]  = true, -- Craglorn
 		[181]  = true, -- Cyrodiil
 		[1282] = true, -- Fargrave
+		[1383] = true, -- Galen
 		[823]  = true, -- Gold Coast
 		[816]  = true, -- Hew's Bane
 		[1318] = true, -- High Isle
@@ -314,7 +315,9 @@ local function OnChatMessage(...)
    DAS.OnChatMessage(...)
 end
 local function OnPlayerActivated()
-	DAS.SetHidden(not DAS.GetActiveIn())
+	if not DAS.GetHidden() then
+		DAS.SetHidden(not DAS.GetActiveIn())
+	end
 	DAS.SetAutoInvite(DAS.GetAutoInvite()) -- disables if we aren't group lead
 	DAS.SetChatListenerStatus(DAS.autoInviting)
 	DAS.SetListenInGuilds(DAS.GetSettings().listenInGuilds)

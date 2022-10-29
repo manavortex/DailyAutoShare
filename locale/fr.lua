@@ -73,6 +73,7 @@ local strings  = {
 	DAS_MENU_CB_CYRO		= "Cyrodiil — la base de l'alliance",
 	DAS_MENU_CB_CYRO_TIP	= "Auto-accept and turn-in support only",
 	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / La Tombe du Fin fond + le Terres mortes",
+	DAS_MENU_CB_FRSNG		= "Galen & Y'ffelon",
 	DAS_MENU_CB_DARKB		= "Gold Coast / La Côte d'or",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Le Trépas des Cognées",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Île-Haute + Amenos",
@@ -528,6 +529,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Igmund",                                -- 78905
 	DAS_QUEST_W_GURUZUG     = "Guruzug",                               -- 67019
 	DAS_QUEST_W_ARZORAG     = "Arzorag",                               -- 67018
+
+
+	-- Galen
+	-- World Boss dailies, NPC = Druid Gastoc
+	DAS_QUEST_FS_BOSS		= "Le druide Gastoc",					-- 111155
+	DAS_MNRCA_RECOV			= "Reliques récupérées",				-- 6890
+	DAS_MNRCA_THREE			= "Approche triple",					-- 6891
+	DAS_MNRCA_SHRIN			= "Des autels aux assises fragiles",	-- 6892
+	DAS_MNRCA_SUNFL			= "Endurance de tournesol",				-- 6878
+	DAS_MNRCA_WAILI			= "Les larmes du bois",					-- 6881
+	DAS_MNRCA_MOTHS			= "L'étude des papillons",				-- 6889
+	-- Exploration dailies, NPC = Juline Courcelles
+	DAS_QUEST_FS_EXPL		= "Juline Courcelles",					-- 111153
+	DAS_MNRCA_RADIA			= "Souvenirs radieux",					-- 6883
+	DAS_MNRCA_VOLCA			= "Virtuose volcanique",				-- 6884
+	DAS_MNRCA_CRITT			= "Capture de bestioles",				-- 6885
+	DAS_MNRCA_FLOWE			= "Fantaisie florale",					-- 6886
+	DAS_MNRCA_HELPF			= "Affichettes utiles",					-- 6887
+	DAS_MNRCA_MARKI			= "Marquer le chemin",					-- 6888
+	-- Volcanic Vent dailies, NPC = Druid Aishabeh
+	DAS_QUEST_FS_VENT		= "La druidesse Aishabeh",				-- 111621
+	DAS_MNRCA_VENTS			= "Danger imminent",					-- 6899 & 6901
 
 
 	-- High Isle

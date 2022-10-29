@@ -73,6 +73,7 @@ local strings  = {
 	DAS_MENU_CB_CYRO		= "Cyrodiil / Сиродил — штаб альянса",
 	DAS_MENU_CB_CYRO_TIP	= "Поддерживается только пропуск диалогов при взятии и сдаче",
 	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / Фаргрейв и Мёртвые Земли",
+	DAS_MENU_CB_FRSNG		= "Galen & Y'ffelon / Гален и И'ффелон",
 	DAS_MENU_CB_DARKB		= "Gold Coast / Золотой берег",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Проклятие Хью",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Высокий остров и Аменос",
@@ -528,6 +529,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Игмен",                              -- 78905
 	DAS_QUEST_W_GURUZUG     = "Гурузуг",                            -- 67019
 	DAS_QUEST_W_ARZORAG     = "Арзораг",                            -- 67018
+
+
+	-- Galen
+	-- World Boss dailies, NPC = Druid Gastoc
+	DAS_QUEST_FS_BOSS		= "Друид Гасток",							-- 111155
+	DAS_MNRCA_RECOV			= "Возвращение реликвий",					-- 6890
+	DAS_MNRCA_THREE			= "\"Одна голова хорошо, а три — лучше\"",	-- 6891
+	DAS_MNRCA_SHRIN			= "Пошатнувшиеся святилища",				-- 6892
+	DAS_MNRCA_SUNFL			= "Могучие подсолнухи",						-- 6878
+	DAS_MNRCA_WAILI			= "Плач леса",								-- 6881
+	DAS_MNRCA_MOTHS			= "Изучение мотыльков",						-- 6889
+	-- Exploration dailies, NPC = Juline Courcelles
+	DAS_QUEST_FS_EXPL		= "Жюлин Курсель",							-- 111153
+	DAS_MNRCA_RADIA			= "Светящиеся безделушки",					-- 6883
+	DAS_MNRCA_VOLCA			= "Ценитель вулканов",						-- 6884
+	DAS_MNRCA_CRITT			= "Зверолов",								-- 6885
+	DAS_MNRCA_FLOWE			= "Знаток цветов",							-- 6886
+	DAS_MNRCA_HELPF			= "Листовки для вербовки",					-- 6887
+	DAS_MNRCA_MARKI			= "Разметка пути",							-- 6888
+	-- Volcanic Vent dailies, NPC = Druid Aishabeh
+	DAS_QUEST_FS_VENT		= "Друид Айшабе",							-- 111621
+	DAS_MNRCA_VENTS			= "Надвигающаяся опасность",				-- 6899 & 6901
 
 
 	-- High Isle

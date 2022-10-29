@@ -73,6 +73,7 @@ local strings  = {
 	DAS_MENU_CB_CYRO		= "Cyrodiil — base de la Alianza",
 	DAS_MENU_CB_CYRO_TIP	= "Auto-accept and turn-in support only",
 	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / Cárcava y Tierras Muertas",
+	DAS_MENU_CB_FRSNG		= "Galen & Y'ffelon",
 	DAS_MENU_CB_DARKB		= "Gold Coast / Costa de Oro",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Perdición de Hew",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Isla Alta y Amenos",
@@ -300,7 +301,7 @@ local strings  = {
 	DAS_M_HUNT_TARRA        = "Caza de Tarra-Suj",				-- 5908
 	DAS_M_HUNT_SVEET        = "Caza de Sveeth el Doblado",		-- 5909
 	DAS_M_HUNT_JAGGE        = "Caza de la Madre Pinzafilada.",	-- 5910
-	DAS_M_HUNT_EATER        = "Caza del Comecenizas",			-- 5911
+	DAS_M_HUNT_EATER        = "Caza de Come Cenizas",			-- 5911
 	DAS_M_HUNT_STOMP        = "Caza del Viejo Pisotones",		-- 5912
 	DAS_M_HUNT_RAZOR        = "Caza del Rey Colmillo Cortante",	-- 5913
 	-- World Boss dailies : NPC = Beleru Omoril
@@ -365,14 +366,14 @@ local strings  = {
 
 
 	-- New Life Festival
-	DAS_NL_EASTMARCH        = "Zambullida del oso de las nieves",			-- 5811
+	DAS_NL_EASTMARCH        = "Zambullida del Oso de las Nieves",			-- 5811
 	DAS_NL_REAPERSMARCH     = "La prueba de la astucia de cinco garras",	-- 5834
 	DAS_NL_STONEFALLS       = "Danza paso de lava",							-- 5837
-	DAS_NL_AURIDON          = "Alegría y bolas de barro",					-- 5838
+	DAS_NL_AURIDON          = "Alegría y Bolas de Barro",					-- 5838
 	DAS_NL_ALIKR            = "Carrera de las Almenaras",					-- 5839
-	DAS_NL_STORMHAVEN       = "Desafío del encanto del palacio",			-- 5845
+	DAS_NL_STORMHAVEN       = "Desafío del Encanto del Palacio",			-- 5845
 	DAS_NL_GRAHTWOOD        = "Peregrinaje de los huérfanos de guerra",		-- 5852
-	DAS_NL_SHADOWFEN        = "Festín de la profusa pesca",					-- 5855
+	DAS_NL_SHADOWFEN        = "Festín de la Profusa Pesca",					-- 5855
 	DAS_NL_BETNIKH          = "Juerga de Diente de Piedra",					-- 5856
 	-- Quest NPCs
 	DAS_QUEST_NL_BREDA      = "Breda",										-- 73855
@@ -475,7 +476,7 @@ local strings  = {
 	DAS_QUEST_M_RIVYN       = "El maestro de batalla Rivyn",				-- 76622
 	DAS_QUEST_CC_ROBOT      = "Facilitadora mecánica",						-- 79225
 	DAS_QUEST_CC_CROW       = "Tesorero de los Tributos",					-- 79171
-	DAS_QUEST_CC_NOVICE     = "Novicia Holli",								-- 79220
+	DAS_QUEST_CC_NOVICE     = "Principiante Holli",							-- 79220
 	DAS_QUEST_CC_THISTLE    = "Saltadora de Cardos",						-- 78637
 	DAS_QUEST_CC_DARO       = "Adjunto Daro",								-- 78653
 	DAS_QUEST_CC_TILELLE    = "Iniciada Tilelle",							-- 79379
@@ -530,12 +531,34 @@ local strings  = {
 	DAS_QUEST_W_ARZORAG     = "Arzorag",									-- 67018
 
 
+	-- Galen
+	-- World Boss dailies, NPC = Druid Gastoc
+	DAS_QUEST_FS_BOSS		= "El druida Gastoc", -- 111155
+	DAS_MNRCA_RECOV			= "Reliquias recuperadas", -- 6890
+	DAS_MNRCA_THREE			= "Enfoque a tres bandas", -- 6891
+	DAS_MNRCA_SHRIN			= "Santuarios en terreno inestable", -- 6892
+	DAS_MNRCA_SUNFL			= "Aguante de girasol", -- 6878
+	DAS_MNRCA_WAILI			= "Los lamentos del bosque", -- 6881
+	DAS_MNRCA_MOTHS			= "El estudio sobre la polilla", -- 6889
+	-- Exploration dailies, NPC = Juline Courcelles
+	DAS_QUEST_FS_EXPL		= "Juline Courcelles", -- 111153
+	DAS_MNRCA_RADIA			= "Recuerdos radiantes", -- 6883
+	DAS_MNRCA_VOLCA			= "Virtuosismo volcánico", -- 6884
+	DAS_MNRCA_CRITT			= "Captura de criaturas", -- 6885
+	DAS_MNRCA_FLOWE			= "Entusiasta de las flores", -- 6886
+	DAS_MNRCA_HELPF			= "Carteles útiles", -- 6887
+	DAS_MNRCA_MARKI			= "Señalizando el camino", -- 6888
+	-- Volcanic Vent dailies, NPC = Druid Aishabeh
+	DAS_QUEST_FS_VENT		= "La druida Aishabeh", -- 111621
+	DAS_MNRCA_VENTS			= "Peligro inminente", -- 6899 & 6901
+
+
 	-- High Isle
 	-- World Boss dailies, NPC = Parisse Plouff
 	DAS_QUEST_HI_BOSS		= "Parisse Plouff",					-- 106878
 	DAS_IBIZA_AVARI			= "Avaricia de la Marea Ancestral",	-- 6803
 	DAS_IBIZA_SABLE			= "El Caballero Sable",				-- 6807
-	DAS_IBIZA_WILDH			= "Furia de Cuerno Salvaje",		-- 6808
+	DAS_IBIZA_WILDH			= "Ira de Cuerno Salvaje",		-- 6808
 	DAS_IBIZA_SERPE			= "La Invocadora de Serpientes",	-- 6816
 	DAS_IBIZA_ASCEN			= "Sombras ascendentes",			-- 6821
 	DAS_IBIZA_SPECI			= "Un reactivo especial",			-- 6822
@@ -543,7 +566,7 @@ local strings  = {
 	DAS_QUEST_HI_EXPL		= "Wayllod",						-- 106879
 	DAS_IBIZA_ARCAN			= "Investigación arcana",			-- 6809
 	DAS_IBIZA_FINAL			= "Paz final",						-- 6805
-	DAS_IBIZA_SEEKA			= "buscar y destruir",				-- 6815
+	DAS_IBIZA_SEEKA			= "Buscar y destruir",				-- 6815
 	DAS_IBIZA_PRISO			= "Problemas carcelarios",			-- 6818
 	DAS_IBIZA_PIRAT			= "Problemas de piratas",			-- 6825
 	DAS_IBIZA_DRUID			= "Investigación druídica",			-- 6826
@@ -609,7 +632,7 @@ local strings  = {
 	DAS_PIKEYS_MENAC		= "Amenaza sin eclosionar",				-- 6573
 	-- Wayward Guardians dailies : NPC = Ardanir, aye
 	DAS_QUEST_MK_COURIER	= "Ardanir",							-- 99601
-	DAS_PIKEYS_REMNA		= "Vestigios de Pueblo Profundo",		-- 6600
+	DAS_PIKEYS_REMNA		= "Remanentes de Pueblo Profundo",		-- 6600
 	DAS_PIKEYS_BURNA		= "Quemar el mal",						-- 6601
 	DAS_PIKEYS_LIGHT		= "La luz de Arkthzand",				-- 6602
 	DAS_PIKEYS_ALONE		= "Solo en la oscuridad",				-- 6603
@@ -665,7 +688,7 @@ local strings  = {
 	DAS_SE_DRAGON2          = "La cantera de la Guardia del Dragón",	-- 6434
 	DAS_SE_DRAGON1          = "La cantera de la Guardia del Dragón",	-- 6444
 	-- Dragonguard dailies : NPC = Dirge Truptor
-	DAS_QUEST_SE_DELVE2     = "Dirge Truptor",							-- 91226
+	DAS_QUEST_SE_DELVE2     = "Canto Fúnebre Truptor",					-- 91226
 	DAS_SE_TUSK             = "De colmillos y defensas",				-- 6405
 	DAS_SE_GRAVE            = "La soledad es una tumba",				-- 6406
 	DAS_SE_BONES            = "Palos y huesos",							-- 6428
