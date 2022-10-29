@@ -315,7 +315,9 @@ local function OnChatMessage(...)
    DAS.OnChatMessage(...)
 end
 local function OnPlayerActivated()
-	DAS.SetHidden(not DAS.GetActiveIn())
+	if not DAS.GetHidden() then
+		DAS.SetHidden(not DAS.GetActiveIn())
+	end
 	DAS.SetAutoInvite(DAS.GetAutoInvite()) -- disables if we aren't group lead
 	DAS.SetChatListenerStatus(DAS.autoInviting)
 	DAS.SetListenInGuilds(DAS.GetSettings().listenInGuilds)
