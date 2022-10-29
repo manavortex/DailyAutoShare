@@ -60,8 +60,12 @@ function DAS.SetHidden(hidden)
     else
 		SCENE_MANAGER:GetScene("hud"  ):AddFragment(DAS.Fragment)
 		SCENE_MANAGER:GetScene("hudui"):AddFragment(DAS.Fragment)
-  end
-	if not hidden then DAS.RefreshControl(true) end
+		DAS.questCacheNeedsRefresh = true
+		DAS.RefreshControl(true)
+		zo_callLater(function()
+			DAS.RefreshLabels(true, true)
+		end, 500)
+	end
 end
 function DAS.GetQuestShareDelay()
 	return GetSettings().questShareDelay
