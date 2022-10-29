@@ -35,7 +35,7 @@
 							 />
 							<OnMouseEnter>	DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
 							<OnMouseExit>	DailyAutoShare.HideTooltip(self)			</OnMouseExit>
-							<OnMouseUp>		DAS.SetHidden(true)					</OnMouseUp>
+							<OnMouseUp>		DAS.SetHidden(true, true)					</OnMouseUp>
 						</Button>
 						<Button name="DasButtonMinmax" >
 							<Dimensions x="16" y="16" />
