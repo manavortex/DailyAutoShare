@@ -28,6 +28,7 @@ questData/ClockworkCity.lua
 questData/Craglorn.lua
 questData/Cyrodiil.lua
 questData/Fargrave.lua
+questData/Galen.lua
 questData/GoldCoast.lua
 questData/HewsBane.lua
 questData/HighIsle.lua

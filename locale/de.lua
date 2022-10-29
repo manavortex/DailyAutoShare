@@ -73,6 +73,7 @@ local strings  = {
 	DAS_MENU_CB_CYRO		= "Cyrodiil — Stützpunkt der Allianz",
 	DAS_MENU_CB_CYRO_TIP	= "Auto-accept and turn-in support only",
 	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / Ferngrab & Totenländer",
+	DAS_MENU_CB_FRSNG		= "Galen & Y'ffelon",
 	DAS_MENU_CB_DARKB		= "Gold Coast / Goldküste",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Hews Fluch",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Hochinsel & Amenos",
@@ -528,6 +529,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Igmund",                    -- 78905
 	DAS_QUEST_W_GURUZUG     = "Guruzug",                   -- 67019
 	DAS_QUEST_W_ARZORAG     = "Arzorag",                   -- 67018
+
+
+	-- Galen
+	-- World Boss dailies, NPC = Druid Gastoc
+	DAS_QUEST_FS_BOSS		= "Druide Gastoc",						-- 111155
+	DAS_MNRCA_RECOV			= "Geborgene Relikte",					-- 6890
+	DAS_MNRCA_THREE			= "Dreizinkiges Vorgehen",				-- 6891
+	DAS_MNRCA_SHRIN			= "Schreine auf schwankendem Grund",	-- 6892
+	DAS_MNRCA_SUNFL			= "Sonnenblumen-Standfestigkeit",		-- 6878
+	DAS_MNRCA_WAILI			= "Ein jammernder Wald",				-- 6881
+	DAS_MNRCA_MOTHS			= "Die Mottenstudie",					-- 6889
+	-- Exploration dailies, NPC = Juline Courcelles
+	DAS_QUEST_FS_EXPL		= "Juline Courcelles",					-- 111153
+	DAS_MNRCA_RADIA			= "Strahlende Andenken",				-- 6883
+	DAS_MNRCA_VOLCA			= "Vulkanisches Virtuosentum",			-- 6884
+	DAS_MNRCA_CRITT			= "Viecherfänger",						-- 6885
+	DAS_MNRCA_FLOWE			= "Blumenfreuden",						-- 6886
+	DAS_MNRCA_HELPF			= "Hilfreiche Handzettel",				-- 6887
+	DAS_MNRCA_MARKI			= "Den Pfad markieren",					-- 6888
+	-- Volcanic Vent dailies, NPC = Druid Aishabeh
+	DAS_QUEST_FS_VENT		= "Druidin Aishabeh",					-- 111621
+	DAS_MNRCA_VENTS			= "Unmittelbare Bedrohung",				-- 6899 & 6901
 
 
 	-- High Isle

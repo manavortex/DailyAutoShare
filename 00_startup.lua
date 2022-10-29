@@ -172,6 +172,7 @@ local defaults = {
 		[888]  = true, -- Craglorn
 		[181]  = true, -- Cyrodiil
 		[1282] = true, -- Fargrave
+		[1383] = true, -- Galen
 		[823]  = true, -- Gold Coast
 		[816]  = true, -- Hew's Bane
 		[1318] = true, -- High Isle

@@ -73,6 +73,7 @@ local strings  = {
 	DAS_MENU_CB_CYRO		= "Cyrodiil / シロディール Alliance Base",
 	DAS_MENU_CB_CYRO_TIP	= "Auto-accept and turn-in support only",
 	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / ファーグレイブとデッドランド",
+	DAS_MENU_CB_FRSNG		= "Galen & Y'ffelon / ガレンとイフェロン",
 	DAS_MENU_CB_DARKB		= "Gold Coast / ゴールドコースト",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / ヒューズベイン",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / ハイ・アイルとアメノス",
@@ -528,6 +529,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "イグムンド", -- 78905
 	DAS_QUEST_W_GURUZUG     = "グルズグ", -- 67019
 	DAS_QUEST_W_ARZORAG     = "アルゾラグ", -- 67018
+
+
+	-- Galen
+	-- World Boss dailies, NPC = Druid Gastoc
+	DAS_QUEST_FS_BOSS		= "ドルイド・ガストック", -- 111155
+	DAS_MNRCA_RECOV			= "手に入れた遺物", -- 6890
+	DAS_MNRCA_THREE			= "三叉の接近", -- 6891
+	DAS_MNRCA_SHRIN			= "揺れた地の祠", -- 6892
+	DAS_MNRCA_SUNFL			= "ひまわりのスタミナ", -- 6878
+	DAS_MNRCA_WAILI			= "すすり泣く森", -- 6881
+	DAS_MNRCA_MOTHS			= "蛾の研究", -- 6889
+	-- Exploration dailies, NPC = Juline Courcelles
+	DAS_QUEST_FS_EXPL		= "ジュリーン・クールセレ", -- 111153
+	DAS_MNRCA_RADIA			= "輝く土産", -- 6883
+	DAS_MNRCA_VOLCA			= "火山の巨匠", -- 6884
+	DAS_MNRCA_CRITT			= "クリッター捕獲", -- 6885
+	DAS_MNRCA_FLOWE			= "よりファンシーな花", -- 6886
+	DAS_MNRCA_HELPF			= "役立つチラシ", -- 6887
+	DAS_MNRCA_MARKI			= "道作り", -- 6888
+	-- Volcanic Vent dailies, NPC = Druid Aishabeh
+	DAS_QUEST_FS_VENT		= "ドルイド・アイシャベー", -- 111621
+	DAS_MNRCA_VENTS			= "迫る危険", -- 6899 & 6901
 
 
 	-- High Isle
