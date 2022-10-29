@@ -151,6 +151,7 @@ local defaults = {
 	minimised 					        = false,
 	locked 						          = false,
 	hidden 						          = false,
+	hiddenByUser						= false,
 	autoShare 					        = true,
 	autoInvite 					        = false,
 	autoLeave 					        = false,
@@ -315,9 +316,7 @@ local function OnChatMessage(...)
    DAS.OnChatMessage(...)
 end
 local function OnPlayerActivated()
-	if not DAS.GetHidden() then
-		DAS.SetHidden(not DAS.GetActiveIn())
-	end
+	DAS.SetHidden(not DAS.GetActiveIn())
 	DAS.SetAutoInvite(DAS.GetAutoInvite()) -- disables if we aren't group lead
 	DAS.SetChatListenerStatus(DAS.autoInviting)
 	DAS.SetListenInGuilds(DAS.GetSettings().listenInGuilds)

@@ -48,10 +48,22 @@ function DAS.SetLocked(value)
 	GetSettings().locked = value
 	DAS.RefreshGui()
 end
+function DAS.GetHiddenByUser()
+	return GetSettings().hiddenByUser or false
+end
+function DAS.SetHiddenByUser(value)
+	GetSettings().hiddenByUser = value
+end
 function DAS.GetHidden()
 	return GetSettings().hidden
 end
-function DAS.SetHidden(hidden)
+function DAS.SetHidden(hidden, override)
+	if (not hidden and not override and DAS.GetHiddenByUser()) then
+		return
+	end
+	if override then
+		DAS.SetHiddenByUser(hidden)
+	end
 	GetSettings().hidden = hidden
 	DasControl:SetHidden(hidden)
 	if hidden then

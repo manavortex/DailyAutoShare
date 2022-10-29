@@ -33,7 +33,7 @@ function DAS.CreateMenu(savedVars, defaults)
 			name    = GetString(DAS_MENU_CB_HIDE),
 			width   = "half",
 			getFunc = function() return DAS.GetHidden() end,
-			setFunc = function(value) DAS.SetHidden(value) end
+			setFunc = function(value) DAS.SetHidden(value, true) end
 		},
 		{
 			type    = "submenu",
