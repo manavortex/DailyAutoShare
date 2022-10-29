@@ -1,5 +1,9 @@
 # DailyAutoShare ChangeLog
 
+## 4.4.0 - released 2022-10-29, @mychaelo
+- Added Galen daily quests (#71, @mychaelo)
+- DAS Window now actually stays hidden (#71, @mychaelo)
+
 ## 4.3.0 - released 2022-06-08, @mychaelo
 - Added High Isle daily quests (#67, @mychaelo)
 - Modified quest logger to use character IDs instead of names (#66, @mychaelo)
