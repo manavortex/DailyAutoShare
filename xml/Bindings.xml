@@ -3,7 +3,7 @@
         <Category name="DailyAutoshare">
             <Action name="TOGGLE_DAS_GUI">
                 <Down>
-					DAS.SetHidden(not DAS.GetHidden())
+					DAS.SetHidden(not DAS.GetHidden(), true)
 				</Down>
             </Action>
 			<Action name="TOGGLE_DAS_LIST">
