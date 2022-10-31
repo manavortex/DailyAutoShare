@@ -1,5 +1,8 @@
 # DailyAutoShare ChangeLog
 
+## 4.4.2 - released 2022-10-31, @mychaelo
+- Update the 'Toggle hidden' binding to also hide/unhide DAS permanently (#74, @mychaelo)
+
 ## 4.4.1 - released 2022-10-29, @mychaelo
 - Make DAS restore itself again when not hidden manually (#73, @mychaelo)
 
