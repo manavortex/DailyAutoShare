@@ -628,7 +628,14 @@ function DAS.CreateMenu(savedVars, defaults)
 					type    = "button",
 					name    = GetString(DAS_MENU_BTN_QSTRST),
 					tooltip = GetString(DAS_MENU_BTN_QSTRST_TIP),
-					func    = function() DAS.GetSettings().questShareString = defaults.questShareString end,
+					func    = function() DAS.GetSettings().questShareString = defaults.questShareString DAS.SetQuestShareEitherOfString(defaults.questShareEitherOfString) end,
+				},
+				{
+					type    = "editbox",
+					name    = GetString(DAS_MENU_TB_QSTEO),
+					tooltip = GetString(DAS_MENU_TB_QSTEO_TIP),
+					getFunc = DAS.GetQuestShareEitherOfString,
+					setFunc = DAS.SetQuestShareEitherOfString,
 				},
 				{
 					type    = "checkbox",

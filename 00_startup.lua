@@ -137,6 +137,7 @@ local defaults = {
 		},
 	},
   questShareString            = "I can give a DailyAutoShare for <<1>>, type <<2>> for an instant invite",
+	questShareEitherOfString    = "either of",
   whisperString               = "whisper + for an instant invite",
 	guildInviteText = nil,
 	listenInGuilds = false,

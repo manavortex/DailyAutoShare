@@ -304,3 +304,12 @@ end
 function DAS.SetMarkerVisibility(value)
   GetSettings().mapMarkersVisible = value
 end
+
+function DAS.GetQuestShareEitherOfString()
+	return GetSettings().questShareEitherOfString
+end
+
+function DAS.SetQuestShareEitherOfString(value)
+	if '' == value then value = nil end
+	GetSettings().questShareEitherOfString = value
+end
