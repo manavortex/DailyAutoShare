@@ -2,7 +2,7 @@ DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
 DAS_QUEST_IDS               = {}
 DAS.name                    = "DailyAutoShare"
-DAS.version                 = "4.4.2"
+DAS.version                 = "4.4.3"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -137,6 +137,7 @@ local defaults = {
 		},
 	},
   questShareString            = "I can give a DailyAutoShare for <<1>>, type <<2>> for an instant invite",
+	questShareEitherOfString    = "either of",
   whisperString               = "whisper + for an instant invite",
 	guildInviteText = nil,
 	listenInGuilds = false,

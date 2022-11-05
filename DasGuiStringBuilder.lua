@@ -57,7 +57,6 @@ local empty = ""
 local comma = ", "
 local space = " "
 local any = "+any"
-local eitherof = "either of "
 local function getQuestNames(activeQuestNames)
   activeQuestNames = activeQuestNames or DAS.GetActiveQuestNamesFromGui()
   local questNames = empty
@@ -80,6 +79,7 @@ local function GenerateBingoString(activeQuestNames, customBingoString)
 	local bingoString = customBingoString or (DAS.fullBingoString or empty):gsub(varargAny, empty)
 	if DAS.GetAutoInvite() then
 		local qsString = DAS.GetSettings().questShareString
+		local eitherof = DAS.GetQuestShareEitherOfString()
 		local questNames = getQuestNames(activeQuestNames)
 		local bingo = empty
 		-- if we're listening for whisper only, adjust spam accordingly
@@ -89,6 +89,7 @@ local function GenerateBingoString(activeQuestNames, customBingoString)
 		else
 			-- if we have more than one, insert either of
 			if #bingoString > 0 then
+				if nil ~= eitherof then eitherof = eitherof .. ' ' end
 				bingo = ((#activeQuestNames > 1 and eitherof) or empty) .. bingoString
 			end
 		end

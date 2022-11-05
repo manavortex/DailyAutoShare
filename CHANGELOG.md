@@ -1,5 +1,9 @@
 # DailyAutoShare ChangeLog
 
+## 4.4.3 - released 2022-11-05, @mychaelo
+- Sync quest names with the 8.2.5 data (#80, @mychaelo)
+- Make 'either of' portion of the chat spam customisable (#80, @mychaelo)
+
 ## 4.4.2 - released 2022-10-31, @mychaelo
 - Update the 'Toggle hidden' binding to also hide/unhide DAS permanently (#74, @mychaelo)
 
