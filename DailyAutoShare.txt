@@ -1,7 +1,7 @@
 ## Title: DailyAutoShare
 ## Author: manavortex
-## Version: 4.4.2
-## APIVersion: 101035 101036
+## Version: 4.4.3
+## APIVersion: 101036
 ## SavedVariables: DAS_Settings DAS_Globals
 ## DependsOn: LibAddonMenu-2.0 LibCustomMenu
 ## OptionalDependsOn: pchat rChat
