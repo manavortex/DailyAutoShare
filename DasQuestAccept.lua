@@ -69,7 +69,7 @@ local function HandleChatterBegin(eventCode, optionCount)
 			if questJournalIndex ~= nil and 9 < GetCurrencyAmount(CURT_EVENT_TICKETS, CURRENCY_LOCATION_ACCOUNT) then
 				local rewardCount = GetJournalQuestNumRewards(questJournalIndex)
 				for j = 1, rewardCount do
-					local rewardType = GetJournalQuestRewardInfo(questJournalIndex, i)
+					local rewardType = GetJournalQuestRewardInfo(questJournalIndex, j)
 					if REWARD_TYPE_EVENT_TICKETS == rewardType then
 						d('DailyAutoShare prevented the automatic quest turn-in, you have too many tickets!')
 						return
