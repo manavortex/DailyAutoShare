@@ -2,6 +2,7 @@ local chattering, wasQuestAccepted = false, false
 local optionString, optionCount, wasQuestAccepted
 local questStarter, questFinisher
 local unitInteract = "interact"
+local questJournalIndex = nil
 function DAS.cacheChatterData()
     local zoneId = DAS.GetZoneId()
     questStarter = DAS.questStarter[zoneId] or {}
@@ -30,6 +31,7 @@ local function HandleQuestCompleteDialog(eventCode, journalIndex)
 end
 local function HandleChatterBegin(eventCode, optionCount)
     wasQuestAccepted = nil
+	questJournalIndex = nil
 	if not DAS.GetSettings().autoAcceptQuest or not DAS.GetActiveIn() then return end
     -- Ignore interactions with no options
     if not optionCount then
@@ -37,14 +39,15 @@ local function HandleChatterBegin(eventCode, optionCount)
     end
     if optionCount == 0 then return end
     local npcName = GetUnitName(unitInteract)
+	local optionType
     if not questStarter[npcName] and not questFinisher[npcName] then return end
     for i = 1, optionCount do
         -- Get details of option
-	    optionString, optionType = GetChatterOption(i)
+	    _, optionType = GetChatterOption(i)
         -- If it is a daily quest option...
 	    if optionType == CHATTER_START_NEW_QUEST_BESTOWAL and questStarter[npcName] then
 			EVENT_MANAGER:RegisterForEvent("DAS_Chatter", EVENT_QUEST_OFFERED, HandleEventQuestOffered)
-           if not wasQuestAccepted then
+            if not wasQuestAccepted then
 				-- Listen for the quest offering - Select the first option
 				SelectChatterOption(i)
 				return
@@ -62,6 +65,17 @@ local function HandleChatterBegin(eventCode, optionCount)
 	        SelectChatterOption(1)
 	    -- If the goods were already placed, then complete the quest
 	    elseif optionType == CHATTER_START_COMPLETE_QUEST and questFinisher[npcName] then
+			-- Block auto-select if we have too many tickets
+			if questJournalIndex ~= nil and 9 < GetCurrencyAmount(CURT_EVENT_TICKETS, CURRENCY_LOCATION_ACCOUNT) then
+				local rewardCount = GetJournalQuestNumRewards(questJournalIndex)
+				for j = 1, rewardCount do
+					local rewardType = GetJournalQuestRewardInfo(questJournalIndex, i)
+					if REWARD_TYPE_EVENT_TICKETS == rewardType then
+						d('DailyAutoShare prevented the automatic quest turn-in, you have too many tickets!')
+						return
+					end
+				end
+			end
 	        -- Listen for the quest complete dialog
 	        EVENT_MANAGER:RegisterForEvent("DAS_Chatter", EVENT_QUEST_COMPLETE_DIALOG, HandleQuestCompleteDialog)
 	        -- Select the first option to place goods and/or sign the manifest
@@ -75,5 +89,10 @@ end
 local function HandleChatterEnd()
      chattering = false
 end
+local function HookShowQuestRewards(_, journalIndex)
+	questJournalIndex = journalIndex
+	return false
+end
 EVENT_MANAGER:RegisterForEvent("DAS", EVENT_CHATTER_BEGIN, HandleChatterBegin)
 EVENT_MANAGER:RegisterForEvent("DAS", EVENT_CHATTER_END, HandleChatterEnd)
+ZO_PreHook(INTERACTION, "ShowQuestRewards", HookShowQuestRewards)
