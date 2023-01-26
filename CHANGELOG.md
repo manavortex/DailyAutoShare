@@ -2,6 +2,7 @@
 
 ## 4.4.4 - released 2023-01-26, @mychaelo
 - Prevent auto turn-in when excessive tickets are detected (#82, @mychaelo)
+- (a)(c) Refinements to the ticket detection (@mychaelo)
 
 ## 4.4.3 - released 2022-11-05, @mychaelo
 - Sync quest names with the 8.2.5 data (#80, @mychaelo)
