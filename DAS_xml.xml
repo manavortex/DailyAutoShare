@@ -1,6 +1,6 @@
 <GuiXml>
 	<Controls>
- 		<TopLevelControl name="DasControl" movable="true" mouseEnabled="true">
+ 		<TopLevelControl name="DasControl" movable="true" mouseEnabled="true" tier="MEDIUM">
 			<Dimensions x="330" minY="45" y="45" />
 			<Anchor point="TOPLEFT" relativeTo="GuiRoot" relativePoint="TOPLEFT" />
 			<OnMoveStop>DailyAutoShare.SaveControlLocation(self)</OnMoveStop>
@@ -9,7 +9,7 @@
 					<Anchor point="TOPLEFT" 	relativeTo="DasControl" relativePoint="TOPLEFT"/>
 					<Anchor point="BOTTOMRIGHT" relativeTo="DasControl" relativePoint="TOPRIGHT" offsetY="45"/>
 					<Controls>
-						<Backdrop name="$(parent)_BG" edgeColor="000000" centerColor="969696" alpha="0.5" drawLayer="0">
+						<Backdrop name="$(parent)_BG" edgeColor="000000" centerColor="969696" alpha="0.5" layer="0">
 							<Anchor point="TOPLEFT" 	relativeTo="$(parent)" relativePoint="TOPLEFT"/>
 							<Anchor point="BOTTOMRIGHT" relativeTo="$(parent)" relativePoint="BOTTOMRIGHT"/>
 						</Backdrop>
@@ -18,7 +18,7 @@
 							<Anchor point="TOPLEFT" relativeTo="DasHandle" relativePoint="TOPLEFT" offsetX="15" offsetY="15"/>
 							<OnMouseEnter>	DailyAutoShare.CreateControlTooltip(self)					</OnMouseEnter>
 							<OnMouseExit>	DailyAutoShare.HideTooltip(self)							</OnMouseExit>
-							<OnMouseUp>		DailyAutoShare.SetLocked(not DailyAutoShare.GetLocked())	</OnMouseUp>
+							<OnMouseUp>		if upInside then DailyAutoShare.SetLocked(not DailyAutoShare.GetLocked()) end</OnMouseUp>
 							<Textures
 								normal		="esoui/art/miscellaneous/locked_up.dds"
                                 pressed		="esoui/art/miscellaneous/locked_down.dds"
@@ -26,8 +26,8 @@
 							/>
 						</Button>
 						<Button name="DasButtonHide" >
-							<Dimensions x="15" y="15" />
-							<Anchor point="LEFT" relativeTo="DasButtonLock" relativePoint="RIGHT" offsetX="10"  offsetY="1"/>
+							<Dimensions x="16" y="16" />
+							<Anchor point="LEFT" relativeTo="DasButtonLock" relativePoint="RIGHT" offsetX="10" />
 							<Textures
 								normal		="/esoui/art/buttons/decline_up.dds"
                                 pressed		="/esoui/art/buttons/decline_down.dds"
@@ -35,7 +35,7 @@
 							 />
 							<OnMouseEnter>	DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
 							<OnMouseExit>	DailyAutoShare.HideTooltip(self)			</OnMouseExit>
-							<OnMouseUp>		DAS.SetHidden(true, true)					</OnMouseUp>
+							<OnMouseUp>		if upInside then DAS.SetHidden(true, true) end</OnMouseUp>
 						</Button>
 						<Button name="DasButtonMinmax" >
 							<Dimensions x="16" y="16" />
@@ -47,7 +47,7 @@
                             />
 							<OnMouseEnter>	DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
 							<OnMouseExit>	DailyAutoShare.HideTooltip(self)			</OnMouseExit>
-							<OnMouseUp>		DailyAutoShare.MinMaxButton()				</OnMouseUp>
+							<OnMouseUp>		if upInside then DailyAutoShare.MinMaxButton() end</OnMouseUp>
 						</Button>
 						<Button name="DasButtonRefresh">
                             <Anchor point="RIGHT" relativeTo="DasHandle" relativePoint="RIGHT" offsetX="-40" offsetY="1"/>
@@ -59,7 +59,7 @@
                             />
                             <OnMouseEnter>		DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
                             <OnMouseExit> 		DailyAutoShare.HideTooltip(self)			</OnMouseExit>
-                             <OnMouseUp>		DailyAutoShare.RefreshLabels(true, true)	</OnMouseUp>
+                             <OnMouseUp>		if upInside then DailyAutoShare.RefreshLabels(true, true) end</OnMouseUp>
                         </Button>
 						<Label name="$(parent)_Label" font="ZoFontWinH2" color="ffffff" text="DailyAutoShare"
 							verticalAlignment="CENTER" horizontalAlignment="LEFT" alpha="0.85">
@@ -84,7 +84,7 @@
 							<Controls>
 								<Button name="DasButtonInvite">
 									<Dimensions x="20" y="20" />
-									<Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT"  />
+									<Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" />
 									<Textures
 										normal="/DailyAutoShare/textures/invite_up.dds"
 										pressed="/DailyAutoShare/textures/invite_down.dds"
@@ -92,7 +92,7 @@
 									 />
 									<OnMouseEnter>		DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
 									<OnMouseExit> 		DailyAutoShare.HideTooltip(self)			</OnMouseExit>
-									<OnMouseUp>			DailyAutoShare.SettingsButton(self, button)	</OnMouseUp>
+									<OnMouseUp>			if upInside then DailyAutoShare.SettingsButton(self, button) end</OnMouseUp>
 								</Button>
 								<Button name="DasButtonAccept" >
 									<Dimensions x="20" y="20" />
@@ -104,7 +104,7 @@
 									 />
 									<OnMouseEnter>		DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
 									<OnMouseExit> 		DailyAutoShare.HideTooltip(self)			</OnMouseExit>
-									<OnMouseUp>			DailyAutoShare.SettingsButton(self, button)	</OnMouseUp>
+									<OnMouseUp>			if upInside then DailyAutoShare.SettingsButton(self, button) end</OnMouseUp>
 								</Button>
 								<Button name="DasButtonShare" >
 									<Dimensions x="20" y="20" />
@@ -116,7 +116,7 @@
 									 />
 									<OnMouseEnter>		DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
 									<OnMouseExit> 		DailyAutoShare.HideTooltip(self)			</OnMouseExit>
-									<OnMouseUp>			DailyAutoShare.SettingsButton(self, button)	</OnMouseUp>
+									<OnMouseUp>			if upInside then DailyAutoShare.SettingsButton(self, button) end</OnMouseUp>
 								</Button>
 								<Button name="DasButtonSpam">
 									<Anchor point="TOPLEFT" relativeTo="DasButtonShare" relativePoint="TOPRIGHT" offsetX="50" />
@@ -128,7 +128,7 @@
 									 />
 									<OnMouseEnter>		DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
 									<OnMouseExit> 		DailyAutoShare.HideTooltip(self)			</OnMouseExit>
-									 <OnMouseUp>	DailyAutoShare.SettingsButton(self, button)	</OnMouseUp>
+									 <OnMouseUp>		if upInside then DailyAutoShare.SettingsButton(self, button) end</OnMouseUp>
 								</Button>
 								<Button name="DasButtonDonate" alpha="0.6">
 									<Anchor point="TOPRIGHT" relativeTo="$(parent)" relativePoint="TOPRIGHT" offsetY="-4" />
@@ -140,7 +140,7 @@
 									 />
 									<OnMouseEnter>		DailyAutoShare.CreateControlTooltip(self)	</OnMouseEnter>
 									<OnMouseExit> 		DailyAutoShare.HideTooltip(self)			</OnMouseExit>
-									<OnMouseUp>         DailyAutoShare.Donate(self, button)         </OnMouseUp>
+									<OnMouseUp>			if upInside then DailyAutoShare.Donate(self, button) end</OnMouseUp>
 								</Button>
 							</Controls>
 						</Control>
@@ -163,7 +163,7 @@
                                 pressed		="/esoui/art/buttons/decline_down.dds"
                                 mouseOver	="/esoui/art/buttons/decline_over.dds"
 							 />
-							<OnMouseUp>	DasSubList:SetHidden(true)</OnMouseUp>
+							<OnMouseUp>if upInside then DasSubList:SetHidden(true) end</OnMouseUp>
 						</Button>
                     </Controls>
                 </Control>
@@ -187,7 +187,7 @@
 			</Controls>
 			<OnMouseEnter>DailyAutoShare.CreateLabelTooltip(self)</OnMouseEnter>
 			<OnMouseExit>DailyAutoShare.HideTooltip(self)</OnMouseExit>
-			<OnMouseUp>DailyAutoShare.QuestLabelClicked(self, button)</OnMouseUp>
+			<OnMouseUp>if upInside then DailyAutoShare.QuestLabelClicked(self, button) end</OnMouseUp>
 		</Button>
         <Control name="DasInvisibleFooterSpacer" mouseEnabled="false" virtual="true">
             <Dimensions y="15" />
