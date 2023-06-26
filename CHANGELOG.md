@@ -1,5 +1,10 @@
 # DailyAutoShare ChangeLog
 
+## 4.5.0 - released 2023-06-26, @mychaelo
+- Added Telvanni Peninsula (& Apocrypha) daily quests (#86, @mychaelo)
+- Made the daily reset dynamic, support multiple reset times (#85, @mychaelo)
+- Fixed some control layering issues (#85, @mychaelo)
+
 ## 4.4.4 - released 2023-01-26, @mychaelo
 - Prevent auto turn-in when excessive tickets are detected (#82, @mychaelo)
 - (a)(c) Refinements to the ticket detection (@mychaelo)
