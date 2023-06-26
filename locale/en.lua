@@ -97,6 +97,7 @@ local strings  = {
 	DAS_MENU_CB_SE_MOON		= "Tideholm: New Moon",
 	DAS_MENU_CB_SE_MOON_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Dragonguard Sanctum\nRequires progressing the zone story past the following quest:\n• <<2>>", -- 1 is DAS_QUEST_SE_DELVE2
 	DAS_MENU_CB_ELVES		= "Summerset",
+	DAS_MENU_CB_NECROM		= "Telvanni Peninsula & Apocrypha",
 	DAS_MENU_CB_MWIND		= "Vvardenfell",
 	DAS_MENU_SM_MWIND		= "Vvardenfell Options",
 	DAS_MENU_CB_M_RELC		= "Ashlander: Relics",
@@ -532,6 +533,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Igmund",                 -- 78905
 	DAS_QUEST_W_GURUZUG     = "Guruzug",                -- 67019
 	DAS_QUEST_W_ARZORAG     = "Arzorag",                -- 67018
+
+
+	-- Telvanni Peninsula
+	-- World Boss dailies, NPC = Ordinator Nelyn
+	DAS_QUEST_TP_BOSS		= "Ordinator Nelyn",		-- 113595
+	DAS_NECROM_REENA		= "Reenactment Gone Awry",	-- 7039
+	DAS_NECROM_TRACK		= "Tracking Nightmares",	-- 7040
+	DAS_NECROM_DEVOU		= "Devourer of Dreams",		-- 7041
+	DAS_NECROM_ANCIE		= "An Ancient Omniscience",	-- 7042
+	DAS_NECROM_KNOWL		= "Knowledge is Power",		-- 7043
+	DAS_NECROM_BREAK		= "Breaking the Chains",	-- 7044
+	-- Exploration dailies, NPC = Ordinator Tilena
+	DAS_QUEST_TP_EXPL		= "Ordinator Tilena",		-- 113454
+	DAS_NECROM_EGGRA		= "Egg Raider",				-- 7033
+	DAS_NECROM_SNATC		= "Snatch and Run",			-- 7034
+	DAS_NECROM_BOUND		= "Bound in Secrecy",		-- 7035
+	DAS_NECROM_SECRR		= "Secrets Reclaimed",		-- 7036
+	DAS_NECROM_SECRP		= "Secret Protection",		-- 7037
+	DAS_NECROM_MANIF		= "Manifesting Hope",		-- 7038
+	-- Bastion Nymic dailies : NPC = Ordinator Tandasea
+	DAS_QUEST_TP_WEVT		= "Ordinator Tandasea",		-- 114895 & 116442
+	DAS_NECROM_NYMIC		= "Bastion Nymic",			-- 7013 & 7056 & 7057 & 7058
 
 
 	-- Galen

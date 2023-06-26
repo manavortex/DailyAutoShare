@@ -96,6 +96,7 @@ local strings  = {
 	DAS_MENU_CB_SE_MOON		= "Gezeiteninsel: Neuer Mond",
 	DAS_MENU_CB_SE_MOON_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Drachengarde-Refugium\nRequires progressing the zone story past the following quest:\n• <<2>>", -- 1 is DAS_QUEST_SE_DELVE2
 	DAS_MENU_CB_ELVES		= "Summerset / Sommersend",
+	DAS_MENU_CB_NECROM		= "Telvanni-Halbinsel & Apocrypha",
 	DAS_MENU_CB_MWIND		= "Vvardenfell",
 	DAS_MENU_SM_MWIND		= "Vvardenfell Options",
 	DAS_MENU_CB_M_RELC		= "Aschländer: Relikte",
@@ -531,6 +532,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Igmund",                    -- 78905
 	DAS_QUEST_W_GURUZUG     = "Guruzug",                   -- 67019
 	DAS_QUEST_W_ARZORAG     = "Arzorag",                   -- 67018
+
+
+	-- Telvanni Peninsula
+	-- World Boss dailies, NPC = Ordinator Nelyn
+	DAS_QUEST_TP_BOSS		= "Ordinator Nelyn",				-- 113595
+	DAS_NECROM_REENA		= "Schiefgelaufene Nachstellung",	-- 7039
+	DAS_NECROM_TRACK		= "Albträumen auf der Spur",		-- 7040
+	DAS_NECROM_DEVOU		= "Verschlinger der Träume",		-- 7041
+	DAS_NECROM_ANCIE		= "Eine uralte Allwissenheit",		-- 7042
+	DAS_NECROM_KNOWL		= "Wissen ist Macht",				-- 7043
+	DAS_NECROM_BREAK		= "Das Sprengen der Ketten",		-- 7044
+	-- Exploration dailies, NPC = Ordinator Tilena
+	DAS_QUEST_TP_EXPL		= "Ordinatorin Tilena",				-- 113454
+	DAS_NECROM_EGGRA		= "Eierräuber",						-- 7033
+	DAS_NECROM_SNATC		= "Schnappen und Abhauen",			-- 7034
+	DAS_NECROM_BOUND		= "Im Geheimen gebunden",			-- 7035
+	DAS_NECROM_SECRR		= "Zurückerlangte Geheimnisse",		-- 7036
+	DAS_NECROM_SECRP		= "Geheimer Schutz",				-- 7037
+	DAS_NECROM_MANIF		= "Manifestierte Hoffnung",			-- 7038
+	-- Bastion Nymic dailies : NPC = Ordinator Tandasea
+	DAS_QUEST_TP_WEVT		= "Ordinatorin Tandasea",			-- 114895 & 116442
+	DAS_NECROM_NYMIC		= "Bastion Nymon",					-- 7013 & 7056 & 7057 & 7058
 
 
 	-- Galen

@@ -198,7 +198,7 @@ function DAS.CreateMenu(savedVars, defaults)
 				},
 				{
 					type    = "checkbox",
-					tooltip = "High Isle Chapter",
+					tooltip = "High Isle DLC",
 					name    = GetString(DAS_MENU_CB_HIILE),
 					getFunc = function() return DAS.GetActiveIn(1318) end,
 					setFunc = function(value) DAS.SetActiveIn(1318, value) end
@@ -379,6 +379,13 @@ function DAS.CreateMenu(savedVars, defaults)
 					name    = GetString(DAS_MENU_CB_ELVES),
 					getFunc = function() return DAS.GetActiveIn(1011) end,
 					setFunc = function(value) DAS.SetActiveIn(1011, value) end
+				},
+				{
+					type    = "checkbox",
+					tooltip = "Necrom Chapter",
+					name    = GetString(DAS_MENU_CB_NECROM),
+					getFunc = function() return DAS.GetActiveIn(1414) end,
+					setFunc = function(value) DAS.SetActiveIn(1414, value) end
 				},
 				{
 					type    = "checkbox",

@@ -73,7 +73,7 @@ local strings  = {
 	DAS_MENU_CB_CYRO		= "Cyrodiil — base de la Alianza",
 	DAS_MENU_CB_CYRO_TIP	= "Auto-accept and turn-in support only",
 	DAS_MENU_CB_DEADL		= "Fargrave & The Deadlands / Cárcava y Tierras Muertas",
-	DAS_MENU_CB_FRSNG		= "Galen & Y'ffelon",
+	DAS_MENU_CB_FRSNG		= "Galen e Y'ffelon",
 	DAS_MENU_CB_DARKB		= "Gold Coast / Costa de Oro",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Perdición de Hew",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Isla Alta y Amenos",
@@ -96,6 +96,7 @@ local strings  = {
 	DAS_MENU_CB_SE_MOON		= "Tideholm: la Nouvelle Lune",
 	DAS_MENU_CB_SE_MOON_TIP	= "Quest giver is |cFFFFFF<<1>>|r in Dragonguard Sanctum\nRequires progressing the zone story past the following quest:\n• <<2>>", -- 1 is DAS_QUEST_SE_DELVE2
 	DAS_MENU_CB_ELVES		= "Summerset / Estivalia",
+	DAS_MENU_CB_NECROM		= "La península Telvanni y Apocrypha",
 	DAS_MENU_CB_MWIND		= "Vvardenfell / Páramo de Vvarden",
 	DAS_MENU_SM_MWIND		= "Vvardenfell Options",
 	DAS_MENU_CB_M_RELC		= "Los cenicios: reliquias",
@@ -529,6 +530,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Igmund",										-- 78905
 	DAS_QUEST_W_GURUZUG     = "Guruzug",									-- 67019
 	DAS_QUEST_W_ARZORAG     = "Arzorag",									-- 67018
+
+
+	-- Telvanni Peninsula
+	-- World Boss dailies, NPC = Ordinator Nelyn
+	DAS_QUEST_TP_BOSS		= "Ordenante Nelyn",			-- 113595
+	DAS_NECROM_REENA		= "Recreación fallida",			-- 7039
+	DAS_NECROM_TRACK		= "Tras una pesadilla",			-- 7040
+	DAS_NECROM_DEVOU		= "El devorador de sueños",		-- 7041
+	DAS_NECROM_ANCIE		= "Omnisciencia antigua",		-- 7042
+	DAS_NECROM_KNOWL		= "El conocimiento es poder",	-- 7043
+	DAS_NECROM_BREAK		= "Rompiendo cadenas",			-- 7044
+	-- Exploration dailies, NPC = Ordinator Tilena
+	DAS_QUEST_TP_EXPL		= "Ordenante Tilena",		-- 113454
+	DAS_NECROM_EGGRA		= "Saqueador de huevos",		-- 7033
+	DAS_NECROM_SNATC		= "Robo con fuga",				-- 7034
+	DAS_NECROM_BOUND		= "Encuadernado en secreto",	-- 7035
+	DAS_NECROM_SECRR		= "Secretos recuperados",		-- 7036
+	DAS_NECROM_SECRP		= "Protección de secretos",		-- 7037
+	DAS_NECROM_MANIF		= "Manifiesto de esperanza",	-- 7038
+	-- Bastion Nymic dailies : NPC = Ordinator Tandasea
+	DAS_QUEST_TP_WEVT		= "Ordenante Tandasea",		-- 114895 & 116442
+	DAS_NECROM_NYMIC		= "Bastión Nímico",				-- 7013 & 7056 & 7057 & 7058
 
 
 	-- Galen

@@ -96,6 +96,7 @@ local strings  = {
 	DAS_MENU_CB_SE_MOON		= "Île du marnage : Nouvelle Lune",
 	DAS_MENU_CB_SE_MOON_TIP	= "Quest giver is |cFFFFFF<<1>>|r in sanctuaire de la Garde du dragon\nRequires progressing the zone story past the following quest:\n• <<2>>", -- 1 is DAS_QUEST_SE_DELVE2
 	DAS_MENU_CB_ELVES		= "Summerset / Le Couchant",
+	DAS_MENU_CB_NECROM		= "Péninsule Telvanni + Apocrypha",
 	DAS_MENU_CB_MWIND		= "Vvardenfell",
 	DAS_MENU_SM_MWIND		= "Vvardenfell Options",
 	DAS_MENU_CB_M_RELC		= "Cendrais : les reliques",
@@ -531,6 +532,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Igmund",                                -- 78905
 	DAS_QUEST_W_GURUZUG     = "Guruzug",                               -- 67019
 	DAS_QUEST_W_ARZORAG     = "Arzorag",                               -- 67018
+
+
+	-- Telvanni Peninsula
+	-- World Boss dailies, NPC = Ordinator Nelyn
+	DAS_QUEST_TP_BOSS		= "Ordonnateur Nélyn",				-- 113595
+	DAS_NECROM_REENA		= "Une reconstitution qui dérape",	-- 7039
+	DAS_NECROM_TRACK		= "La traque aux cauchemars",		-- 7040
+	DAS_NECROM_DEVOU		= "Dévoreur de rêves",				-- 7041
+	DAS_NECROM_ANCIE		= "Une omniscience antique",		-- 7042
+	DAS_NECROM_KNOWL		= "La connaissance est une arme",	-- 7043
+	DAS_NECROM_BREAK		= "Chaînes brisées",				-- 7044
+	-- Exploration dailies, NPC = Ordinator Tilena
+	DAS_QUEST_TP_EXPL		= "L’Ordonnatrice Tilena",			-- 113454
+	DAS_NECROM_EGGRA		= "Pas d'omelette…",				-- 7033
+	DAS_NECROM_SNATC		= "Interception",					-- 7034
+	DAS_NECROM_BOUND		= "Liés par le secret",				-- 7035
+	DAS_NECROM_SECRR		= "Secrets récupérés",				-- 7036
+	DAS_NECROM_SECRP		= "Protection des secrets",			-- 7037
+	DAS_NECROM_MANIF		= "Espoir manifeste",				-- 7038
+	-- Bastion Nymic dailies : NPC = Ordinator Tandasea
+	DAS_QUEST_TP_WEVT		= "L’ordonatrice Tandasea",		-- 114895 & 116442
+	DAS_NECROM_NYMIC		= "Le Bastion nymique",				-- 7013 & 7056 & 7057 & 7058
 
 
 	-- Galen
