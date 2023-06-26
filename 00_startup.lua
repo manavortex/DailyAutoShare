@@ -183,6 +183,7 @@ local defaults = {
 		[1207] = true, -- The Reach
 		[1133] = true, -- Southern Elsweyr
 		[1011] = true, -- Summerset
+		[1414] = true, -- Telvanni Peninsula
 		[849]  = true, -- Vvardenfell
 		[1160] = true, -- Western Skyrim
 		[684]  = true, -- Wrothgar

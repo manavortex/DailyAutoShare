@@ -37,6 +37,7 @@ questData/NorthElsweyr.lua
 questData/Reach.lua
 questData/SouthElsweyr.lua
 questData/Summerset.lua
+questData/Telvanni.lua
 questData/Vvardenfell.lua
 questData/WestSkyrim.lua
 questData/Wrothgar.lua

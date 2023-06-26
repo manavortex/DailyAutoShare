@@ -96,6 +96,7 @@ local strings  = {
 	DAS_MENU_CB_SE_MOON		= "Приливной остров: Новая Луна",
 	DAS_MENU_CB_SE_MOON_TIP	= "Задания выдаёт |cFFFFFF<<1>>|r в убежище Драконьей стражи\nТребуется пройти сюжет области дальше этого задания:\n• <<2>>", -- 1 is DAS_QUEST_SE_DELVE2
 	DAS_MENU_CB_ELVES		= "Summerset / Саммерсет",
+	DAS_MENU_CB_NECROM		= "Telvanni Peninsula & Apocrypha / п-ов Телванни и Апокриф",
 	DAS_MENU_CB_MWIND		= "Vvardenfell / Вварденфелл",
 	DAS_MENU_SM_MWIND		= "Настройки Вварденфелла",
 	DAS_MENU_CB_M_RELC		= "Эшлендеры: реликвии",
@@ -531,6 +532,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "Игмен",                              -- 78905
 	DAS_QUEST_W_GURUZUG     = "Гурузуг",                            -- 67019
 	DAS_QUEST_W_ARZORAG     = "Арзораг",                            -- 67018
+
+
+	-- Telvanni Peninsula
+	-- World Boss dailies, NPC = Ordinator Nelyn
+	DAS_QUEST_TP_BOSS		= "Ординатор Нелин",		-- 113595
+	DAS_NECROM_REENA		= "Горе-реконструкторы",	-- 7039
+	DAS_NECROM_TRACK		= "Погоня за кошмарами",	-- 7040
+	DAS_NECROM_DEVOU		= "Пожиратель сновидений",	-- 7041
+	DAS_NECROM_ANCIE		= "Древнее всеведение",		-- 7042
+	DAS_NECROM_KNOWL		= "Знание — сила",			-- 7043
+	DAS_NECROM_BREAK		= "Избавление от оков",		-- 7044
+	-- Exploration dailies, NPC = Ordinator Tilena
+	DAS_QUEST_TP_EXPL		= "Ординатор Тилена",		-- 113454
+	DAS_NECROM_EGGRA		= "Добытчик яиц",			-- 7033
+	DAS_NECROM_SNATC		= "Бей и беги",				-- 7034
+	DAS_NECROM_BOUND		= "Общая тайна",			-- 7035
+	DAS_NECROM_SECRR		= "Возвращенные тайны",		-- 7036
+	DAS_NECROM_SECRP		= "Тайная защита",			-- 7037
+	DAS_NECROM_MANIF		= "Груз надежды",			-- 7038
+	-- Bastion Nymic dailies : NPC = Ordinator Tandasea
+	DAS_QUEST_TP_WEVT		= "Ординатор Тандасия",		-- 114895 & 116442
+	DAS_NECROM_NYMIC		= "Оплот Нимик",			-- 7013 & 7056 & 7057 & 7058
 
 
 	-- Galen

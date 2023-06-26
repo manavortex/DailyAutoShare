@@ -96,6 +96,7 @@ local strings  = {
 	DAS_MENU_CB_SE_MOON		= "タイドホルム: 新たなる月",
 	DAS_MENU_CB_SE_MOON_TIP	= "Quest giver is |cFFFFFF<<1>>|r in ドラゴンガードの聖域\nRequires progressing the zone story past the following quest:\n• <<2>>", -- 1 is DAS_QUEST_SE_DELVE2
 	DAS_MENU_CB_ELVES		= "Summerset / サマーセット",
+	DAS_MENU_CB_NECROM		= "Telvanni & Apocrypha / テルヴァンニ半島とアポクリファ",
 	DAS_MENU_CB_MWIND		= "Vvardenfell / ヴァーデンフェル",
 	DAS_MENU_SM_MWIND		= "Vvardenfell Options",
 	DAS_MENU_CB_M_RELC		= "アッシュランダー: 遺物",
@@ -531,6 +532,28 @@ local strings  = {
 	DAS_QUEST_CC_IGMUND     = "イグムンド", -- 78905
 	DAS_QUEST_W_GURUZUG     = "グルズグ", -- 67019
 	DAS_QUEST_W_ARZORAG     = "アルゾラグ", -- 67018
+
+
+	-- Telvanni Peninsula
+	-- World Boss dailies, NPC = Ordinator Nelyn
+	DAS_QUEST_TP_BOSS		= "オーディネーター・ネリン", -- 113595
+	DAS_NECROM_REENA		= "失敗した再現", -- 7039
+	DAS_NECROM_TRACK		= "悪夢の追跡", -- 7040
+	DAS_NECROM_DEVOU		= "夢をむさぼる者", -- 7041
+	DAS_NECROM_ANCIE		= "古代の無限の知識", -- 7042
+	DAS_NECROM_KNOWL		= "知識は力", -- 7043
+	DAS_NECROM_BREAK		= "束縛からの解放", -- 7044
+	-- Exploration dailies, NPC = Ordinator Tilena
+	DAS_QUEST_TP_EXPL		= "オーディネーター・ティレナ", -- 113454
+	DAS_NECROM_EGGRA		= "卵の襲撃者", -- 7033
+	DAS_NECROM_SNATC		= "ひったくり", -- 7034
+	DAS_NECROM_BOUND		= "秘密の約束", -- 7035
+	DAS_NECROM_SECRR		= "秘密の回収", -- 7036
+	DAS_NECROM_SECRP		= "秘密の防御", -- 7037
+	DAS_NECROM_MANIF		= "希望の記録", -- 7038
+	-- Bastion Nymic dailies : NPC = Ordinator Tandasea
+	DAS_QUEST_TP_WEVT		= "オーディネーター・タンダセア", -- 114895 & 116442
+	DAS_NECROM_NYMIC		= "ニミック砦", -- 7013 & 7056 & 7057 & 7058
 
 
 	-- Galen
