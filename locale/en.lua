@@ -78,6 +78,7 @@ local strings  = {
 	DAS_MENU_CB_DARKB		= "Gold Coast",
 	DAS_MENU_CB_THGLD		= "Hew's Bane",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos",
+	DAS_MENU_CB_GOLDR		= "West Weald",
 	DAS_MENU_CB_MURK		= "Murkmire",
 	DAS_MENU_SM_MURK		= "Murkmire Options",
 	DAS_MENU_CB_MM_DELV		= "Lilmoth: Delves",
@@ -546,15 +547,15 @@ local strings  = {
 	DAS_NECROM_BREAK		= "Breaking the Chains",	-- 7044
 	-- Exploration dailies, NPC = Ordinator Tilena
 	DAS_QUEST_TP_EXPL		= "Ordinator Tilena",		-- 113454
-	DAS_NECROM_EGGRA		= "Egg Raider",				-- 7033
-	DAS_NECROM_SNATC		= "Snatch and Run",			-- 7034
+	DAS_NECROM_EGGRA		= "Egg Raider",			-- 7033
+	DAS_NECROM_SNATC		= "Snatch and Run",		-- 7034
 	DAS_NECROM_BOUND		= "Bound in Secrecy",		-- 7035
 	DAS_NECROM_SECRR		= "Secrets Reclaimed",		-- 7036
 	DAS_NECROM_SECRP		= "Secret Protection",		-- 7037
 	DAS_NECROM_MANIF		= "Manifesting Hope",		-- 7038
 	-- Bastion Nymic dailies : NPC = Ordinator Tandasea
 	DAS_QUEST_TP_WEVT		= "Ordinator Tandasea",		-- 114895 & 116442
-	DAS_NECROM_NYMIC		= "Bastion Nymic",			-- 7013 & 7056 & 7057 & 7058
+	DAS_NECROM_NYMIC		= "Bastion Nymic",		-- 7013 & 7056 & 7057 & 7058
 
 
 	-- Galen
@@ -691,6 +692,26 @@ local strings  = {
 	DAS_QUEST_WS_HRWSTMS	= "Swordthane Jylta",			-- 95442
 	DAS_GOTHS_STORM			= "Halt the Harrowstorms",		-- 6512 & 6528
 
+	-- West Weald
+	-- World Boss dailies, NPC = Lieutenant Agrance
+	DAS_QUEST_WW_BOSS		= "Lieutenant Agrance",		-- 117862
+	DAS_WWEALD_SPINN		= "Spinning Out",       	-- 7109
+	DAS_WWEALD_FATEE		= "Fate-Eater",         	-- 7116
+	DAS_WWEALD_TRAIN		= "Training Camp",		-- 7117
+	DAS_WWEALD_BALEF		= "Baleful Bluffs",     	-- 7118
+	DAS_WWEALD_RECOL		= "Recollection Rendezvous",	-- 7119
+	DAS_WWEALD_HAZAR		= "Hazardous Waters",   	-- 7120
+	-- Exploration dailies, NPC = Commandant Salerius
+	DAS_QUEST_WW_EXPL		= "Commandant Salerius",	-- 117861
+	DAS_WWEALD_VENOM		= "Venom Hunt",			-- 7108
+	DAS_WWEALD_LOANR		= "Loan Recall",		-- 7111
+	DAS_WWEALD_TRINK		= "Trinkets from the Reach",	-- 7112
+	DAS_WWEALD_CALAM		= "A Calamitous Error",		-- 7113
+	DAS_WWEALD_STUDY		= "A Study in Tharriker",	-- 7114
+	DAS_WWEALD_RUINO		= "Ruinous Evaluation",		-- 7115
+	-- Bastion Nymic dailies : NPC = Legionary Jaida
+	DAS_QUEST_WW_INCUR		= "Legionary Jaida",		-- 117863
+	DAS_WWEALD_INCUR		= "Mirrormoor Incursion",	-- 7110 & 7182
 
 	-- Southern Elsweyr
 	-- World Boss dailies : NPC = Bruccius Baenius
