@@ -205,6 +205,13 @@ function DAS.CreateMenu(savedVars, defaults)
 				},
 				{
 					type    = "checkbox",
+					tooltip = "Gold Road DLC",
+					name    = GetString(DAS_MENU_CB_GOLDR),
+					getFunc = function() return DAS.GetActiveIn(1443) end,
+					setFunc = function(value) DAS.SetActiveIn(1443, value) end
+				},
+				{
+					type    = "checkbox",
 					tooltip = "Murkmire DLC",
 					name    = GetString(DAS_MENU_CB_MURK),
 					getFunc = function() return DAS.GetActiveIn(726) end,
