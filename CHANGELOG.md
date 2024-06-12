@@ -1,5 +1,8 @@
 # DailyAutoShare ChangeLog
 
+## 4.6.0 - released 2024-06-12, @kaalsekein
+- Added West Weald (Gold Road DLC) daily quests (@sir_stroman)
+
 ## 4.5.0 - released 2023-06-26, @mychaelo
 - Added Telvanni Peninsula (& Apocrypha) daily quests (#86, @mychaelo)
 - Made the daily reset dynamic, support multiple reset times (#85, @mychaelo)
