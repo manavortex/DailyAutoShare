@@ -77,6 +77,7 @@ local strings  = {
 	DAS_MENU_CB_DARKB		= "Gold Coast / Costa de Oro",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Perdición de Hew",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Isla Alta y Amenos",
+	DAS_MENU_CB_GOLDR		= "West Weald / Bosque Occidental",
 	DAS_MENU_CB_MURK		= "Murkmire / Lodazal Lóbrego",
 	DAS_MENU_SM_MURK		= "Murkmire Options",
 	DAS_MENU_CB_MM_DELV		= "Lilmoth: cuevas",
