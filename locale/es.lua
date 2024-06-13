@@ -688,6 +688,27 @@ local strings  = {
 	DAS_QUEST_WS_HRWSTMS	= "Thane de espada Jylta",				-- 95442
 	DAS_GOTHS_STORM			= "Alto a las tormentas",				-- 6512 & 6528
 
+	-- West Weald
+	-- World Boss dailies, NPC = Teniente Agrance
+	DAS_QUEST_WW_BOSS		= "Teniente Agrance",		-- 117862
+	DAS_WWEALD_SPINN		= "Spinning Out",       	-- 7109
+	DAS_WWEALD_FATEE		= "Fate-Eater",         	-- 7116
+	DAS_WWEALD_TRAIN		= "Campamento de adiestramiento",		-- 7117
+	DAS_WWEALD_BALEF		= "Baleful Bluffs",     	-- 7118
+	DAS_WWEALD_RECOL		= "Recollection Rendezvous",	-- 7119
+	DAS_WWEALD_HAZAR		= "Hazardous Waters",   	-- 7120
+	-- Exploration dailies, NPC = Comandante Salerius
+	DAS_QUEST_WW_EXPL		= "Comandante Salerius",	-- 117861
+	DAS_WWEALD_VENOM		= "Caza de veneno",		-- 7108
+	DAS_WWEALD_LOANR		= "Loan Recall",		-- 7111
+	DAS_WWEALD_TRINK		= "Trinkets from the Reach",	-- 7112
+	DAS_WWEALD_CALAM		= "A Calamitous Error",		-- 7113
+	DAS_WWEALD_STUDY		= "A Study in Tharriker",	-- 7114
+	DAS_WWEALD_RUINO		= "Ruinous Evaluation",		-- 7115
+	-- Bastion Nymic dailies : NPC = Legionaria Jaida
+	DAS_QUEST_WW_INCUR		= "Legionaria Jaida",		-- 117863
+	DAS_WWEALD_INCUR		= "Incursión del Páramo Espejado",	-- 7110 & 7182
+
 
 	-- Southern Elsweyr
 	-- World Boss dailies : NPC = Bruccius Baenius
