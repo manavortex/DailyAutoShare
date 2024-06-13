@@ -77,6 +77,7 @@ local strings  = {
 	DAS_MENU_CB_DARKB		= "Gold Coast / Золотой берег",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Проклятие Хью",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Высокий остров и Аменос",
+	DAS_MENU_CB_GOLDR		= "West Weald / Западный вельд",
 	DAS_MENU_CB_MURK		= "Murkmire / Мрачные трясины",
 	DAS_MENU_SM_MURK		= "Настройки мрачных трясин",
 	DAS_MENU_CB_MM_DELV		= "Лилмот: логова",
