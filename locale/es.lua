@@ -77,6 +77,7 @@ local strings  = {
 	DAS_MENU_CB_DARKB		= "Gold Coast / Costa de Oro",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Perdición de Hew",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Isla Alta y Amenos",
+	DAS_MENU_CB_GOLDR		= "West Weald / Bosque Occidental",
 	DAS_MENU_CB_MURK		= "Murkmire / Lodazal Lóbrego",
 	DAS_MENU_SM_MURK		= "Murkmire Options",
 	DAS_MENU_CB_MM_DELV		= "Lilmoth: cuevas",
@@ -687,6 +688,27 @@ local strings  = {
 	-- Harrowstorm dailies : NPC = Swordthane Jylta
 	DAS_QUEST_WS_HRWSTMS	= "Thane de espada Jylta",				-- 95442
 	DAS_GOTHS_STORM			= "Alto a las tormentas",				-- 6512 & 6528
+
+	-- West Weald
+	-- World Boss dailies, NPC = Teniente Agrance
+	DAS_QUEST_WW_BOSS		= "Teniente Agrance",		-- 117862
+	DAS_WWEALD_SPINN		= "Perdiendo el hilo",       	-- 7109
+	DAS_WWEALD_FATEE		= "El Devorador del Destino",         	-- 7116
+	DAS_WWEALD_TRAIN		= "Campamento de adiestramiento",		-- 7117
+	DAS_WWEALD_BALEF		= "Riscos funestos",     	-- 7118
+	DAS_WWEALD_RECOL		= "La reunión de la Recolección",	-- 7119
+	DAS_WWEALD_HAZAR		= "Aguas peligrosas",   	-- 7120
+	-- Exploration dailies, NPC = Comandante Salerius
+	DAS_QUEST_WW_EXPL		= "Comandante Salerius",	-- 117861
+	DAS_WWEALD_VENOM		= "Caza de veneno",		-- 7108
+	DAS_WWEALD_LOANR		= "Recuperar el préstamo",		-- 7111
+	DAS_WWEALD_TRINK		= "Amuletos de la Cuenca",	-- 7112
+	DAS_WWEALD_CALAM		= "Un error calamitoso",		-- 7113
+	DAS_WWEALD_STUDY		= "Bailando con tharriker",	-- 7114
+	DAS_WWEALD_RUINO		= "Evaluación ruinosa",		-- 7115
+	-- Bastion Nymic dailies : NPC = Legionaria Jaida
+	DAS_QUEST_WW_INCUR		= "Legionaria Jaida",		-- 117863
+	DAS_WWEALD_INCUR		= "Incursión del Páramo Espejado",	-- 7110 & 7182
 
 
 	-- Southern Elsweyr

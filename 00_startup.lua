@@ -2,7 +2,7 @@ DailyAutoShare              = DailyAutoShare or {}
 DAS                         = DailyAutoShare
 DAS_QUEST_IDS               = {}
 DAS.name                    = "DailyAutoShare"
-DAS.version                 = "4.5.0"
+DAS.version                 = "4.6.0"
 DAS.author                  = "manavortex"
 DAS.settings                = {}
 DAS.globalSettings          = {}
@@ -186,6 +186,7 @@ local defaults = {
 		[1414] = true, -- Telvanni Peninsula
 		[849]  = true, -- Vvardenfell
 		[1160] = true, -- Western Skyrim
+		[1443] = true, -- West Weald
 		[684]  = true, -- Wrothgar
 	},
   trackedLists = {

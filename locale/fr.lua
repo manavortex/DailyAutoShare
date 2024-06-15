@@ -77,6 +77,7 @@ local strings  = {
 	DAS_MENU_CB_DARKB		= "Gold Coast / La Côte d'or",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Le Trépas des Cognées",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Île-Haute + Amenos",
+	DAS_MENU_CB_GOLDR		= "West Weald / Le Weald Occidental",
 	DAS_MENU_CB_MURK		= "Murkmire / Tourbevase",
 	DAS_MENU_SM_MURK		= "Murkmire Options",
 	DAS_MENU_CB_MM_DELV		= "Lilmoth : les antres",
@@ -689,6 +690,27 @@ local strings  = {
 	-- Harrowstorm dailies : NPC = Swordthane Jylta
 	DAS_QUEST_WS_HRWSTMS	= "La thane-épée Jylta",	-- 95442
 	DAS_GOTHS_STORM			= "Halte aux tempêtes",	-- 6512 & 6528
+
+	-- West Weald
+	-- World Boss dailies, NPC = Le lieutenant Agrance
+	DAS_QUEST_WW_BOSS		= "Le lieutenant Agrance",	-- 117862
+	DAS_WWEALD_SPINN		= "Quelce chose se trame",     	-- 7109
+	DAS_WWEALD_FATEE		= "Gobe-destin",         	-- 7116
+	DAS_WWEALD_TRAIN		= "Camp d'entraînement",	-- 7117
+	DAS_WWEALD_BALEF		= "Falaises funestes",     	-- 7118
+	DAS_WWEALD_RECOL		= "Reconnaissance et Remémorance",	-- 7119
+	DAS_WWEALD_HAZAR		= "Eaux périlleuses",   	-- 7120
+	-- Exploration dailies, NPC = Le commandant Salerius
+	DAS_QUEST_WW_EXPL		= "Le commandant Salerius",	-- 117861
+	DAS_WWEALD_VENOM		= "Chasse au venin",		-- 7108
+	DAS_WWEALD_LOANR		= "Ils s'appellent revient",		-- 7111
+	DAS_WWEALD_TRINK		= "Bijoux de la Crevasse",	-- 7112
+	DAS_WWEALD_CALAM		= "Une erreur calamiteuse",		-- 7113
+	DAS_WWEALD_STUDY		= "Étudions les tharrikers",	-- 7114
+	DAS_WWEALD_RUINO		= "Évaluation des ruines",		-- 7115
+	-- Bastion Nymic dailies : NPC = La légionnaire Jaida
+	DAS_QUEST_WW_INCUR		= "La légionnaire Jaida",		-- 117863
+	DAS_WWEALD_INCUR		= "Incursion de la Lande miroir",	-- 7110 & 7182
 
 
 	-- Southern Elsweyr

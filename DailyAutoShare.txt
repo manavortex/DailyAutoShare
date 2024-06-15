@@ -1,7 +1,7 @@
 ## Title: DailyAutoShare
 ## Author: manavortex
-## Version: 4.5.0
-## APIVersion: 101038
+## Version: 4.6.0
+## APIVersion: 101042
 ## SavedVariables: DAS_Settings DAS_Globals
 ## DependsOn: LibAddonMenu-2.0 LibCustomMenu
 ## OptionalDependsOn: pchat rChat
@@ -40,6 +40,7 @@ questData/Summerset.lua
 questData/Telvanni.lua
 questData/Vvardenfell.lua
 questData/WestSkyrim.lua
+questData/WestWeald.lua
 questData/Wrothgar.lua
 
 DASUserSettingsAdapter.lua

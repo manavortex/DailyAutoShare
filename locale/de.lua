@@ -1,8 +1,8 @@
 DAS_STRINGS_LOCALE = DAS_STRINGS_LOCALE or {}
 local strings  = {
 	-- Key bindings
-	DAS_SI_TOGGLE			= "Toggle hidden", --TRANSLATEME
-	DAS_SI_MINIMISE			= "Toggle minimised", --TRANSLATEME
+	DAS_SI_TOGGLE			= "Umschalten ausgeblendet", --TRANSLATEME
+	DAS_SI_MINIMISE			= "Umschalten minimiert", --TRANSLATEME
 
 	-- GUI
 	-- Drag bar button tooltips
@@ -77,6 +77,7 @@ local strings  = {
 	DAS_MENU_CB_DARKB		= "Gold Coast / Goldküste",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Hews Fluch",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Hochinsel & Amenos",
+	DAS_MENU_CB_GOLDR		= "West Weald / Westauen",
 	DAS_MENU_CB_MURK		= "Murkmire / Trübmoor",
 	DAS_MENU_SM_MURK		= "Murkmire Options",
 	DAS_MENU_CB_MM_DELV		= "Lilmoth: Gewölbe",
@@ -689,6 +690,27 @@ local strings  = {
 	-- Harrowstorm dailies : NPC = Swordthane Jylta
 	DAS_QUEST_WS_HRWSTMS	= "Schwertthane Jylta",			-- 95442
 	DAS_GOTHS_STORM			= "Gramstürmen zum Trotz",		-- 6512 & 6528
+
+		-- West Weald
+	-- World Boss dailies, NPC = Leutnant Agrance
+	DAS_QUEST_WW_BOSS		= "Leutnant Agrance",		-- 117862
+	DAS_WWEALD_SPINN		= "Völlig versponnen",       	-- 7109
+	DAS_WWEALD_FATEE		= "Schicksalsfresser",         	-- 7116
+	DAS_WWEALD_TRAIN		= "Abrichtungslager",		-- 7117
+	DAS_WWEALD_BALEF		= "Unheilvolle Klippe",     	-- 7118
+	DAS_WWEALD_RECOL		= "Zusammenkunft der Rückbesinnung",	-- 7119
+	DAS_WWEALD_HAZAR		= "Gefährliche Gewässer",   	-- 7120
+	-- Exploration dailies, NPC = Kommandant Salerius
+	DAS_QUEST_WW_EXPL		= "Kommandant Salerius",	-- 117861
+	DAS_WWEALD_VENOM		= "Giftjagd",			-- 7108
+	DAS_WWEALD_LOANR		= "Alles nur geliehen",		-- 7111
+	DAS_WWEALD_TRINK		= "Plunder aus dem Reik",	-- 7112
+	DAS_WWEALD_CALAM		= "Ein verhängnisvoller Fehler",		-- 7113
+	DAS_WWEALD_STUDY		= "Eine Studie in Sachen Tharriker",	-- 7114
+	DAS_WWEALD_RUINO		= "Ruinöse Bewertung",		-- 7115
+	-- Bastion Nymic dailies : NPC = Legionärin Jaida
+	DAS_QUEST_WW_INCUR		= "Legionärin Jaida",		-- 117863
+	DAS_WWEALD_INCUR		= "Spiegelmoor-Vorstoß",	-- 7110 & 7182
 
 
 	-- Southern Elsweyr

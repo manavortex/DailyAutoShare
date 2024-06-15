@@ -77,6 +77,7 @@ local strings  = {
 	DAS_MENU_CB_DARKB		= "Gold Coast / ゴールドコースト",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / ヒューズベイン",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / ハイ・アイルとアメノス",
+	DAS_MENU_CB_GOLDR		= "West Weald / ウェストウィールド",
 	DAS_MENU_CB_MURK		= "Murkmire / マークマイア",
 	DAS_MENU_SM_MURK		= "Murkmire Options",
 	DAS_MENU_CB_MM_DELV		= "リルモス: 洞窟",
@@ -689,6 +690,27 @@ local strings  = {
 	-- Harrowstorm dailies : NPC = Swordthane Jylta
 	DAS_QUEST_WS_HRWSTMS	= "剣の従士ジルタ", -- 95442
 	DAS_GOTHS_STORM			= "喪心の嵐の阻止", -- 6512 & 6528
+
+	-- West Weald
+	-- World Boss dailies, NPC = アグランス副隊長
+	DAS_QUEST_WW_BOSS		= "アグランス副隊長",	-- 117862
+	DAS_WWEALD_SPINN		= "引き伸ばし",     	-- 7109
+	DAS_WWEALD_FATEE		= "運命を喰らう者",         	-- 7116
+	DAS_WWEALD_TRAIN		= "訓練キャンプ",	-- 7117
+	DAS_WWEALD_BALEF		= "不吉な崖",     	-- 7118
+	DAS_WWEALD_RECOL		= "回想者の合流",	-- 7119
+	DAS_WWEALD_HAZAR		= "危険な水",   	-- 7120
+	-- Exploration dailies, NPC = サレリウス司令官
+	DAS_QUEST_WW_EXPL		= "サレリウス司令官",	-- 117861
+	DAS_WWEALD_VENOM		= "毒狩り",		-- 7108
+	DAS_WWEALD_LOANR		= "貸付回収",		-- 7111
+	DAS_WWEALD_TRINK		= "リーチの小物",	-- 7112
+	DAS_WWEALD_CALAM		= "悲惨な失敗",		-- 7113
+	DAS_WWEALD_STUDY		= "サリカーの研究",	-- 7114
+	DAS_WWEALD_RUINO		= "荒廃の評価",		-- 7115
+	-- Bastion Nymic dailies : NPC = ジャイダ軍団兵
+	DAS_QUEST_WW_INCUR		= "ジャイダ軍団兵",		-- 117863
+	DAS_WWEALD_INCUR		= "ミラームーアの襲撃",	-- 7110 & 7182
 
 
 	-- Southern Elsweyr

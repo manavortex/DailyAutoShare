@@ -77,6 +77,7 @@ local strings  = {
 	DAS_MENU_CB_DARKB		= "Gold Coast / Золотой берег",
 	DAS_MENU_CB_THGLD		= "Hew's Bane / Проклятие Хью",
 	DAS_MENU_CB_HIILE		= "High Isle & Amenos / Высокий остров и Аменос",
+	DAS_MENU_CB_GOLDR		= "West Weald / Западный вельд",
 	DAS_MENU_CB_MURK		= "Murkmire / Мрачные трясины",
 	DAS_MENU_SM_MURK		= "Настройки мрачных трясин",
 	DAS_MENU_CB_MM_DELV		= "Лилмот: логова",
@@ -689,6 +690,27 @@ local strings  = {
 	-- Harrowstorm dailies : NPC = Swordthane Jylta
 	DAS_QUEST_WS_HRWSTMS	= "Тан-воительница Илта",		-- 95442
 	DAS_GOTHS_STORM			= "Борьба с мрачными бурями",	-- 6512 & 6528
+
+	-- West Weald
+	-- World Boss dailies, NPC = Lieutenant Agrance
+	DAS_QUEST_WW_BOSS		= "Лейтенант Агранс",		-- 117862
+	DAS_WWEALD_SPINN		= "Странные сказки",       	-- 7109
+	DAS_WWEALD_FATEE		= "Пожиратель Судеб",         	-- 7116
+	DAS_WWEALD_TRAIN		= "Дрессировочный лагерь",		-- 7117
+	DAS_WWEALD_BALEF		= "Зловещие утесы",     	-- 7118
+	DAS_WWEALD_RECOL		= "Встреча Стражей Памяти",	-- 7119
+	DAS_WWEALD_HAZAR		= "Опасные воды",   	-- 7120
+	-- Exploration dailies, NPC = Commandant Salerius
+	DAS_QUEST_WW_EXPL		= "Комендант Салерий",	-- 117861
+	DAS_WWEALD_VENOM		= "Охота за ядом",			-- 7108
+	DAS_WWEALD_LOANR		= "Возврат долга",		-- 7111
+	DAS_WWEALD_TRINK		= "Амулеты из Предела",	-- 7112
+	DAS_WWEALD_CALAM		= "Катастрофическая ошибка",		-- 7113
+	DAS_WWEALD_STUDY		= "Изучение таррикеров",	-- 7114
+	DAS_WWEALD_RUINO		= "Оценка разрушений",		-- 7115
+	-- Bastion Nymic dailies : NPC = Legionary Jaida
+	DAS_QUEST_WW_INCUR		= "Легионер Джайда",		-- 117863
+	DAS_WWEALD_INCUR		= "Вторжение из Зеркальной Пустоши",	-- 7110 & 7182
 
 
 	-- Southern Elsweyr
