@@ -1,8 +1,8 @@
 DAS_STRINGS_LOCALE = DAS_STRINGS_LOCALE or {}
 local strings  = {
 	-- Key bindings
-	DAS_SI_TOGGLE			= "Toggle hidden", --TRANSLATEME
-	DAS_SI_MINIMISE			= "Toggle minimised", --TRANSLATEME
+	DAS_SI_TOGGLE			= "Basculer masqué", --TRANSLATEME
+	DAS_SI_MINIMISE			= "Basculer minimisé", --TRANSLATEME
 
 	-- GUI
 	-- Drag bar button tooltips
