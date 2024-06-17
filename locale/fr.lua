@@ -694,7 +694,7 @@ local strings  = {
 	-- West Weald
 	-- World Boss dailies, NPC = Le lieutenant Agrance
 	DAS_QUEST_WW_BOSS		= "Le lieutenant Agrance",	-- 117862
-	DAS_WWEALD_SPINN		= "Quelce chose se trame",     	-- 7109
+	DAS_WWEALD_SPINN		= "Quelque chose se trame",     	-- 7109
 	DAS_WWEALD_FATEE		= "Gobe-destin",         	-- 7116
 	DAS_WWEALD_TRAIN		= "Camp d'entraînement",	-- 7117
 	DAS_WWEALD_BALEF		= "Falaises funestes",     	-- 7118
