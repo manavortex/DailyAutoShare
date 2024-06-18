@@ -13,7 +13,7 @@ SET ESOUI_URL="https://www.esoui.com/downloads/info1340-DailyAutoshare.html"
 :: Set target directory to anything but "" to have the script move the generated zip file there
 :: %USERPROFILE% will be resolved to "C:\Users\<yourusername>
 REM SET TARGET_DIRECTORY=""
-SET TARGET_DIRECTORY="%USERPROFILE%\Dropbox"
+SET TARGET_DIRECTORY="%USERPROFILE%\DAS"
 
 :: Set github branch to anything but "" to have this script automatically push to github 
 :: SET GITHUB_BRANCH=""
